@@ -37,7 +37,7 @@ const Navbar = () => {
 
 
     return (
-        <div className='relative  z-[1000] w-full h-[70px] flex justify-between items-center px-[1rem]'>
+        <div className='fixed bg-white  z-[1000] w-full h-[70px] flex justify-between items-center px-[1rem]'>
             {/* logo */}
             <img
                 onClick={
