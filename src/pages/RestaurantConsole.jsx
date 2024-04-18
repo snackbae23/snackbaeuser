@@ -14,6 +14,7 @@ import Dashboard from '../component/Dashboard';
 import Menu from '../component/Menu';
 import Payment from '../component/Payment';
 import OfferAndEvents from '../component/OfferAndEvents';
+import Navbar1 from '../component/Navbar1';
 
 const RestaurantConsole = () => {
 
@@ -92,10 +93,10 @@ const g=()=>{
 
   return (
     <>
-      {/* <Navbar1/> */}
-      <div className='w-full h-screen flex   '>
+      <Navbar1/>
+      <div className='w-full h-fit flex justify-center   '>
         {/* left side */}
-        <div className='w-[20%] h-full '>
+        <div className='w-[20%] h-full hidden sm:block '>
         <div className='w-[20%] fixed mt-[70px] px-6 text-[.95rem] flex flex-col gap-32 '>
         <div>
         <div id=''
@@ -160,7 +161,7 @@ const g=()=>{
         {/* Right side */}
 
         
-        <div className='w-[80%] h-full bg-[#F6F8FF] flex flex-col'>
+        <div className='sm:w-[80%] w-full h-fit bg-[#F6F8FF] flex flex-col '>
          
          { das && <Dashboard/>}
          {men && <Menu/>}
