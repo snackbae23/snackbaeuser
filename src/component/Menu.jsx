@@ -4,35 +4,79 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CiSearch } from "react-icons/ci";
 import { RiDeleteBinLine } from "react-icons/ri";
+import Switch1 from './Switch1';
+import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Menu = () => {
 
-  const data1=[{
-       "itemname":"Starter combo (12)",
-       "status":"true",
+  const data1 = [{
+    "itemname": "Starter combo (12)",
+    "status": "true",
   },
   {
-    "itemname":"Starter combo (12)",
-    "status":"true",
-},
-{
-  "itemname":"Starter combo (12)",
-  "status":"true",
-},
-{
-  "itemname":"Starter combo (12)",
-  "status":"true",
-},
-{
-  "itemname":"Starter combo (12)",
-  "status":"true",
-},]
+    "itemname": "Starter combo (12)",
+    "status": "true",
+  },
+  {
+    "itemname": "Starter combo (12)",
+    "status": "true",
+  },
+  {
+    "itemname": "Starter combo (12)",
+    "status": "true",
+  },
+  {
+    "itemname": "Starter combo (12)",
+    "status": "true",
+  },]
+
+  const menu=[{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },{
+    "tital":"Hulk Beast Burger",
+    "Price":"3399"
+  },]
+
+  
+  let filteredMenu = menu.slice(0, 6);
+  const [menudata,setmenudata]=useState(filteredMenu);
+
+  console.log(filteredMenu);
+
+  const updatemenu = ()=>{
+    setmenudata(menu);
+  }
 
 
-  const [switc, setswitch] = useState(false);
+  const [up, setup] = useState(false);
 
-  const switch1 = () => {
-      setswitch(!switc);
+  const up1 = () => {
+    setup(!up);
+    setmenudata(menu);
+  }
+  const down = () => {
+    setup(!up);
+    setmenudata(filteredMenu);
   }
 
   const [formData, setFormData] = useState({
@@ -72,7 +116,7 @@ const Menu = () => {
 
   function openPopup1() {
     document.getElementById('popup1').style.display = "block";
-  
+
 
   }
   function closePopup1() {
@@ -187,7 +231,7 @@ const Menu = () => {
       </motion.div>
 
       {/* Add Category popup */}
-      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px] sm:h-[500px] w-full h-fit  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4'>
+      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px] sm:h-[500p w-full h-fit  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4'>
         <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Category</p>
           <RxCrossCircled onClick={closePopup1} className='cursor-pointer text-[1.9rem]' />
@@ -197,7 +241,7 @@ const Menu = () => {
           <p>Create New Category</p>
           <div className='flex justify-between gap-3'>
             <input className='px-2 py-2 border w-[80%] border-[#E2E8F0] rounded-md'
-            type="text"  />
+              type="text" />
             <button className='px-4 py-2 bg-[#004AAD] text-white rounded-xl' >Create</button>
           </div>
         </div>
@@ -205,22 +249,22 @@ const Menu = () => {
         <div className='flex w-full px-4 flex-col py-4 '>
           <p>All catagories</p>
           <div className='flex flex-col gap-2 my-4 '>
-           {data1.map((item,index)=>(
-            <div key={index} className='flex border font-semibold border-[#E2E8F0] justify-between py-2 px-4 rounded-md items-center'>
-              <p className='sm:text-[1.2rem] text-[1.4rem]'>{item.itemname}</p>
-              <div className='flex gap-6'>
-              
-              <RiDeleteBinLine className='text-[#004AAD] text-[1.5rem]' />
-              </div>
+            {data1.map((item, index) => (
+              <div key={index} className='flex border font-semibold border-[#E2E8F0] justify-between py-2 px-4 rounded-md items-center'>
+                <p className='sm:text-[1.2rem] text-[1.4rem]'>{item.itemname}</p>
+                <div className='flex gap-6'>
+                  <Switch1/>
+                  <RiDeleteBinLine className='text-[#004AAD] text-[1.5rem]' />
+                </div>
 
-            </div>
-           ))}
-            
+              </div>
+            ))}
+
 
           </div>
 
         </div>
-        
+
 
 
       </motion.div>
@@ -262,26 +306,21 @@ const Menu = () => {
           <div className='w-full h-fit font-Roboto text-[1.3rem] sm:px-6 border-t-2'>
 
             {/* course indian 1*/}
-            <div className='flex justify-between items-center  w-full mt-4 '>
+            <div className='flex justify-between items-center  w-full mt-4 px-4 '>
               <p>Main Course Indian (12)</p>
-              <img className='sm:size-5 size-4 mr-5' src="/Vector (2).png" alt="" />
+              {
+                up ? <IoIosArrowUp onClick={up1} className='cursor-pointer text-[1.5rem]' />:<IoIosArrowDown onClick={down} className='cursor-pointer text-[1.7rem]' />
+              }
+              
             </div>
-            
+
             <div className='w-full h-fit grid sm:grid-cols-3 gap-3 my-8'>
               {/* 1 */}
-              <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
+              {menudata.map((item)=>(
+                <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
                 <div className='flex justify-between'>
                   <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
+                  <Switch1/>
                 </div>
                 <div className='flex w-full'>
                   <div className='w-[70%]'>
@@ -299,178 +338,27 @@ const Menu = () => {
                   <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
                 </div>
               </div>
-
-              {/* for delete when map is use */}
-              <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div>
-
+              ))}
+          
             </div>
 
             {/* course indian 2*/}
-            <div className='flex justify-between items-center  w-full mt-4 '>
-              <p>Main Course Indian (12)</p>
-              <img className='sm:size-5 size-4 mr-5' src="/Vector (2).png" alt="" />
-            </div>
             
+            <div className='flex justify-between items-center  w-full mt-4 px-4 '>
+              <p>Main Course Indian (12)</p>
+              {
+                up ? <IoIosArrowUp onClick={up1} className='cursor-pointer text-[1.5rem]' />:<IoIosArrowDown onClick={down} className='cursor-pointer text-[1.7rem]' />
+              }
+              
+            </div>
+
             <div className='w-full h-fit grid sm:grid-cols-3 gap-3 my-8'>
               {/* 1 */}
-              <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
+              {menudata.map((item)=>(
+                <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
                 <div className='flex justify-between'>
                   <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
+                  <Switch1/>
                 </div>
                 <div className='flex w-full'>
                   <div className='w-[70%]'>
@@ -488,345 +376,10 @@ const Menu = () => {
                   <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
                 </div>
               </div>
-
-              {/* for delete when map is use */}
-              <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div>
-
-            </div>
-
-            {/* course indian 3*/}
-            <div className='flex justify-between items-center  w-full mt-4 '>
-              <p>Main Course Indian (12)</p>
-              <img className='sm:size-5 size-4 mr-5' src="/Vector (2).png" alt="" />
+              ))}
+          
             </div>
             
-            <div className='w-full h-fit grid sm:grid-cols-3 gap-3 my-8'>
-              {/* 1 */}
-              <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div>
-
-              {/* for delete when map is use */}
-              <div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div><div className=' w-full h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
-                <div className='flex justify-between'>
-                  <p className='font-inter'>Hulk Beast Burger</p>
-                  {
-                                switc ?
-                                    <div className='w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-1' onClick={switch1}></div>
-                                    </div> :
-                                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center '>
-                                        <div className='size-[18px] bg-white rounded-full ml-5' onClick={switch1}></div>
-                                    </div>
-                            }
-
-                </div>
-                <div className='flex w-full'>
-                  <div className='w-[70%]'>
-                    <img src="Group 1171277690.png" alt="" />
-                    <p className='text-[#0F172A] font-inter text-[.75rem]'>Hulk Beast burger is one of the signature dishes in this cafe ,stuffed double paty chicken with mouth watering sauce flavour</p>
-                  </div>
-                  <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                    <img className='size-16' src="/image.png" alt="" />
-                  </div>
-
-                </div>
-
-                <div className='flex justify-between font-Roboto'>
-                  <p className='text-[1.1rem]'>₹399.00</p>
-                  <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]'>Edit</button>
-                </div>
-              </div>
-
-            </div>
           </div>
         </div>
 

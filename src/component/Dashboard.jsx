@@ -528,7 +528,10 @@ const Dashboard = () => {
                     </div>
                     {
                         slide &&
-                        <div className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
+                        <motion.div  initial={{ opacity: 0, y: -50 }}
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 1 }}
+                            className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
                             <div className='flex gap-5'>
                                 <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
@@ -556,7 +559,7 @@ const Dashboard = () => {
                             </div>
 
 
-                        </div>
+                        </motion.div>
                     }
 
                     <div className=' h-[80px] bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
@@ -602,7 +605,9 @@ const Dashboard = () => {
                     </div>
                     {
                         slide1 &&
-                        <div className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
+                        <motion.div initial={{ opacity: 0, y: -50 }}
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
                             <div className='flex gap-5'>
                                 <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
@@ -630,7 +635,7 @@ const Dashboard = () => {
                             </div>
 
 
-                        </div>
+                        </motion.div>
                     }
 
                     <div className=' h-[80px] bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
@@ -676,7 +681,9 @@ const Dashboard = () => {
                     </div>
                     {
                         slide2 &&
-                        <div className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
+                        <motion.div initial={{ opacity: 0, y: -50 }}
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
                             <div className='flex gap-5'>
                                 <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
@@ -704,7 +711,7 @@ const Dashboard = () => {
                             </div>
 
 
-                        </div>
+                        </motion.div>
                     }
 
                 </div>
