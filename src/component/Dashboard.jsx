@@ -9,6 +9,8 @@ import { RxCrossCircled } from "react-icons/rx";
 import { GoFileSymlinkFile } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
 
+import { motion } from 'framer-motion';
+
 const Dashboard = () => {
     const data1 = [{
         "Customer": "Nitish",
@@ -178,51 +180,62 @@ const Dashboard = () => {
     const [slide1, setslide1] = useState(false);
     const [slide2, setslide2] = useState(false);
 
+    // const goback = () => {
+    //     // Get the element with the ID "left"
+    //     const leftElement = document.getElementById('left');
+
+    //     // Toggle its display property (show/hide)
+    //     leftElement.style.display = leftElement.style.display === 'none' ? 'block' : 'none';
+
+    //     // Toggle the state (if needed)
+    //     setIsToggled(!isToggled);
+    // };
+
     return (
-        <div className='w-full h-fit relative  '>
+        <div id='dashboard' className='w-full h-fit relative'>
 
             {/* QR code popup */}
-            <div id="popup" className='w-[500px] h-[500px]  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[155px] rounded-2xl sm:p-4'>
-                <div className='flex  items-center justify-between font-Roboto text-[1.2rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
+            <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px] w-full sm:h-[500px h-fit  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[155px]  rounded-2xl sm:p-4 p-4'>
+                <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
                     <p>Get QR Code</p>
-                    <RxCrossCircled onClick={closePopup} className='cursor-pointer' />
+                    <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
                 </div>
-                <div className='w-full h-fit flex flex-col items-center justify-center gap-2 font-inter'>
-                    <div className='w-[200px] h-[200px] border-2 border-[#000000B2] rounded-xl p-2'>
+                <div className='w-full h-fit flex flex-col items-center justify-center sm:gap-2 gap-5  font-inter'>
+                    <div className='sm:w-[200px] sm:h-[200px] w-[250px] sm:mt-0 mt-5 border-2 border-[#000000B2] rounded-xl p-2'>
                         <img className='w-full h-full' src="/Group 1171277979.png" alt="" />
                     </div>
-                    <p>FOODOOS</p>
+                    <p className='sm:text-[1.1rem] font-semibold text-[1.5rem]'>FOODOOS</p>
                     <p>AMP Baisakhi Mall,Salt Lake</p>
-                    <div className='flex gap-4 font-semibold '>
-                        <button className='px-5 rounded-md py-1 bg-[#FFD628] text-black '>Share Code</button>
-                        <button className='px-5 rounded-md py-1 bg-[#004AAD] text-[#FFFFFF] '>Download QR</button>
+                    <div className='flex gap-4 font-semibold sm:text-[1.1rem] text-[1.15rem] '>
+                        <button className='sm:px-6 px-12 rounded-md sm:py-2 py-4 bg-[#FFD628] text-black '>Share Code</button>
+                        <button className='px-6 rounded-md py-2 bg-[#004AAD] text-[#FFFFFF] '>Download QR</button>
                     </div>
 
                 </div>
-                <div className='border border-[#00000080] flex p-2 mt-4 items-center'>
-                    <p className='font-inter text-[#64748B] w-[56%] text-[.9rem]'>Get Customised Table top QR and Brandable merchandise at a affordable price contact sales </p>
-                    <div className='w-[40%] h-[40px] bg-[#67CE67] text-[1.1rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white'>
+                <div className='border border-[#00000080] flex sm:flex-row flex-col p-2 mt-4 items-center w-full h-fit gap-5 justify-center rounded-md  '>
+                    <p className='font-inter text-[#64748B] sm:w-[56%] w-[60%] sm:text-[.9rem] text-[.9rem]'>Get Customised Table top QR and Brandable merchandise at a affordable price contact sales </p>
+                    <div className='sm:w-[40%] w-full h-[60px] bg-[#67CE67] text-[1.1rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white  '>
                         <IoLogoWhatsapp />
-                        <p>Need Help?</p>
+                        <p >Need Help?</p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-            <div className='sm:w-[80%] w-full  h-[70px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-4 sm:px-10 fixed '>
+            <div className='sm:w-[80%] w-full  sm:h-[70px] h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-7 sm:px-10 fixed '>
                 <div>
-                    <p className='text-[1.6rem] font-semibold'>Dashboard</p>
+                    <p className='sm:text-[1.6rem] text-[2rem] font-semibold'>Dashboard</p>
                     <p className='text-[.9rem]'>Welcome to your Dashboard</p>
                 </div>
 
                 <div className='flex gap-5 '>
                     <button className='hidden sm:block bg-white px-5 py-1 rounded-md border text-[.9rem] font-Roboto border-[#000000B2]'>View Profile</button>
-                    <button onClick={openPopup} className='bg-white px-5 py-1 rounded-md border text-[.9rem] font-Roboto  border-[#000000B2]'>Get QR Code</button>
+                    <button onClick={openPopup} className='bg-white px-5 sm:py-1 py-2 sm:rounded-md rounded-xl border text-[.9rem] font-Roboto  border-[#000000B2]'>Get QR Code</button>
                 </div>
 
 
             </div>
 
-            <div className='w-full h-fit  mt-[140px] '>
+            <div className='w-full h-fit  mt-[150px]  '>
                 {/* total report */}
                 <div className=' w-full sm:flex px-2 gap-3'>
                     <div className='sm:w-[73%] flex flex-col gap-2'>
@@ -287,7 +300,7 @@ const Dashboard = () => {
                                 <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>1,412</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>161,289</p>
                                 <div className='flex text-[.7rem] gap-1'>
                                     <p>30% </p>
                                     <img src="/fi-rr-caret-up.png" alt="" />
@@ -349,9 +362,9 @@ const Dashboard = () => {
 
                 {/* Latest Transaction */}
                 <div className='w-full h-fit flex flex-col '>
-                    <div className='w-full h-[70px] flex justify-between items-center px-6 '>
+                    <div className='w-full h-[80px] flex justify-between items-center px-6 '>
                         <div>
-                            <p className='sm:text-[1.6rem] text-[1.25rem] font-semibold'>Latest Transaction</p>
+                            <p className='sm:text-[1.6rem] text-[1.5rem] font-semibold'>Latest Transaction</p>
                             <p className='text-[.9rem] text-[#000000]'>Recent 5 transaction</p>
                         </div>
                         <div className='flex items-center gap-6'>
@@ -429,18 +442,40 @@ const Dashboard = () => {
                 {/* Menu Performance */}
 
                 <div className='w-full h-fit flex flex-col bg-[#F6F8FF] gap-4 '>
-                    <div className='w-full h-[140px] flex flex-col  justify-start gap-3 px-6 mt-4 '>
+                    <div className='w-full h-fit flex flex-col  justify-start gap-3 px-6 mt-4 '>
                         <div>
                             <p className='text-[1.6rem] font-semibold'>Menu Performance</p>
                             <p className='text-[.9rem] text-[#000000]'>Based on your customer feedback</p>
                         </div>
-                        {/* <div className='w-[35%] h-[45px] rounded-md bg-white'>
-                            <input type="text" />
-                        </div> */}
-                        <div className='relative flex items-center mt-4'>
-                            
+
+                        <div className='w-full flex gap-2 sm:flex-row flex-col bg-white p-4 rounded-md'>
+                            <div className='sm:w-[66%] w-full flex gap-2'>
+                                <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
+
+                                    <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Total Performing Item</p>
+                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>Crispy Chicken Burger</p>
+
+                                </div>
+                                <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
+
+                                    <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Lowest Performing Item</p>
+                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>Veg Cheese Burger</p>
+
+                                </div>
+                            </div>
+
+                            <div className='sm:w-[33%] w-full h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
+
+                                <p className='text-[#777980] text-[.9rem] font-semibold'>Total Interactions</p>
+
+                                <p className='text-[#1D1F2C] text-[2rem] font-semibold  '>16,7654</p>
+                            </div>
+                        </div>
+
+                        <div className='relative h-[60px] flex items-center mt-4'>
+
                             <input
-                                className='w-[40%] py-2 px-8 rounded-lg'
+                                className='sm:w-[40%] h-[50px] w-full py-2 px-8 rounded-lg'
                                 type="text"
                                 placeholder='Search menu ...'
                             />
@@ -672,43 +707,51 @@ const Dashboard = () => {
                         </div>
                     }
 
+                </div>
 
-                    {/* Relationship */}
-                    <div className='sm:hidden  w-full h-fit bg-white rounded-md py-4 px-5  flex-col gap-4'>
-                        <p className='text-[#0F172A] text-[1.2rem] font-semibold border-b border-[#F1F5F9] pb-3'>Relationship Manager</p>
-                        <p className='text-[#64748B] text-[.8rem]  border-b pb-2'>Need help? contact your Relationship manager </p>
+                {/* Relationship */}
+                <div className='sm:hidden  w-full h-fit bg-white rounded-md py-4 px-12  flex-col gap-2 my-6'>
+                    <p className='text-[#0F172A] text-[1.5rem] font-semibold border-b border-[#F1F5F9] pb-3'>Relationship Manager</p>
+                    <p className='text-[#64748B] text-[.9rem] w-[70%]  border-b pb-2'>Need help? contact your Relationship manager </p>
 
-                        <div className='flex flex-col  gap-3 my-5'>
-                            <div className='flex gap-2 items-center'>
-                                <CiLocationOn className='text-[#94A3B8] font-bold text-[1.3rem]' />
-                                <p className='text-[.9rem] font-Roboto text-[#0F172A]'>Nitish Kumar</p>
-                            </div>
-                            <div className='flex gap-2 items-center'>
-                                <LuPhoneCall className='text-[#94A3B8] font-bold text-[1.3rem]' />
-                                <p className='text-[.9rem] font-Roboto text-[#0F172A]'>+91 91234567889</p>
-                            </div>
-                            <div className='flex gap-2 items-center'>
-                                <TbProgressHelp className='text-[#94A3B8] font-bold text-[1.3rem]' />
-                                <p className='text-[.9rem] font-Roboto text-[#0F172A]'>Help@snackbae.in</p>
-                            </div>
-                            <div className='flex gap-2 items-center'>
-                                <CiCalendarDate className='text-[#94A3B8] font-bold text-[1.3rem]' />
-                                <p className='text-[.9rem] font-Roboto text-[#0F172A]'>10 AM - 7 PM</p>
-                            </div>
+                    <div className='flex flex-col  gap-3 my-5'>
+                        <div className='flex gap-2 items-center'>
+                            <CiLocationOn className='text-[#94A3B8] font-bold text-[1.9rem]' />
+                            <p className='text-[1.3rem] font-Roboto text-[#0F172A]'>Nitish Kumar</p>
                         </div>
+                        <div className='flex gap-2 items-center'>
+                            <LuPhoneCall className='text-[#94A3B8] font-bold text-[1.9rem]' />
+                            <p className='text-[1.3rem] font-Roboto text-[#0F172A]'>+91 91234567889</p>
+                        </div>
+                        <div className='flex gap-2 items-center'>
+                            <TbProgressHelp className='text-[#94A3B8] font-bold text-[1.9rem]' />
+                            <p className='text-[1.3rem] font-Roboto text-[#0F172A]'>Help@snackbae.in</p>
+                        </div>
+                        <div className='flex gap-2 items-center'>
+                            <CiCalendarDate className='text-[#94A3B8] font-bold text-[1.9rem]' />
+                            <p className='text-[1.3rem] font-Roboto text-[#0F172A]'>10 AM - 7 PM</p>
+                        </div>
+                    </div>
 
-                        <div className='w-full h-[40px] bg-[#67CE67] text-[1.1rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white'>
-                            <IoLogoWhatsapp />
-                            <p>Need Help?</p>
+                    <div className='w-full h-[60px]  bg-[#67CE67] text-[1.9rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white'>
+                        <IoLogoWhatsapp />
+                        <p className=''>+91 9660066978</p>
+                    </div>
+
+                </div>
+
+                {/* footer */}
+                <div className='p-4'>
+                    <div className='flex sm:flex-row flex-col w-full h-fit sm:items-center border border-[#00000099]  rounded-md my-4 font-inter  sm:p-0 p-4'>
+                        <img className='size-[120px] ' src="/Customer feedback.png" alt="" />
+                        <div>
+                            <p>Help Us to make Snackbae better ! Share your feedbacks and request features that fits best for your Business</p>
+                            <p className='text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold'>Give Feedback</p>
                         </div>
 
                     </div>
-
-
-
-
-
                 </div>
+
 
 
 
