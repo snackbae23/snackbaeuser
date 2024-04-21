@@ -209,7 +209,7 @@ const Menu = () => {
             <div key={index} className='flex border font-semibold border-[#E2E8F0] justify-between py-2 px-4 rounded-md items-center'>
               <p className='sm:text-[1.2rem] text-[1.4rem]'>{item.itemname}</p>
               <div className='flex gap-6'>
-              <RiDeleteBinLine />
+              
               <RiDeleteBinLine className='text-[#004AAD] text-[1.5rem]' />
               </div>
 
