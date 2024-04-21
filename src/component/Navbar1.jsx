@@ -1,15 +1,82 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+
+//image
+import logo from '../assets/logo.png';
+
+//icons
+import { IoMdMenu, IoMdClose } from "react-icons/io";
+
+
+
+
+
+
+import { BiSolidDashboard } from "react-icons/bi";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { RiSecurePaymentLine } from "react-icons/ri";
+import { BiSolidOffer } from "react-icons/bi";
+import { IoPersonOutline } from "react-icons/io5";
+import { CiSettings } from "react-icons/ci";
+import { IoLogOutOutline } from "react-icons/io5";
+
+
 
 const Navbar1 = () => {
-  return (
-    <div className='w-full h-[70px]  flex items-center  bg-[#FFFFFF] fixed z-10'>
-        <div className='w-[20%] h-full flex items-center justify-center'>
-        <img className='  aspect-auto p-[.5rem] cursor-pointer ' src="/IMG-20231226-WA0003 3.png" alt="" />
-        </div>
+
+
+    const navigate = useNavigate();
+
+    //handle toggle for menu for small screen
+    const [isToggled, setIsToggled] = useState(false);
+    const [isToggled1, setIsToggled1] = useState(false);
+    const handleToggle = () => {
+        setIsToggled(!isToggled);
        
-        
-    </div>
-  )
+        document.getElementById('left').style.display = "none";
+
+    };
+    const handleToggle1 = () => {
+        setIsToggled(!isToggled1);
+       
+        document.getElementById('left').style.display = "block";
+
+    };
+    // Function to handle link click
+    const handleLinkClick = () => {
+        if (isToggled) {
+            setIsToggled(false);
+        }
+    };
+
+
+    
+    return (
+        <div className='fixed bg-white z-[1000] w-full h-[70px] flex justify-between items-center px-[1rem]'>
+            {/* logo */}
+            <img
+                onClick={
+                    () => {
+                        navigate('/');
+                    }
+                } src={logo} alt='logo'
+                className='h-full aspect-auto p-[.5rem] cursor-pointer' />
+
+            
+
+            {/* menu-icons */}
+            {
+                isToggled ?
+                    (<IoMdClose
+                        className='sm:hidden block text-[1.6rem]'
+                        onClick={handleToggle} />) :
+                    (<IoMdMenu
+                        className='sm:hidden block text-[1.6rem]'
+                        onClick={handleToggle1} />)
+            }
+
+        </div>
+    )
 }
 
 export default Navbar1
