@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiLocationOn } from "react-icons/ci";
 import { IoLogoWhatsapp } from "react-icons/io5";
 import { CiCalendarDate } from "react-icons/ci";
@@ -10,8 +10,56 @@ import { GoFileSymlinkFile } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
 
 import { motion } from 'framer-motion';
+import axios from 'axios';
+
 
 const Dashboard = () => {
+
+    const resId = "662929b6445e63ad5782c1ab";
+    const [resData, setResData] = useState();
+    const [bestRatedMenu, setBestRatedMenu] = useState('');
+    const [leastRatedMenu, setLeastRatedMenu] = useState('');
+
+
+    const getRestaurantData = async (req, res) => {
+
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
+            headers: {}
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setResData(response.data);
+
+                const highestRatedItem = resData?.restaurant?.menu.reduce((prev, current) =>
+                    prev.rated > current.rated ? prev : current
+                );
+                setBestRatedMenu(highestRatedItem?.name);
+
+                const leastRatedItem = resData?.restaurant?.menu.reduce((prev, current) =>
+                    prev.rated < current.rated ? prev : current
+                );
+                setLeastRatedMenu(leastRatedItem?.name);
+
+
+                console.log(resData);
+                
+                console.log(bestRatedMenu);
+                console.log(leastRatedMenu);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        getRestaurantData();
+    }, []);
+
     const data1 = [{
         "Customer": "Nitish",
         "Id": "#Id238975",
@@ -282,15 +330,12 @@ const Dashboard = () => {
                                 <p className='text-[#777980] text-[.9rem] font-semibold'>Total Recommendation</p>
                                 <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>412</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{resData?.restaurant?.recommendationCount}</p>
                                 <div className='flex text-[.7rem] gap-1'>
                                     <p>30% </p>
                                     <img src="/fi-rr-caret-up.png" alt="" />
                                     <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
                                 </div>
-
-
-
                             </div>
                         </div>
                         <p className='text-[#000000] text-[1.6rem] font-semibold ml-4'>Totay's Report</p>
@@ -453,13 +498,13 @@ const Dashboard = () => {
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
                                     <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Total Performing Item</p>
-                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>Crispy Chicken Burger</p>
+                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>{bestRatedMenu}</p>
 
                                 </div>
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
                                     <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Lowest Performing Item</p>
-                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>Veg Cheese Burger</p>
+                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>{leastRatedMenu}</p>
 
                                 </div>
                             </div>
@@ -528,9 +573,9 @@ const Dashboard = () => {
                     </div>
                     {
                         slide &&
-                        <motion.div  initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 1 }}
+                        <motion.div initial={{ opacity: 0, y: -50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }}
                             className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
                             <div className='flex gap-5'>
@@ -606,8 +651,8 @@ const Dashboard = () => {
                     {
                         slide1 &&
                         <motion.div initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
                             <div className='flex gap-5'>
                                 <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
@@ -682,8 +727,8 @@ const Dashboard = () => {
                     {
                         slide2 &&
                         <motion.div initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
                             <div className='flex gap-5'>
                                 <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
