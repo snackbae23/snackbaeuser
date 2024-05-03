@@ -8,6 +8,7 @@ import { LuPhoneCall } from "react-icons/lu";
 import { RxCrossCircled } from "react-icons/rx";
 import { GoFileSymlinkFile } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
+import { FaChevronDown ,FaChevronUp} from "react-icons/fa";
 
 import { motion } from 'framer-motion';
 import axios from 'axios';
@@ -33,6 +34,7 @@ const Dashboard = () => {
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
+                console.log((response.data));
                 setResData(response.data);
 
                 const highestRatedItem = resData?.restaurant?.menu.reduce((prev, current) =>
@@ -47,7 +49,7 @@ const Dashboard = () => {
 
 
                 console.log(resData);
-                
+
                 console.log(bestRatedMenu);
                 console.log(leastRatedMenu);
             })
@@ -202,15 +204,11 @@ const Dashboard = () => {
     }
     function closePopup() {
         document.getElementById('popup').style.display = "none";
-        document.getElementById('background').style.filter = "blur(0px)";
+       
 
     }
 
-    // const New = ()=>{
-    //     sdata1 = sdata1.filter((item) => item.Status == "New");
-    //     // sdata1=filteredData;
-    //     console.log(filteredData);
-    // }
+  
 
     const [items, setitems] = useState(sdata1);
     const filterItem = (categITem) => {
@@ -220,7 +218,65 @@ const Dashboard = () => {
 
         setitems(updateItem);
         console.log(updateItem);
+        document.getElementById('new').style.backgroundColor = '#004AAD';
+        document.getElementById('new').style.color = 'white';
+        document.getElementById('must').style.backgroundColor = 'white';
+        document.getElementById('must').style.color = 'black';
+        document.getElementById('good').style.backgroundColor = 'white';
+        document.getElementById('good').style.color = 'black';
+        document.getElementById('not').style.backgroundColor = 'white';
+        document.getElementById('not').style.color = 'black';
     }
+    const filterItem1 = (categITem) => {
+        const updateItem = sdata1.filter((curElem) => {
+            return curElem.Status === categITem;
+        })
+
+        setitems(updateItem);
+        console.log(updateItem);
+        document.getElementById('must').style.backgroundColor = '#004AAD';
+        document.getElementById('must').style.color = 'white';
+        document.getElementById('new').style.backgroundColor = 'white';
+        document.getElementById('new').style.color = 'black';
+        document.getElementById('good').style.backgroundColor = 'white';
+        document.getElementById('good').style.color = 'black';
+        document.getElementById('not').style.backgroundColor = 'white';
+        document.getElementById('not').style.color = 'black';
+    }
+    const filterItem2 = (categITem) => {
+        const updateItem = sdata1.filter((curElem) => {
+            return curElem.Status === categITem;
+        })
+
+        setitems(updateItem);
+        console.log(updateItem);
+        document.getElementById('good').style.backgroundColor = '#004AAD';
+        document.getElementById('good').style.color = 'white';
+        document.getElementById('must').style.backgroundColor = 'white';
+        document.getElementById('must').style.color = 'black';
+        document.getElementById('new').style.backgroundColor = 'white';
+        document.getElementById('new').style.color = 'black';
+        document.getElementById('not').style.backgroundColor = 'white';
+        document.getElementById('not').style.color = 'black';
+    }
+
+    const filterItem3 = (categITem) => {
+        const updateItem = sdata1.filter((curElem) => {
+            return curElem.Status === categITem;
+        })
+
+        setitems(updateItem);
+        console.log(updateItem);
+        document.getElementById('not').style.backgroundColor = '#004AAD';
+        document.getElementById('not').style.color = 'white';
+        document.getElementById('must').style.backgroundColor = 'white';
+        document.getElementById('must').style.color = 'black';
+        document.getElementById('good').style.backgroundColor = 'white';
+        document.getElementById('good').style.color = 'black';
+        document.getElementById('new').style.backgroundColor = 'white';
+        document.getElementById('new').style.color = 'black';
+    }
+
 
 
 
@@ -498,13 +554,13 @@ const Dashboard = () => {
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
                                     <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Total Performing Item</p>
-                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>{bestRatedMenu}</p>
+                                    <p className='text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight '>{bestRatedMenu}</p>
 
                                 </div>
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
                                     <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Lowest Performing Item</p>
-                                    <p className='text-[#1D1F2C] sm:text-[1.7rem] text-[1.2rem] font-semibold tracking-tight '>{leastRatedMenu}</p>
+                                    <p className='text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight '>{leastRatedMenu}</p>
 
                                 </div>
                             </div>
@@ -530,7 +586,7 @@ const Dashboard = () => {
 
                     </div>
 
-                    <div className=' h-[80px] bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
+                    <div className=' h-fit bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
                         <div className='sm:w-[40%] w-[30%] h-full flex sm:flex-row flex-col sm:items-center justify-evenly font-semibold'>
                             <p className='sm:text-[1.2rem] text-[.8rem]'>Crispy Chicken Burger</p>
                             <div className='flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter'>
@@ -564,7 +620,7 @@ const Dashboard = () => {
                             </div>
                             <div className='flex items-center justify-center cursor-pointer ml-2'>
                                 {
-                                    slide ? <img onClick={() => (setslide(!slide))} className='' src="/Vector (2).png" alt="" /> : <img onClick={() => (setslide(!slide))} className='mr-4' src="/Vector (1).png" alt="" />
+                                    slide ? <FaChevronDown className='text-[1.4rem]'  onClick={() => (setslide(!slide))}  /> : <FaChevronUp  onClick={() => (setslide(!slide))} className='text-[1.4rem]'/>
                                 }
 
                             </div>
@@ -576,16 +632,16 @@ const Dashboard = () => {
                         <motion.div initial={{ opacity: 0, y: -50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
-                            className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
+                            className=' h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
-                            <div className='flex gap-5'>
-                                <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
-                                <button onClick={() => filterItem('Must try')} className='px-4 py-1 rounded-md border border-[#000000]'>Must try</button>
-                                <button onClick={() => filterItem('Good')} className='px-4 py-1 rounded-md border border-[#000000]'>Good</button>
-                                <button onClick={() => filterItem('Not Liked')} className='px-4 py-1 rounded-md border border-[#000000]'>Not Liked</button>
+                            <div className='flex sm:gap-5 gap-2 '>
+                                <div id='new' onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000] bg-[#004AAD] text-white flex items-center'>New</div>
+                                <button id='must' onClick={() => filterItem1('Must try')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Must try</button>
+                                <button id='good' onClick={() => filterItem2('Good')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Good</button>
+                                <button id='not' onClick={() => filterItem3('Not Liked')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Not Liked</button>
                             </div>
 
-                            <div className=' w-full overflow-scroll flex h-[350px]   gap-4'>
+                            <div className=' hideScroller w-full overflow-scroll flex h-[350px]   gap-4'>
                                 {items.map((item, index) => (
                                     <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
                                         <div className='flex items-center justify-start gap-4 w-full h-[20%]'>
@@ -607,157 +663,7 @@ const Dashboard = () => {
                         </motion.div>
                     }
 
-                    <div className=' h-[80px] bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
-                        <div className='sm:w-[40%] w-[30%] h-full flex sm:flex-row flex-col sm:items-center justify-evenly font-semibold'>
-                            <p className='sm:text-[1.2rem] text-[.8rem]'>Crispy Chicken Burger</p>
-                            <div className='flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter'>
-                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Total</p>
-                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Recomendation</p>
-                                <p className='sm:text-[1.1rem] text-[.6rem]'>213</p>
-                            </div>
-                        </div>
-                        <div className='sm:w-[60%] w-[70%] h-full flex justify-evenly gap-2 '>
-
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/🦆 emoji _disappointed but relieved face_.png" alt="" />
-                                    <p className=' sm:text-[1.1rem] text-[.85rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/Group 1171277598.png" alt="" />
-                                    <p className=' text-[1.1rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/Group 1171277601.png" alt="" />
-                                    <p className=' sm:text-[1.1rem] text-[.8rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex items-center justify-center cursor-pointer ml-2'>
-                                {
-                                    slide1 ? <img onClick={() => (setslide1(!slide1))} className='' src="/Vector (2).png" alt="" /> : <img onClick={() => (setslide1(!slide1))} className='mr-4' src="/Vector (1).png" alt="" />
-                                }
-
-                            </div>
-                        </div>
-
-                    </div>
-                    {
-                        slide1 &&
-                        <motion.div initial={{ opacity: 0, y: -50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
-                            <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
-                            <div className='flex gap-5'>
-                                <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
-                                <button onClick={() => filterItem('Must try')} className='px-4 py-1 rounded-md border border-[#000000]'>Must try</button>
-                                <button onClick={() => filterItem('Good')} className='px-4 py-1 rounded-md border border-[#000000]'>Good</button>
-                                <button onClick={() => filterItem('Not Liked')} className='px-4 py-1 rounded-md border border-[#000000]'>Not Liked</button>
-                            </div>
-
-                            <div className=' w-full overflow-scroll flex h-[350px]   gap-4'>
-                                {items.map((item, index) => (
-                                    <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
-                                        <div className='flex items-center justify-start gap-4 w-full h-[20%]'>
-                                            <img src={item.photo} alt="" />
-                                            <p>{item.Name}</p>
-                                            <p>{item.Date}</p>
-                                        </div>
-                                        <p className='w-full h-[70%] text-[#67727E] '>{item.contant}</p>
-                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md '>
-                                            <img className='size-7' src={item.Emoji} alt="" />
-                                            <p className='text-[.7rem] '>Must Try</p>
-                                        </div>
-                                    </div>
-                                ))}
-
-                            </div>
-
-
-                        </motion.div>
-                    }
-
-                    <div className=' h-[80px] bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
-                        <div className='sm:w-[40%] w-[30%] h-full flex sm:flex-row flex-col sm:items-center justify-evenly font-semibold'>
-                            <p className='sm:text-[1.2rem] text-[.8rem]'>Crispy Chicken Burger</p>
-                            <div className='flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter'>
-                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Total</p>
-                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Recomendation</p>
-                                <p className='sm:text-[1.1rem] text-[.6rem]'>213</p>
-                            </div>
-                        </div>
-                        <div className='sm:w-[60%] w-[70%] h-full flex justify-evenly gap-2 '>
-
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/🦆 emoji _disappointed but relieved face_.png" alt="" />
-                                    <p className=' sm:text-[1.1rem] text-[.85rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/Group 1171277598.png" alt="" />
-                                    <p className=' text-[1.1rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/Group 1171277601.png" alt="" />
-                                    <p className=' sm:text-[1.1rem] text-[.8rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex items-center justify-center cursor-pointer ml-2'>
-                                {
-                                    slide2 ? <img onClick={() => (setslide2(!slide2))} className='' src="/Vector (2).png" alt="" /> : <img onClick={() => (setslide2(!slide2))} className='mr-4' src="/Vector (1).png" alt="" />
-                                }
-
-                            </div>
-                        </div>
-
-                    </div>
-                    {
-                        slide2 &&
-                        <motion.div initial={{ opacity: 0, y: -50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }} className='w-fu h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5 '>
-                            <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
-                            <div className='flex gap-5'>
-                                <div onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000]'>New</div>
-                                <button onClick={() => filterItem('Must try')} className='px-4 py-1 rounded-md border border-[#000000]'>Must try</button>
-                                <button onClick={() => filterItem('Good')} className='px-4 py-1 rounded-md border border-[#000000]'>Good</button>
-                                <button onClick={() => filterItem('Not Liked')} className='px-4 py-1 rounded-md border border-[#000000]'>Not Liked</button>
-                            </div>
-
-                            <div className=' w-full overflow-scroll flex h-[350px]   gap-4'>
-                                {items.map((item, index) => (
-                                    <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
-                                        <div className='flex items-center justify-start gap-4 w-full h-[20%]'>
-                                            <img src={item.photo} alt="" />
-                                            <p>{item.Name}</p>
-                                            <p>{item.Date}</p>
-                                        </div>
-                                        <p className='w-full h-[70%] text-[#67727E] '>{item.contant}</p>
-                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md '>
-                                            <img className='size-7' src={item.Emoji} alt="" />
-                                            <p className='text-[.7rem] '>Must Try</p>
-                                        </div>
-                                    </div>
-                                ))}
-
-                            </div>
-
-
-                        </motion.div>
-                    }
+                  
 
                 </div>
 
