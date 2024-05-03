@@ -67,7 +67,6 @@ const Menu = () => {
     setmenudata(menu);
   }
 
-
   const [up, setup] = useState(false);
 
   const up1 = () => {
