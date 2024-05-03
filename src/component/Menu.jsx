@@ -169,7 +169,7 @@ const Menu = () => {
           <p>Add Menu item</p>
           <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
         </div>
-        <form className='flex flex-col gap-3 w-full h-[500px] px-3 py-[1rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll' onSubmit={handleFormSubmit}>
+        <form className='flex flex-col gap-3 w-full sm:h-[500px] px-3 py-[1rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll' onSubmit={handleFormSubmit}>
           <div className=' flex flex-col  '>
             <p>item image*</p>
             <p className='text-[#64748B] text-[.8rem] w-full'>Image format .jpg .jpeg .png and minimum size 300 x 300px</p>
@@ -307,7 +307,7 @@ const Menu = () => {
           <p>Add Menu item</p>
           <RxCrossCircled onClick={closePopup2} className='cursor-pointer text-[1.9rem]' />
         </div>
-        <form className='flex flex-col gap-3 w-full h-[500px] px-3 text-[#0F172A] font-inter sm:text-[.95rem] bg-white  overflow-y-scroll py-[1rem] hideScroller' onSubmit={handleFormSubmit1}>
+        <form className='flex flex-col gap-3 w-full sm:h-[500px] px-3 text-[#0F172A] font-inter sm:text-[.95rem] bg-white  overflow-y-scroll py-[1rem] hideScroller' onSubmit={handleFormSubmit1}>
           <div className=' flex flex-col  w-full'>
             <p>Item image*</p>
             <p className='text-[#64748B] text-[.8rem]'>Image format .jpg .jpeg .png and minimum size 300 x 300px</p>
