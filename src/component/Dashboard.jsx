@@ -325,7 +325,7 @@ const Dashboard = () => {
                 </div>
             </motion.div>
 
-            <div className='sm:w-[80%] w-full  sm:h-[70px] h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-7 sm:px-10 fixed '>
+            <div className='sm:w-[80%] w-full  sm:h-[90px] h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-7 sm:px-10 fixed '>
                 <div>
                     <p className='sm:text-[1.6rem] text-[2rem] font-semibold'>Dashboard</p>
                     <p className='text-[.9rem]'>Welcome to your Dashboard</p>
@@ -339,7 +339,7 @@ const Dashboard = () => {
 
             </div>
 
-            <div className='w-full h-fit  mt-[150px]  '>
+            <div className='w-full h-fit  mt-[160px]  '>
                 {/* total report */}
                 <div className=' w-full sm:flex px-2 gap-3'>
                     <div className='sm:w-[73%] flex flex-col gap-2'>

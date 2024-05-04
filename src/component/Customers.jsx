@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 
 import { MdNavigateNext } from "react-icons/md";
+import { GoInfo } from "react-icons/go";
 import { GrFormPrevious } from "react-icons/gr";
 import { CiSearch } from "react-icons/ci";
 import { Link } from 'react-router-dom';
@@ -501,7 +502,7 @@ const Customers = () => {
       <div className='  w-full  h-[90px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-5 sm:px-12   '>
         <div>
           <p className='text-[1.6rem] font-semibold'>Customer Analytics</p>
-          <p className='text-[.9rem]'>Utilize customer analytics to make well-informed decisions.</p>
+          <p className='sm:text-[.9rem] text-[.8rem]'>Utilize customer analytics to make well-informed decisions.</p>
         </div>
 
       </div>
@@ -523,7 +524,8 @@ const Customers = () => {
               <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
                 <p className='text-[#777980] text-[.9rem] font-semibold'>Total Customer</p>
-                <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
+                {/* <img className='size-8 absolute right-2' src="/Badge.png" alt="" /> */}
+                <GoInfo className='size-8 absolute right-2 z-10 bg-white'/>
 
                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>4,412</p>
                 <div className='flex text-[.7rem] gap-1'>
@@ -538,7 +540,7 @@ const Customers = () => {
               <div className='w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
                 <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
-                <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
+                <GoInfo className='size-8 absolute right-2 z-10 bg-white'/>
 
                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>1,412</p>
                 <div className='flex text-[.7rem] gap-1'>
@@ -555,7 +557,7 @@ const Customers = () => {
             <div className='sm:w-[33%] w-full h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
               <p className='text-[#777980] text-[.9rem] font-semibold'>Total Recommendation</p>
-              <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
+              <GoInfo className='size-8 absolute right-2 z-10 bg-white'/>
 
               <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '> 20</p>
               <div className='flex text-[.7rem] gap-1'>
@@ -576,14 +578,14 @@ const Customers = () => {
           {/* All Users */}
 
           <div className='flex flex-col w-full h-fit   mt-6'>
-            <div className='px-7'>
+            <div className='sm:px-7 px-1'>
               <p className='font-bold text-[1.3rem] mb-3'>Customer Records</p>
               <div className='flex gap-3'>
                 <p>Showing: </p>
                 <p className='text-[#004AAD]'>{udata.length} Total Customer records</p>
               </div>
 
-              <div className='relative flex items-center mt-4 border rounded-md w-[40%]'>
+              <div className='relative flex items-center mt-4 border rounded-md sm:w-[40%]'>
                 <CiSearch className='absolute text-[1.3rem] font-semibold ml-2' />
                 <input
                   className='w-full py-2 px-8 rounded-lg'
@@ -595,7 +597,7 @@ const Customers = () => {
             </div>
             <input type="text" />
 
-            <div className='bg-white w-full h-fit p-4  mb-9 rounded-lg'>
+            <div className='bg-white w-full h-fit p-4  mb-9 rounded-lg sm:block hidden'>
               <div className='flex justify-between text-[1.1rem] text-[#718096] px-8 border-b-2 pb-4 bg-[#F6F8FF] py-4 rounded-md'>
                 <p>Customer Name</p>
                 <p className='ml-11'>Phone Number</p>
@@ -613,6 +615,105 @@ const Customers = () => {
 
 
 
+            </div>
+
+            <div className='w-full sm:hidden block'>
+
+              {/* first one */}
+              <div className='flex w-full bg-[#FFFFFF] my-3 rounded-md border p-4 border-[#373535] items-center  '>
+                <div className='flex w-[50%] flex-col gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-[1.2rem] text-[#808080]'>Customer Name</p>
+                    <p className='font-bold text-[#0F172A]'>Souptik Das</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Total Visit</p>
+                    <p className='font-bold text-[#0F172A] text-[]'>69</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Last Visited</p>
+                    <p className='font-bold text-[#0F172A]'>Today</p>
+                  </div>
+                </div>
+                <div className='flex w-[50%] flex-col gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-[1.2rem] text-[#808080]'>Customer Name</p>
+                    <p className='font-bold text-[#0F172A]'>Souptik Das</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Total Visit</p>
+                    <p className='font-bold text-[#0F172A]'>69</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Last Visited</p>
+                    <p className='font-bold text-[#0F172A]'>Today</p>
+                  </div>
+                </div>
+
+              </div>
+              {/* sec one */}
+              <div className='flex w-full bg-[#FFFFFF] my-3 rounded-md border p-4 border-[#373535] items-center  '>
+                <div className='flex w-[50%] flex-col gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-[1.2rem] text-[#808080]'>Customer Name</p>
+                    <p className='font-bold text-[#0F172A]'>Souptik Das</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Total Visit</p>
+                    <p className='font-bold text-[#0F172A] text-[]'>69</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Last Visited</p>
+                    <p className='font-bold text-[#0F172A]'>Today</p>
+                  </div>
+                </div>
+                <div className='flex w-[50%] flex-col gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-[1.2rem] text-[#808080]'>Customer Name</p>
+                    <p className='font-bold text-[#0F172A]'>Souptik Das</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Total Visit</p>
+                    <p className='font-bold text-[#0F172A]'>69</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Last Visited</p>
+                    <p className='font-bold text-[#0F172A]'>Today</p>
+                  </div>
+                </div>
+
+              </div>
+              <div className='flex w-full bg-[#FFFFFF] my-3 rounded-md border p-4 border-[#373535] items-center  '>
+                <div className='flex w-[50%] flex-col gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-[1.2rem] text-[#808080]'>Customer Name</p>
+                    <p className='font-bold text-[#0F172A]'>Souptik Das</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Total Visit</p>
+                    <p className='font-bold text-[#0F172A] text-[]'>69</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Last Visited</p>
+                    <p className='font-bold text-[#0F172A]'>Today</p>
+                  </div>
+                </div>
+                <div className='flex w-[50%] flex-col gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-[1.2rem] text-[#808080]'>Customer Name</p>
+                    <p className='font-bold text-[#0F172A]'>Souptik Das</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Total Visit</p>
+                    <p className='font-bold text-[#0F172A]'>69</p>
+                  </div>
+                  <div>
+                    <p className='text-[1.2rem] text-[#808080]'>Last Visited</p>
+                    <p className='font-bold text-[#0F172A]'>Today</p>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
 
