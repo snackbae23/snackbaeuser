@@ -14,10 +14,32 @@ const CustomerAnalytics = () => {
                     <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
                         <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
                             <div className='text-[1.3rem] text-[#777980]'>
-                                <p>Customer Birthday this</p>
-                                <p>month</p>
+                                <p>Total Customers Visited in</p>
+                                <p>Last 15 Daya</p>
                             </div>
                             <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
+                        </div>
+                        <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
+
+                            <MdForwardToInbox className='text-[#004AAD] ' />
+                            <FiPhone className='text-[#004AAD]' />
+                            <IoLogoWhatsapp className='text-green-400' />
+
+                            <button className='bg-[#004AAD] text-white py-2 sm:px-3 px-2 rounded-md text-[1rem] mr-2'>
+                                Send Campaign</button>
+                        </div>
+
+
+
+                    </div>
+
+                    <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
+                        <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
+                            <div className='text-[1.3rem] text-[#777980]'>
+                                <p>Total Customers Visited in</p>
+                                <p>Last 30 Daya</p>
+                            </div>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>12,412</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
@@ -39,29 +61,7 @@ const CustomerAnalytics = () => {
                                 <p>Customer Birthday this</p>
                                 <p>month</p>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
-                        </div>
-                        <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
-
-                            <MdForwardToInbox className='text-[#004AAD] ' />
-                            <FiPhone className='text-[#004AAD]' />
-                            <IoLogoWhatsapp className='text-green-400' />
-
-                            <button className='bg-[#004AAD] text-white py-2 sm:px-3 px-2 rounded-md text-[1rem] mr-2'>
-                                Send Campaign</button>
-                        </div>
-
-
-
-                    </div>
-
-                    <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
-                        <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
-                            <div className='text-[1.3rem] text-[#777980]'>
-                                <p>Customer Birthday this</p>
-                                <p>month</p>
-                            </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>12</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
@@ -89,9 +89,13 @@ const CustomerAnalytics = () => {
                 
                 <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
                         <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
-                            <div className='text-[1.3rem] text-[#777980]'>
-                                <p>Customer Birthday this</p>
-                                <p>month</p>
+                            <div className='text-[1.1rem] text-[#004AAD]'>
+                                <p>Total Customers has not</p>
+                                <div className='flex gap-2'>
+                                <p>Visited in Last</p>
+                                <p className='text-[#F44336]'>30 Days</p>
+                                </div>
+                               
                             </div>
                             <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
                         </div>
@@ -110,9 +114,34 @@ const CustomerAnalytics = () => {
                     </div>
                     <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
                         <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
-                            <div className='text-[1.3rem] text-[#777980]'>
-                                <p>Customer Birthday this</p>
-                                <p>month</p>
+                            <div className='text-[1.1rem] text-[#004AAD]'>
+                            <p>Total Customers with low</p>
+                                <div className='flex gap-2'>
+                                <p>Recommendation in last</p>
+                                <p className='text-[#F44336]'> 30 Days</p>
+                                </div>
+                            </div>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
+                        </div>
+                        <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
+
+                            <MdForwardToInbox className='text-[#004AAD] ' />
+                            <FiPhone className='text-[#004AAD]' />
+                            <IoLogoWhatsapp className='text-green-400' />
+
+                            <button className='bg-[#004AAD] text-white py-2 sm:px-3 px-2 rounded-md text-[1rem] mr-2'>
+                                Send Campaign</button>
+                        </div>
+
+
+
+                    </div>
+
+                        {/* charts */}
+                    <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
+                        <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
+                            <div className='text-[1.1rem] text-[#004AAD]'>
+                            {/* <Chart/> */}
                             </div>
                             <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
                         </div>
