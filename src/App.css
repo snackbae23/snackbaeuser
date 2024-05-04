@@ -5,3 +5,10 @@
 .hideScroller::-webkit-scrollbar {
     display: none;
   }
+
+  .active {
+    background-color: #e4ef40;
+    font-weight: bold;
+    width: 30px;
+    border-radius: 20px;
+  }
