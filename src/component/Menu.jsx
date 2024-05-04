@@ -443,8 +443,8 @@ const Menu = () => {
               <CiSearch className='absolute text-[1.3rem] font-semibold ml-2 ' />
             </div>
             <div className='flex gap-4 items-center justify-evenly text-[#64748B]'>
-              <button className='px-5 sm:py-2 py-4 rounded-md border border-[#407fd1]' onClick={openPopup1}>All Categories</button>
-              <button className='px-5 sm:py-2 py-4 rounded-md border border-[#407fd1]' onClick={openPopup2}>+ Add Category</button>
+              <button className='sm:px-5 px-3 sm:py-2 py-4 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>All Categories</button>
+              <button className='sm:px-5 px-3 sm:py-2 py-4 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup2}>+ Add Category</button>
             </div>
           </div>
 

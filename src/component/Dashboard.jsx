@@ -4,6 +4,7 @@ import { IoLogoWhatsapp } from "react-icons/io5";
 import { CiCalendarDate } from "react-icons/ci";
 import { TbProgressHelp } from "react-icons/tb";
 import { LuPhoneCall } from "react-icons/lu";
+import { Link } from 'react-router-dom';
 
 import { RxCrossCircled } from "react-icons/rx";
 import { GoFileSymlinkFile } from "react-icons/go";
@@ -311,8 +312,8 @@ const Dashboard = () => {
                     <p className='sm:text-[1.1rem] font-semibold text-[1.5rem]'>FOODOOS</p>
                     <p>AMP Baisakhi Mall,Salt Lake</p>
                     <div className='flex gap-4 font-semibold sm:text-[1.1rem] text-[1.15rem] '>
-                        <button className='sm:px-6 px-12 rounded-md sm:py-2 py-4 bg-[#FFD628] text-black '>Share Code</button>
-                        <button className='px-6 rounded-md py-2 bg-[#004AAD] text-[#FFFFFF] '>Download QR</button>
+                        <button className='text-nowrap sm:px-6 px-12 rounded-md sm:py-2 py-4 bg-[#FFD628] text-black '>Share Code</button>
+                        <button className='text-nowrap px-6 rounded-md py-2 bg-[#004AAD] text-[#FFFFFF] '>Download QR</button>
                     </div>
 
                 </div>
@@ -332,7 +333,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className='flex gap-5 '>
-                    <button className='hidden sm:block bg-white px-5 py-1 rounded-md border text-[.9rem] font-Roboto border-[#000000B2]'>View Profile</button>
+                    <button className='hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]'>View Profile</button>
                     <button onClick={openPopup} className='bg-white px-5 sm:py-1 py-2 sm:rounded-md rounded-xl border text-[.9rem] font-Roboto  border-[#000000B2]'>Get QR Code</button>
                 </div>
 
@@ -502,7 +503,7 @@ const Dashboard = () => {
 
                         <div className='w-full h-[300px] overflow-y-hidden flex flex-col gap-1 '>
                             {data1.map((item, index) => (
-                                <div key={index} className='w-full flex my-2  sm:text-[.9rem] text-[.8rem] font-semibold' >
+                                <div key={index} className='w-full flex mb-2  sm:text-[.9rem] text-[.8rem] font-semibold' >
                                     <div className='w-[34%] flex sm:flex-row flex-col mb-3 items-center justify-evenly'>
                                         <p className='text-[#111827] font-semibold text-[.9rem] ml-4'> {item.Customer}</p>
                                         <p className='text-[#6B7280] flex items-center '>{item.Date}</p>
@@ -512,7 +513,7 @@ const Dashboard = () => {
                                         {/* <p className='text-[#6B7280] flex items-center '>{item.Date}</p> */}
                                         <p className='text-[black]   flex items-center'>{item.Amount}</p>
                                         <p className='text-[#004AAD]   text-center flex items-center ml-7  '>{item.Discount}</p>
-                                        <p className={`rounded-3xl  w-full  h-[70%] py-1  text-center mt-2 flex items-center justify-center 
+                                        <p className={`rounded-3xl  w-full  h-[70%] py-[.5rem]  text-center mt-2 flex items-center justify-center 
                 ${item.Status === 'complete' ? 'bg-[#DEF7EC] text-green-700 ' :
                                                 item.Status === 'In Progress' ? 'bg-[#E1EFFE] text-[#7157f1]' :
                                                     item.Status === 'Cancelled' ? 'bg-[#FBD5D5] text-red-800' : ''
@@ -620,7 +621,7 @@ const Dashboard = () => {
                             </div>
                             <div className='flex items-center justify-center cursor-pointer ml-2'>
                                 {
-                                    slide ? <FaChevronDown className='text-[1.4rem]'  onClick={() => (setslide(!slide))}  /> : <FaChevronUp  onClick={() => (setslide(!slide))} className='text-[1.4rem]'/>
+                                    slide ? <FaChevronUp className='text-[1.4rem]'  onClick={() => (setslide(!slide))}  /> : <FaChevronDown  onClick={() => (setslide(!slide))} className='text-[1.4rem]'/>
                                 }
 
                             </div>
@@ -704,7 +705,7 @@ const Dashboard = () => {
                         <img className='size-[120px] ' src="/Customer feedback.png" alt="" />
                         <div>
                             <p>Help Us to make Snackbae better ! Share your feedbacks and request features that fits best for your Business</p>
-                            <p className='text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold'>Give Feedback</p>
+                            <Link className='text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold'>Give Feedback</Link>
                         </div>
 
                     </div>
