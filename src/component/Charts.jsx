@@ -13,14 +13,16 @@ export const options = {
     title: "",
     pieHole: 0.4,
     is3D: false,
+    colors: ['#004AAD','#FFD628'],
+    
   };
 
 export default function Charts() {
   return (
     <Chart className="flex "
       chartType="PieChart"
-      width="300px"
-      height="200px"
+      width="400px"
+      height="300px"
       data={data}
       options={options}
     />
