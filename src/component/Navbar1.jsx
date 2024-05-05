@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { GoPerson } from "react-icons/go";
 
 //image
 import logo from '../assets/logo.png';
@@ -30,6 +31,9 @@ const Navbar1 = () => {
     //handle toggle for menu for small screen
     const [isToggled, setIsToggled] = useState(false);
     const [isToggled1, setIsToggled1] = useState(false);
+
+    const [fram,setframe]=useState(false);
+
     const handleToggle = () => {
         setIsToggled(!isToggled);
        
@@ -42,6 +46,15 @@ const Navbar1 = () => {
         document.getElementById('left').style.display = "block";
 
     };
+
+    const frames1 =()=>{
+        setframe(!fram);
+        document.getElementById('frame').style.display = "none";
+    };
+    const frames2 =()=>{
+        setframe(!fram);
+        document.getElementById('frame').style.display = "block";
+    };
     // Function to handle link click
     const handleLinkClick = () => {
         if (isToggled) {
@@ -52,7 +65,7 @@ const Navbar1 = () => {
 
     
     return (
-        <div className='fixed bg-white z-[1000] w-full h-[70px] flex justify-between items-center px-[1rem]'>
+        <div className='fixed bg-white z-[1000] w-full h-[70px] flex justify-between items-center px-[1.5rem]'>
             {/* logo */}
             <img
                 onClick={
@@ -60,7 +73,7 @@ const Navbar1 = () => {
                         navigate('/');
                     }
                 } src={logo} alt='logo'
-                className='h-full aspect-auto p-[.5rem] cursor-pointer' />
+                className='h-full aspect-auto  cursor-pointer sm:block hidden ' />
 
             
 
@@ -68,12 +81,21 @@ const Navbar1 = () => {
             {
                 isToggled ?
                     (<IoMdClose
-                        className='sm:hidden block text-[1.6rem]'
+                        className='sm:hidden block text-[1.7rem]'
                         onClick={handleToggle} />) :
                     (<IoMdMenu
                         className='sm:hidden block text-[1.6rem]'
                         onClick={handleToggle1} />)
             }
+            <div className='sm:hidden block rounded-full border border-[black] items-center justify-center p-1 relative '>
+                {
+                    fram ? 
+                    (<GoPerson className='size-7 absolute ' onClick={frames1} />):
+                    (<GoPerson className='size-7 absolute ' onClick={frames2} />)
+                }
+
+            <GoPerson className='size-7 ' onClick={frames1} />
+            </div>
 
         </div>
     )

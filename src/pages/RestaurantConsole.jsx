@@ -9,6 +9,8 @@ import { BiSolidOffer } from "react-icons/bi";
 import { IoPersonOutline } from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
+import { GoPerson } from "react-icons/go";
 
 import Dashboard from '../component/Dashboard';
 import Menu from '../component/Menu';
@@ -100,10 +102,30 @@ const RestaurantConsole = () => {
     <>
       <Navbar1 />
       <div className='w-full h-fit flex justify-center  relative  '>
+
+          {/* frame */}
+          <div id='frame' className='hidden fixed right-9 z-50  w-[75%] bg-white  h-fit mt-[70px] rounded-md p-5 border border-[black]'>
+            <div className='flex flex-col '>
+            <div className='flex gap-2 items-center justify-evenly p-2'>
+              <GoPerson className='size-7 ' />
+              <div className='text-[#000000]'>
+                <p className='text-[1.2rem]'>Foodoos</p>
+                <p>Snack Id :9881</p>
+              </div>
+              <IoSettingsOutline className='size-7' />
+
+            </div>
+            <button className='px-2 py-2 rounded-md border border-[#999da2] mb-3 text-[#004AAD] font-bold '>Add Account</button>
+
+            </div>
+            
+
+          </div>
+
         {/* left side */}
 
-        <div id='left' className='sm:w-[20%] bg-white sm:fixed absolute sm:left-1 right-2   z-40   h-full hidden sm:block  mt-[70px] px-6 text-[.95rem]  gap-32  '>
-          <div>
+        <div id='left' className='sm:w-[20%] bg-white sm:fixed absolute sm:left-1 left-0 z-40   h-full hidden sm:block  mt-[70px] px-6 text-[.95rem]  gap-32  '>
+          <div className='mt-2'>
             <div id=''
               onClick={a}
 
