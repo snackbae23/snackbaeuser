@@ -10,6 +10,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import { GoFileSymlinkFile } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { IoPersonCircleOutline } from "react-icons/io5";
 
 import { motion } from 'framer-motion';
 import axios from 'axios';
@@ -620,22 +621,23 @@ const Dashboard = () => {
                                     transition={{ duration: 1 }}
                                     className=' h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
                                     <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
-                                    <div className='flex sm:gap-5 gap-2 '>
-                                        <div id='new' onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000] bg-[#004AAD] text-white flex items-center'>New</div>
-                                        <button id='must' onClick={() => filterItem1('Must try')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Must try</button>
-                                        <button id='good' onClick={() => filterItem2('Good')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Good</button>
-                                        <button id='not' onClick={() => filterItem3('Not Liked')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Not Liked</button>
+                                    <div className='flex sm:gap-5 gap-1.5 '>
+                                        <div id='new' onClick={() => filterItem('New')} className='px-4 py-2 rounded-md border border-[#000000] bg-[#004AAD] text-white flex items-center text-nowrap'>New</div>
+                                        <button id='must' onClick={() => filterItem1('Must try')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center text-nowrap'>Must try</button>
+                                        <button id='good' onClick={() => filterItem2('Good')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center text-nowrap'>Good</button>
+                                        <button id='not' onClick={() => filterItem3('Not Liked')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center text-nowrap'>Not Liked</button>
                                     </div>
 
                                     <div className=' hideScroller w-full overflow-scroll flex h-[350px]   gap-4'>
-                                        {items.map((item, index) => (
+                                        {menu.comments.map((item, index) => (
                                             <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
                                                 <div className='flex items-center justify-start gap-4 w-full h-[20%]'>
-                                                    <img src={item.photo} alt="" />
-                                                    <p>{item.Name}</p>
-                                                    <p>{item.Date}</p>
+                                                    {/* <img src={item.photo} alt="" /> */}
+                                                    <IoPersonCircleOutline className='size-6' />
+                                                    <p>{item.userId?.name}</p>
+                                                    <p>{item.createdAt}</p>
                                                 </div>
-                                                <p className='w-full h-[70%] text-[#67727E] '>{item.contant}</p>
+                                                <p className='w-full h-[70%] text-[#67727E] '>{item.description}</p>
                                                 <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md '>
                                                     <img className='size-7' src={item.Emoji} alt="" />
                                                     <p className='text-[.7rem] '>Must Try</p>
