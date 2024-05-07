@@ -15,7 +15,6 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
-
 const Dashboard = () => {
 
     const resId = "662929b6445e63ad5782c1ab";
@@ -27,14 +26,12 @@ const Dashboard = () => {
     const top3menus = menus.slice(0, 3);
 
     const [showAllCategories, setShowAllCategories] = useState({});
-  const toggleCategory = (categoryId) => {
-    setShowAllCategories(prevState => ({
-      ...prevState,
-      [categoryId]: !prevState[categoryId]
-    }));
-
-  };
-
+    const toggleCategory = (categoryId) => {
+        setShowAllCategories(prevState => ({
+            ...prevState,
+            [categoryId]: !prevState[categoryId]
+        }));
+    };
 
     const getRestaurantData = async (req, res) => {
 
@@ -65,7 +62,6 @@ const Dashboard = () => {
                 );
                 setLeastRatedMenu(leastRatedItem?.name);
 
-
                 console.log(resData);
 
                 console.log(bestRatedMenu);
@@ -79,7 +75,10 @@ const Dashboard = () => {
 
     useEffect(() => {
         getRestaurantData();
-    }, [resId]);
+    }, []);
+
+
+
 
     const data1 = [{
         "Customer": "Nitish",
@@ -135,7 +134,7 @@ const Dashboard = () => {
         "Merchant": "Foodoos",
         "Id1": "1234565"
     },
-    
+
     {
         "Customer": "Nitish",
         "Id": "#Id238975",
@@ -198,13 +197,11 @@ const Dashboard = () => {
 
     function openPopup() {
         document.getElementById('popup').style.display = "block";
-        document.getElementById('background').style.filter = "blur(2Px)";
-
+        // document.getElementById('background').style.filter = "blur(2Px)";
     }
+
     function closePopup() {
         document.getElementById('popup').style.display = "none";
-
-
     }
 
 
@@ -572,7 +569,7 @@ const Dashboard = () => {
 
 
                     {menus && top3menus.map((menu, index) => (
-                        <>   
+                        <>
                             <div className=' h-fit bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
                                 <div className='sm:w-[40%] w-[30%] h-full flex sm:flex-row flex-col sm:items-center justify-evenly font-semibold'>
                                     <p className='sm:text-[1.2rem] text-[.8rem]'>{menu.name}</p>
