@@ -9,6 +9,8 @@ import { BiSolidOffer } from "react-icons/bi";
 import { IoPersonOutline } from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
+import { GoPerson } from "react-icons/go";
 
 import Dashboard from '../component/Dashboard';
 import Menu from '../component/Menu';
@@ -16,16 +18,8 @@ import Payment from '../component/Payment';
 import OfferAndEvents from '../component/OfferAndEvents';
 import Navbar1 from '../component/Navbar1';
 import Customers from '../component/Customers';
-import Settings from '../component/Settings';
 
 const RestaurantConsole = () => {
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // for a smooth scrolling
-    });
-  };
 
   const [das, setdas] = useState(true);
   const [men, setmen] = useState(false);
@@ -44,7 +38,6 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
-    scrollToTop();
 
   }
   const b = () => {
@@ -55,7 +48,6 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
-    scrollToTop();
   }
   const c = () => {
     setdas(false)
@@ -65,7 +57,6 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
-    scrollToTop();
   }
   const d = () => {
     setdas(false)
@@ -75,7 +66,6 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
-    scrollToTop();
   }
   const e = () => {
     setdas(false)
@@ -85,7 +75,6 @@ const RestaurantConsole = () => {
     setcus(true)
     setset(false)
     setlog(false)
-    scrollToTop();
   }
   const f = () => {
     setdas(false)
@@ -95,7 +84,6 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(true)
     setlog(false)
-    scrollToTop();
   }
   const g = () => {
     setdas(false)
@@ -105,7 +93,6 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(true)
-    scrollToTop();
   }
 
 
@@ -114,11 +101,31 @@ const RestaurantConsole = () => {
   return (
     <>
       <Navbar1 />
-      <div className='w-full h-fit flex justify-center  relative  '>
+      <div id='restaurant' className='w-full h-fit flex justify-center  relative  '>
+
+          {/* frame */}
+          <div id='frame' className='hidden fixed right-9 z-50  w-[75%] bg-white  h-fit mt-[70px] rounded-md p-5 border border-[black]'>
+            <div className='flex flex-col '>
+            <div className='flex gap-2 items-center justify-evenly p-2'>
+              <GoPerson className='size-7 ' />
+              <div className='text-[#000000]'>
+                <p className='text-[1.2rem]'>Foodoos</p>
+                <p>Snack Id :9881</p>
+              </div>
+              <IoSettingsOutline className='size-7' />
+
+            </div>
+            <button className='px-2 py-2 rounded-md border border-[#999da2] mb-3 text-[#004AAD] font-bold '>Add Account</button>
+
+            </div>
+            
+
+          </div>
+
         {/* left side */}
 
-        <div id='left' className='sm:w-[20%] bg-white sm:fixed absolute sm:left-1 right-2   z-40   h-full hidden sm:block  mt-[70px] px-6 text-[.95rem]  gap-32  '>
-          <div>
+        <div id='left' className='sm:w-[20%] bg-white sm:fixed absolute sm:left-1 left-0 z-40   h-full hidden sm:block  mt-[70px] px-6 text-[.95rem]  gap-32  '>
+          <div className='mt-2'>
             <div id=''
               onClick={a}
 
@@ -166,7 +173,7 @@ const RestaurantConsole = () => {
             </div>
             <Link id=''
               onClick={g}
-              to="/"
+              to="/customers"
               className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${log ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `}
             >
               <IoLogOutOutline className='text-[1.2rem]' /><p className=''>Log Out</p>
@@ -188,7 +195,6 @@ const RestaurantConsole = () => {
           {pay && <Payment />}
           {off && <OfferAndEvents />}
           {cus && <Customers />}
-          {set && <Settings/>}
 
         </div>
 
