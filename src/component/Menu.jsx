@@ -455,7 +455,7 @@ const Menu = () => {
                 <p className='sm:text-[1.2rem] text-[1.4rem]'>{item.name}</p>
                 <div className='flex gap-6'>
                   <Switch1 isActive={item.active} id={item._id} type={"category"} />
-                  <RiDeleteBinLine className='text-[#004AAD] text-[1.5rem]' onClick={()=>{deleteCategory(item._id)}} />
+                  <RiDeleteBinLine className='text-[#004AAD] text-[1.5rem]' onClick={() => { deleteCategory(item._id) }} />
                 </div>
 
               </div>
@@ -561,9 +561,9 @@ const Menu = () => {
 
 
       </div>
-      <div className='w-full h-fit  mt-[10px] px-12   '>
+      <div className='w-full h-fit  mt-[10px] sm:px-12 px-4  '>
 
-        <div className='bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2'>
+        <div className='bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2 px-1'>
 
 
           <div className='w-full h-fit flex sm:flex-row flex-col gap-2 sm:my-1 my-4  items-center justify-between   '>
@@ -575,9 +575,9 @@ const Menu = () => {
               />
               <CiSearch className='absolute text-[1.3rem] font-semibold ml-2 ' />
             </div>
-            <div className='flex gap-4 items-center justify-evenly text-[#64748B]'>
-              <button className='sm:px-5 px-3 sm:py-2 py-4 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>All Categories</button>
-              <button className='sm:px-5 px-3 sm:py-2 py-4 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>+ Add Category</button>
+            <div className='flex gap-4 items-center justify-evenly text-[#64748B] mt-3'>
+              <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>All Categories</button>
+              <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>+ Add Category</button>
             </div>
           </div>
 
@@ -616,7 +616,7 @@ const Menu = () => {
 
                       <div className='flex justify-between font-Roboto'>
                         <p className='text-[1.1rem]'>₹{item.price}</p>
-                        <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={()=> {openPopup2(item)}}>Edit</button>
+                        <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={() => { openPopup2(item) }}>Edit</button>
                       </div>
                     </div>
                   ))}
