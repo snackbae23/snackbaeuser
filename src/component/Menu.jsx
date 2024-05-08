@@ -563,7 +563,7 @@ const Menu = () => {
       </div>
       <div className='w-full h-fit  mt-[10px] px-12   '>
 
-        <div className='bg-white px-3 flex flex-col gap-6 sm:py-5 py-2'>
+        <div className='bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2'>
 
 
           <div className='w-full h-fit flex sm:flex-row flex-col gap-2 sm:my-1 my-4  items-center justify-between   '>
