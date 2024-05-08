@@ -55,11 +55,12 @@ const Login = () => {
     .then((response) => {
       console.log(JSON.stringify(response.data));
       localStorage.setItem("user",(response.data.details))
+       navigate("/restaurant");
     })
     .catch((error) => {
       console.log(error);
     });
-    navigate("/restaurant");
+   
   }
 
   return (
