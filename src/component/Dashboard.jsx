@@ -409,7 +409,7 @@ const Dashboard = () => {
                                     <p className='text-[#777980] text-[.9rem] font-semibold'>Total Customer</p>
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>4,412</p>
+                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>190</p>
                                     <div className='flex text-[.7rem] gap-1'>
                                         <p>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
@@ -424,7 +424,7 @@ const Dashboard = () => {
                                     <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>1,412</p>
+                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>140</p>
                                     <div className='flex text-[.7rem] gap-1'>
                                         <p>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
@@ -456,7 +456,7 @@ const Dashboard = () => {
                                 <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>161,289</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>161</p>
                                 <div className='flex text-[.7rem] gap-1'>
                                     <p>30% </p>
                                     <img src="/fi-rr-caret-up.png" alt="" />
