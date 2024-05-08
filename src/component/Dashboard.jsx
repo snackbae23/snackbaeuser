@@ -409,7 +409,7 @@ const Dashboard = () => {
                                     <p className='text-[#777980] text-[.9rem] font-semibold'>Total Customer</p>
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>190</p>
+                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>389</p>
                                     <div className='flex text-[.7rem] gap-1'>
                                         <p>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
@@ -453,10 +453,10 @@ const Dashboard = () => {
                         <div className='w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2 p-4 rounded-md bg-white ml-2'>
                             <div className='sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
-                                <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
+                                <p className='text-[#777980] text-[.9rem] font-semibold'>Today's Sales</p>
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>161</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>0</p>
                                 <div className='flex text-[.7rem] gap-1'>
                                     <p>30% </p>
                                     <img src="/fi-rr-caret-up.png" alt="" />
@@ -468,10 +468,10 @@ const Dashboard = () => {
                             </div>
                             <div className='sm:w-[50%] w-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
-                                <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
+                                <p className='text-[#777980] text-[.9rem] font-semibold'>Today's Customer</p>
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>1,412</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>42</p>
                                 <div className='flex text-[.7rem] gap-1'>
                                     <p>30% </p>
                                     <img src="/fi-rr-caret-up.png" alt="" />
@@ -608,14 +608,14 @@ const Dashboard = () => {
                             <div className='sm:w-[66%] w-full flex gap-2'>
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
-                                    <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Total Performing Item</p>
+                                    <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Top Performing Item</p>
                                     <p className='text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight '>{bestRatedMenu}</p>
 
                                 </div>
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
                                     <p className='text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold'>Lowest Performing Item</p>
-                                    <p className='text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight '>{leastRatedMenu}</p>
+                                    <p className='text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight '>Veg Maggi</p>
 
                                 </div>
                             </div>
@@ -624,7 +624,7 @@ const Dashboard = () => {
 
                                 <p className='text-[#777980] text-[.9rem] font-semibold'>Total Interactions</p>
 
-                                <p className='text-[#1D1F2C] text-[2rem] font-semibold  '>16,7654</p>
+                                <p className='text-[#1D1F2C] text-[2rem] font-semibold  '>450</p>
                             </div>
                         </div>
 

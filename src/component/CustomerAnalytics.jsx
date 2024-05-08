@@ -17,9 +17,9 @@ const CustomerAnalytics = () => {
                         <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
                             <div className='text-[1.3rem] text-[#777980]'>
                                 <p>Total Customers Visited in</p>
-                                <p>Last 15 Daya</p>
+                                <p>Last 15 Days</p>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>190</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
@@ -39,9 +39,9 @@ const CustomerAnalytics = () => {
                         <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
                             <div className='text-[1.3rem] text-[#777980]'>
                                 <p>Total Customers Visited in</p>
-                                <p>Last 30 Daya</p>
+                                <p>Last 30 Days</p>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>12,412</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>390</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
@@ -99,7 +99,7 @@ const CustomerAnalytics = () => {
                                 </div>
 
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>12</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem] '>
 
@@ -123,7 +123,7 @@ const CustomerAnalytics = () => {
                                     <p className='text-[#F44336]'> 30 Days</p>
                                 </div>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>5</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 

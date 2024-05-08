@@ -63,7 +63,7 @@ const ResetPassword = () => {
             <button className="w-full bg-[#004AAD] rounded-[8px] text-white font-medium text-richblack-900 px-[12px] py-[8px] mt-2">
               Continue
             </button>
-            <Link to="/login">
+            <Link to="/">
               <span className="text-[#004AAD] font-semibold">
                 Back to Sign In
               </span>

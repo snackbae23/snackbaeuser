@@ -251,7 +251,7 @@ const Register = () => {
               <button className="md:w-[50%] w-full mx-auto md:mt-10 mt-4 bg-[#004AAD] rounded-[8px] text-white font-medium text-richblack-900 px-[12px] py-[8px]">
                 Create profile
               </button>
-              <Link to="/login">
+              <Link to="/">
                 <span className="text-[#004AAD] font-semibold">Back to Sign In</span>
               </Link>
             </div>
