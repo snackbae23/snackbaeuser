@@ -16,6 +16,7 @@ import Payment from '../component/Payment';
 import OfferAndEvents from '../component/OfferAndEvents';
 import Navbar1 from '../component/Navbar1';
 import Customers from '../component/Customers';
+import Settings from '../component/Settings';
 
 const RestaurantConsole = () => {
 
@@ -173,6 +174,7 @@ const RestaurantConsole = () => {
           {pay && <Payment />}
           {off && <OfferAndEvents />}
           {cus && <Customers />}
+          {set && <Settings/>}
 
         </div>
 
