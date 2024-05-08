@@ -166,7 +166,7 @@ const RestaurantConsole = () => {
             </div>
             <Link id=''
               onClick={g}
-              to="/customers"
+              to="/"
               className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${log ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `}
             >
               <IoLogOutOutline className='text-[1.2rem]' /><p className=''>Log Out</p>
