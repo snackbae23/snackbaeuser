@@ -849,7 +849,7 @@ const Dashboard = () => {
                                             className=' h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
                                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
 
-                                            <div className='flex sm:w-fit px-[1rem] w-full gap-[1rem] justify-evenly items-center my-[1rem] overflow-x-scroll hideScroller'>
+                                            <div className='flex sm:w-fit px-[1rem] w-full gap-[1rem]  items-center my-[1rem] overflow-x-scroll hideScroller'>
                                                 <button
                                                     onClick={() => {
                                                         setGood(false);
@@ -858,7 +858,7 @@ const Dashboard = () => {
                                                         setMustTry(false);
                                                         setFilterone('new');
                                                     }}
-                                                    className={`${newone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                    className={`${newone ? 'bg-[#FFD628]' : ''}  px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
                                                 >
                                                     New
                                                 </button>
@@ -904,7 +904,7 @@ const Dashboard = () => {
                                             {/* 
                                         <div className="w-[100%] h-fit flex flex-wrap gap-[.5rem]"> */}
 
-                                            <div className="flex  overflow-x-scroll gap-[.5rem] justify-center sm:justify-start hideScroller">
+                                            <div className="flex  overflow-x-scroll gap-[.5rem] sm:justify-start hideScroller">
 
                                                 {filterone === "new" ?
                                                     menu?.comments
