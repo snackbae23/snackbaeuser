@@ -51,7 +51,7 @@ const Register = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://localhost:4000/api/regsiterRestaurant',
+      url: 'https://seashell-app-lgwmg.ondigitalocean.app/api/regsiterRestaurant',
       headers: { 
         'Content-Type': 'application/json'
       },

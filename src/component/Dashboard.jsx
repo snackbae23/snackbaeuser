@@ -5,11 +5,13 @@ import { CiCalendarDate } from "react-icons/ci";
 import { TbProgressHelp } from "react-icons/tb";
 import { LuPhoneCall } from "react-icons/lu";
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { RxCrossCircled } from "react-icons/rx";
 import { GoFileSymlinkFile } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
-import { FaChevronDown ,FaChevronUp} from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { IoPersonCircleOutline } from "react-icons/io5";
 
 import { motion } from 'framer-motion';
 import axios from 'axios';
@@ -17,10 +19,29 @@ import axios from 'axios';
 
 const Dashboard = () => {
 
+    const [newone, setNewone] = useState(false);
+    const [notlikedone, setNotliked] = useState(false);
+    const [goodone, setGood] = useState(false);
+    const [musttryone, setMustTry] = useState(false);
+    const [filterone, setFilterone] = useState()
+    const id = "662929b6445e63ad5782c1ab";
+    // const { id } = useParams();
+
     const resId = "662929b6445e63ad5782c1ab";
     const [resData, setResData] = useState();
     const [bestRatedMenu, setBestRatedMenu] = useState('');
     const [leastRatedMenu, setLeastRatedMenu] = useState('');
+
+    const [menus, setmenus] = useState('')
+    const top3menus = menus.slice(0, 3);
+
+    const [showAllCategories, setShowAllCategories] = useState({});
+    const toggleCategory = (categoryId) => {
+        setShowAllCategories(prevState => ({
+            ...prevState,
+            [categoryId]: !prevState[categoryId]
+        }));
+    };
 
 
     const getRestaurantData = async (req, res) => {
@@ -28,15 +49,19 @@ const Dashboard = () => {
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
+            url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
             headers: {}
         };
 
         axios.request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
+                console.log(response.data);
                 console.log((response.data));
-                setResData(response.data);
+                setResData(response?.data);
+                const resData = response.data;
+                console.log(resData)
+                console.log(resData.restaurant.menu);
+                setmenus(resData?.restaurant?.menu);
 
                 const highestRatedItem = resData?.restaurant?.menu.reduce((prev, current) =>
                     prev.rated > current.rated ? prev : current
@@ -53,6 +78,7 @@ const Dashboard = () => {
 
                 console.log(bestRatedMenu);
                 console.log(leastRatedMenu);
+
             })
             .catch((error) => {
                 console.log(error);
@@ -61,7 +87,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         getRestaurantData();
-    }, []);
+    }, [resId]);
 
     const data1 = [{
         "Customer": "Nitish",
@@ -117,28 +143,7 @@ const Dashboard = () => {
         "Merchant": "Foodoos",
         "Id1": "1234565"
     },
-    {
-        "Customer": "Nitish",
-        "Id": "#Id238975",
-        "Date": "Apr 23,2021",
-        "Amount": "₹23423.00",
-        "Discount": "₹234",
-        "Status": "Cancelled",
-        "Mode": "Upi",
-        "Merchant": "Foodoos",
-        "Id1": "1234565"
-    },
-    {
-        "Customer": "Nitish",
-        "Id": "#Id238975",
-        "Date": "Apr 23,2021",
-        "Amount": "₹23423.00",
-        "Discount": "₹234",
-        "Status": "In Progress",
-        "Mode": "Debit Cart",
-        "Merchant": "Foodoos",
-        "Id1": "1234565"
-    },
+
     {
         "Customer": "Nitish",
         "Id": "#Id238975",
@@ -151,6 +156,7 @@ const Dashboard = () => {
         "Id1": "1234565"
     },
     ]
+    const data1slice = data1.slice(0, 6);
 
     const sdata1 = [{
         "photo": "/Oval.png",
@@ -192,6 +198,34 @@ const Dashboard = () => {
     }
     ]
 
+    const calculateTimeDifference = (fateDate) => {
+        // Convert fate date to Date object
+        const fateDateTime = new Date(fateDate);
+
+        // Current date
+        const currentDate = new Date();
+
+        // Calculate time difference in milliseconds
+        const timeDifference = currentDate.getTime() - fateDateTime.getTime();
+
+        // Convert milliseconds to days, weeks, or months
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const weeksDifference = Math.floor(daysDifference / 7);
+        const monthsDifference = Math.floor(daysDifference / 30);
+
+        // Determine appropriate label based on time difference
+        if (monthsDifference >= 1) {
+            return `${monthsDifference} month${monthsDifference > 1 ? 's' : ''} ago`;
+        } else if (weeksDifference >= 1) {
+            return `${weeksDifference} week${weeksDifference > 1 ? 's' : ''} ago`;
+        } else {
+            if (daysDifference == 0)
+                return "Today"
+            else
+                return `${daysDifference} day${daysDifference > 1 ? 's' : ''} ago`;
+        }
+    };
+
     const [switc, setswitch] = useState(false);
 
     const switch1 = () => {
@@ -200,16 +234,17 @@ const Dashboard = () => {
 
     function openPopup() {
         document.getElementById('popup').style.display = "block";
-        document.getElementById('background').style.filter = "blur(2Px)";
+        // document.getElementById('dashboard').style.filter = "blur(2Px)";
 
     }
     function closePopup() {
         document.getElementById('popup').style.display = "none";
-       
+
+
 
     }
 
-  
+
 
     const [items, setitems] = useState(sdata1);
     const filterItem = (categITem) => {
@@ -279,28 +314,47 @@ const Dashboard = () => {
     }
 
 
+    //search bar
+    const [search, setSearch] = useState('');
+    const [searchMenuItems, setSearchMenuItems] = useState();
 
+    const handleSearch = (e) => {
+        console.log(search)
+        const inputValue = e.target.value;
+        setSearch(inputValue);
+        if (!inputValue) {
+            // If input value is empty or length is less than or equal to 1, clear search menu items
+            setSearchMenuItems();
+            return;
+        }
 
-    const [slide, setslide] = useState(false);
-    const [slide1, setslide1] = useState(false);
-    const [slide2, setslide2] = useState(false);
+        setSearch(inputValue);
+        searchMenu();
+    };
+    const searchMenu = async (req, res) => {
+        let config = {
+            method: "get",
+            maxBodyLength: Infinity,
+            url: `https://seashell-app-lgwmg.ondigitalocean.app/api/searchMenu/${id}/${search}`,
+            headers: {},
+        };
 
-    // const goback = () => {
-    //     // Get the element with the ID "left"
-    //     const leftElement = document.getElementById('left');
-
-    //     // Toggle its display property (show/hide)
-    //     leftElement.style.display = leftElement.style.display === 'none' ? 'block' : 'none';
-
-    //     // Toggle the state (if needed)
-    //     setIsToggled(!isToggled);
-    // };
+        axios.request(config)
+            .then((response) => {
+                // console.log(JSON.stringify(response.data));
+                console.log((response.data.menuItems));
+                setSearchMenuItems(response.data.menuItems);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     return (
         <div id='dashboard' className='w-full h-fit relative'>
 
             {/* QR code popup */}
-            <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px] w-full sm:h-[500px h-fit  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[155px]  rounded-2xl sm:p-4 p-4'>
+            <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px] w-full sm:h-[500px h-fit  sm:left-[30%] fixed  bg-[#FFFFFF] hidden  z-40 mt-[155px]  rounded-2xl sm:p-4 p-4 border shadow-2xl'>
                 <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
                     <p>Get QR Code</p>
                     <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
@@ -430,7 +484,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     {/* Relationship */}
-                    <div className='hidden  w-[27%] h-[360px] bg-white rounded-md py-4 px-5 sm:flex flex-col gap-4'>
+                    <div className='hidden  w-[27%] h-[360px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4'>
                         <p className='text-[#0F172A] text-[1.2rem] font-semibold border-b border-[#F1F5F9] pb-3'>Relationship Manager</p>
                         <p className='text-[#64748B] text-[.8rem]  border-b pb-2'>Need help? contact your Relationship manager </p>
 
@@ -484,7 +538,7 @@ const Dashboard = () => {
 
 
                     </div>
-                    <div className='w-full h-[350px]  mt-4  px-6 bg-[#F6F8FF]  rounded-md   '>
+                    <div className='w-full h-fit  mt-4  px-6 bg-[#F6F8FF]  rounded-md   '>
 
                         <div className='text-[#6B7280] flex w-full justify-between mb-4 border-b-2 font-semibold text-[.9rem] gap-2' >
                             <div className='w-[34%] flex mb-3 items-center justify-evenly'>
@@ -501,9 +555,9 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className='w-full h-[300px] overflow-y-hidden flex flex-col gap-1 '>
-                            {data1.map((item, index) => (
-                                <div key={index} className='w-full flex mb-2  sm:text-[.9rem] text-[.8rem] font-semibold' >
+                        <div className='w-full h-fit overflow-y-hidden flex flex-col gap-1 '>
+                            {data1slice.map((item, index) => (
+                                <div key={index} className='w-full flex mb-2  sm:text-[.9rem] text-[.8rem] font-semibold sm:border-none border rounded-xl border-[#00000080] p-1' >
                                     <div className='w-[34%] flex sm:flex-row flex-col mb-3 items-center justify-evenly'>
                                         <p className='text-[#111827] font-semibold text-[.9rem] ml-4'> {item.Customer}</p>
                                         <p className='text-[#6B7280] flex items-center '>{item.Date}</p>
@@ -574,97 +628,391 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className='relative h-[60px] flex items-center mt-4'>
 
-                            <input
-                                className='sm:w-[40%] h-[50px] w-full py-2 px-8 rounded-lg'
-                                type="text"
-                                placeholder='Search menu ...'
-                            />
-                            <CiSearch className='absolute text-[1.3rem] font-semibold ml-2 ' />
-                        </div>
 
 
                     </div>
-
-                    <div className=' h-fit bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
-                        <div className='sm:w-[40%] w-[30%] h-full flex sm:flex-row flex-col sm:items-center justify-evenly font-semibold'>
-                            <p className='sm:text-[1.2rem] text-[.8rem]'>Crispy Chicken Burger</p>
-                            <div className='flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter'>
-                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Total</p>
-                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Recomendation</p>
-                                <p className='sm:text-[1.1rem] text-[.6rem]'>213</p>
-                            </div>
-                        </div>
-                        <div className='sm:w-[60%] w-[70%] h-full flex justify-evenly gap-2 '>
-
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/🦆 emoji _disappointed but relieved face_.png" alt="" />
-                                    <p className=' sm:text-[1.1rem] text-[.85rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/Group 1171277598.png" alt="" />
-                                    <p className=' text-[1.1rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
-                                <div className='flex gap-2'>
-                                    <img className='size-6' src="/Group 1171277601.png" alt="" />
-                                    <p className=' sm:text-[1.1rem] text-[.8rem]'>213</p>
-                                </div>
-                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
-                            </div>
-                            <div className='flex items-center justify-center cursor-pointer ml-2'>
-                                {
-                                    slide ? <FaChevronUp className='text-[1.4rem]'  onClick={() => (setslide(!slide))}  /> : <FaChevronDown  onClick={() => (setslide(!slide))} className='text-[1.4rem]'/>
-                                }
-
-                            </div>
-                        </div>
-
+                    {/* search menu */}
+                    <div className="relative w-fit  shadow-xl rounded-md border-2 mx-[1rem]">
+                        <input
+                            className=" w-[220px] sm:w-[400px] focus:outline-none h-[2.4rem] sm:h-[3rem] px-[1rem]"
+                            type="text"
+                            placeholder="Search for dish"
+                            value={search}
+                            onChange={handleSearch}
+                        />
+                        <CiSearch className=" absolute right-[1rem] top-[50%] translate-y-[-50%] text-[1.3rem]" />
                     </div>
+
                     {
-                        slide &&
-                        <motion.div initial={{ opacity: 0, y: -50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }}
-                            className=' h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
-                            <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
-                            <div className='flex sm:gap-5 gap-2 '>
-                                <div id='new' onClick={() => filterItem('New')} className='px-4 py-1 rounded-md border border-[#000000] bg-[#004AAD] text-white flex items-center'>New</div>
-                                <button id='must' onClick={() => filterItem1('Must try')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Must try</button>
-                                <button id='good' onClick={() => filterItem2('Good')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Good</button>
-                                <button id='not' onClick={() => filterItem3('Not Liked')} className='px-4 py-1 rounded-md border border-[#000000] flex items-center'>Not Liked</button>
-                            </div>
+                        search ? (
+                            searchMenuItems &&
 
-                            <div className=' hideScroller w-full overflow-scroll flex h-[350px]   gap-4'>
-                                {items.map((item, index) => (
-                                    <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
-                                        <div className='flex items-center justify-start gap-4 w-full h-[20%]'>
-                                            <img src={item.photo} alt="" />
-                                            <p>{item.Name}</p>
-                                            <p>{item.Date}</p>
+                            searchMenuItems.map((menu, index) => (
+                                <div key={index}>
+                                    <div className=' h-fit bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
+                                        <div className='sm:w-[40%] w-[30%] h-full flex sm:flex-row flex-col sm:items-center justify-evenly font-semibold'>
+                                            <p className='sm:text-[1.2rem] w-[70%] text-[.8rem]'>{menu.name}</p>
+                                            <div className='flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter'>
+                                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Total</p>
+                                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Recomendation</p>
+                                                <p className='sm:text-[1.1rem] text-[.6rem]'>213</p>
+                                            </div>
                                         </div>
-                                        <p className='w-full h-[70%] text-[#67727E] '>{item.contant}</p>
-                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md '>
-                                            <img className='size-7' src={item.Emoji} alt="" />
-                                            <p className='text-[.7rem] '>Must Try</p>
+                                        <div className='sm:w-[60%] w-[70%] h-full flex justify-evenly gap-2 '>
+
+                                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
+                                                <div className='flex gap-2'>
+                                                    <img className='size-6' src="/🦆 emoji _disappointed but relieved face_.png" alt="" />
+                                                    <p className=' sm:text-[1.1rem] text-[.85rem]'>{menu.notLikedCount}</p>
+                                                </div>
+                                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
+                                            </div>
+                                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
+                                                <div className='flex gap-2'>
+                                                    <img className='size-6' src="/Group 1171277598.png" alt="" />
+                                                    <p className=' text-[1.1rem]'>{menu.likedCount}</p>
+                                                </div>
+                                                <p className='sm:text-[.85rem] text-[.7rem]'>Good</p>
+                                            </div>
+                                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
+                                                <div className='flex gap-2'>
+                                                    <img className='size-6' src="/Group 1171277601.png" alt="" />
+                                                    <p className=' sm:text-[1.1rem] text-[.8rem]'>{menu.mustTryCount}</p>
+                                                </div>
+                                                <p className='sm:text-[.85rem] text-[.7rem]'>Must Try</p>
+                                            </div>
+                                            <div className='flex items-center justify-center cursor-pointer ml-2'>
+                                                {
+                                                    showAllCategories[menu.name] ? <FaChevronUp className='text-[1.4rem]' onClick={() => toggleCategory(menu.name)} /> : <FaChevronDown onClick={() => toggleCategory(menu.name)} className='text-[1.4rem]' />
+                                                }
+
+                                            </div>
                                         </div>
+
                                     </div>
-                                ))}
+                                    {
+                                        showAllCategories[menu.name] &&
+                                        <motion.div initial={{ opacity: 0, y: -50 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 1 }}
+                                            className=' h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
+                                            <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
+                                           
+                                            <div className='flex sm:w-fit px-[1rem] w-full gap-[1rem] justify-evenly items-center my-[1rem] overflow-x-scroll hideScroller'>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(false);
+                                                        setNewone(!newone);
+                                                        setNotliked(false);
+                                                        setMustTry(false);
+                                                        setFilterone('new');
+                                                    }}
+                                                    className={`${newone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    New
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(false);
+                                                        setNewone(false);
+                                                        setNotliked(!notlikedone);
+                                                        setMustTry(false);
+                                                        setFilterone('notLiked');
+                                                    }}
+                                                    className={`${notlikedone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    Not Liked
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(!goodone);
+                                                        setNewone(false);
+                                                        setNotliked(false);
+                                                        setMustTry(false);
+                                                        setFilterone('liked');
+                                                    }}
+                                                    className={`${goodone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    Liked
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(false);
+                                                        setNewone(false);
+                                                        setNotliked(false);
+                                                        setMustTry(!musttryone);
+                                                        setFilterone('mustTry');
+                                                    }}
+                                                    className={`${musttryone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    Must try
+                                                </button>
+                                            </div>
 
-                            </div>
+                                            <div className=' h-[300px] hideScroller w-full overflow-x-scroll flex   gap-2'>
+                                                {menu?.comments.map((item, index) => (
+                                                    <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
+                                                        <div className='flex items-center justify-evenly gap-4 w-full h-[20%]'>
+                                                            {/* <img src={item.photo} alt="" /> */}
+                                                            <IoPersonCircleOutline className='size-6' />
+                                                            <p className='text-nowrap'>{item.userId?.name}</p>
+                                                            <p>{calculateTimeDifference(item?.createdAt)}</p>
+                                                        </div>
+                                                        <p className='w-full h-[70%] text-[#67727E] '>{item?.description}</p>
+                                                        {
+                                                            item?.rated === "liked" && (
+                                                                <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                    <img className='size-7' src='/Group 1171277598.png' alt="" />
+                                                                    <p className='text-[.7rem]'>Liked</p>
+                                                                </div>
+                                                            )
+                                                        }
+                                                        {
+                                                            item?.rated === "mustTry" && (
+                                                                <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                    <img className='size-7' src='/Group 1171277601.png' alt="" />
+                                                                    <p className='text-[.7rem]'>Must Try</p>
+                                                                </div>
+                                                            )
+                                                        }
+                                                        {
+                                                            item?.rated === "notLike" && (
+                                                                <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                    <img className='size-7' src='/🦆 emoji _disappointed but relieved face_.png' alt="" />
+                                                                    <p className='text-[.7rem]'>Must Try</p>
+                                                                </div>
+                                                            )
+                                                        }
 
 
-                        </motion.div>
+                                                    </div>
+                                                ))}
+
+                                            </div>
+
+
+                                        </motion.div>
+                                    }
+                                </div>
+
+                            ))
+                        ) : (menus &&
+                            top3menus.map((menu, index) => (
+                                <>
+                                    <div className=' h-fit bg-white flex items-center justify-evenly gap-2 mx-4 rounded-lg p-2'>
+                                        <div className='sm:w-[40%] w-[30%] h-full flex sm:flex-row flex-col sm:items-center justify-evenly font-semibold'>
+                                            <p className='sm:text-[1.2rem] w-[70%] text-[.8rem]'>{menu.name}</p>
+                                            <div className='flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter'>
+                                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Total</p>
+                                                <p className='text-[#000000B2] sm:text-[.8rem] text-[.6rem]'>Recomendation</p>
+                                                <p className='sm:text-[1.1rem] text-[.6rem]'>213</p>
+                                            </div>
+                                        </div>
+                                        <div className='sm:w-[60%] w-[70%] h-full flex justify-evenly gap-2 '>
+
+                                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
+                                                <div className='flex gap-2'>
+                                                    <img className='size-6' src="/🦆 emoji _disappointed but relieved face_.png" alt="" />
+                                                    <p className=' sm:text-[1.1rem] text-[.85rem]'>{menu.notLikedCount}</p>
+                                                </div>
+                                                <p className='sm:text-[.85rem] text-[.7rem]'>Not Liked</p>
+                                            </div>
+                                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
+                                                <div className='flex gap-2'>
+                                                    <img className='size-6' src="/Group 1171277598.png" alt="" />
+                                                    <p className=' text-[1.1rem]'>{menu.likedCount}</p>
+                                                </div>
+                                                <p className='sm:text-[.85rem] text-[.7rem]'>Good</p>
+                                            </div>
+                                            <div className='flex flex-col text-[#000000] items-center justify-center font-inter'>
+                                                <div className='flex gap-2'>
+                                                    <img className='size-6' src="/Group 1171277601.png" alt="" />
+                                                    <p className=' sm:text-[1.1rem] text-[.8rem]'>{menu.mustTryCount}</p>
+                                                </div>
+                                                <p className='sm:text-[.85rem] text-[.7rem]'>Must Try</p>
+                                            </div>
+                                            <div className='flex items-center justify-center cursor-pointer ml-2'>
+                                                {
+                                                    showAllCategories[menu.name] ? <FaChevronUp className='text-[1.4rem]' onClick={() => toggleCategory(menu.name)} /> : <FaChevronDown onClick={() => toggleCategory(menu.name)} className='text-[1.4rem]' />
+                                                }
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    {
+                                        showAllCategories[menu.name] &&
+                                        <motion.div initial={{ opacity: 0, y: -50 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 1 }}
+                                            className=' h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
+                                            <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
+
+                                            <div className='flex sm:w-fit px-[1rem] w-full gap-[1rem] justify-evenly items-center my-[1rem] overflow-x-scroll hideScroller'>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(false);
+                                                        setNewone(!newone);
+                                                        setNotliked(false);
+                                                        setMustTry(false);
+                                                        setFilterone('new');
+                                                    }}
+                                                    className={`${newone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    New
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(false);
+                                                        setNewone(false);
+                                                        setNotliked(!notlikedone);
+                                                        setMustTry(false);
+                                                        setFilterone('notLiked');
+                                                    }}
+                                                    className={`${notlikedone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    Not Liked
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(!goodone);
+                                                        setNewone(false);
+                                                        setNotliked(false);
+                                                        setMustTry(false);
+                                                        setFilterone('liked');
+                                                    }}
+                                                    className={`${goodone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    Liked
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        setGood(false);
+                                                        setNewone(false);
+                                                        setNotliked(false);
+                                                        setMustTry(!musttryone);
+                                                        setFilterone('mustTry');
+                                                    }}
+                                                    className={`${musttryone ? 'bg-[#FFD628]' : ''} px-[1.2rem] py-[.5rem] rounded-md font-[500] text-[1rem] leading-[1.15rem] border-2 text-nowrap`}
+                                                >
+                                                    Must try
+                                                </button>
+                                            </div>
+
+
+                                            {/* 
+                                        <div className="w-[100%] h-fit flex flex-wrap gap-[.5rem]"> */}
+
+                                            <div className="flex  overflow-x-scroll gap-[.5rem] justify-center sm:justify-start hideScroller">
+
+                                                {filterone === "new" ?
+                                                    menu?.comments
+                                                        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                                                        .slice(0, 5) // Adjust the number of recent comments to be displayed
+                                                        .map((item, index) => (
+                                                            // Render recent comments here
+                                                            <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
+                                                                <div className='flex items-center justify-start gap-4 w-full h-[20%]'>
+                                                                    {/* <img src={item.photo} alt="" /> */}
+                                                                    <IoPersonCircleOutline className='size-6' />
+                                                                    <p className='text-nowrap'>{item.userId?.name}</p>
+                                                                    <p>{calculateTimeDifference(item?.createdAt)}</p>
+                                                                </div>
+                                                                <p className='w-full h-[70%] text-[#67727E] '>{item.description}</p>
+                                                                {
+                                                                    item?.rated === "liked" && (
+                                                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                            <img className='size-7' src='/Group 1171277598.png' alt="" />
+                                                                            <p className='text-[.7rem]'>Liked</p>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                                {
+                                                                    item?.rated === "mustTry" && (
+                                                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                            <img className='size-7' src='/Group 1171277601.png' alt="" />
+                                                                            <p className='text-[.7rem]'>Must Try</p>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                                {
+                                                                    item?.rated === "notLike" && (
+                                                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                            <img className='size-7' src='/🦆 emoji _disappointed but relieved face_.png' alt="" />
+                                                                            <p className='text-[.7rem]'>Must Try</p>
+                                                                        </div>
+                                                                    )
+                                                                }
+
+
+                                                            </div>
+                                                        ))
+                                                    :
+                                                    menu?.comments
+                                                        .filter(comment => filterone ? comment.rated === filterone : true)
+                                                        .map((item, index) => (
+                                                            // Render comments based on other filters here
+                                                            <div key={index} className='h-full min-w-[310px] max-w-[310px] flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2'>
+                                                                <div className='flex items-center justify-start gap-4 w-full h-[20%]'>
+                                                                    {/* <img src={item.photo} alt="" /> */}
+                                                                    <IoPersonCircleOutline className='size-6' />
+                                                                    <p className='text-nowrap'>{item.userId?.name}</p>
+                                                                    <p>{calculateTimeDifference(item?.createdAt)}</p>
+                                                                </div>
+                                                                <p className='w-full h-[70%] text-[#67727E] '>{item.description}</p>
+                                                                {
+                                                                    item?.rated === "liked" && (
+                                                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                            <img className='size-7' src='/Group 1171277598.png' alt="" />
+                                                                            <p className='text-[.7rem]'>Liked</p>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                                {
+                                                                    item?.rated === "mustTry" && (
+                                                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                            <img className='size-7' src='/Group 1171277601.png' alt="" />
+                                                                            <p className='text-[.7rem]'>Must Try</p>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                                {
+                                                                    item?.rated === "notLike" && (
+                                                                        <div className='absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md'>
+                                                                            <img className='size-7' src='/🦆 emoji _disappointed but relieved face_.png' alt="" />
+                                                                            <p className='text-[.7rem]'>Must Try</p>
+                                                                        </div>
+                                                                    )
+                                                                }
+
+
+                                                            </div>
+                                                        ))
+                                                }
+
+
+                                            </div>
+
+                                            {/* </div> */}
+
+
+
+
+
+
+                                        </motion.div>
+                                    }
+                                </>
+
+                            )))
                     }
 
-                  
+
+
+
+
+
 
                 </div>
 
@@ -692,7 +1040,7 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <div className='w-full h-[60px]  bg-[#67CE67] text-[1.9rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white'>
+                    <div className='w-full h-[60px]  bg-[#67CE67] text-[1.5rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white'>
                         <IoLogoWhatsapp />
                         <p className=''>+91 9660066978</p>
                     </div>

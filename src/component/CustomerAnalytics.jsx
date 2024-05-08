@@ -87,17 +87,17 @@ const CustomerAnalytics = () => {
                     <p className='text-[.9rem]'>Utilize customer analytics to make well-informed decisions.</p>
                 </div>
 
-                <div className='flex gap-4 w-full  h-fit my-9 sm:flex-row flex-col '>
-                
-                <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
+                <div className='flex gap-4 w-full  h-fit my-9 sm:flex-row flex-col relative '>
+
+                    <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
                         <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
                             <div className='text-[1.1rem] text-[#004AAD]'>
                                 <p>Total Customers has not</p>
                                 <div className='flex gap-2'>
-                                <p>Visited in Last</p>
-                                <p className='text-[#F44336]'>30 Days</p>
+                                    <p>Visited in Last</p>
+                                    <p className='text-[#F44336]'>30 Days</p>
                                 </div>
-                               
+
                             </div>
                             <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
                         </div>
@@ -117,10 +117,10 @@ const CustomerAnalytics = () => {
                     <div className='sm:w-[32%] min-h-[200px] border border-[#00000080] rounded-lg bg-white '>
                         <div className='flex gap-4 flex-col  w-full h-[75%] p-[1rem] border-b border-[#00000080]'>
                             <div className='text-[1.1rem] text-[#004AAD]'>
-                            <p>Total Customers with low</p>
+                                <p>Total Customers with low</p>
                                 <div className='flex gap-2'>
-                                <p>Recommendation in last</p>
-                                <p className='text-[#F44336]'> 30 Days</p>
+                                    <p>Recommendation in last</p>
+                                    <p className='text-[#F44336]'> 30 Days</p>
                                 </div>
                             </div>
                             <p className='text-[1.8rem] text-[#1D1F2C]'>2,412</p>
@@ -139,13 +139,16 @@ const CustomerAnalytics = () => {
 
                     </div>
 
-                        {/* charts */}
-                    <div className='sm:w-[32%] min-h-[200px] max-h-[200px] border border-[#00000080] rounded-lg bg-white overflow-hidden  '>
-                        <div className='flex  flex-col  w-full h-[100%] p-[1rem]  border-[#00000080] '>
+                    {/* charts */}
+                    <div className='sm:w-[32%] min-h-[300px] max-h-[400px] border border-[#00000080] rounded-lg bg-white overflow-hidden sm:absolute right-2 sm:-mt-24  '>
+                        <div className='flex  flex-col  w-full h-[100%] p-[1rem]  border-[#00000080] relative '>
                             <p className='text-[#0F172A] font-bold'>Customer Gender segment</p>
-                            <Charts/>
-                            
-                            
+                            <div className='absolute -ml-9 mt-6  border-t  '>
+                                <Charts />
+                            </div>
+
+
+
                         </div>
                     </div>
 

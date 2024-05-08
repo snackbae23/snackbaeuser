@@ -7,7 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 const BusinessInfoForm = () => {
   const [formData, setFormData] = useState({
     brandName: "",
-    emailAddress: "",
+    // emailAddress: "",
     contactNumber: "",
     contactPerson: "",
     outletAddress: "",
@@ -80,7 +80,7 @@ const BusinessInfoForm = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: `http://localhost:4000/api/resProfile/${id}`,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/resProfile/${id}`,
       headers: { 
         'Content-Type': 'application/json'
       },
@@ -115,7 +115,7 @@ const BusinessInfoForm = () => {
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `http://localhost:4000/api/getRestaurantDetails/${id}`,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${id}`,
       headers: { 
         // 'Content-Type': 'application/json'
       },
@@ -217,7 +217,7 @@ const BusinessInfoForm = () => {
                 type="email"
                 name="emailAddress"
                 placeholder="Enter Email Id"
-                value={formData.emailAddress}
+                // value={formData.emailAddress}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />

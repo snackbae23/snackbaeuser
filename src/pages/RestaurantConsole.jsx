@@ -20,6 +20,13 @@ import Settings from '../component/Settings';
 
 const RestaurantConsole = () => {
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // for a smooth scrolling
+    });
+  };
+
   const [das, setdas] = useState(true);
   const [men, setmen] = useState(false);
   const [pay, setpay] = useState(false);
@@ -37,6 +44,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    scrollToTop();
 
   }
   const b = () => {
@@ -47,6 +55,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    scrollToTop();
   }
   const c = () => {
     setdas(false)
@@ -56,6 +65,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    scrollToTop();
   }
   const d = () => {
     setdas(false)
@@ -65,6 +75,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    scrollToTop();
   }
   const e = () => {
     setdas(false)
@@ -74,6 +85,7 @@ const RestaurantConsole = () => {
     setcus(true)
     setset(false)
     setlog(false)
+    scrollToTop();
   }
   const f = () => {
     setdas(false)
@@ -83,6 +95,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(true)
     setlog(false)
+    scrollToTop();
   }
   const g = () => {
     setdas(false)
@@ -92,6 +105,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(true)
+    scrollToTop();
   }
 
 

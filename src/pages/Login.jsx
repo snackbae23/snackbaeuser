@@ -44,7 +44,7 @@ const Login = () => {
     let config = {
       method: 'POST',
       maxBodyLength: Infinity,
-      url: 'http://localhost:4000/api/restaurantLogin',
+      url: 'https://seashell-app-lgwmg.ondigitalocean.app/api/restaurantLogin',
       headers: { 
         'Content-Type': 'application/json'
       },

@@ -28,7 +28,7 @@ const PayoutDetailsForm = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: `http://localhost:4000/api/paymentoptions/${id}`,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/paymentoptions/${id}`,
       headers: { 
         'Content-Type': 'application/json'
       },
