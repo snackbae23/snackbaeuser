@@ -3,8 +3,7 @@ import { useState } from 'react'
 
 import { GoInfo } from "react-icons/go";
 
-import CustomerRecords from './CustomerRecords';
-import CustomerAnalytics from './CustomerAnalytics';
+
 import AllTransaction from './AllTransaction';
 import Settlements from './Settlements';
 
