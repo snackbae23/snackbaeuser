@@ -44,8 +44,6 @@ const RestaurantConsole = () => {
   if (screenWidth < 768) { // Adjust the threshold as needed
     
     document.getElementById('left').style.display = "none";
-    setIsToggled(false);
-    
     
   }  
 
@@ -71,6 +69,12 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 768) { // Adjust the threshold as needed
+      
+      document.getElementById('left').style.display = "none";
+      
+    }  
   }
   const d = () => {
     setdas(false)
@@ -80,6 +84,12 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 768) { // Adjust the threshold as needed
+      
+      document.getElementById('left').style.display = "none";
+      
+    }  
   }
   const e = () => {
     setdas(false)
@@ -89,6 +99,12 @@ const RestaurantConsole = () => {
     setcus(true)
     setset(false)
     setlog(false)
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 768) { // Adjust the threshold as needed
+      
+      document.getElementById('left').style.display = "none";
+      
+    }  
   }
   const f = () => {
     setdas(false)
@@ -98,6 +114,12 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(true)
     setlog(false)
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 768) { // Adjust the threshold as needed
+      
+      document.getElementById('left').style.display = "none";
+      
+    }  
   }
   const g = () => {
     setdas(false)
@@ -107,6 +129,12 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(true)
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 768) { // Adjust the threshold as needed
+      
+      document.getElementById('left').style.display = "none";
+      
+    }  
   }
 
 
