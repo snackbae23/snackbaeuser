@@ -410,8 +410,8 @@ const Dashboard = () => {
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
                                     <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>389</p>
-                                    <div className='flex text-[.7rem] gap-1'>
-                                        <p>30% </p>
+                                    <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
+                                        <p className='font-bold '>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
                                         <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
                                     </div>
@@ -425,8 +425,8 @@ const Dashboard = () => {
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
                                     <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>140</p>
-                                    <div className='flex text-[.7rem] gap-1'>
-                                        <p>30% </p>
+                                    <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
+                                        <p className='font-bold '>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
                                         <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
                                     </div>
@@ -442,11 +442,11 @@ const Dashboard = () => {
                                 <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
                                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{resData?.restaurant?.recommendationCount}</p>
-                                <div className='flex text-[.7rem] gap-1'>
-                                    <p>30% </p>
-                                    <img src="/fi-rr-caret-up.png" alt="" />
-                                    <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
-                                </div>
+                                <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
+                                        <p className='font-bold '>30% </p>
+                                        <img src="/fi-rr-caret-up.png" alt="" />
+                                        <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
+                                    </div>
                             </div>
                         </div>
                         <p className='text-[#000000] text-[1.6rem] font-semibold ml-4'>Today's Report</p>
@@ -456,11 +456,10 @@ const Dashboard = () => {
                                 <p className='text-[#777980] text-[.9rem] font-semibold'>Today's Sales</p>
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>0</p>
-                                <div className='flex text-[.7rem] gap-1'>
-                                    <p>30% </p>
-                                    <img src="/fi-rr-caret-up.png" alt="" />
-                                    <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>₹0</p>
+                                <div className='flex text-[.9rem] gap-1 font-bold'>
+                                    
+                                    <p className='text-[#018DF0] '>View Payments</p>
                                 </div>
 
 
@@ -472,11 +471,11 @@ const Dashboard = () => {
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
                                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>42</p>
-                                <div className='flex text-[.7rem] gap-1'>
-                                    <p>30% </p>
-                                    <img src="/fi-rr-caret-up.png" alt="" />
-                                    <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
-                                </div>
+                                <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
+                                        <p className='font-bold '>30% </p>
+                                        <img src="/fi-rr-caret-up.png" alt="" />
+                                        <p className='text-[#858D9D] text-[.7rem]'>Than yesterday</p>
+                                    </div>
 
 
 
