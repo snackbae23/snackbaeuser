@@ -5,6 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { GoInfo } from "react-icons/go";
 import { GoDotFill } from "react-icons/go";
 import Barchart2 from './Barchart2';
+import SwitchOffer from './SwitchOffer';
 
 const Offers = () => {
 
@@ -43,7 +44,7 @@ const Offers = () => {
                                     </div> */}
                                     
                                 </div>
-                                <Switch1 />
+                                <SwitchOffer/>
                             </div>
                             <div className='text-[#64748B] text-[.8rem]'>
                                 <p>10% OFF Up to ₹120</p>
@@ -71,7 +72,7 @@ const Offers = () => {
                 </div>
 
                 <div className='w-full flex sm:flex-row flex-col gap-2 '>
-                    <div className='sm:w-[50%] h-[400px] relative border rounded-lg overflow-hidden bg-slate-500 flex items-center  '>
+                    <div className='sm:w-[50%] h-[400px] relative border rounded-lg overflow-hidden flex items-center  '>
                         <div className='flex justify-between '>
                             <div className='z-20 top-5 ml-6 absolute bg-slate-50'>
                                 <p className='text-[1.3rem]   font-semibold'>Total Offer Redemption</p>
@@ -92,7 +93,7 @@ const Offers = () => {
                     </div>
 
 
-                    <div className='sm:w-[50%] h-[400px] relative border rounded-lg overflow-hidden bg-slate-500 flex items-center  '>
+                    <div className='sm:w-[50%] h-[400px] relative border rounded-lg overflow-hidden  flex items-center  '>
                         <div className='flex justify-between '>
                             <div className='z-20 top-5 ml-6 absolute bg-slate-50'>
                                 <p className='text-[1.3rem]   font-semibold'>Unique Redemption</p>
@@ -100,7 +101,7 @@ const Offers = () => {
                             </div>
                             <GoInfo className='size-5 bg-slate-50  absolute top-7 right-6 z-20' />
                         </div>
-                        <div className='-rotate-90  sm:h-[400px] h-[400px] absolute -left-32 -top-5 '>
+                        <div className='-rotate-90  sm:h-[400px]  absolute -left-32 -top-5 '>
                             <Barchart2/>
                         </div>
                         <div className='absolute  -bottom-5  sm:p-12 sm:mb-0 mb-8 flex items-center justify-center text-[.8rem] font-semibold'>

@@ -507,9 +507,9 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className='w-full h-[40px] bg-[#67CE67] text-[1.1rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white'>
+                        <div className='w-full h-[40px] bg-[#FDE030] text-[1.3rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]'>
                             <IoLogoWhatsapp />
-                            <p>Need Help?</p>
+                            <p>+91 7603037718</p>
                         </div>
 
                     </div>
@@ -520,7 +520,7 @@ const Dashboard = () => {
                 <div className='w-full h-fit flex flex-col '>
                     <div className='w-full h-[80px] flex justify-between items-center px-6 '>
                         <div>
-                            <p className='sm:text-[1.6rem] text-[1.5rem] font-semibold'>Latest Transaction</p>
+                            <p className='sm:text-[1.6rem] text-[1.2rem] font-semibold'>Latest Transaction</p>
                             <p className='text-[.9rem] text-[#000000]'>Recent 5 transaction</p>
                         </div>
                         <div className='flex items-center gap-6'>
@@ -541,7 +541,7 @@ const Dashboard = () => {
                     <div className='w-full h-fit  mt-4  px-6 bg-[#F6F8FF]  rounded-md   '>
 
                         <div className='text-[#6B7280] flex w-full justify-between mb-4 border-b-2 font-semibold text-[.9rem] gap-2' >
-                            <div className='w-[34%] flex mb-3 items-center justify-evenly'>
+                            <div className='w-[34%] flex mb-3 items-center justify-evenly '>
                                 <div className='flex text-center text-[1.05rem]  items-center'>Customer</div>
                                 <div className=' sm:block hidden'>DATE & TIME</div>
                             </div>
@@ -558,16 +558,16 @@ const Dashboard = () => {
                         <div className='w-full h-fit overflow-y-hidden flex flex-col gap-1 '>
                             {data1slice.map((item, index) => (
                                 <div key={index} className='w-full flex mb-2  sm:text-[.9rem] text-[.8rem] font-semibold sm:border-none border rounded-xl border-[#00000080] p-1' >
-                                    <div className='w-[34%] flex sm:flex-row flex-col mb-3 items-center justify-evenly'>
-                                        <p className='text-[#111827] font-semibold text-[.9rem] ml-4'> {item.Customer}</p>
+                                    <div className='w-[34%] flex sm:flex-row flex-col mb-3 items-center sm:justify-evenly '>
+                                        <p className='text-[#111827] font-semibold text-[.9rem] sm:ml-4'> {item.Customer}</p>
                                         <p className='text-[#6B7280] flex items-center '>{item.Date}</p>
                                     </div>
 
                                     <div className='grid sm:grid-cols-4 grid-cols-3  w-[66%] gap-2 justify-evenly '>
                                         {/* <p className='text-[#6B7280] flex items-center '>{item.Date}</p> */}
                                         <p className='text-[black]   flex items-center'>{item.Amount}</p>
-                                        <p className='text-[#004AAD]   text-center flex items-center ml-7  '>{item.Discount}</p>
-                                        <p className={`rounded-3xl  w-full  h-[70%] py-[.5rem]  text-center mt-2 flex items-center justify-center 
+                                        <p className='text-[#004AAD]   text-center flex items-center sm:ml-7 ml-4  '>{item.Discount}</p>
+                                        <p className={`rounded-3xl  w-full  h-[70%] py-[.5rem]   text-center mt-2 flex items-center justify-center 
                 ${item.Status === 'complete' ? 'bg-[#DEF7EC] text-green-700 ' :
                                                 item.Status === 'In Progress' ? 'bg-[#E1EFFE] text-[#7157f1]' :
                                                     item.Status === 'Cancelled' ? 'bg-[#FBD5D5] text-red-800' : ''
@@ -633,7 +633,7 @@ const Dashboard = () => {
 
                     </div>
                     {/* search menu */}
-                    <div className="relative w-fit  shadow-xl rounded-md border-2 mx-[1rem]">
+                    <div className="relative w-fit shadow rounded-md border-2 mx-[1rem]">
                         <input
                             className=" w-[220px] sm:w-[400px] focus:outline-none h-[2.4rem] sm:h-[3rem] px-[1rem]"
                             type="text"
