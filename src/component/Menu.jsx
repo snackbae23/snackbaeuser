@@ -320,7 +320,7 @@ const Menu = () => {
     <div id='menu' className='w-full h-fit relative'>
 
       {/* Add menu popup */}
-      <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-full h-[450]   sm:left-[30%] fixed bg-[#FFFFFF] bg-red-400 hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 '>
+      <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-full h-[450]   sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 '>
         <div className='flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Menu item</p>
           <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
