@@ -320,12 +320,12 @@ const Menu = () => {
     <div id='menu' className='w-full h-fit relative'>
 
       {/* Add menu popup */}
-      <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-full h-[450]   sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 '>
+      <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
         <div className='flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Menu item</p>
           <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
         </div>
-        <form className='flex flex-col gap-3 w-full sm:h-[500px] h-[400] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll ' onSubmit={handleFormSubmit}>
+        <form className='flex flex-col gap-3 w-full sm:h-[500px] h-[500px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  ' onSubmit={handleFormSubmit}>
           <div className=' flex flex-col  '>
             <p>item image*</p>
             <p className='text-[#64748B] text-[.8rem] w-full'>Image format .jpg .jpeg .png and minimum size 300 x 300px</p>
@@ -432,7 +432,7 @@ const Menu = () => {
       </motion.div>
 
       {/* Add Category popup */}
-      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px] sm:h-[600px] w-full h-full   sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4'>
+      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
         <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Category</p>
           <RxCrossCircled onClick={closePopup1} className='cursor-pointer text-[1.9rem]' />
@@ -471,12 +471,12 @@ const Menu = () => {
       </motion.div>
 
       {/* Edit menu */}
-      <motion.div id="popup2" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  h-fit w-full  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4'>
+      <motion.div id="popup2" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
         <div className='flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Edit Menu item</p>
           <RxCrossCircled onClick={closePopup2} className='cursor-pointer text-[1.9rem]' />
         </div>
-        <form className='flex flex-col gap-3 w-full sm:h-[500px] px-3 text-[#0F172A] font-inter sm:text-[.95rem] bg-white  overflow-y-scroll py-[3rem] hideScroller' onSubmit={handleFormSubmit1}>
+        <form className='flex flex-col gap-3 w-full sm:h-[500px] h-[500px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  ' onSubmit={handleFormSubmit}>
           <div className=' flex flex-col  w-full'>
             <p>Item image*</p>
             <p className='text-[#64748B] text-[.8rem]'>Image format .jpg .jpeg .png and minimum size 300 x 300px</p>
