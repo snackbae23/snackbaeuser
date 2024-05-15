@@ -449,7 +449,7 @@ const Menu = () => {
 
         <div className='flex w-full px-4 flex-col py-4 '>
           <p>All catagories</p>
-          <div className='flex flex-col bg-white  gap-3 w-full sm:h-[300px] px-3 py-[1rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll'>
+          <div className='flex flex-col gap-3 w-full sm:h-[500px] h-[500px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  '>
             {category.map((item, index) => (
               <div key={index} className='flex border font-semibold border-[#E2E8F0] justify-between py-2 px-4 rounded-md items-center'>
                 <p className='sm:text-[1.2rem] text-[1.4rem]'>{item.name}</p>
