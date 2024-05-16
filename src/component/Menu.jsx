@@ -319,8 +319,8 @@ const Menu = () => {
   return (
     <div id='menu' className='w-full h-fit relative'>
 
-      {/* Add menu popup */}
-      <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
+ {/* Add menu popup */}
+ <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
         <div className='flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Menu item</p>
           <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
@@ -432,7 +432,7 @@ const Menu = () => {
       </motion.div>
 
       {/* Add Category popup */}
-      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
+      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 '>
         <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Category</p>
           <RxCrossCircled onClick={closePopup1} className='cursor-pointer text-[1.9rem]' />
@@ -447,9 +447,9 @@ const Menu = () => {
           </div>
         </div>
 
-        <div className='flex w-full px-4 flex-col py-4 '>
+        <div className='flex w-full px-4 flex-col py-4 gap-3 '>
           <p>All catagories</p>
-          <div className='flex flex-col gap-3 w-full sm:h-[500px] h-[500px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  '>
+          <div className='flex flex-col gap-3 w-full sm:h-[350px] h-[360px] px-3 pb-[1rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  '>
             {category.map((item, index) => (
               <div key={index} className='flex border font-semibold border-[#E2E8F0] justify-between py-2 px-4 rounded-md items-center'>
                 <p className='sm:text-[1.2rem] text-[1.4rem]'>{item.name}</p>
@@ -566,7 +566,7 @@ const Menu = () => {
         <div className='bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2 px-1'>
 
 
-          <div className='w-full h-fit flex sm:flex-row flex-col gap-2 sm:my-1 my-4  items-center justify-between   '>
+        <div className='w-full h-fit flex sm:flex-row flex-col gap-4 sm:my-1 my-4  items-centen  justify-between   '>
             <div className='relative sm:w-[35%] w-full flex items-center rounded-md border border-[#407fd1]  '>
               <input
                 className='w-full sm:py-2 py-4 px-8 rounded-lg'
@@ -575,10 +575,10 @@ const Menu = () => {
               />
               <CiSearch className='absolute text-[1.3rem] font-semibold ml-2 ' />
             </div>
-            <div className='flex gap-4 items-center justify-evenly text-[#64748B] mt-3'>
-              <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>All Categories</button>
+          
+              
               <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>+ Add Category</button>
-            </div>
+            
           </div>
 
           <div className='w-full h-fit font-Roboto text-[1.3rem] sm:px-6 border-t-2'>

@@ -22,6 +22,8 @@ import Settings from '../component/Settings';
 
 const RestaurantConsole = () => {
 
+  const screenWidth = window.innerWidth;
+
   const [das, setdas] = useState(true);
   const [men, setmen] = useState(false);
   const [pay, setpay] = useState(false);
@@ -137,6 +139,14 @@ const RestaurantConsole = () => {
     }  
   }
 
+  const removeleft = () => {
+    if (screenWidth < 768) { // Adjust the threshold as needed
+      
+      document.getElementById('left').style.display = "none";
+      
+    } 
+  }
+
 
 
 
@@ -166,7 +176,9 @@ const RestaurantConsole = () => {
 
         {/* left side */}
 
-        <div id='left' className='sm:w-[20%] bg-white sm:fixed absolute sm:left-1 left-0 z-40   h-full hidden sm:block  mt-[70px] px-6 text-[.95rem]  gap-32  '>
+        <div id='left' className={` ${ screenWidth >= 768 ?
+                           'sm:w-[20%] bg-white fixed left-1  z-40    h-full   mt-[70px] px-6 text-[.95rem]  gap-32 ' : 
+                           ' absolute hidden left-0 z-40 h-fit rounded-lg   mt-[70px] px-6 text-[.95rem]  gap-32 bg-white' }`}>
           <div className='mt-2'>
             <div id=''
               onClick={a}
@@ -230,7 +242,7 @@ const RestaurantConsole = () => {
         {/* Right side */}
 
 
-        <div id='right' className='sm:w-[80%] sm:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col '>
+        <div id='right' onClick={removeleft}  className='sm:w-[80%] sm:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col '>
 
           {das && <Dashboard />}
           {men && <Menu />}

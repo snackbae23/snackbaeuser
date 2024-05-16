@@ -396,7 +396,7 @@ const Dashboard = () => {
 
             <div className='w-full h-fit  mt-[160px]  '>
                 {/* total report */}
-                <div className=' w-full sm:flex px-2 gap-3'>
+                <div className=' w-full sm:flex sm:px-2 gap-3'>
                     <div className='sm:w-[73%] flex flex-col gap-2'>
                         <div className='w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2 p-4 rounded-md ml-2'>
                             <div className='sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold'>
@@ -597,13 +597,13 @@ const Dashboard = () => {
                 {/* Menu Performance */}
 
                 <div className='w-full h-fit flex flex-col bg-[#F6F8FF] gap-4 '>
-                    <div className='w-full h-fit flex flex-col  justify-start gap-3 px-6 mt-4 '>
+                    <div className='w-full h-fit flex flex-col  justify-start gap-3 sm:px-6 p-4 mt-4 '>
                         <div>
                             <p className='text-[1.6rem] font-semibold'>Menu Performance</p>
                             <p className='text-[.9rem] text-[#000000]'>Based on your customer feedback</p>
                         </div>
 
-                        <div className='w-full flex gap-2 sm:flex-row flex-col bg-white p-4 rounded-md'>
+                        <div className='w-full flex gap-2 sm:flex-row flex-col bg-white sm:p-4 rounded-md'>
                             <div className='sm:w-[66%] w-full flex gap-2'>
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
@@ -1016,7 +1016,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Relationship */}
-                <div className='sm:hidden  w-full h-fit bg-white rounded-md py-4 px-12  flex-col gap-2 my-6'>
+                <div className='sm:hidden  w-full h-fit bg-white rounded-md py-4 sm:px-12 px-6  flex-col gap-2 sm:my-6 my-3'>
                     <p className='text-[#0F172A] text-[1.5rem] font-semibold border-b border-[#F1F5F9] pb-3'>Relationship Manager</p>
                     <p className='text-[#64748B] text-[.9rem] w-[70%]  border-b pb-2'>Need help? contact your Relationship manager </p>
 
