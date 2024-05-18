@@ -31,7 +31,11 @@ const Dashboard = () => {
     const [resData, setResData] = useState();
     const [bestRatedMenu, setBestRatedMenu] = useState('');
     const [leastRatedMenu, setLeastRatedMenu] = useState('');
+    const [totalCustomers, setTotalCustomers] = useState(0);
+    const [repeatingCustomer, setRepeatingCustomer] = useState(0);
+    const [todaysCustomer, setTodaysCustomer] = useState(0);
 
+    const [] = useState(0);
     const [menus, setmenus] = useState('')
     const top3menus = menus.slice(0, 3);
 
@@ -43,13 +47,13 @@ const Dashboard = () => {
         }));
     };
 
-
     const getRestaurantData = async (req, res) => {
 
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+            // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
             headers: {}
         };
 
@@ -62,6 +66,14 @@ const Dashboard = () => {
                 console.log(resData)
                 console.log(resData.restaurant.menu);
                 setmenus(resData?.restaurant?.menu);
+                setRepeatingCustomer(resData.restaurant.returningCustomer);
+                setTotalCustomers(resData.restaurant.totalCustomers);
+                console.log(resData.restaurant.totalCustomersData);
+                const today = new Date().toISOString().slice(0, 10);
+                console.log(today);
+                const todayCust = resData?.restaurant?.totalCustomersData.filter(item => item.createdAt && item.createdAt.slice(0, 10) === today);
+                console.log(todayCust);
+                setTodaysCustomer(todayCust.length);
 
                 const highestRatedItem = resData?.restaurant?.menu.reduce((prev, current) =>
                     prev.rated > current.rated ? prev : current
@@ -247,71 +259,7 @@ const Dashboard = () => {
 
 
     const [items, setitems] = useState(sdata1);
-    const filterItem = (categITem) => {
-        const updateItem = sdata1.filter((curElem) => {
-            return curElem.Status === categITem;
-        })
-
-        setitems(updateItem);
-        console.log(updateItem);
-        document.getElementById('new').style.backgroundColor = '#004AAD';
-        document.getElementById('new').style.color = 'white';
-        document.getElementById('must').style.backgroundColor = 'white';
-        document.getElementById('must').style.color = 'black';
-        document.getElementById('good').style.backgroundColor = 'white';
-        document.getElementById('good').style.color = 'black';
-        document.getElementById('not').style.backgroundColor = 'white';
-        document.getElementById('not').style.color = 'black';
-    }
-    const filterItem1 = (categITem) => {
-        const updateItem = sdata1.filter((curElem) => {
-            return curElem.Status === categITem;
-        })
-
-        setitems(updateItem);
-        console.log(updateItem);
-        document.getElementById('must').style.backgroundColor = '#004AAD';
-        document.getElementById('must').style.color = 'white';
-        document.getElementById('new').style.backgroundColor = 'white';
-        document.getElementById('new').style.color = 'black';
-        document.getElementById('good').style.backgroundColor = 'white';
-        document.getElementById('good').style.color = 'black';
-        document.getElementById('not').style.backgroundColor = 'white';
-        document.getElementById('not').style.color = 'black';
-    }
-    const filterItem2 = (categITem) => {
-        const updateItem = sdata1.filter((curElem) => {
-            return curElem.Status === categITem;
-        })
-
-        setitems(updateItem);
-        console.log(updateItem);
-        document.getElementById('good').style.backgroundColor = '#004AAD';
-        document.getElementById('good').style.color = 'white';
-        document.getElementById('must').style.backgroundColor = 'white';
-        document.getElementById('must').style.color = 'black';
-        document.getElementById('new').style.backgroundColor = 'white';
-        document.getElementById('new').style.color = 'black';
-        document.getElementById('not').style.backgroundColor = 'white';
-        document.getElementById('not').style.color = 'black';
-    }
-
-    const filterItem3 = (categITem) => {
-        const updateItem = sdata1.filter((curElem) => {
-            return curElem.Status === categITem;
-        })
-
-        setitems(updateItem);
-        console.log(updateItem);
-        document.getElementById('not').style.backgroundColor = '#004AAD';
-        document.getElementById('not').style.color = 'white';
-        document.getElementById('must').style.backgroundColor = 'white';
-        document.getElementById('must').style.color = 'black';
-        document.getElementById('good').style.backgroundColor = 'white';
-        document.getElementById('good').style.color = 'black';
-        document.getElementById('new').style.backgroundColor = 'white';
-        document.getElementById('new').style.color = 'black';
-    }
+  
 
 
     //search bar
@@ -354,30 +302,30 @@ const Dashboard = () => {
         <div id='dashboard' className='w-full h-fit relative'>
 
             {/* QR code popup */}
-            <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px] w-full sm:h-[500px h-fit  sm:left-[30%] fixed  bg-[#FFFFFF] hidden  z-40 mt-[155px]  rounded-2xl sm:p-4 p-4 border shadow-2xl'>
+            <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] sm:h-[500px] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
                 <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
                     <p>Get QR Code</p>
                     <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
                 </div>
-                <div className='w-full h-fit flex flex-col items-center justify-center sm:gap-2 gap-5  font-inter'>
-                    <div className='sm:w-[200px] sm:h-[200px] w-[250px] sm:mt-0 mt-5 border-2 border-[#000000B2] rounded-xl p-2'>
-                        <img className='w-full h-full' src="/Group 1171277979.png" alt="" />
-                    </div>
-                    <p className='sm:text-[1.1rem] font-semibold text-[1.5rem]'>FOODOOS</p>
-                    <p>AMP Baisakhi Mall,Salt Lake</p>
-                    <div className='flex gap-4 font-semibold sm:text-[1.1rem] text-[1.15rem] '>
-                        <button className='text-nowrap sm:px-6 px-12 rounded-md sm:py-2 py-4 bg-[#FFD628] text-black '>Share Code</button>
-                        <button className='text-nowrap px-6 rounded-md py-2 bg-[#004AAD] text-[#FFFFFF] '>Download QR</button>
-                    </div>
+                <div className='flex flex-col gap-3 w-full sm:h-[500px] h-[00px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem]  ' >
+                    <div className='w-full h-[] flex flex-col items-center justify-center sm:gap-2 gap-5  font-inter border-b sm:pb-8 pb-4 '>
+                        <div className='sm:w-[200px] sm:h-[200px] w-[250px] sm:mt-0 mt-5 border-2 border-[#000000B2] rounded-xl p-2'>
+                            <img className='w-full h-full' src="/Group 1171277979.png" alt="" />
+                        </div>
+                        <p className='sm:text-[1.1rem] font-semibold text-[1.5rem]'>FOODOOS</p>
+                        <p>AMP Baisakhi Mall,Salt Lake</p>
+                        <div className='flex gap-4 font-semibold sm:text-[1.1rem] text-[1.15rem] '>
+                            <button className='text-nowrap sm:px-6 px-7 rounded-md sm:py-2 py-4 bg-[#FFD628] text-black '>Share </button>
+                            <button className='text-nowrap px-6 rounded-md py-2 bg-[#004AAD] text-[#FFFFFF] '>Download QR</button>
+                        </div>
 
-                </div>
-                <div className='border border-[#00000080] flex sm:flex-row flex-col p-2 mt-4 items-center w-full h-fit gap-5 justify-center rounded-md  '>
-                    <p className='font-inter text-[#64748B] sm:w-[56%] w-[60%] sm:text-[.9rem] text-[.9rem]'>Get Customised Table top QR and Brandable merchandise at a affordable price contact sales </p>
-                    <div className='sm:w-[40%] w-full h-[60px] bg-[#67CE67] text-[1.1rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white  '>
-                        <IoLogoWhatsapp />
-                        <p >Need Help?</p>
+                    </div>
+                    <div className='sm:text-[1rem] text-[1.4rem] flex items-center justify-center gap-2 my-3'>
+                        <p>Need help?</p>
+                        <p className='text-[#004AAD] font-bold'>ContactUs</p>
                     </div>
                 </div>
+
             </motion.div>
 
             <div className='sm:w-[80%] w-full  sm:h-[90px] h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-7 sm:px-10 fixed '>
@@ -396,7 +344,7 @@ const Dashboard = () => {
 
             <div className='w-full h-fit  mt-[160px]  '>
                 {/* total report */}
-                <div className=' w-full sm:flex px-2 gap-3'>
+                <div className=' w-full sm:flex sm:px-2 gap-3'>
                     <div className='sm:w-[73%] flex flex-col gap-2'>
                         <div className='w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2 p-4 rounded-md ml-2'>
                             <div className='sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold'>
@@ -409,7 +357,7 @@ const Dashboard = () => {
                                     <p className='text-[#777980] text-[.9rem] font-semibold'>Total Customer</p>
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>389</p>
+                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{totalCustomers}</p>
                                     <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
                                         <p className='font-bold '>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
@@ -424,7 +372,7 @@ const Dashboard = () => {
                                     <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>140</p>
+                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{repeatingCustomer}</p>
                                     <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
                                         <p className='font-bold '>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
@@ -443,10 +391,10 @@ const Dashboard = () => {
 
                                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{resData?.restaurant?.recommendationCount}</p>
                                 <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
-                                        <p className='font-bold '>30% </p>
-                                        <img src="/fi-rr-caret-up.png" alt="" />
-                                        <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
-                                    </div>
+                                    <p className='font-bold '>30% </p>
+                                    <img src="/fi-rr-caret-up.png" alt="" />
+                                    <p className='text-[#858D9D] text-[.7rem]'>In last week</p>
+                                </div>
                             </div>
                         </div>
                         <p className='text-[#000000] text-[1.6rem] font-semibold ml-4'>Today's Report</p>
@@ -458,7 +406,7 @@ const Dashboard = () => {
 
                                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>₹0</p>
                                 <div className='flex text-[.9rem] gap-1 font-bold'>
-                                    
+
                                     <p className='text-[#018DF0] '>View Payments</p>
                                 </div>
 
@@ -470,12 +418,12 @@ const Dashboard = () => {
                                 <p className='text-[#777980] text-[.9rem] font-semibold'>Today's Customer</p>
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>42</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{todaysCustomer}</p>
                                 <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
-                                        <p className='font-bold '>30% </p>
-                                        <img src="/fi-rr-caret-up.png" alt="" />
-                                        <p className='text-[#858D9D] text-[.7rem]'>Than yesterday</p>
-                                    </div>
+                                    <p className='font-bold '>30% </p>
+                                    <img src="/fi-rr-caret-up.png" alt="" />
+                                    <p className='text-[#858D9D] text-[.7rem]'>Than yesterday</p>
+                                </div>
 
 
 
@@ -597,13 +545,13 @@ const Dashboard = () => {
                 {/* Menu Performance */}
 
                 <div className='w-full h-fit flex flex-col bg-[#F6F8FF] gap-4 '>
-                    <div className='w-full h-fit flex flex-col  justify-start gap-3 px-6 mt-4 '>
+                    <div className='w-full h-fit flex flex-col  justify-start gap-3 sm:px-6 p-4 mt-4 '>
                         <div>
                             <p className='text-[1.6rem] font-semibold'>Menu Performance</p>
                             <p className='text-[.9rem] text-[#000000]'>Based on your customer feedback</p>
                         </div>
 
-                        <div className='w-full flex gap-2 sm:flex-row flex-col bg-white p-4 rounded-md'>
+                        <div className='w-full flex gap-2 sm:flex-row flex-col bg-white sm:p-4 rounded-md'>
                             <div className='sm:w-[66%] w-full flex gap-2'>
                                 <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly '>
 
@@ -697,7 +645,7 @@ const Dashboard = () => {
                                             transition={{ duration: 1 }}
                                             className=' h-[390px] p-5 mx-4 rounded-lg mb-4 bg-white flex flex-col gap-5  '>
                                             <p className='text-[#334253] text-[1.5rem]'>Customer Testimonials</p>
-                                           
+
                                             <div className='flex sm:w-fit px-[1rem] w-full gap-[1rem] justify-evenly items-center my-[1rem] overflow-x-scroll hideScroller'>
                                                 <button
                                                     onClick={() => {
@@ -1016,7 +964,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Relationship */}
-                <div className='sm:hidden  w-full h-fit bg-white rounded-md py-4 px-12  flex-col gap-2 my-6'>
+                <div className='sm:hidden  w-full h-fit bg-white rounded-md py-4 sm:px-12 px-6  flex-col gap-2 sm:my-6 my-3'>
                     <p className='text-[#0F172A] text-[1.5rem] font-semibold border-b border-[#F1F5F9] pb-3'>Relationship Manager</p>
                     <p className='text-[#64748B] text-[.9rem] w-[70%]  border-b pb-2'>Need help? contact your Relationship manager </p>
 

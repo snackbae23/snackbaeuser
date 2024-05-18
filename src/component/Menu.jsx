@@ -9,8 +9,24 @@ import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { useEffect } from 'react';
 import axios from 'axios';
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+
+
 
 const Menu = () => {
+
+
+  
+
+   // toggle data for more than 4
+   const [showAllCategories, setShowAllCategories] = useState({});
+   const toggleCategory = (categoryId) => {
+     setShowAllCategories(prevState => ({
+       ...prevState,
+       [categoryId]: !prevState[categoryId]
+     }));
+ 
+   };
 
   const resId = "662929b6445e63ad5782c1ab";
   const [resData, setResData] = useState();
@@ -254,6 +270,8 @@ const Menu = () => {
   const [formData1, setFormData1] = useState({
     productName1: '',
     productPrice1: '',
+    isVeg1 : '',
+    category1 : '',
     description1: '',
     productImage1: '', // Added image state
   });
@@ -305,6 +323,8 @@ const Menu = () => {
     formData1.productName1 = item.name;
     formData1.productPrice1 = item.price;
     formData1.description1 = item.description;
+    formData1.isVeg1 = item.isVeg;
+    formData1.category1 = item.category;
   }
 
   function closePopup2() {
@@ -313,6 +333,8 @@ const Menu = () => {
     formData1.productName1 = '';
     formData1.productPrice1 = '';
     formData1.description1 = '';
+    formData1.isVeg1 = '';
+    formData1.category1 = '';
     getRestaurantData();
   }
 
@@ -432,7 +454,7 @@ const Menu = () => {
       </motion.div>
 
       {/* Add Category popup */}
-      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
+      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 '>
         <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Category</p>
           <RxCrossCircled onClick={closePopup1} className='cursor-pointer text-[1.9rem]' />
@@ -447,9 +469,9 @@ const Menu = () => {
           </div>
         </div>
 
-        <div className='flex w-full px-4 flex-col py-4 '>
+        <div className='flex w-full px-4 flex-col py-4 gap-3 '>
           <p>All catagories</p>
-          <div className='flex flex-col gap-3 w-full sm:h-[500px] h-[500px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  '>
+          <div className='flex flex-col gap-3 w-full sm:h-[350px] h-[360px] px-3 pb-[1rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  '>
             {category.map((item, index) => (
               <div key={index} className='flex border font-semibold border-[#E2E8F0] justify-between py-2 px-4 rounded-md items-center'>
                 <p className='sm:text-[1.2rem] text-[1.4rem]'>{item.name}</p>
@@ -526,6 +548,39 @@ const Menu = () => {
               />
             </div>
           </div>
+          <div className='flex sm:flex-row flex-col w-full gap-2'>
+            <div>
+              <label htmlFor="isVeg">Veg/Non-Veg:</label>
+              <select
+                className='border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full'
+                id="isVeg"
+                name="isVeg"
+                value={formData1.isVeg1}
+                onChange={handleInputChange1}
+              >
+                <option value="">Select an option</option>
+                <option value=" Yes">Veg</option>
+                <option value="No">Non-Veg</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="category">Category:</label>
+              <select
+                className='border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full'
+                id="category"
+                name="category"
+                value={formData1.category1}
+                onChange={handleInputChange1}
+              >
+                <option value="">Select a category</option>
+                {category.map(category => (
+                  <option key={category._id} value={category._id}>{category.name}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+         
 
           <div className='flex flex-col'>
             <label htmlFor="description">Description:</label>
@@ -566,7 +621,7 @@ const Menu = () => {
         <div className='bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2 px-1'>
 
 
-          <div className='w-full h-fit flex sm:flex-row flex-col gap-2 sm:my-1 my-4  items-center justify-between   '>
+          <div className='w-full h-fit flex sm:flex-row flex-col gap-4 sm:my-1 my-4  items-centen  justify-between   '>
             <div className='relative sm:w-[35%] w-full flex items-center rounded-md border border-[#407fd1]  '>
               <input
                 className='w-full sm:py-2 py-4 px-8 rounded-lg'
@@ -575,32 +630,47 @@ const Menu = () => {
               />
               <CiSearch className='absolute text-[1.3rem] font-semibold ml-2 ' />
             </div>
-            <div className='flex gap-4 items-center justify-evenly text-[#64748B] mt-3'>
-              <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>All Categories</button>
+          
+              
               <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>+ Add Category</button>
-            </div>
+            
           </div>
 
           <div className='w-full h-fit font-Roboto text-[1.3rem] sm:px-6 border-t-2'>
+        
 
-            {resData?.restaurant?.category.map((category) => (
-              <div>
-                <div className='flex justify-between items-center  w-full mt-4 px-4 '>
-                  <p>{category.name}</p>
-                  {
-                    up ? <IoIosArrowUp onClick={up1} className='cursor-pointer text-[1.5rem]' /> : <IoIosArrowDown onClick={down} className='cursor-pointer text-[1.7rem]' />
-                  }
+             {/*Rest Restaurantmenu */}
+          {resData?.restaurant?.category.map((category, index) => (
+            <div id={category?.name} key={index} className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b ">
+              <div className="w-full h-fit">
+                <div className="flex justify-between items-center  w-full mt-4 px-4 ">
+                  <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
+                    {category?.name} ({category?.menuItems.length})
+                  </p>
+                  {showAllCategories[category?.name] ? (
+                    <FaAngleUp
+                      className={`text-[1.4rem] cursor-pointer`}
+                      onClick={() => toggleCategory(category?.name)}
+                    />
+                  ) : (
+                    <FaAngleDown
+                      className={`text-[1.4rem] cursor-pointer`}
+                      onClick={() => toggleCategory(category?.name)}
+                    />
+                  )}
                 </div>
-                <div className='w-full h-fit grid sm:grid-cols-3 gap-3 my-8'>
-                  {/* 1 */}
+
+                <div className={`w-full ${showAllCategories[category?.name] ? 'h-auto transition-height duration-300 ease-in-out' : 'h-0 hidden'}`}>
+                  <div className=' w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap  '>
                   {category?.menuItems.map((item) => (
-                    <div className=' w-full min-h-[200px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1'>
+                    <div className=' sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden'>
                       <div className='flex justify-between'>
-                        <p className='font-inter'>{item.name}</p>
+                        <p className='font-inter'>{item.name} </p>
+                        <p></p>
                         <Switch1 isActive={item.active} id={item._id} type={"menu"} />
                       </div>
-                      <div className='flex w-full'>
-                        <div className='w-[70%]'>
+                      <div className='flex w-full h-[50%]  '>
+                        <div className='w-[70%] overflow-y-scroll hideScroller '>
                           {item.veg == "Yes" &&
                             <img src="Group 1171277690.png" alt="" />
                           }
@@ -614,16 +684,18 @@ const Menu = () => {
                         </div>
                       </div>
 
-                      <div className='flex justify-between font-Roboto'>
+                      <div className='flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m '>
                         <p className='text-[1.1rem]'>₹{item.price}</p>
                         <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={() => { openPopup2(item) }}>Edit</button>
                       </div>
                     </div>
                   ))}
-
+                  </div>
                 </div>
+
               </div>
-            ))}
+            </div>
+          ))}
           </div>
         </div>
       </div>

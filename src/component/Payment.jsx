@@ -59,9 +59,9 @@ const Payment = () => {
 
                 <p className='text-[#000000] sm:text-[2.2rem] text-[1.5rem] font-semibold  '>₹ 214003.80</p>
                 <div className='flex justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2'>
-                  <p className=''>Total Payout Balance </p>
+                  <p className='sm:w-full w-[60%] '>Total Payout Balance </p>
 
-                  <p></p>
+                  
                 </div>
 
 
@@ -72,8 +72,8 @@ const Payment = () => {
                 <GoInfo className='size-6 absolute top-3 right-3 bg-white' />
 
                 <p className='text-[#000000] sm:text-[2.2rem] text-[1.5rem] font-semibold  '>₹ 16003.78</p>
-                <div className='flex justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2'>
-                  <p className=''>Monthly Collection </p>
+                <div className='flex justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2  items-center '>
+                  <p className='sm:w-full w-[60%] '>Monthly Collection </p>
 
                   <p>May</p>
                 </div>
@@ -88,7 +88,7 @@ const Payment = () => {
               <GoInfo className='size-6 absolute top-3 right-3 bg-white' />
 
               <p className='text-[#000000] sm:text-[2.2rem] text-[2.6rem] font-semibold  '>₹ 1043.78</p>
-              <div className='flex justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2'>
+              <div className='flex justify-between sm:text-[1rem] text-[1.3rem] gap-1 absolute bottom-2'>
                 <p className=''>Today's Sale </p>
 
                 <p></p>

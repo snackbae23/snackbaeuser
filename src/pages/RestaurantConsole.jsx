@@ -22,6 +22,9 @@ import Settings from '../component/Settings';
 
 const RestaurantConsole = () => {
 
+  const screenWidth = window.innerWidth;
+  const [isToggled, setIsToggled] = useState(false);
+
   const [das, setdas] = useState(true);
   const [men, setmen] = useState(false);
   const [pay, setpay] = useState(false);
@@ -39,6 +42,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    setIsToggled(false);
     
   const screenWidth = window.innerWidth;
   if (screenWidth < 768) { // Adjust the threshold as needed
@@ -56,6 +60,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    setIsToggled(false);
     const screenWidth = window.innerWidth;
   if (screenWidth < 768) { // Adjust the threshold as needed
     document.getElementById('left').style.display = "none";
@@ -69,10 +74,12 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    setIsToggled(false);
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
       document.getElementById('left').style.display = "none";
+      
       
     }  
   }
@@ -84,6 +91,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(false)
+    setIsToggled(false);
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -99,6 +107,7 @@ const RestaurantConsole = () => {
     setcus(true)
     setset(false)
     setlog(false)
+    setIsToggled(false);
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -114,6 +123,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(true)
     setlog(false)
+    setIsToggled(false);
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -129,6 +139,7 @@ const RestaurantConsole = () => {
     setcus(false)
     setset(false)
     setlog(true)
+    setIsToggled(false);
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -137,27 +148,37 @@ const RestaurantConsole = () => {
     }  
   }
 
+  const removeleft = () => {
+    if (screenWidth < 768) { // Adjust the threshold as needed
+      
+      document.getElementById('left').style.display = "none";
+      setIsToggled(false);
+      
+    } 
+
+  }
+
 
 
 
   return (
     <>
-      <Navbar1 />
+      <Navbar1 isToggled={isToggled} setIsToggled={setIsToggled} />
       <div id='restaurant' className='w-full h-fit flex justify-center  relative  '>
 
           {/* frame */}
           <div id='frame' className='hidden fixed right-9 z-50  w-[75%] bg-white  h-fit mt-[70px] rounded-md p-5 border border-[black]'>
             <div className='flex flex-col '>
             <div className='flex gap-2 items-center justify-evenly p-2'>
-              <GoPerson className='size-7 ' />
-              <div className='text-[#000000]'>
-                <p className='text-[1.2rem]'>Foodoos</p>
+              <GoPerson className='size-10 rounded-full border border-black p-1 ' />
+              <div className='text-[#000000] font-semibold'>
+                <p className='text-[1.3rem] '>Foodoos</p>
                 <p>Snack Id :9881</p>
               </div>
               <IoSettingsOutline className='size-7' />
 
             </div>
-            <button className='px-2 py-2 rounded-md border border-[#999da2] mb-3 text-[#004AAD] font-bold '>Add Account</button>
+            <button className='px-2 py-2 rounded-md text-[1.3rem] border border-[#999da2] my-3 text-[#004AAD] font-bold '>Add Account</button>
 
             </div>
             
@@ -166,7 +187,9 @@ const RestaurantConsole = () => {
 
         {/* left side */}
 
-        <div id='left' className='sm:w-[20%] bg-white sm:fixed absolute sm:left-1 left-0 z-40   h-full hidden sm:block  mt-[70px] px-6 text-[.95rem]  gap-32  '>
+        <div id='left' className={` ${ screenWidth >= 768 ?
+                           'sm:w-[20%] bg-white fixed left-1  z-40    h-full   mt-[70px] px-6 text-[.95rem]  gap-32 ' : 
+                           ' fixed hidden left-0 z-40 h-fit rounded-lg   mt-[70px] px-6 text-[.95rem]  gap-32 bg-white ' }`}>
           <div className='mt-2'>
             <div id=''
               onClick={a}
@@ -216,7 +239,7 @@ const RestaurantConsole = () => {
             <Link id=''
               onClick={g}
               to="/customers"
-              className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${log ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `}
+              className={`w-full h-[50px] cursor-pointer  flex items-center rounded-lg font-semibold p-4 gap-3 sm:mb-1 mb-8 ${log ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `}
             >
               <IoLogOutOutline className='text-[1.2rem]' /><p className=''>Log Out</p>
             </Link>
@@ -230,9 +253,9 @@ const RestaurantConsole = () => {
         {/* Right side */}
 
 
-        <div id='right' className='sm:w-[80%] sm:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col '>
+        <div id='right' onClick={removeleft}  className='sm:w-[80%] sm:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col '>
 
-          {das && <Dashboard />}
+          {das && <Dashboard  />}
           {men && <Menu />}
           {pay && <Payment />}
           {off && <OfferAndEvents />}

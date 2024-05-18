@@ -23,13 +23,13 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 
 
-const Navbar1 = () => {
+const Navbar1 = ({isToggled, setIsToggled}) => {
 
 
     const navigate = useNavigate();
 
     //handle toggle for menu for small screen
-    const [isToggled, setIsToggled] = useState(false);
+    // const [isToggled, setIsToggled] = useState(false);
     const [isToggled1, setIsToggled1] = useState(false);
 
     const [fram,setframe]=useState(false);
@@ -81,10 +81,10 @@ const Navbar1 = () => {
             {
                 isToggled ?
                     (<IoMdClose
-                        className='sm:hidden block text-[1.7rem]'
+                        className='sm:hidden block text-[1.7rem] size-7 '
                         onClick={handleToggle} />) :
                     (<IoMdMenu
-                        className='sm:hidden block text-[1.6rem]'
+                        className='sm:hidden block text-[1.6rem] size-7 '
                         onClick={handleToggle1} />)
             }
             <div className='sm:hidden block rounded-full border border-[black] items-center justify-center p-1 relative '>

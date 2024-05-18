@@ -191,9 +191,7 @@ const BusinessInfoForm = () => {
             </div> :
             <img src="upload.png" alt="upload-logo" width={80} height={80} className="cursor-pointer"/> }
 
-            <span>
-              
-            </span>
+            
           </label>
         </div>
 
