@@ -31,7 +31,11 @@ const Dashboard = () => {
     const [resData, setResData] = useState();
     const [bestRatedMenu, setBestRatedMenu] = useState('');
     const [leastRatedMenu, setLeastRatedMenu] = useState('');
+    const [totalCustomers,setTotalCustomers] = useState(0);
+    const [repeatingCustomer,setRepeatingCustomer] = useState(0);
+    const [todaysCustomer,setTodaysCustomer] = useState(0);
 
+    const [] = useState(0);
     const [menus, setmenus] = useState('')
     const top3menus = menus.slice(0, 3);
 
@@ -43,13 +47,13 @@ const Dashboard = () => {
         }));
     };
 
-
     const getRestaurantData = async (req, res) => {
 
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+            // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
             headers: {}
         };
 
@@ -62,6 +66,14 @@ const Dashboard = () => {
                 console.log(resData)
                 console.log(resData.restaurant.menu);
                 setmenus(resData?.restaurant?.menu);
+                setRepeatingCustomer(resData.restaurant.returningCustomer);
+                setTotalCustomers(resData.restaurant.totalCustomers);
+                console.log(resData.restaurant.totalCustomersData);
+                const today = new Date().toISOString().slice(0, 10);
+                console.log(today);
+                const todayCust = resData?.restaurant?.totalCustomersData.filter(item => item.createdAt && item.createdAt.slice(0, 10) === today);
+                console.log(todayCust);
+                setTodaysCustomer(todayCust.length);
 
                 const highestRatedItem = resData?.restaurant?.menu.reduce((prev, current) =>
                     prev.rated > current.rated ? prev : current
@@ -409,7 +421,7 @@ const Dashboard = () => {
                                     <p className='text-[#777980] text-[.9rem] font-semibold'>Total Customer</p>
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>389</p>
+                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{totalCustomers}</p>
                                     <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
                                         <p className='font-bold '>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
@@ -424,7 +436,7 @@ const Dashboard = () => {
                                     <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
                                     <img className='size-8 absolute right-2' src="/Badge.png" alt="" />
 
-                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>140</p>
+                                    <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{repeatingCustomer}</p>
                                     <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
                                         <p className='font-bold '>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
@@ -470,7 +482,7 @@ const Dashboard = () => {
                                 <p className='text-[#777980] text-[.9rem] font-semibold'>Today's Customer</p>
                                 <img className='size-8 absolute right-2' src="/Badge (1).png" alt="" />
 
-                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>42</p>
+                                <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>{todaysCustomer}</p>
                                 <div className='flex text-[.9rem] gap-1 text-[#1A9882] items-center'>
                                         <p className='font-bold '>30% </p>
                                         <img src="/fi-rr-caret-up.png" alt="" />
