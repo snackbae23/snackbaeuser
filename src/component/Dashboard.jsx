@@ -243,10 +243,11 @@ const Dashboard = () => {
 
   function openPopup() {
     document.getElementById("popup").style.display = "block";
-    // document.getElementById('dashboard').style.filter = "blur(2Px)";
+    document.getElementById("restaurant").style.display = "block";
   }
   function closePopup() {
     document.getElementById("popup").style.display = "none";
+    document.getElementById("restaurant").style.display = "none";
   }
 
   const [items, setitems] = useState(sdata1);
@@ -295,7 +296,7 @@ const Dashboard = () => {
         id="popup"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-[100%] sm:h-[500px] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  "
+        className="sm:w-[500px]  w-[100%] sm:h-[500px] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[900] mt-[80px] rounded-2xl sm:p-4 p-4  "
       >
         <div className="flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Get QR Code</p>
@@ -672,6 +673,12 @@ const Dashboard = () => {
             />
             <CiSearch className=" absolute right-[1rem] top-[50%] translate-y-[-50%] text-[1.3rem]" />
           </div>
+
+          {
+            searchMenuItems && <div className='w-full h-fit p-6 text-[1.5rem] font-semibold'>
+              <p>Search result</p>
+            </div>
+          }
 
           {search
             ? searchMenuItems &&

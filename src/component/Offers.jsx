@@ -44,24 +44,29 @@ const Offers = () => {
       function openPopup1() {
         console.log("inside 1")
         document.getElementById("popup1").style.display = "block";
+        document.getElementById("restaurant").style.display = "block";
         // document.getElementById("restaurant").style.filter = "blur(1px)";
         // document.getElementById("popup1").style.filter = "none";
       }
     
         function openPopup2() {
           document.getElementById("popup2").style.display = "block";
+          document.getElementById("restaurant").style.display = "block";
         }
     
         function openPopup3() {
           document.getElementById("popup3").style.display = "block";
+          document.getElementById("restaurant").style.display = "block";
         }
     
         function openPopup4() {
           document.getElementById("popup4").style.display = "block";
+          document.getElementById("restaurant").style.display = "block";
         }
     
         function openPopup5() {
           document.getElementById("popup5").style.display = "block";
+          document.getElementById("restaurant").style.display = "block";
         }
 
     return (

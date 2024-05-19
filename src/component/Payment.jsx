@@ -12,9 +12,9 @@ import Settlements from "./Settlements";
 
 const Payment = () => {
   var userID = localStorage.getItem('user');
-    console.log("user id" ,userID)
-    const id = userID
-    const resId = userID
+  console.log("user id", userID)
+  const id = userID
+  const resId = userID
   const [CustomerRec, setCustomer] = useState(true);
   const [CustomerAna, setCustomerana] = useState(false);
 
@@ -35,30 +35,32 @@ const Payment = () => {
     document.getElementById("w").style.color = "black";
   };
 
-    function openPopup() {
-      document.getElementById("popup").style.display = "block";
-      // document.getElementById('payment').style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    }
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-      // resetFormData();
-    }
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("restaurant").style.display = "block";
+    // document.getElementById('payment').style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  }
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("restaurant").style.display = "none";
+    // resetFormData();
+  }
 
-    const [amount, setAmount] = useState();
-    const [rememberMe, setRememberMe] = useState(false);
+  const [amount, setAmount] = useState();
+  const [rememberMe, setRememberMe] = useState(false);
 
-    function changeHandler(event) {
-      const { name, value } = event.target;
-      setAmount(value);
-    }
+  function changeHandler(event) {
+    const { name, value } = event.target;
+    setAmount(value);
+  }
 
-    function submitHandler(e) {
-      e.preventDefault();
-      console.log(amount);
-      setAmount("");
-      setRememberMe(false);
-      //  closePopup()
-    }
+  function submitHandler(e) {
+    e.preventDefault();
+    console.log(amount);
+    setAmount("");
+    setRememberMe(false);
+    //  closePopup()
+  }
 
 
 
@@ -69,7 +71,7 @@ const Payment = () => {
         id="popup"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-full h-fit  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 "
+        className="sm:w-[500px]  w-full h-fit  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[900] mt-[80px] rounded-2xl sm:p-4 p-4 "
       >
         <div className="flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Add Menu item</p>

@@ -187,7 +187,8 @@ const RestaurantConsole = () => {
 
   return (
     <>
-      <Navbar1 isToggled={isToggled} setIsToggled={setIsToggled} />
+    <div id='restaurant' className='absolute w-full h-[300vh] bg-black z-[700] opacity-45 hidden'></div>
+    <Navbar1 isToggled={isToggled} setIsToggled={setIsToggled} />
       <div id='restaurant' className='w-full h-fit flex justify-center  relative  '>
 
           {/* frame */}
@@ -289,6 +290,8 @@ const RestaurantConsole = () => {
         </div>
 
       </div>
+    
+      
     </>
   )
 }

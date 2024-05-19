@@ -13,13 +13,7 @@ import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 
 
-import { BiSolidDashboard } from "react-icons/bi";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
-import { RiSecurePaymentLine } from "react-icons/ri";
-import { BiSolidOffer } from "react-icons/bi";
-import { IoPersonOutline } from "react-icons/io5";
-import { CiSettings } from "react-icons/ci";
-import { IoLogOutOutline } from "react-icons/io5";
+
 
 
 
@@ -76,7 +70,7 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
 
     
     return (
-        <div className='fixed bg-white z-[1000] w-full h-[70px] flex justify-between items-center px-[1.5rem]'>
+        <div className='fixed bg-white z-[600] w-full h-[70px] flex justify-between items-center px-[1.5rem]'>
             {/* logo */}
             <img
                 onClick={

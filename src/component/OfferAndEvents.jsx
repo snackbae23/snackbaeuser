@@ -78,6 +78,7 @@ const OfferAndEvents = () => {
 
   function closePopup() {
     console.log("inside closePopup");
+    document.getElementById("restaurant").style.display = "none";
 
     const popups = ["popup1", "popup2", "popup3", "popup4"];
     popups.forEach((popupId) => {
@@ -121,7 +122,7 @@ const OfferAndEvents = () => {
         id="popup1"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-full h-[750px] sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 "
+        className="sm:w-[500px]  w-full h-[750px] sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[900] mt-[80px] rounded-2xl sm:p-4 p-4 "
       >
         <div className="flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Edit Offers</p>
@@ -275,7 +276,7 @@ const OfferAndEvents = () => {
         id="popup2"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-full  h-[750px]  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 "
+        className="sm:w-[500px]  w-full  h-[750px]  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[900] mt-[80px] rounded-2xl sm:p-4 p-4 "
       >
         <div className="flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Edit Offers</p>
@@ -382,7 +383,7 @@ const OfferAndEvents = () => {
         id="popup3"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-full  h-[750px]  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 "
+        className="sm:w-[500px]  w-full  h-[750px]  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[900] mt-[80px] rounded-2xl sm:p-4 p-4 "
       >
         <div className="flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Edit Offers</p>
@@ -490,7 +491,7 @@ const OfferAndEvents = () => {
         id="popup4"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-full h-[750px]  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 "
+        className="sm:w-[500px]  w-full h-[750px]  sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[900] mt-[80px] rounded-2xl sm:p-4 p-4 "
       >
         <div className="flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Edit Offers</p>

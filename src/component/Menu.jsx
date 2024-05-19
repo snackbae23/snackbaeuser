@@ -308,20 +308,25 @@ const Menu = () => {
 
   function openPopup() {
     document.getElementById('popup').style.display = "block";
+    document.getElementById("restaurant").style.display = "block";
   }
   function closePopup() {
     document.getElementById('popup').style.display = "none";
+    document.getElementById("restaurant").style.display = "none";
     resetFormData();
   }
 
   function openPopup1() {
     document.getElementById('popup1').style.display = "block";
+    document.getElementById("restaurant").style.display = "block";
   }
   function closePopup1() {
     document.getElementById('popup1').style.display = "none";
+    document.getElementById("restaurant").style.display = "none";
   }
   function openPopup2(item) {
     document.getElementById('popup2').style.display = "block";
+    document.getElementById("restaurant").style.display = "block";
     formData1.productImage1 = item.image;
     formData1.productName1 = item.name;
     formData1.productPrice1 = item.price;
@@ -332,6 +337,7 @@ const Menu = () => {
 
   function closePopup2() {
     document.getElementById('popup2').style.display = "none";
+    document.getElementById("restaurant").style.display = "none";
     formData1.productImage1 = '';
     formData1.productName1 = '';
     formData1.productPrice1 = '';
@@ -383,7 +389,7 @@ const Menu = () => {
     <div id='menu' className='w-full h-fit relative'>
 
       {/* Add menu popup */}
-      <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
+      <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4  '>
         <div className='flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Menu item</p>
           <RxCrossCircled onClick={closePopup} className='cursor-pointer text-[1.9rem]' />
@@ -495,7 +501,7 @@ const Menu = () => {
       </motion.div>
 
       {/* Add Category popup */}
-      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4 '>
+      <motion.div id="popup1" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4 '>
         <div className='flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Add Category</p>
           <RxCrossCircled onClick={closePopup1} className='cursor-pointer text-[1.9rem]' />
@@ -534,7 +540,7 @@ const Menu = () => {
       </motion.div>
 
       {/* Edit menu */}
-      <motion.div id="popup2" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-40 mt-[80px] rounded-2xl sm:p-4 p-4  '>
+      <motion.div id="popup2" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4  '>
         <div className='flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2'>
           <p>Edit Menu item</p>
           <RxCrossCircled onClick={closePopup2} className='cursor-pointer text-[1.9rem]' />
@@ -678,7 +684,12 @@ const Menu = () => {
             <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>+ Add Category</button>
 
           </div>
-
+          
+          {
+            searchMenuItems && <div className='w-full h-fit ml-2 text-[1.5rem] font-semibold'>
+              <p>Search result</p>
+            </div>
+          }
 
           <div className='flex flex-wrap gap-2 sm:gap-4'>
             {
@@ -734,7 +745,7 @@ const Menu = () => {
               // Show a loader when resData is empty
               <div className="flex justify-center items-center w-full h-[400px]  z-50 ">
                
-               <PacmanLoader color="#36d7b7" />
+               <PacmanLoader color="#004AAD" />
               </div>
             ) : (
               // Render the menu categories

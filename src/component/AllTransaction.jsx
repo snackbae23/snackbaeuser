@@ -139,18 +139,18 @@ useEffect(() => {
               className="w-full flex mb-2  sm:text-[.9rem] text-[.8rem] font-semibold sm:border-none border rounded-xl border-[#00000080] p-1"
             >
               <div className="w-[34%] flex sm:flex-row flex-col mb-3 items-center justify-evenly">
-                <p className="text-[#111827] font-semibold text-[.9rem] ml-4">
+                <p className="text-[#111827] font-semibold text-[.9rem] w-[50%] flex items-center text-nowrap justify-evenly">
                   {" "}
                   {item?.userId?.name || "User"}
                 </p>
-                <p className="text-[#6B7280] flex items-center ">
+                <p className="text-[#6B7280] flex items-center w-[50%] sm:ml-10 text-nowrap">
                   {dateparameter(item.date)}
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-4 grid-cols-3  w-[66%] gap-2 justify-evenly ">
                 {/* <p className='text-[#6B7280] flex items-center '>{item.Date}</p> */}
-                <p className="text-[black]   flex items-center">
+                <p className="text-[black]   flex items-center ml-8">
                   {item.amount}
                 </p>
                 <p className="text-[#004AAD]   text-center flex items-center ml-7  ">
