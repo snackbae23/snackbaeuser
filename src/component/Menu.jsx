@@ -10,12 +10,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useEffect } from 'react';
 import axios from 'axios';
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import Loader from './Loader';
+import { PacmanLoader } from 'react-spinners';
 
 
 
 const Menu = () => {
 
-
+  const [loader,setloader]=useState(false);
 
 
   // toggle data for more than 4
@@ -35,7 +37,7 @@ const Menu = () => {
   const [pic, setPic] = useState('');
 
   const getRestaurantData = async (req, res) => {
-
+    setloader(true);
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
@@ -56,14 +58,19 @@ const Menu = () => {
         console.log("category", category);
         // setmenus(resData?.restaurant?.menu);
         console.log(resData);
+        
       })
       .catch((error) => {
         console.log(error);
       });
+      setTimeout(() => {
+        setloader(false);
+      }, 2000);
   }
 
   useEffect(() => {
     getRestaurantData();
+   
   }, [resId]);
 
   function categoryCreationHandler(e) {
@@ -90,6 +97,7 @@ const Menu = () => {
         console.log(JSON.stringify(response.data));
         console.log("category added");
         getRestaurantData();
+        
       })
       .catch((error) => {
         console.log(error);
@@ -529,7 +537,7 @@ const Menu = () => {
           <p>Edit Menu item</p>
           <RxCrossCircled onClick={closePopup2} className='cursor-pointer text-[1.9rem]' />
         </div>
-        <form className='flex flex-col gap-3 w-full sm:h-[500px] h-[500px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  ' onSubmit={handleFormSubmit}>
+        <form className='flex flex-col gap-3 w-full sm:h-[500px] h-[500px] px-3 pb-[2rem] text-[#0F172A] font-inter sm:text-[.95rem] hideScroller  overflow-y-scroll  ' onSubmit={handleFormSubmit1}>
           <div className=' flex flex-col  w-full'>
             <p>Item image*</p>
             <p className='text-[#64748B] text-[.8rem]'>Image format .jpg .jpeg .png and minimum size 300 x 300px</p>
@@ -671,58 +679,65 @@ const Menu = () => {
 
 
           <div className='flex flex-wrap gap-2 sm:gap-4'>
-          {
-            search && (
-              searchMenuItems &&
-              
-              searchMenuItems.map((item, index) => (
-                
-                  <div key={index} className=' sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden'>
-                    
-                      <div className='flex justify-between'>
-                        <p className='font-inter'>{item.name} </p>
-                        <p></p>
-                        <Switch1 isActive={item.active} id={item._id} type={"menu"} />
-                      </div>
-                      <div className='flex w-full h-[50%]  '>
-                        <div className='w-[70%] overflow-y-scroll hideScroller '>
-                          {item.veg == "Yes" &&
-                            <img src="Group 1171277690.png" alt="" />
-                          }
-                          {!item.veg == "Yes" &&
-                            <img src="Group 1171277690.png" alt="" /> // non-veg
-                          }
-                          <p className='text-[#0F172A] font-inter text-[.75rem]'>{item.description}</p>
-                        </div>
-                        <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
-                          <img className='size-16' src={item.image} alt="" />
-                        </div>
-                      </div>
+            {
+              search && (
+                searchMenuItems &&
 
-                      <div className='flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m '>
-                        <p className='text-[1.1rem]'>₹{item.price}</p>
-                        <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={() => { openPopup2(item) }}>Edit</button>
+                searchMenuItems.map((item, index) => (
+
+                  <div key={index} className=' sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden'>
+
+                    <div className='flex justify-between'>
+                      <p className='font-inter'>{item.name} </p>
+                      <p></p>
+                      <Switch1 isActive={item.active} id={item._id} type={"menu"} />
+                    </div>
+                    <div className='flex w-full h-[50%]  '>
+                      <div className='w-[70%] overflow-y-scroll hideScroller '>
+                        {item.veg == "Yes" &&
+                          <img src="Group 1171277690.png" alt="" />
+                        }
+                        {!item.veg == "Yes" &&
+                          <img src="Group 1171277690.png" alt="" /> // non-veg
+                        }
+                        <p className='text-[#0F172A] font-inter text-[.75rem]'>{item.description}</p>
                       </div>
-                    
+                      <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
+                        <img className='size-16' src={item.image} alt="" />
+                      </div>
+                    </div>
+
+                    <div className='flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m '>
+                      <p className='text-[1.1rem]'>₹{item.price}</p>
+                      <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={() => { openPopup2(item) }}>Edit</button>
+                    </div>
+
 
                   </div>
-                
 
 
-              ))
-            )
-          }
+
+                ))
+              )
+            }
           </div>
+
+
 
           
 
           <div className='w-full h-fit font-Roboto text-[1.3rem] sm:px-6 border-t-2'>
-
-          
-
-            {/*Rest Restaurantmenu */}
-            {resData?.restaurant?.category.map((category, index) => (
-              <div id={category?.name} key={index} className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b ">
+            {/* Rest Restaurantmenu */}
+            {loader ? (
+              // Show a loader when resData is empty
+              <div className="flex justify-center items-center w-full h-[400px]  z-50 ">
+               
+               <PacmanLoader color="#36d7b7" />
+              </div>
+            ) : (
+              // Render the menu categories
+              resData?.restaurant.category.map((category, index) => (
+                <div id={category?.name} key={index} className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b ">
                 <div className="w-full h-fit">
                   <div className="flex justify-between items-center  w-full mt-4 px-4 ">
                     <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
@@ -776,8 +791,10 @@ const Menu = () => {
 
                 </div>
               </div>
-            ))}
+              ))
+            )}
           </div>
+
         </div>
       </div>
     </div>
