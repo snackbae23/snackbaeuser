@@ -9,7 +9,10 @@ import CustomerAnalytics from './CustomerAnalytics';
 
 
 const Customers = () => {
-
+  var userID = localStorage.getItem('user');
+  console.log("user id" ,userID)
+  const id = userID
+  const resId = userID
   
   const [CustomerRec,setCustomer]=useState(true);
   const [CustomerAna,setCustomerana]=useState(false)

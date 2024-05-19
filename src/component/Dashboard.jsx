@@ -24,10 +24,12 @@ const Dashboard = () => {
     const [goodone, setGood] = useState(false);
     const [musttryone, setMustTry] = useState(false);
     const [filterone, setFilterone] = useState()
-    const id = "662929b6445e63ad5782c1ab";
+    
     // const { id } = useParams();
-
-    const resId = "662929b6445e63ad5782c1ab";
+    var userID = localStorage.getItem('user');
+    console.log("user id" ,userID)
+    const id = userID
+    const resId = userID
     const [resData, setResData] = useState();
     const [bestRatedMenu, setBestRatedMenu] = useState('');
     const [leastRatedMenu, setLeastRatedMenu] = useState('');

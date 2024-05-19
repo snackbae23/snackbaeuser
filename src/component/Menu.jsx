@@ -30,7 +30,9 @@ const Menu = () => {
 
   };
 
-  const resId = "662929b6445e63ad5782c1ab";
+  var userID = localStorage.getItem('user');
+    console.log("user id" ,userID)
+    const resId = userID
   const [resData, setResData] = useState();
   const [category, setCategory] = useState([]);
   const [createCategory, setCreateCategory] = useState('');

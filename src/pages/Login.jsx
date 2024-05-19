@@ -8,6 +8,7 @@ import { PiEyeSlashLight } from "react-icons/pi";
 import { PiEyeLight } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -55,10 +56,12 @@ const Login = () => {
     .then((response) => {
       console.log(JSON.stringify(response.data));
       localStorage.setItem("user",(response.data.details))
+      toast.success('Login Successfull')
        navigate("/restaurant");
     })
     .catch((error) => {
       console.log(error);
+      toast.error(`Email or Password doesn't match`)
     });
    
   }
