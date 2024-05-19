@@ -16,17 +16,17 @@ import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 const Menu = () => {
 
 
-  
 
-   // toggle data for more than 4
-   const [showAllCategories, setShowAllCategories] = useState({});
-   const toggleCategory = (categoryId) => {
-     setShowAllCategories(prevState => ({
-       ...prevState,
-       [categoryId]: !prevState[categoryId]
-     }));
- 
-   };
+
+  // toggle data for more than 4
+  const [showAllCategories, setShowAllCategories] = useState({});
+  const toggleCategory = (categoryId) => {
+    setShowAllCategories(prevState => ({
+      ...prevState,
+      [categoryId]: !prevState[categoryId]
+    }));
+
+  };
 
   const resId = "662929b6445e63ad5782c1ab";
   const [resData, setResData] = useState();
@@ -239,14 +239,7 @@ const Menu = () => {
 
   const [up, setup] = useState(false);
 
-  const up1 = () => {
-    setup(!up);
-    setmenudata(menu);
-  }
-  const down = () => {
-    setup(!up);
-    setmenudata(filteredMenu);
-  }
+
 
   const [formData, setFormData] = useState({
     productName: '',
@@ -270,8 +263,8 @@ const Menu = () => {
   const [formData1, setFormData1] = useState({
     productName1: '',
     productPrice1: '',
-    isVeg1 : '',
-    category1 : '',
+    isVeg1: '',
+    category1: '',
     description1: '',
     productImage1: '', // Added image state
   });
@@ -336,6 +329,44 @@ const Menu = () => {
     formData1.isVeg1 = '';
     formData1.category1 = '';
     getRestaurantData();
+  }
+
+
+  //search bar
+  const id = "662929b6445e63ad5782c1ab";
+  const [search, setSearch] = useState('');
+  const [searchMenuItems, setSearchMenuItems] = useState();
+
+  const handleSearch = (e) => {
+    console.log(search)
+    const inputValue = e.target.value;
+    setSearch(inputValue);
+    if (!inputValue) {
+      // If input value is empty or length is less than or equal to 1, clear search menu items
+      setSearchMenuItems();
+      return;
+    }
+
+    setSearch(inputValue);
+    searchMenu();
+  };
+  const searchMenu = async (req, res) => {
+    let config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/searchMenu/${id}/${search}`,
+      headers: {},
+    };
+
+    axios.request(config)
+      .then((response) => {
+        // console.log(JSON.stringify(response.data));
+        console.log((response.data.menuItems));
+        setSearchMenuItems(response.data.menuItems);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -580,7 +611,7 @@ const Menu = () => {
             </div>
           </div>
 
-         
+
 
           <div className='flex flex-col'>
             <label htmlFor="description">Description:</label>
@@ -626,44 +657,28 @@ const Menu = () => {
               <input
                 className='w-full sm:py-2 py-4 px-8 rounded-lg'
                 type="text"
+                value={search}
+                onChange={handleSearch}
                 placeholder='Search menu ...'
               />
               <CiSearch className='absolute text-[1.3rem] font-semibold ml-2 ' />
             </div>
-          
-              
-              <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>+ Add Category</button>
-            
+
+
+            <button className='sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap' onClick={openPopup1}>+ Add Category</button>
+
           </div>
 
-          <div className='w-full h-fit font-Roboto text-[1.3rem] sm:px-6 border-t-2'>
-        
 
-             {/*Rest Restaurantmenu */}
-          {resData?.restaurant?.category.map((category, index) => (
-            <div id={category?.name} key={index} className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b ">
-              <div className="w-full h-fit">
-                <div className="flex justify-between items-center  w-full mt-4 px-4 ">
-                  <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
-                    {category?.name} ({category?.menuItems.length})
-                  </p>
-                  {showAllCategories[category?.name] ? (
-                    <FaAngleUp
-                      className={`text-[1.4rem] cursor-pointer`}
-                      onClick={() => toggleCategory(category?.name)}
-                    />
-                  ) : (
-                    <FaAngleDown
-                      className={`text-[1.4rem] cursor-pointer`}
-                      onClick={() => toggleCategory(category?.name)}
-                    />
-                  )}
-                </div>
-
-                <div className={`w-full ${showAllCategories[category?.name] ? 'h-auto transition-height duration-300 ease-in-out' : 'h-0 hidden'}`}>
-                  <div className=' w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap  '>
-                  {category?.menuItems.map((item) => (
-                    <div className=' sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden'>
+          <div className='flex flex-wrap gap-2 sm:gap-4'>
+          {
+            search && (
+              searchMenuItems &&
+              
+              searchMenuItems.map((item, index) => (
+                
+                  <div key={index} className=' sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden'>
+                    
                       <div className='flex justify-between'>
                         <p className='font-inter'>{item.name} </p>
                         <p></p>
@@ -688,14 +703,80 @@ const Menu = () => {
                         <p className='text-[1.1rem]'>₹{item.price}</p>
                         <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={() => { openPopup2(item) }}>Edit</button>
                       </div>
-                    </div>
-                  ))}
-                  </div>
-                </div>
+                    
 
+                  </div>
+                
+
+
+              ))
+            )
+          }
+          </div>
+
+          
+
+          <div className='w-full h-fit font-Roboto text-[1.3rem] sm:px-6 border-t-2'>
+
+          
+
+            {/*Rest Restaurantmenu */}
+            {resData?.restaurant?.category.map((category, index) => (
+              <div id={category?.name} key={index} className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b ">
+                <div className="w-full h-fit">
+                  <div className="flex justify-between items-center  w-full mt-4 px-4 ">
+                    <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
+                      {category?.name} ({category?.menuItems.length})
+                    </p>
+                    {showAllCategories[category?.name] ? (
+                      <FaAngleUp
+                        className={`text-[1.4rem] cursor-pointer`}
+                        onClick={() => toggleCategory(category?.name)}
+                      />
+                    ) : (
+                      <FaAngleDown
+                        className={`text-[1.4rem] cursor-pointer`}
+                        onClick={() => toggleCategory(category?.name)}
+                      />
+                    )}
+                  </div>
+
+                  <div className={`w-full ${showAllCategories[category?.name] ? 'h-auto transition-height duration-300 ease-in-out' : 'h-0 hidden'}`}>
+                    <div className=' w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap  '>
+                      {category?.menuItems.map((item) => (
+                        <div className=' sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden'>
+                          <div className='flex justify-between'>
+                            <p className='font-inter'>{item.name} </p>
+                            <p></p>
+                            <Switch1 isActive={item.active} id={item._id} type={"menu"} />
+                          </div>
+                          <div className='flex w-full h-[50%]  '>
+                            <div className='w-[70%] overflow-y-scroll hideScroller '>
+                              {item.veg == "Yes" &&
+                                <img src="Group 1171277690.png" alt="" />
+                              }
+                              {!item.veg == "Yes" &&
+                                <img src="Group 1171277690.png" alt="" /> // non-veg
+                              }
+                              <p className='text-[#0F172A] font-inter text-[.75rem]'>{item.description}</p>
+                            </div>
+                            <div className='w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md'>
+                              <img className='size-16' src={item.image} alt="" />
+                            </div>
+                          </div>
+
+                          <div className='flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m '>
+                            <p className='text-[1.1rem]'>₹{item.price}</p>
+                            <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={() => { openPopup2(item) }}>Edit</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
           </div>
         </div>
       </div>

@@ -28,6 +28,16 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
 
     const navigate = useNavigate();
 
+    
+
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // This enables smooth scrolling
+    });
+  }
+
     //handle toggle for menu for small screen
     // const [isToggled, setIsToggled] = useState(false);
     const [isToggled1, setIsToggled1] = useState(false);
@@ -44,6 +54,7 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
         setIsToggled(!isToggled1);
        
         document.getElementById('left').style.display = "block";
+        scrollToTop();
 
     };
 

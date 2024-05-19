@@ -22,6 +22,15 @@ import Settings from '../component/Settings';
 
 const RestaurantConsole = () => {
 
+
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // This enables smooth scrolling
+    });
+  }
+
   const screenWidth = window.innerWidth;
   const [isToggled, setIsToggled] = useState(false);
 
@@ -43,6 +52,7 @@ const RestaurantConsole = () => {
     setset(false)
     setlog(false)
     setIsToggled(false);
+    scrollToTop();
     
   const screenWidth = window.innerWidth;
   if (screenWidth < 768) { // Adjust the threshold as needed
@@ -61,6 +71,8 @@ const RestaurantConsole = () => {
     setset(false)
     setlog(false)
     setIsToggled(false);
+    scrollToTop();
+    
     const screenWidth = window.innerWidth;
   if (screenWidth < 768) { // Adjust the threshold as needed
     document.getElementById('left').style.display = "none";
@@ -75,6 +87,8 @@ const RestaurantConsole = () => {
     setset(false)
     setlog(false)
     setIsToggled(false);
+    scrollToTop();
+    
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -92,6 +106,7 @@ const RestaurantConsole = () => {
     setset(false)
     setlog(false)
     setIsToggled(false);
+    scrollToTop();
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -108,6 +123,7 @@ const RestaurantConsole = () => {
     setset(false)
     setlog(false)
     setIsToggled(false);
+    scrollToTop();
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -124,6 +140,7 @@ const RestaurantConsole = () => {
     setset(true)
     setlog(false)
     setIsToggled(false);
+    scrollToTop();
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
@@ -140,6 +157,7 @@ const RestaurantConsole = () => {
     setset(false)
     setlog(true)
     setIsToggled(false);
+    scrollToTop();
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) { // Adjust the threshold as needed
       
