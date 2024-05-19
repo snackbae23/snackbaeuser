@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Slider from "../component/Slider";
 import { Link } from "react-router-dom";
@@ -10,7 +9,8 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { PiEyeSlashLight } from "react-icons/pi";
 import { PiEyeLight } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -35,38 +35,45 @@ const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setFormData({
-      brandName: "",
-    contactNumber: "",
-    email: "",
-    businessType: "",
-    password: "",
-    confirmPassword: "",
-    })
-    setPrivacyPolicy(false)
-    setTermCondition(false)
-    // Add your form submission logic here
-    console.log(formData);
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Please fill same password");
+    } else {
+      setFormData({
+        brandName: "",
+        contactNumber: "",
+        email: "",
+        businessType: "",
+        password: "",
+        confirmPassword: "",
+      });
+      setPrivacyPolicy(false);
+      setTermCondition(false);
+      // Add your form submission logic here
+      console.log(formData);
 
-    let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://seashell-app-lgwmg.ondigitalocean.app/api/regsiterRestaurant',
-      headers: { 
-        'Content-Type': 'application/json'
-      },
-      data : formData
-    };
-    
-    axios.request(config)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-      localStorage.setItem("user",(response.data.restaurantDetails))
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    navigate("/restaurant");
+      let config = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: "https://seashell-app-lgwmg.ondigitalocean.app/api/regsiterRestaurant",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: formData,
+      };
+
+      axios
+        .request(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+          localStorage.setItem("user", response.data.restaurantDetails);
+          toast.success("Account Created!");
+          navigate("/restaurant");
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Something went wrong! please try again");
+        });
+    }
   };
 
   return (
@@ -227,7 +234,7 @@ const Register = () => {
                   className="size-[18px] mr-2"
                 />
                 Agree to our
-                <Link to="/#">
+                <Link to="https://www.snackbae.in/privacyPolicy">
                   <span className="text-[#2563EB] ml-1">Privacy & Policy</span>
                 </Link>
               </label>
@@ -241,7 +248,7 @@ const Register = () => {
                   className="size-[18px] mr-2"
                 />
                 Agree to other
-                <Link to="/#">
+                <Link to="https://www.snackbae.in/termsCondition">
                   <span className="text-[#2563EB] ml-1">term & condition</span>
                 </Link>
               </label>
@@ -252,7 +259,9 @@ const Register = () => {
                 Create profile
               </button>
               <Link to="/">
-                <span className="text-[#004AAD] font-semibold">Back to Sign In</span>
+                <span className="text-[#004AAD] font-semibold">
+                  Back to Sign In
+                </span>
               </Link>
             </div>
           </div>

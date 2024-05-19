@@ -6,6 +6,10 @@ import Chart from 'react-google-charts';
 import Charts from './Charts';
 
 const CustomerAnalytics = () => {
+    var userID = localStorage.getItem('user');
+    console.log("user id" ,userID)
+    const id = userID
+    const resId = userID
     return (
         <div className='w-full bg-[#F6F8FF] sm:px-6 h-fit '>
 

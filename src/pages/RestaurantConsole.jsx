@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Link } from 'react-router-dom'
 import { BiSolidDashboard } from "react-icons/bi";
@@ -33,6 +34,7 @@ const RestaurantConsole = () => {
 
   const screenWidth = window.innerWidth;
   const [isToggled, setIsToggled] = useState(false);
+  const navigate = useNavigate();
 
   const [das, setdas] = useState(true);
   const [men, setmen] = useState(false);
@@ -149,21 +151,25 @@ const RestaurantConsole = () => {
     }  
   }
   const g = () => {
-    setdas(false)
-    setmen(false)
-    setpay(false)
-    setoff(false)
-    setcus(false)
-    setset(false)
-    setlog(true)
-    setIsToggled(false);
-    scrollToTop();
-    const screenWidth = window.innerWidth;
-    if (screenWidth < 768) { // Adjust the threshold as needed
+    // setdas(false)
+    // setmen(false)
+    // setpay(false)
+    // setoff(false)
+    // setcus(false)
+    // setset(false)
+    // setlog(true)
+    // setIsToggled(false);
+    // scrollToTop();
+    // const screenWidth = window.innerWidth;
+    // if (screenWidth < 768) { // Adjust the threshold as needed
       
-      document.getElementById('left').style.display = "none";
+    //   document.getElementById('left').style.display = "none";
       
-    }  
+    // }  
+    console.log("inside g")
+    const userId = localStorage.removeItem('user');
+    console.log(userId)
+    navigate("/");
   }
 
   const removeleft = () => {
@@ -254,13 +260,13 @@ const RestaurantConsole = () => {
             >
               <CiSettings className='text-[1.2rem]' /><p className=''>Settings</p>
             </div>
-            <Link id=''
+            <div id=''
               onClick={g}
-              to="/customers"
+              
               className={`w-full h-[50px] cursor-pointer  flex items-center rounded-lg font-semibold p-4 gap-3 sm:mb-1 mb-8 ${log ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `}
             >
               <IoLogOutOutline className='text-[1.2rem]' /><p className=''>Log Out</p>
-            </Link>
+            </div>
           </div>
 
 

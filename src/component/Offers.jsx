@@ -23,6 +23,47 @@ const Offers = () => {
 
     },]
 
+    function openPopup(index) {
+        {
+          index === 0 && openPopup1();
+        }
+        {
+          index === 1 && openPopup2();
+        }
+        {
+          index === 2 && openPopup3();
+        }
+        {
+          index === 3 && openPopup4();
+        }
+        {
+          index === 4 && openPopup5();
+        }
+      }
+    
+      function openPopup1() {
+        console.log("inside 1")
+        document.getElementById("popup1").style.display = "block";
+        // document.getElementById("restaurant").style.filter = "blur(1px)";
+        // document.getElementById("popup1").style.filter = "none";
+      }
+    
+        function openPopup2() {
+          document.getElementById("popup2").style.display = "block";
+        }
+    
+        function openPopup3() {
+          document.getElementById("popup3").style.display = "block";
+        }
+    
+        function openPopup4() {
+          document.getElementById("popup4").style.display = "block";
+        }
+    
+        function openPopup5() {
+          document.getElementById("popup5").style.display = "block";
+        }
+
     return (
         <div className='w-full h-fit '>
 
@@ -51,7 +92,7 @@ const Offers = () => {
                                 <p>Minimum billing to avail ₹500</p>
                                 <p>Terms & Condition</p>
                             </div>
-                            <div className='border rounded-md px-3 py-1  absolute right-4 flex items-center gap-1  bottom-4 text-[#004AAD] border-[#426CFF]'>
+                            <div onClick={openPopup.bind(this, index)} className='border rounded-md px-3 py-1  absolute right-4 flex items-center gap-1  bottom-4 text-[#004AAD] border-[#426CFF]'>
                             <FaRegEdit className='size-3' />
                             <button className='text-[.9rem]'>Edit</button>
                             </div>

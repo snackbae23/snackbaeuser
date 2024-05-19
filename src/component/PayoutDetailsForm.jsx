@@ -4,7 +4,10 @@ import axios from "axios"
 
 const PayoutDetailsForm = () => {
 
-  const id ="6639330d13fde08a6850c2ea"
+  var userID = localStorage.getItem('user');
+  console.log("user id" ,userID)
+  const id = userID
+  const resId = userID
 
   const [option, setoption] = useState("");
 
