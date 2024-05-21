@@ -1,12 +1,19 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import axios from 'axios';
 
-const SwitchOffer = () => {
+const SwitchOffer = (isActive) => {
+    
     const [switc, setswitch] = useState(false);
+   
+    console.log(isActive);
+
+   
+    
     const switch1 = async () => {
         setswitch(!switc);
     }
+    
   return (
     <div>
             {

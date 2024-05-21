@@ -242,7 +242,7 @@ const RestaurantConsole = () => {
 
               className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${off ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `}
             >
-              <BiSolidOffer className='text-[1.1rem]' /> <p className=''>Offers & Campaigns</p>
+              <BiSolidOffer className='text-[1.1rem] ' /> <p className=''>Offers & Campaigns</p>
             </div>
             <div id=''
               onClick={e}

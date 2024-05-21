@@ -186,7 +186,7 @@ useEffect(() => {
               </div>
             </div>
           ))}
-        <div className="flex justify-between px-8  mt-7 sm:flex-row flex-col sm:gap-0 gap-4">
+        <div className="flex justify-between items-center px-8  mt-7 sm:flex-row flex-col sm:gap-0 gap-4">
           {/* Pagination controls */}
           {/* Dropdown for items per page */}
           <div className="items-per-page">
