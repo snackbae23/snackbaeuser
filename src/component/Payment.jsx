@@ -157,7 +157,7 @@ const Payment = () => {
         </div>
       </div>
       <div className="w-full h-fit  mt-[10px] px-6   ">
-        <div className="bg-white  flex flex-col gap-6 sm:py-5 py-2 rounded-lg ">
+        <div className="bg-white  flex flex-col gap-2 sm:py-5 py-2 rounded-lg ">
           <div className="flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-4 text-[#000000] px-4 ">
             <p className="text-[1.8rem] font-semibold sm:px-5">Transactions</p>
             <button onClick={openPopup} className="border sm:px-5 px-2.5 py-2 border-[#0F172A] rounded-lg bg-[#004AAD] text-white text-nowrap">
@@ -205,7 +205,7 @@ const Payment = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 w-full justify-center sm:justify-start px-[1.5rem] border-b pb-6">
+          <div className="flex gap-4 w-full justify-center pt-4 sm:justify-start px-[1.5rem] border-b pb-6">
             <button
               id="w"
               className="border sm:px-5 px-4 py-2 border-[#0F172A] rounded-full bg-[#004AAD] text-white text-nowrap"

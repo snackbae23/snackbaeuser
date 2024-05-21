@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import VerifyEmail from "./pages/VerifyEmail";
 import NotFound from "./pages/NotFound";
 import ResetPassword from "./pages/ResetPassword";
+import NewPassword from "./pages/NewPassword";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/newPassword" element={<NewPassword />} />
           <Route path="/verification" element={<VerifyEmail />} />
           <Route path="/404" element={<NotFound />} />
         </Route>
