@@ -10,6 +10,7 @@ import AllTransaction from "./AllTransaction";
 import Settlements from "./Settlements";
 import { MdCampaign } from "react-icons/md";
 import Offers from "./Offers";
+import Champaigns from "./Champaigns";
 
 const OfferAndEvents = () => {
   const [offer, setoffer] = useState(true);
@@ -611,7 +612,7 @@ const OfferAndEvents = () => {
           {/* All Users */}
 
           {offer && <Offers />}
-          {Campaig && <Settlements />}
+          {Campaig && <Champaigns />}
         </div>
       </div>
     </div>

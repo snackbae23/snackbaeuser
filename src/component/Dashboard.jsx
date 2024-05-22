@@ -425,11 +425,11 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-           
-            <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2 p-4 rounded-md bg-white ml-2">
-            <p className="text-[#000000] text-[1.6rem] font-semibold ">
+            <p className="text-[#000000] text-[1.6rem] font-semibold ml-4">
               Today's Report
             </p>
+            <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2 p-4 rounded-md bg-white ml-2">
+            
               <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
                 <p className="text-[#777980] text-[.9rem] font-semibold">
                   Today's Sales

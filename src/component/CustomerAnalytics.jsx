@@ -159,7 +159,7 @@ const CustomerAnalytics = () => {
                 </div>
 
                 {/* footer */}
-                <div className='p-4'>
+                <div className='sm:p-4'>
                     <div className='flex sm:flex-row flex-col w-full h-fit sm:items-center border border-[#00000099]  rounded-md my-4 font-inter  sm:p-0 p-4'>
                         <img className='size-[120px] ' src="/Customer feedback.png" alt="" />
                         <div>
