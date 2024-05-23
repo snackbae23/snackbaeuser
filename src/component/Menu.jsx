@@ -666,7 +666,8 @@ const Menu = () => {
       <div className='w-full h-fit  mt-[10px] sm:px-12 px-4  '>
 
         <div className='bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2 px-1'>
-
+       
+        {/* Search result */}
 
           <div className='w-full h-fit flex sm:flex-row flex-col gap-4 sm:my-1 my-4  items-centen  justify-between   '>
             <div className='relative sm:w-[35%] w-full flex items-center rounded-md border border-[#407fd1]  '>
@@ -795,7 +796,11 @@ const Menu = () => {
 
                           <div className='flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m '>
                             <p className='text-[1.1rem]'>₹{item.price}</p>
-                            <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem]' onClick={() => { openPopup2(item) }}>Edit</button>
+                            <div className='flex gap-2'>
+                            <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white' onClick={() => { openPopup2(item) }}>Edit</button>
+                            <button className='border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white' >Delete</button>
+                            </div>
+                           
                           </div>
                         </div>
                       ))}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+
 import "./Stepper.css";
 import { TiTick } from "react-icons/ti";
 
@@ -7,6 +8,8 @@ const Settlements = () => {
   const [showTransDetails, setShowTransDetails] = useState(null);
   const steps = ["Payout Request Created", "Payment Settled"];
   const [currentStep, setCurrentStep] = useState(2);
+
+
 
   const toggleTransaction = (transId) => {
     setShowTransDetails(showTransDetails === transId ? null : transId);
@@ -61,10 +64,12 @@ const Settlements = () => {
 
           <div className="w-full h-fit flex flex-col justify-center items-center md:mt-8 mt-0">
             {data1?.map((data, index) => (
+
               <div className="w-full">
                 <div
                   key={index}
                   className="w-full h-[4rem] flex flex-row md:gap-14 gap-8 border-2 rounded-2xl md:p-6 items-center p-4 mt-4 relative"
+
                 >
                   <div className="md:w-[38%] w-[25%] flex md:flex-row flex-col  justify-between items-center">
                     <p className="font-semibold text-black text-base md:ml-8 ml-2">
@@ -127,6 +132,7 @@ const Settlements = () => {
                 </div>
 
                 {showTransDetails === data.id && (
+
                   <div className=" h-fit flex md:flex-row flex-col gap-4  md:mt-8 mt-4 w-full border-2 rounded-2xl md:p-4 p-2 ">
                     <div className="md:w-[38%] w-full flex md:flex-row flex-col gap-2 justify-between md:border-0 border-2 rounded-lg">
                       <div className="md:w-[52%] w-full flex md:gap-4 gap-4 sm:ml-0 ml-8">

@@ -11,104 +11,115 @@ const Offers = () => {
 
     const data = [{
         "offername": "Walk-in Offer",
+        "Active": "True",
 
     }, {
-        "offername": "Walk-in Offer",
+        "offername": "Flat Discount",
+        "Active": "false",
 
     }, {
-        "offername": "Walk-in Offer",
+        "offername": "Birthday Offer",
+        "Active": "false",
 
     }, {
-        "offername": "Walk-in Offer",
+        "offername": "Happy Hours",
+        "Active": "false",
+
+    },{
+        "offername": "Special Offer",
+        "Active": "false",
 
     },]
 
     function openPopup(index) {
         {
-          index === 0 && openPopup1();
+            index === 0 && openPopup1();
         }
         {
-          index === 1 && openPopup2();
+            index === 1 && openPopup2();
         }
         {
-          index === 2 && openPopup3();
+            index === 2 && openPopup3();
         }
         {
-          index === 3 && openPopup4();
+            index === 3 && openPopup4();
         }
         {
-          index === 4 && openPopup5();
+            index === 4 && openPopup5();
         }
-      }
-    
-      function openPopup1() {
+    }
+
+    function openPopup1() {
         console.log("inside 1")
         document.getElementById("popup1").style.display = "block";
         document.getElementById("restaurant").style.display = "block";
         // document.getElementById("restaurant").style.filter = "blur(1px)";
         // document.getElementById("popup1").style.filter = "none";
-      }
-    
-        function openPopup2() {
-          document.getElementById("popup2").style.display = "block";
-          document.getElementById("restaurant").style.display = "block";
-        }
-    
-        function openPopup3() {
-          document.getElementById("popup3").style.display = "block";
-          document.getElementById("restaurant").style.display = "block";
-        }
-    
-        function openPopup4() {
-          document.getElementById("popup4").style.display = "block";
-          document.getElementById("restaurant").style.display = "block";
-        }
-    
-        function openPopup5() {
-          document.getElementById("popup5").style.display = "block";
-          document.getElementById("restaurant").style.display = "block";
-        }
+    }
+
+    function openPopup2() {
+        document.getElementById("popup2").style.display = "block";
+        document.getElementById("restaurant").style.display = "block";
+    }
+
+    function openPopup3() {
+        document.getElementById("popup3").style.display = "block";
+        document.getElementById("restaurant").style.display = "block";
+    }
+
+    function openPopup4() {
+        document.getElementById("popup4").style.display = "block";
+        document.getElementById("restaurant").style.display = "block";
+    }
+
+    function openPopup5() {
+        document.getElementById("popup5").style.display = "block";
+        document.getElementById("restaurant").style.display = "block";
+    }
 
     return (
-        <div className='w-full h-fit '>
+        <div className='w-full h-fit  '>
+            <div className='w-full h-fit flex sm:flex-row flex-col sm:gap-4 gap-4 flex-wrap sm:p-5   '>
 
-            <div className='w-full   sm:p-5 flex-wrap sm:grid grid-cols-3 gap-4'>
-                {
-                    data.map((item, index) => (
-                        <div className=' h-[200px] shadow-xl rounded-lg p-5 relative flex flex-col gap-4' key={index}>
-                            <div className='flex justify-between border-b pb-3 border-[#F1F5F9]'>
-                                <div>
-                                    <p>Walk-in Offer</p>
-                                    <div className='flex items-center gap-1 text-[#ED4F9D] '>
-                                    <GoDotFill />
-                                    <p> Pause</p>
+                    {
+                        data.map((item, index) => (
+                            <div className=' h-[200px] sm:w-[32%] sm:shadow-xl border shadow-md rounded-lg p-5 relative flex flex-col gap-4 bg-red-70' key={index}>
+                                <div className='flex justify-between border-b pb-3 border-[#F1F5F9]'>
+                                    <div>
+                                        <p>{item.offername}</p>
+                                        { item.Active == "True" ? ( <div className='flex items-center gap-1 text-[#67CE67] '>
+                                     <GoDotFill />
+                                     <p> Active</p>
+                                     </div> ):(<div className='flex items-center gap-1 text-[#ED4F9D] '>
+                                            <GoDotFill />
+                                            <p> Pause</p>
+                                        </div>)
+                                        }
+                                        
+
                                     </div>
-                                    {/* for active */}
-                                    {/* <div className='flex items-center gap-1 text-[#67CE67] '>
-                                    <GoDotFill />
-                                    <p> Active</p>
-                                    </div> */}
-                                    
+                                    <SwitchOffer isActive={item.Active} />
                                 </div>
-                                <SwitchOffer/>
-                            </div>
-                            <div className='text-[#64748B] text-[.8rem]'>
-                                <p>10% OFF Up to ₹120</p>
-                                <p>Minimum billing to avail ₹500</p>
-                                <p>Terms & Condition</p>
-                            </div>
-                            <div onClick={openPopup.bind(this, index)} className='border rounded-md px-3 py-1  absolute right-4 flex items-center gap-1  bottom-4 text-[#004AAD] border-[#426CFF]'>
-                            <FaRegEdit className='size-3' />
-                            <button className='text-[.9rem]'>Edit</button>
-                            </div>
-                            
-                        </div>
-                    ))
+                                <div className='text-[#64748B] text-[.8rem]'>
+                                    <p>10% OFF Up to ₹120</p>
+                                    <p>Minimum billing to avail ₹500</p>
+                                    <p>Terms & Condition</p>
+                                </div>
+                                <div onClick={openPopup.bind(this, index)} className='border rounded-md px-3 py-1  absolute right-4 flex items-center gap-1  bottom-4 text-[#004AAD] border-[#426CFF]'>
+                                    <FaRegEdit className='size-3' />
+                                    <button className='text-[.9rem]'>Edit</button>
+                                </div>
 
-                }
+                            </div>
+                        ))
+
+                    }
 
 
+             
             </div>
+
+
 
             {/* offer Performance */}
             <div className='p-6'>
@@ -148,7 +159,7 @@ const Offers = () => {
                             <GoInfo className='size-5 bg-slate-50  absolute top-7 right-6 z-20' />
                         </div>
                         <div className='-rotate-90  sm:h-[400px]  absolute -left-32 -top-5 '>
-                            <Barchart2/>
+                            <Barchart2 />
                         </div>
                         <div className='absolute  -bottom-5  sm:p-12 sm:mb-0 mb-8 flex items-center justify-center text-[.8rem] font-semibold'>
                             <p>Walk-in offer</p>
