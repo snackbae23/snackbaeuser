@@ -3,7 +3,7 @@
 }
 
 .step-item:not(:first-child)::before{
-    @apply content-[''] bg-slate-200 absolute w-[3px] h-[50px] right-1.5 -translate-y-3/4
+    @apply content-[''] bg-slate-200 absolute w-[3px] h-[60px] right-1.5 -translate-y-3/4
 }
 
 .step{
