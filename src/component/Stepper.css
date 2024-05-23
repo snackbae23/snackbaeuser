@@ -1,0 +1,23 @@
+.step-item{
+    @apply relative ;
+}
+
+.step-item:not(:first-child)::before{
+    @apply content-[''] bg-slate-200 absolute w-[3px] h-[60px] right-1.5 -translate-y-3/4
+}
+
+.step{
+    @apply w-4 h-4 flex items-center justify-center z-10 relative bg-slate-700 rounded-full font-semibold text-xs text-white;
+}
+
+.active .step{
+    @apply bg-sky-600;
+}
+
+.complete .step{
+    @apply bg-green-600;
+}
+
+.active{
+    @apply bg-white w-[15px]
+}

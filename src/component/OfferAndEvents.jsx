@@ -5,12 +5,10 @@ import { motion } from "framer-motion";
 import { FaRupeeSign } from "react-icons/fa";
 
 import { GoInfo } from "react-icons/go";
-
-import AllTransaction from "./AllTransaction";
-import Settlements from "./Settlements";
 import { MdCampaign } from "react-icons/md";
 import Offers from "./Offers";
-import Champaigns from "./Champaigns";
+
+import Campaigns from "./Campaigns";
 
 const OfferAndEvents = () => {
   const [offer, setoffer] = useState(true);
@@ -612,7 +610,9 @@ const OfferAndEvents = () => {
           {/* All Users */}
 
           {offer && <Offers />}
-          {Campaig && <Champaigns />}
+
+          {Campaig && <Campaigns/>}
+
         </div>
       </div>
     </div>
