@@ -136,19 +136,19 @@ const Offers = () => {
                             <p className='flex items-center justify-center  sm:ml-4 ml-1'>Flat Discount</p>
                             <p>Birthday Offer</p>
                             <p>Happy Hours</p>
-                            <p>Special Days</p>
+                            <p className='mr-3'>Special Days</p>
                         </div>
                     </div>
 
 
                     <div className='sm:w-[50%] h-[400px] relative border rounded-lg   flex items-center justify-center flex-col  '>
                        <Barchart2/>
-                       <div className='absolute  flex items-center justify-center text-[.8rem] font-semibold bottom-2  sm:ml-[80px] ml-[58px] sm:mr-9  text-wrap bg-white '>
-                            <p className=''>Walk-in offer</p>
+                       <div className='absolute  flex items-center justify-center text-[.8rem] font-semibold bottom-[.7rem] sm:ml-[80px] ml-[58px] sm:mr-9  text-wrap bg-white '>
+                            <p>Walk-in offer</p>
                             <p className='flex items-center justify-center  sm:ml-4 ml-1'>Flat Discount</p>
                             <p>Birthday Offer</p>
                             <p>Happy Hours</p>
-                            <p>Special Days</p>
+                            <p className='mr-3'>Special Days</p>
                         </div>
                     </div>
 

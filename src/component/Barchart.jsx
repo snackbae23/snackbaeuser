@@ -8,11 +8,11 @@ const Barchart = () => {
           <div {...props}>
             <ResponsiveBar
               data={[
-                { name: "Walk-in offer", count: 11 },
-                { name: "Flat Discount", count: 100 },
-                { name: "Birthday Offer", count: 29 },
-                { name: "Happy Hours", count: 15 },
-                { name: "Special Days", count: 80 },
+                { name: "a", count: 11 },
+                { name: "b", count: 100 },
+                { name: "c", count: 29 },
+                { name: "d", count: 15 },
+                { name: "e", count: 80 },
                
               ]}
               keys={["count"]}
