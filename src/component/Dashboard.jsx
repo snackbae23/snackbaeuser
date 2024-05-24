@@ -571,7 +571,7 @@ const Dashboard = () => {
                     className="w-full flex mb-2  sm:text-[.9rem] text-[.8rem] font-semibold sm:border-none border rounded-xl border-[#00000080] p-1"
                   >
                     <div className="w-[40%] flex sm:flex-row flex-col mb-3 items-center sm:justify-evenly ">
-                      <p className="text-[#111827] sm:w-[50%] font-semibold text-[.9rem]   text-center">
+                      <p className="text-[#111827] sm:w-[50%] font-semibold text-[.9rem] flex sm:pl-14 items-center ">
                         {item?.userId?.name || "User"}
                       </p>
                       <p className="text-[#6B7280] sm:w-[50%] flex items-center justify-center">
@@ -582,10 +582,10 @@ const Dashboard = () => {
                     <div className="grid w-[60%] sm:grid-cols-4 grid-cols-3 gap-2 justify-evenly ">
                       {/* <p className='text-[#6B7280] flex items-center '>{item.Date}</p> */}
                       <p className="text-[black]   flex items-center justify-center">
-                        {item.amount}
+                      ₹ {item.amount}
                       </p>
                       <p className="text-[#004AAD]   text-center flex items-center justify-center  ">
-                        {item.discount}
+                      ₹ {item.discount}
                       </p>
                       <p
                         className={`rounded-3xl  w-full  h-[70%] py-[.5rem]   text-center mt-2 hidden sm:flex items-center justify-center 
@@ -604,7 +604,7 @@ const Dashboard = () => {
                         className={`rounded-3xl    text-center p-1 sm:flex mt-2 h-[70%] items-center justify-center 
                 ${
                   item.mode === "upi"
-                    ? "bg-[#DEF7EC] text-green-700"
+                    ? "bg-[#E1EFFE] text-[#1E429F]"
                     : item.mode === "wallet"
                     ? "bg-[#fbd9de] text-[#FD4A65]"
                     : item.mode === "netbanking"

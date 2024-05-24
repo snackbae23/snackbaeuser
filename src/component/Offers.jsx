@@ -136,7 +136,7 @@ const Offers = () => {
                             <p className='flex items-center justify-center  sm:ml-4 ml-1'>Flat Discount</p>
                             <p>Birthday Offer</p>
                             <p>Happy Hours</p>
-                            <p className='mr-3'>Special Days</p>
+                            <p className='sm:mr-0 mr-3' >Special Days</p>
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@ const Offers = () => {
                             <p className='flex items-center justify-center  sm:ml-4 ml-1'>Flat Discount</p>
                             <p>Birthday Offer</p>
                             <p>Happy Hours</p>
-                            <p className='mr-3'>Special Days</p>
+                            <p className='sm:mr-0 mr-3'>Special Days</p>
                         </div>
                     </div>
 
