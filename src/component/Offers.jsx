@@ -122,27 +122,18 @@ const Offers = () => {
 
 
             {/* offer Performance */}
-            <div className='p-6'>
-                <div className='flex flex-col mb-8'>
+            <div className='md:p-6'>
+                <div className='flex flex-col my-8'>
                     <p className='text-[1.6rem] text-black font-bold'>Offer Performance</p>
                     <p className='text-[#000000CC]'>Monitor Your Offer Performance</p>
                 </div>
 
-                <div className='w-full flex sm:flex-row flex-col gap-2 '>
-                    <div className='sm:w-[50%] h-[400px] relative border rounded-lg overflow-hidden flex items-center  '>
-                        <div className='flex justify-between '>
-                            <div className='z-20 top-5 ml-6 absolute bg-slate-50'>
-                                <p className='text-[1.3rem]   font-semibold'>Total Offer Redemption</p>
-                                <p>February</p>
-                            </div>
-                            <GoInfo className='size-5 bg-slate-50  absolute top-7 right-6 z-20' />
-                        </div>
-                        <div className='-rotate-90  sm:h-[400px] h-[400px] absolute -left-32 -top-5 '>
-                            <Barchart />
-                        </div>
-                        <div className='absolute  -bottom-5  sm:p-12 sm:mb-0 mb-8 flex items-center justify-center text-[.8rem] font-semibold'>
+                <div className='w-full flex sm:flex-row flex-col gap-4 '>
+                <div className='sm:w-[50%] h-[400px] relative border rounded-lg   flex items-center justify-center flex-col  '>
+                        <Barchart/>
+                       <div className='absolute  flex items-center justify-center text-[.8rem] font-semibold bottom-[.7rem] sm:ml-[80px] ml-[58px] sm:mr-9  text-wrap bg-white '>
                             <p>Walk-in offer</p>
-                            <p>Flat Discount</p>
+                            <p className='flex items-center justify-center  sm:ml-4 ml-1'>Flat Discount</p>
                             <p>Birthday Offer</p>
                             <p>Happy Hours</p>
                             <p>Special Days</p>
@@ -150,20 +141,11 @@ const Offers = () => {
                     </div>
 
 
-                    <div className='sm:w-[50%] h-[400px] relative border rounded-lg overflow-hidden  flex items-center  '>
-                        <div className='flex justify-between '>
-                            <div className='z-20 top-5 ml-6 absolute bg-slate-50'>
-                                <p className='text-[1.3rem]   font-semibold'>Unique Redemption</p>
-                                <p>February</p>
-                            </div>
-                            <GoInfo className='size-5 bg-slate-50  absolute top-7 right-6 z-20' />
-                        </div>
-                        <div className='-rotate-90  sm:h-[400px]  absolute -left-32 -top-5 '>
-                            <Barchart2 />
-                        </div>
-                        <div className='absolute  -bottom-5  sm:p-12 sm:mb-0 mb-8 flex items-center justify-center text-[.8rem] font-semibold'>
-                            <p>Walk-in offer</p>
-                            <p>Flat Discount</p>
+                    <div className='sm:w-[50%] h-[400px] relative border rounded-lg   flex items-center justify-center flex-col  '>
+                       <Barchart2/>
+                       <div className='absolute  flex items-center justify-center text-[.8rem] font-semibold bottom-2  sm:ml-[80px] ml-[58px] sm:mr-9  text-wrap bg-white '>
+                            <p className=''>Walk-in offer</p>
+                            <p className='flex items-center justify-center  sm:ml-4 ml-1'>Flat Discount</p>
                             <p>Birthday Offer</p>
                             <p>Happy Hours</p>
                             <p>Special Days</p>
