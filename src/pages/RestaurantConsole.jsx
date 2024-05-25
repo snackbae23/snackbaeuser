@@ -60,6 +60,7 @@ const RestaurantConsole = () => {
   if (screenWidth < 768) { // Adjust the threshold as needed
     
     document.getElementById('left').style.display = "none";
+    document.getElementById("restaurant").style.display = "none";
     
   }  
 
@@ -78,6 +79,7 @@ const RestaurantConsole = () => {
     const screenWidth = window.innerWidth;
   if (screenWidth < 768) { // Adjust the threshold as needed
     document.getElementById('left').style.display = "none";
+    document.getElementById("restaurant").style.display = "none";
   }
   }
   const c = () => {
@@ -95,6 +97,7 @@ const RestaurantConsole = () => {
     if (screenWidth < 768) { // Adjust the threshold as needed
       
       document.getElementById('left').style.display = "none";
+      document.getElementById("restaurant").style.display = "none";
       
       
     }  
@@ -113,6 +116,7 @@ const RestaurantConsole = () => {
     if (screenWidth < 768) { // Adjust the threshold as needed
       
       document.getElementById('left').style.display = "none";
+      document.getElementById("restaurant").style.display = "none";
       
     }  
   }
@@ -130,6 +134,7 @@ const RestaurantConsole = () => {
     if (screenWidth < 768) { // Adjust the threshold as needed
       
       document.getElementById('left').style.display = "none";
+      document.getElementById("restaurant").style.display = "none";
       
     }  
   }
@@ -147,6 +152,7 @@ const RestaurantConsole = () => {
     if (screenWidth < 768) { // Adjust the threshold as needed
       
       document.getElementById('left').style.display = "none";
+      document.getElementById("restaurant").style.display = "none";
       
     }  
   }
@@ -177,6 +183,7 @@ const RestaurantConsole = () => {
       
       document.getElementById('left').style.display = "none";
       setIsToggled(false);
+      document.getElementById("restaurant").style.display = "none";
       
     } 
 
@@ -187,7 +194,7 @@ const RestaurantConsole = () => {
 
   return (
     <>
-    <div id='restaurant' className='absolute w-full h-[300vh] bg-black z-[700] opacity-45 hidden'></div>
+    <div id='restaurant' onClick={removeleft} className='absolute w-full h-[400vh] bg-black z-[700] opacity-45 hidden'></div>
     <Navbar1 isToggled={isToggled} setIsToggled={setIsToggled} />
       <div id='restaurant' className='w-full h-fit flex justify-center  relative  '>
 
@@ -202,9 +209,9 @@ const RestaurantConsole = () => {
               </div>
             </div>
             <div className='flex flex-col'>
-            <button className='px-2 py-2  text-[1.3rem] border-y border-[#999da2]  text-[#000000] font-semibold '>Add Account</button>
-            <button className='px-2 py-2  text-[1.3rem] border-y border-[#999da2]  text-[#000000] font-semibold '>Pricing</button>
-            <button className='px-2 py-2  text-[1.3rem] border-y border-[#999da2]  text-[#000000] font-semibold '>Terms & condition</button>
+            <button className='px-2 py-2  text-[1.3rem] border-y border-[#999da2]  text-[#000000] font-semibold  '>Add Account</button>
+            <button className='px-2 py-2  text-[1.3rem]  border-[#999da2]  text-[#000000] font-semibold '>Pricing</button>
+            <button className='px-2 py-2  text-[1.3rem] border-t border-[#999da2]  text-[#000000] font-semibold '>Terms & condition</button>
             <button className='px-2 py-2  text-[1.3rem] border-t mb-4 border-[#999da2]  text-[#000000] font-semibold '>Privacy Policy</button>
 
             </div>
@@ -218,7 +225,7 @@ const RestaurantConsole = () => {
 
         <div id='left' className={` ${ screenWidth >= 768 ?
                            'sm:w-[20%] bg-white fixed left-1  z-40    h-full   mt-[70px] px-6 text-[.95rem]  gap-32 ' : 
-                           ' fixed hidden left-0 z-40 h-fit rounded-lg   mt-[70px] px-6 text-[.95rem]  gap-32 bg-white ' }`}>
+                           ' fixed hidden left-0 z-[900] h-fit rounded-b-lg   mt-[70px] px-6 text-[.95rem]  gap-32 bg-white ' }`}>
           <div className='mt-2'>
             <div id=''
               onClick={a}
@@ -257,7 +264,7 @@ const RestaurantConsole = () => {
             </div>
           </div>
 
-          <div className='mt-24'>
+          <div className='mt-[150px]'>
             <div id=''
               onClick={f}
 

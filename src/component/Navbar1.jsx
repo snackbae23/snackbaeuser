@@ -34,6 +34,7 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
         setIsToggled(!isToggled);
        
         document.getElementById('left').style.display = "none";
+        document.getElementById("restaurant").style.display = "none";
 
     };
     const handleToggle1 = () => {
@@ -41,6 +42,7 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
        
         document.getElementById('left').style.display = "block";
         scrollToTop();
+        document.getElementById("restaurant").style.display = "block";
 
     };
 
