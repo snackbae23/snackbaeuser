@@ -192,19 +192,23 @@ const RestaurantConsole = () => {
       <div id='restaurant' className='w-full h-fit flex justify-center  relative  '>
 
           {/* frame */}
-          <div id='frame' className='hidden fixed right-9 z-50  w-[75%] bg-white  h-fit mt-[70px] rounded-md p-5 border border-[black]'>
-            <div className='flex flex-col '>
+          <div id='frame' className='hidden fixed right-9 z-50  w-[60%] bg-white  h-fit mt-[70px] rounded-md pt-5 border border-[black]'>
+            <div className='flex flex-col w-full  '>
             <div className='flex gap-2 items-center justify-evenly p-2'>
-              <GoPerson className='size-10 rounded-full border border-black p-1 ' />
+              <img src="/image 148 (1).png" alt='' className='size-14 rounded-full  ' />
               <div className='text-[#000000] font-semibold'>
                 <p className='text-[1.3rem] '>Foodoos</p>
-                <p>Snack Id :9881</p>
+                <p>Snack Id : 9881</p>
               </div>
-              <IoSettingsOutline className='size-7' />
+            </div>
+            <div className='flex flex-col'>
+            <button className='px-2 py-2  text-[1.3rem] border-y border-[#999da2]  text-[#000000] font-semibold '>Add Account</button>
+            <button className='px-2 py-2  text-[1.3rem] border-y border-[#999da2]  text-[#000000] font-semibold '>Pricing</button>
+            <button className='px-2 py-2  text-[1.3rem] border-y border-[#999da2]  text-[#000000] font-semibold '>Terms & condition</button>
+            <button className='px-2 py-2  text-[1.3rem] border-t mb-4 border-[#999da2]  text-[#000000] font-semibold '>Privacy Policy</button>
 
             </div>
-            <button className='px-2 py-2 rounded-md text-[1.3rem] border border-[#999da2] my-3 text-[#004AAD] font-bold '>Add Account</button>
-
+            
             </div>
             
 

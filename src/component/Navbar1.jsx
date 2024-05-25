@@ -9,14 +9,6 @@ import logo from '../assets/logo.png';
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 
-
-
-
-
-
-
-
-
 const Navbar1 = ({isToggled, setIsToggled}) => {
 
 
@@ -92,14 +84,14 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
                         className='sm:hidden block text-[1.6rem] size-7 '
                         onClick={handleToggle1} />)
             }
-            <div className='sm:hidden block rounded-full border border-[black] items-center justify-center p-1 relative '>
+            <div className=' size-14 sm:hidden block rounded-full border  items-center justify-center  relative  '>
                 {
                     fram ? 
-                    (<GoPerson className='size-7 absolute ' onClick={frames1} />):
-                    (<GoPerson className='size-7 absolute ' onClick={frames2} />)
+                    (<img src="/image 148 (1).png" alt='' className='size-full ' onClick={frames1} />):
+                    (<img src="/image 148 (1).png" alt='' className='size-full ' onClick={frames2} />)
                 }
-
-            <GoPerson className='size-7 ' onClick={frames1} />
+            {/* <img src="/image 148 (1).png" className='size-fit' alt="" /> */}
+            {/* <GoPerson className='size-7 ' onClick={frames1} /> */}
             </div>
 
         </div>
