@@ -192,7 +192,7 @@ const RestaurantConsole = () => {
       <div id='restaurant' className='w-full h-fit flex justify-center  relative  '>
 
           {/* frame */}
-          <div id='frame' className='hidden fixed right-9 z-50  w-[60%] bg-white  h-fit mt-[70px] rounded-md pt-5 border border-[black]'>
+          <div id='frame' className='hidden fixed right-9 z-[900]  w-[60%] bg-white  h-fit mt-[70px] rounded-md pt-5 border border-[black]'>
             <div className='flex flex-col w-full  '>
             <div className='flex gap-2 items-center justify-evenly p-2'>
               <img src="/image 148 (1).png" alt='' className='size-14 rounded-full  ' />

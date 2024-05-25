@@ -47,10 +47,12 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
     const frames1 =()=>{
         setframe(!fram);
         document.getElementById('frame').style.display = "none";
+        document.getElementById("restaurant").style.display = "none";
     };
     const frames2 =()=>{
         setframe(!fram);
         document.getElementById('frame').style.display = "block";
+        document.getElementById("restaurant").style.display = "block";
     };
     // Function to handle link click
     const handleLinkClick = () => {
@@ -62,7 +64,7 @@ const Navbar1 = ({isToggled, setIsToggled}) => {
 
     
     return (
-        <div className='fixed bg-white z-[600] w-full h-[70px] flex justify-between items-center px-[1.5rem]'>
+        <div className='fixed bg-white sm:z-[600] z-[900] w-full h-[70px] flex justify-between items-center px-[1.5rem]'>
             {/* logo */}
             <img
                 onClick={
