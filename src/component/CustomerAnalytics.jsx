@@ -11,7 +11,7 @@ const CustomerAnalytics = () => {
     const id = userID
     const resId = userID
     return (
-        <div className='w-full bg-[#F6F8FF] sm:px-6 h-fit '>
+        <div className='w-full bg-[#F6F8FF] sm:px-6 h-fit  '>
 
             <div className='flex flex-col w-full h-fit   mt-6'>
                 <div className='flex gap-4 w-full h-fit  my-9 sm:flex-row flex-col '>

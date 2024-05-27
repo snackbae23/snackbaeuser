@@ -386,7 +386,7 @@ const Menu = () => {
   }
 
   return (
-    <div id='menu' className='w-full h-fit relative'>
+    <div id='menu' className='w-full h-fit relative sm:mb-1 mb-10'>
 
       {/* Add menu popup */}
       <motion.div id="popup" whileInView={{ y: [400, 0] }} transition={{ duration: .5, type: "tween" }} className='sm:w-[500px]  w-[100%] h-[600px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4  '>

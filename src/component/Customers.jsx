@@ -43,7 +43,7 @@ const Customers = () => {
  
 
   return (
-    <div id='menu' className='w-full h-fit relative '>
+    <div id='menu' className='w-full h-fit relative sm:mb-1 mb-10'>
       <div className='  w-full  h-[90px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-5 sm:px-12   '>
         <div>
           <p className='text-[1.6rem] font-semibold'>Customer Analytics</p>

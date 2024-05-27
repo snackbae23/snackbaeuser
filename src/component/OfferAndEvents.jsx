@@ -115,7 +115,7 @@ const OfferAndEvents = () => {
   }
 
   return (
-    <div id="offer" className="w-full h-fit relative ">
+    <div id="offer" className="w-full h-fit relative sm:mb-1 mb-12">
       {/* Happy Hours popup */}
       <motion.div
         id="popup1"

@@ -65,7 +65,7 @@ const Payment = () => {
 
 
   return (
-    <div id="payment" className="w-full h-fit relative ">
+    <div id="payment" className="w-full h-fit relative sm:mb-0 mb-6">
       {/* Withraw balance */}
       <motion.div
         id="popup"
