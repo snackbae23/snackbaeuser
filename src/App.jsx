@@ -28,9 +28,9 @@ function App() {
 
           {/* contact,terms and privacy */}
 
-          {/* <Route path="/termsCondition" element={<TermsCondtion />} /> */}
-          {/* <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-          <Route path="/contact" element={<ContactUs />} /> */}
+          {/* <Route path="/termsCondition" element={<TermsCondtion />} />
+           <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/contact" element={<ContactUs />} />  */}
 
           {/* First Target Restaurant console */}
           <Route path="/restaurant" element={<RestaurantConsole />} />

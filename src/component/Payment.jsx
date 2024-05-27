@@ -160,7 +160,7 @@ const Payment = () => {
         <div className="bg-white  flex flex-col gap-2 sm:py-5 py-2 rounded-lg ">
           <div className="flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-4 text-[#000000] px-4 ">
             <p className="text-[1.8rem] font-semibold sm:px-5">Transactions</p>
-            <button onClick={openPopup} className="border sm:px-5 px-2.5 py-2 border-[#0F172A] rounded-lg bg-[#004AAD] text-white text-nowrap">
+            <button onClick={openPopup} className="border sm:px-5 px-2.5 py-2 sm:mb-0 mb-4  border-[#0F172A] rounded-lg bg-[#004AAD] text-white text-nowrap">
               Withdrow Request
             </button>
           </div>
@@ -183,7 +183,7 @@ const Payment = () => {
                 <p className="text-[#000000] sm:text-[2.2rem] text-[1.5rem] font-semibold text-nowrap ">
                   ₹ 16003.78
                 </p>
-                <div className="flex justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2  items-center ">
+                <div className="flex justify-evenly sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2  items-center ">
                   <p className="sm:w-full w-[60%] ">Monthly Collection </p>
 
                   <p>May</p>
