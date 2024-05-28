@@ -359,7 +359,7 @@ const Dashboard = () => {
         {/* total report */}
         <div className=" w-full sm:flex sm:px-2 gap-3 overflow-hidden">
           <div className="sm:w-[70%] w-full flex flex-col gap-2">
-            <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2 p-4 rounded-md ml-2">
+            <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
               <div className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold">
                 <p>View Profile</p>
                 <GoFileSymlinkFile />
@@ -425,10 +425,10 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <p className="text-[#000000] text-[1.6rem] font-semibold ml-4">
+            <p className="text-[#000000] text-[1.6rem] font-semibold px-4 ">
               Today's Report
             </p>
-            <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2 p-4 rounded-md bg-white ml-2">
+            <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2  rounded-md bg-white p-4">
 
               <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
                 <p className="text-[#777980] text-[.9rem] font-semibold">
