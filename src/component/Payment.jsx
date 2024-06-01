@@ -156,16 +156,16 @@ const Payment = () => {
           </p>
         </div>
       </div>
-      <div className="w-full h-fit  mt-[10px] px-6   ">
+      <div className="w-full h-fit  mt-[10px] sm:px-6 px-3   ">
         <div className="bg-white  flex flex-col gap-2 sm:py-5 py-2 rounded-lg ">
-          <div className="flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-4 text-[#000000] px-4 ">
+          <div className="flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-4 text-[#000000] sm:px-4 px-2 ">
             <p className="text-[1.8rem] font-semibold sm:px-5">Transactions</p>
             <button onClick={openPopup} className="border sm:px-5 px-2.5 py-2 sm:mb-0 mb-4  border-[#0F172A] rounded-lg bg-[#004AAD] text-white text-nowrap">
               Withdrow Request
             </button>
           </div>
 
-          <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-4 sm:my-4 sm:px-6 rounded-md ">
+          <div className="w-full h-fit bg-white  flex sm:flex-row flex-col items-center justify-evenly gap-4 sm:my-4 sm:px-6 px-2 rounded-md ">
             <div className="sm:w-[66%] w-full flex gap-4">
               <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-center">
                 <GoInfo className="size-6 absolute top-3 right-3 bg-white" />
@@ -183,7 +183,7 @@ const Payment = () => {
                 <p className="text-[#000000] sm:text-[2.2rem] text-[1.5rem] font-semibold text-nowrap ">
                   ₹ 16003.78
                 </p>
-                <div className="flex justify-evenly sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2  items-center ">
+                <div className="flex  justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2  items-center ">
                   <p className="sm:w-full w-[60%] ">Monthly Collection </p>
 
                   <p>May</p>
@@ -205,17 +205,17 @@ const Payment = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 w-full justify-center pt-4 sm:justify-start px-[1.5rem] border-b pb-6">
+          <div className="flex gap-4 w-full  pt-4 justify-start px-[.9rem] sm:px-[1.4rem] border-b pb-6">
             <button
               id="w"
-              className="border sm:px-5 px-4 py-2 border-[#0F172A] rounded-full bg-[#004AAD] text-white text-nowrap"
+              className="border sm:px-5 px-4 py-2 border-[#0F172A] rounded-lg bg-[#004AAD] text-white text-nowrap"
               onClick={trans}
             >
               All Transactions
             </button>
             <button
               id="z"
-              className="border sm:px-5 px-4 py-2 border-[#0F172A] rounded-full text-nowrap"
+              className="border sm:px-5 px-4 py-2 border-[#0F172A] rounded-lg text-nowrap"
               onClick={settle}
             >
               Settlement

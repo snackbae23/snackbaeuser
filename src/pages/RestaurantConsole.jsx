@@ -282,13 +282,13 @@ const RestaurantConsole = () => {
 
 
         {/* left side for small */}
-        <div className='md:hidden block  bg-white border rounded-md  fixed bottom-0 p-3 w-[100%] z-[900] '>
-          <div className='flex items-center justify-evenly text-[#64748B]  '>
-            <BiSolidDashboard onClick={a} className={`size-[24px] ${das ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
-            <FaConciergeBell onClick={b} className={`size-[24px] ${men ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
-            <HiOutlineCurrencyRupee onClick={c} className={`size-[26px] ${pay ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
-            <HiOutlineSpeakerphone onClick={d} className={`size-[24px] ${off ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
-            <FaUserAlt onClick={e} className={`size-[24px] ${cus ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `} />
+        <div className='md:hidden block   fixed bottom-2 px-3  w-[100%] h-fit z-[900]  '>
+          <div className='flex items-center justify-between text-[#64748B] bg-white p-2 border rounded-md   '>
+            <BiSolidDashboard onClick={a} className={`size-[32px] ${das ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
+            <FaConciergeBell onClick={b} className={`size-[32px] ${men ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
+            <HiOutlineCurrencyRupee onClick={c} className={`size-[32px] ${pay ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
+            <HiOutlineSpeakerphone onClick={d} className={`size-[32px] ${off ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')}`} />
+            <FaUserAlt onClick={e} className={`size-[32px] ${cus ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `} />
 
           </div>
         </div>

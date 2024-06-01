@@ -38,6 +38,27 @@ const Customers = () => {
 
   }
 
+  const [Today,setToday]=useState(true);
+  const [Week,setWeek]=useState(false);
+  const [Month,setMonth]=useState(false);
+
+  const today = () => {
+    setToday(true)
+    setWeek(false)
+    setMonth(false)
+  }
+
+  const weekly = () => {
+    setToday(false)
+    setWeek(true)
+    setMonth(false)
+  }
+
+  const Monthly = () => {
+    setToday(false)
+    setWeek(false)
+    setMonth(true)
+  }
   
 
  
@@ -51,21 +72,22 @@ const Customers = () => {
         </div>
 
       </div>
-      <div className='w-full h-fit  mt-[10px] px-6   '>
+      <div className='w-full h-fit  mt-[10px] sm:px-6 px-3   '>
 
-        <div className='bg-white  flex flex-col gap-6 sm:py-5 py-2 rounded-lg '>
+        <div className='bg-white  flex flex-col gap-6 sm:py-5  rounded-lg p-2 '>
 
 
-          <div className='flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-4 text-[#000000] '>
+          <div className='flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-3 text-[#000000] '>
             <p className='text-[1.8rem] font-semibold sm:px-5'>Customer Insights</p>
-            <div className='flex gap-5 border border-[#000000B2] rounded-xl mr-4 p-3   items-center'>
-              <p className='font-Roboto'>This month</p>
-              <input type='date' className='focus:outline-none' />
+            <div className='flex gap-4    items-center sm:mr-7'>
+               <button onClick={today} className={` border  px-4 py-2 rounded-lg font-semibold ${ Today ? "text-white bg-[#004AAD]":"text-[#0F172ACC] bg-white border-[#00000080]"} `}>Today</button>
+               <button onClick={weekly} className={` border  px-4 py-2 rounded-lg font-semibold ${ Week ? "text-white bg-[#004AAD]":"text-[#0F172ACC] bg-white border-[#00000080]"} `}>Weekly</button>
+               <button onClick={Monthly} className={` border  px-4 py-2 rounded-lg font-semibold ${ Month ? "text-white bg-[#004AAD]":"text-[#0F172ACC] bg-white border-[#00000080]"} `}>Monthly</button>
             </div>
           </div>
 
-          <div className='w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-4 sm:my-4 sm:px-6 rounded-md '>
-            <div className='sm:w-[66%] w-full flex gap-4'>
+          <div className='w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-3 sm:my-4 sm:px-6 rounded-md '>
+            <div className='sm:w-[66%] w-full flex gap-3'>
               <div className=' w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
                 <p className='text-[#777980] text-[.9rem] font-semibold'>Total Customer</p>
@@ -113,7 +135,7 @@ const Customers = () => {
             </div>
           </div>
 
-          <div className='flex gap-4 w-full justify-center sm:justify-start px-[1.5rem]'>
+          <div className='flex gap-4 w-full  sm:justify-start sm:px-[1.5rem] px-[.7rem]'>
             <button id='w' className='border sm:px-5 px-2.5 py-2 border-[#0F172A] rounded-lg bg-[#004AAD] text-white text-nowrap' onClick={Records}>Customer Record</button>
             <button id='z' className='border sm:px-5 px-2.5 py-2 border-[#0F172A] rounded-lg text-nowrap' onClick={Analytics} >Customer Analytics</button>
           </div>

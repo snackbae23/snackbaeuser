@@ -746,8 +746,8 @@ const Menu = () => {
           </button>
         </div>
       </div>
-      <div className="w-full h-fit  mt-[10px] sm:px-12 px-4  ">
-        <div className="bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2 px-1">
+      <div className="w-full h-fit  mt-[10px] sm:px-8 px-4  ">
+        <div className="bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2 px-1 ">
           {/* Search result */}
 
           <div className="w-full h-fit flex sm:flex-row flex-col gap-4 sm:my-1 my-4  items-centen  justify-between   ">

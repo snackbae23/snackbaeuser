@@ -123,7 +123,7 @@ const Offers = () => {
 
             {/* offer Performance */}
             <div className='md:p-6'>
-                <div className='flex flex-col my-8'>
+                <div className='flex flex-col my-8 px-3'>
                     <p className='text-[1.6rem] text-black font-bold'>Offer Performance</p>
                     <p className='text-[#000000CC]'>Monitor Your Offer Performance</p>
                 </div>
