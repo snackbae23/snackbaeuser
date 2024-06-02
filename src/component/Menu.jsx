@@ -12,7 +12,7 @@ import axios from 'axios';
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import Loader from './Loader';
 import { PacmanLoader } from 'react-spinners';
-
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 
 const Menu = () => {
@@ -297,7 +297,7 @@ const Menu = () => {
     let config = {
       method: "delete",
       maxBodyLength: Infinity,
-      url: `http://localhost:4000/api/deleteMenu/${item._id}`,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/deleteMenu/${item._id}`,
       headers: {},
     };
 
@@ -400,6 +400,43 @@ const Menu = () => {
           console.log(error);
         });
   }
+   const [categories, setCategories] = useState(resData?.restaurant?.category);
+   const handleDragEnd = (result) => {
+     if (!result.destination) return;
+     console.log(result)
+    let updatedCategories= [];
+    
+      updatedCategories = Array.from(category);
+     const [reorderedCategory] = updatedCategories.splice(
+       result.source.index,
+       1
+     );
+     updatedCategories.splice(result.destination.index, 0, reorderedCategory);
+      console.log(updatedCategories)
+      console.log(id)
+     setCategory(updatedCategories);
+         let config = {
+           method: "put",
+           maxBodyLength: Infinity,
+           url: `https://seashell-app-lgwmg.ondigitalocean.app/api/updateorder/${id}`,
+           headers: {
+             "Content-Type": "application/json",
+           },
+           data: updatedCategories,
+         };
+
+         axios
+           .request(config)
+           .then((response) => {
+             console.log(JSON.stringify(response.data));
+             
+          
+             getRestaurantData();
+           })
+           .catch((error) => {
+             console.log(error);
+           });
+   };
 
   return (
     <div id="menu" className="w-full h-fit relative sm:mb-0 mb-10">
@@ -429,14 +466,12 @@ const Menu = () => {
             <div className="size-[130px] mt-2 bg-[#F8FAFC] rounded-md flex items-center justify-center relative ">
               {pic == "" ? (
                 <div className="size-[130px] mt-2 bg-[#F8FAFC] rounded-md flex items-center justify-center relative ">
-                  
                   <input
                     className="text-[#F8FAFC] absolute left-[10%] mt-[75%]"
                     type="file"
                     id="image"
                     name="image"
                     accept="image/*"
-                    
                     onChange={(e) => {
                       if (e.target.files) handleImageChange(e.target.files[0]);
                     }}
@@ -630,7 +665,6 @@ const Menu = () => {
                     type="file"
                     id="image"
                     name="image"
-                  
                     accept="image/*"
                     onChange={(e) => {
                       if (e.target.files) handleImageChange(e.target.files[0]);
@@ -846,100 +880,137 @@ const Menu = () => {
               </div>
             ) : (
               // Render the menu categories
-              resData?.restaurant.category.map((category, index) => (
-                <div
-                  id={category?.name}
-                  key={index}
-                  className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b "
-                >
-                  <div className="w-full h-fit">
-                    <div className="flex justify-between items-center  w-full mt-4 px-4 ">
-                      <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
-                        {category?.name} ({category?.menuItems.length})
-                      </p>
-                      {showAllCategories[category?.name] ? (
-                        <FaAngleUp
-                          className={`text-[1.4rem] cursor-pointer`}
-                          onClick={() => toggleCategory(category?.name)}
-                        />
-                      ) : (
-                        <FaAngleDown
-                          className={`text-[1.4rem] cursor-pointer`}
-                          onClick={() => toggleCategory(category?.name)}
-                        />
-                      )}
-                    </div>
+              <DragDropContext onDragEnd={handleDragEnd}>
+                <Droppable droppableId="category">
+                  {(provided) => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                      {category.map((category, index) => (
+                        <Draggable
+                          key={category._id}
+                          draggableId={category._id}
+                          index={index}
+                        >
+                          {(provided) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              key={category._id}
+                              id={category._id}
+                              className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
+                            >
+                              <div>
+                                <div className="w-full h-fit">
+                                  <div className="flex justify-between items-center  w-full mt-4 px-4 ">
+                                    <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
+                                      {category.name} (
+                                      {category.menuItems.length})
+                                    </p>
+                                    {showAllCategories[category.name] ? (
+                                      <FaAngleUp
+                                        className={`text-[1.4rem] cursor-pointer`}
+                                        onClick={() =>
+                                          toggleCategory(category.name)
+                                        }
+                                      />
+                                    ) : (
+                                      <FaAngleDown
+                                        className={`text-[1.4rem] cursor-pointer`}
+                                        onClick={() =>
+                                          toggleCategory(category.name)
+                                        }
+                                      />
+                                    )}
+                                  </div>
 
-                    <div
-                      className={`w-full ${
-                        showAllCategories[category?.name]
-                          ? "h-auto transition-height duration-300 ease-in-out"
-                          : "h-0 hidden"
-                      }`}
-                    >
-                      <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap  ">
-                        {category?.menuItems.map((item) => (
-                          <div className=" sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden">
-                            <div className="flex justify-between">
-                              <p className="font-inter">{item.name} </p>
-                              <p></p>
-                              <Switch1
-                                isActive={item.active}
-                                id={item._id}
-                                type={"menu"}
-                              />
-                            </div>
-                            <div className="flex w-full h-[50%]  ">
-                              <div className="w-[70%] overflow-y-scroll hideScroller ">
-                                {item.veg == "Yes" && (
-                                  <img src="Group 1171277690.png" alt="" />
-                                )}
-                                {
-                                  !item.veg == "Yes" && (
-                                    <img src="Group 1171277690.png" alt="" />
-                                  ) // non-veg
-                                }
-                                <p className="text-[#0F172A] font-inter text-[.75rem]">
-                                  {item.description}
-                                </p>
-                              </div>
-                              <div className="w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                <img
-                                  className="size-16"
-                                  src={item.image}
-                                  alt=""
-                                />
-                              </div>
-                            </div>
+                                  <div
+                                    className={`w-full ${
+                                      showAllCategories[category.name]
+                                        ? "h-auto transition-height duration-300 ease-in-out"
+                                        : "h-0 hidden"
+                                    }`}
+                                  >
+                                    <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap  ">
+                                      {category?.menuItems.map((item) => (
+                                        <div className=" sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden">
+                                          <div className="flex justify-between">
+                                            <p className="font-inter">
+                                              {item.name}{" "}
+                                            </p>
+                                            <p></p>
+                                            <Switch1
+                                              isActive={item.active}
+                                              id={item._id}
+                                              type={"menu"}
+                                            />
+                                          </div>
+                                          <div className="flex w-full h-[50%]  ">
+                                            <div className="w-[70%] overflow-y-scroll hideScroller ">
+                                              {item.veg == "Yes" && (
+                                                <img
+                                                  src="Group 1171277690.png"
+                                                  alt=""
+                                                />
+                                              )}
+                                              {
+                                                !item.veg == "Yes" && (
+                                                  <img
+                                                    src="Group 1171277690.png"
+                                                    alt=""
+                                                  />
+                                                ) // non-veg
+                                              }
+                                              <p className="text-[#0F172A] font-inter text-[.75rem]">
+                                                {item.description}
+                                              </p>
+                                            </div>
+                                            <div className="w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                              <img
+                                                className="size-16"
+                                                src={item.image}
+                                                alt=""
+                                              />
+                                            </div>
+                                          </div>
 
-                            <div className="flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m ">
-                              <p className="text-[1.1rem]">₹{item.price}</p>
-                              <div className="flex gap-2">
-                                <button
-                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
-                                  onClick={() => {
-                                    openPopup2(item);
-                                  }}
-                                >
-                                  Edit
-                                </button>
-                                <button
-                                  onClick={() => {
-                                    deleteMenu(item);
-                                  }}
-                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
-                                >
-                                  Delete
-                                </button>
+                                          <div className="flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m ">
+                                            <p className="text-[1.1rem]">
+                                              ₹{item.price}
+                                            </p>
+                                            <div className="flex gap-2">
+                                              <button
+                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
+                                                onClick={() => {
+                                                  openPopup2(item);
+                                                }}
+                                              >
+                                                Edit
+                                              </button>
+                                              <button
+                                                onClick={() => {
+                                                  deleteMenu(item);
+                                                }}
+                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
+                                              >
+                                                Delete
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
                     </div>
-                  </div>
-                </div>
-              ))
+                  )}
+                </Droppable>
+              </DragDropContext>
             )}
           </div>
         </div>
