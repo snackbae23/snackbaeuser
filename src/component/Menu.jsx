@@ -463,7 +463,7 @@ const Menu = () => {
   };
 
   return (
-    <div id="menu" className="w-full h-fit relative sm:mb-0 mb-10">
+    <div id="menu" className="w-full h-fit relativ sm:mb-0 mb-10 ">
       {/* Add menu popup */}
       <motion.div
         id="popup"

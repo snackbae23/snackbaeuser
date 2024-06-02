@@ -389,9 +389,9 @@ useEffect(() => {
         </div>
 
         <div className="flex gap-5 ">
-          <button className="hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]">
+          <Link to={`https://www.snackbae.in/profile/merchant/${id}`}  target='_blank' className="hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]">
             View Profile
-          </button>
+          </Link>
           <button
             onClick={openPopup}
             className="bg-white px-5 sm:py-1 py-2 sm:rounded-md rounded-xl border text-[.9rem] font-Roboto  border-[#000000B2]"
@@ -406,10 +406,10 @@ useEffect(() => {
         <div className=" w-full sm:flex sm:px-2 gap-3 overflow-hidden">
           <div className="sm:w-[70%] w-full flex flex-col gap-2">
             <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
-              <div className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold">
+              <Link to={`https://www.snackbae.in/profile/merchant/${id}`}  target='_blank' className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold">
                 <p>View Profile</p>
                 <GoFileSymlinkFile />
-              </div>
+              </Link>
               <div className="sm:w-[66%] w-full flex gap-2">
                 <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
                   <p className="text-[#777980] text-[.9rem] font-semibold">

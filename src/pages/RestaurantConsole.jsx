@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import { Link } from 'react-router-dom'
 import { BiSolidDashboard } from "react-icons/bi";
@@ -223,13 +224,38 @@ const RestaurantConsole = () => {
     date: "12 May, 2025",
   }]
 
+  
+  const [resData, setResData] = useState();
+  var userID = localStorage.getItem('user');
+  const getRestaurantData = async (req, res) => {
+    let config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${userID}`,
+      // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
+      headers: {},
+    };
 
+    axios
+      .request(config)
+      .then((response) => {
+        console.log("data",response.data);
+        setResData(response?.data.restaurant);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+useEffect(()=>{
+  getRestaurantData();
+},[userID])
 
 
   return (
     <>
       <div id='restaurant' onClick={removeall} className='absolute w-full h-[400vh] bg-black z-[700] opacity-45 hidden'></div>
-      <Navbar1 isToggled={isToggled} setIsToggled={setIsToggled} />
+      <Navbar1 isToggled={isToggled} setIsToggled={setIsToggled} data={resData}/>
       <div id='restaurant' className='w-full h-fit flex justify-center  relative  '>
 
         {/* frame */}
