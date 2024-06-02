@@ -322,12 +322,15 @@ useEffect(() => {
     axios.request(config)
     .then((response) => {
       console.log(JSON.stringify(response.data));
+      window.location.reload();
+
     })
     .catch((error) => {
       console.log(error);
     });
     
   };
+
   
 
 
@@ -883,7 +886,13 @@ useEffect(() => {
             <div className="sm:w-[50%] bg-white h-[560px] rounded-lg  flex flex-col items-center  ">
               <p className='w-full h-fit py-6 px-4 text-[1.5rem] font-semibold'>Customer Testimonials</p>
               <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
-                {comments?.map((item, index) => (
+              {comments
+  .map((item, index) => ({
+    ...item,
+    isActive: item.Active === "true" ? 1 : 0 // Assigning a value of 1 for active comments and 0 for inactive comments
+  }))
+  .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
+  .map((item, index) => (
                   <div
                     key={index}
                     className="h-[200px]  w-full  flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2 my-4"
@@ -898,9 +907,16 @@ useEffect(() => {
                       </div>
 
                       <div className="flex gap-4">
-                        <button onClick={()=>{
-                        pinComment(item._id)
-                        }} className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Pin</button>
+                        {item?.Active == "true" ? (
+                          <button onClick={()=>{
+                            pinComment(item._id)
+                            }} className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">UnPin</button>
+                        ):<button onClick={()=>{
+                          pinComment(item._id)
+                          }} className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Pin</button>
+                        }
+
+                       
                         <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Report</button>
                       </div>
 
