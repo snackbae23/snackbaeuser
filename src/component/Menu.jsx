@@ -246,6 +246,12 @@ const Menu = () => {
     formData1.description = "";
     formData1.image = "";
     setPic("");
+    formData1.variants1 = '';
+    formData1.variants1Price = '';
+    formData1.variants2 = '';
+    formData1.variants2Price = '';
+    formData1.variants3 = '';
+    formData1.variants3Price = '';
   }
 
   const [formData1, setFormData1] = useState({
@@ -255,6 +261,12 @@ const Menu = () => {
     category: '',
     description: '',
     image: '',
+    variants1: "",
+    variants1Price: "",
+    variants2: "",
+    variants2Price: "",
+    variants3: "",
+    variants3Price: "",
 
   });
 
@@ -568,7 +580,7 @@ const Menu = () => {
           </div>
 
           <div>
-          <div className="flex sm:flex-row flex-col w-full gap-2  ">
+          <div className="flex  w-full gap-2  ">
             <div className='w-[70%]'>
               <input
                 className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
@@ -594,7 +606,7 @@ const Menu = () => {
             </div>
           </div>
 
-          <div className="flex sm:flex-row flex-col w-full gap-2  ">
+          <div className="flex  w-full gap-2  ">
             <div className='w-[70%]'>
               <input
                 className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
@@ -619,7 +631,7 @@ const Menu = () => {
               />
             </div>
           </div>
-          <div className="flex sm:flex-row flex-col w-full gap-2  ">
+          <div className="flex  w-full gap-2  ">
             <div className='w-[70%]'>
               <input
                 className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
@@ -844,6 +856,97 @@ const Menu = () => {
             </div>
           </div>
 
+           {/* Varianta */}
+           <div className="flex sm:flex-row flex-col w-full gap-2 ">
+            <div className='w-[70%]'>
+              <label >Variants</label>
+             
+            </div>
+            <div className='w-[30%]'>
+              <label >Price</label>
+              
+            </div>
+          </div>
+
+          <div>
+          <div className="flex  w-full gap-2  ">
+            <div className='w-[70%]'>
+              <input
+                className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
+                placeholder='variant 1'
+                type="text"
+                id="variants1"
+                name="variants1"
+                value={formData1.variants1}
+                onChange={handleInputChange1}
+              />
+            </div>
+            <div className='w-[30%]'>
+             
+              <input
+                className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
+                placeholder='₹100'
+                type="number"
+                id="variants1Price"
+                name="variants1Price"
+                value={formData1.variants1Price}
+                onChange={handleInputChange1}
+              />
+            </div>
+          </div>
+
+          <div className="flex  w-full gap-2  ">
+            <div className='w-[70%]'>
+              <input
+                className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
+                placeholder='variant2'
+                type="text"
+                id="variants2"
+                name="variants2"
+                value={formData1.variants2}
+                onChange={handleInputChange1}
+              />
+            </div>
+            <div className='w-[30%]'>
+             
+              <input
+                className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
+                placeholder='₹200'
+                type="number"
+                id="variants2Price"
+                name="variants2Price"
+                value={formData1.variants2Price}
+                onChange={handleInputChange1}
+              />
+            </div>
+          </div>
+          <div className="flex  w-full gap-2  ">
+            <div className='w-[70%]'>
+              <input
+                className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
+                placeholder='variant3'
+                type="text"
+                id="variants3"
+                name="variants3"
+                value={formData1.variants3}
+                onChange={handleInputChange1}
+              />
+            </div>
+            <div className='w-[30%]'>
+             
+              <input
+                className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
+                placeholder='₹300'
+                type="number"
+                id="variants3Price"
+                name="variants3Price"
+                value={formData1.variants3Price}
+                onChange={handleInputChange1}
+              />
+            </div>
+          </div>
+          </div>
+
           <div className="flex flex-col">
             <label htmlFor="description">Description:</label>
             <textarea
@@ -918,60 +1021,71 @@ const Menu = () => {
             {search &&
               searchMenuItems &&
               searchMenuItems.map((item, index) => (
-                <div
-                  key={index}
-                  className=" sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden"
-                >
-                  <div className="flex justify-between">
-                    <p className="font-inter">{item.name} </p>
-                    <p></p>
-                    <Switch1
-                      isActive={item.active}
-                      id={item._id}
-                      type={"menu"}
-                    />
-                  </div>
-                  <div className="flex w-full h-[50%]  ">
-                    <div className="w-[70%] overflow-y-scroll hideScroller ">
-                      {item.veg == "Yes" && (
-                        <img src="Group 1171277690.png" alt="" />
-                      )}
-                      {
-                        !item.veg == "Yes" && (
-                          <img src="Group 1171277690.png" alt="" />
-                        ) // non-veg
-                      }
-                      <p className="text-[#0F172A] font-inter text-[.75rem]">
-                        {item.description}
-                      </p>
-                    </div>
-                    <div className="w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                      <img className="size-16" src={item.image} alt="" />
-                    </div>
-                  </div>
+                <div id='index' className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
+                                          <div className="flex w-full items-center h-[20%] justify-between ">
+                                            <p className="font-inter">
+                                              {item.name}{" "}
+                                            </p>
+                                            <p></p>
+                                            <Switch1
+                                              isActive={item.active}
+                                              id={item._id}
+                                              type={"menu"}
+                                            />
+                                          </div>
+                                          <div className="flex w-full h-[60%]  py-4  ">
+                                            <div className="w-[70%] overflow-y-scroll hideScroller ">
+                                              {item.veg == "Yes" && (
+                                                <img
+                                                  src="Group 1171277690.png"
+                                                  alt=""
+                                                />
+                                              )}
+                                              {
+                                                !item.veg == "Yes" && (
+                                                  <img
+                                                    src="Group 1171277690.png"
+                                                    alt=""
+                                                  />
+                                                ) // non-veg
+                                              }
+                                              <p className="text-[#0F172A] font-inter text-[.75rem]">
+                                                {item.description}
+                                              </p>
+                                            </div>
+                                            <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                              <img
+                                                className="size-20 size-fit-content"
+                                                src={item.image}
+                                                alt=""
+                                              />
+                                            </div>
+                                          </div>
 
-                  <div className="flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m ">
-                    <p className="text-[1.1rem]">₹{item.price}</p>
-                    <div className="flex gap-2">
-                      <button
-                        className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
-                        onClick={() => {
-                          openPopup2(item);
-                        }}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => {
-                          deleteMenu(item);
-                        }}
-                        className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                                          <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
+                                            <p className="text-[1.1rem]">
+                                              ₹{item.price}
+                                            </p>
+                                            <div className="flex gap-2">
+                                              <button
+                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
+                                                onClick={() => {
+                                                  openPopup2(item);
+                                                }}
+                                              >
+                                                Edit
+                                              </button>
+                                              <button
+                                                onClick={() => {
+                                                  deleteMenu(item);
+                                                }}
+                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
+                                              >
+                                                Delete
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
               ))}
           </div>
 
@@ -1033,10 +1147,10 @@ const Menu = () => {
                                         : "h-0 hidden"
                                       }`}
                                   >
-                                    <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap  ">
+                                    <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap   ">
                                       {category?.menuItems.map((item) => (
-                                        <div className=" sm:w-[32%] min-h-[240px] max-h-[300px] border border-[#0000007D] p-3 rounded-md flex flex-col justify-evenly gap-1 relative overflow-hidden">
-                                          <div className="flex justify-between">
+                                        <div className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
+                                          <div className="flex w-full items-center h-[20%] justify-between ">
                                             <p className="font-inter">
                                               {item.name}{" "}
                                             </p>
@@ -1047,7 +1161,7 @@ const Menu = () => {
                                               type={"menu"}
                                             />
                                           </div>
-                                          <div className="flex w-full h-[50%]  ">
+                                          <div className="flex w-full h-[60%]  py-4  ">
                                             <div className="w-[70%] overflow-y-scroll hideScroller ">
                                               {item.veg == "Yes" && (
                                                 <img
@@ -1067,16 +1181,16 @@ const Menu = () => {
                                                 {item.description}
                                               </p>
                                             </div>
-                                            <div className="w-[30%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                            <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
                                               <img
-                                                className="size-16"
+                                                className="size-20 size-fit-content"
                                                 src={item.image}
                                                 alt=""
                                               />
                                             </div>
                                           </div>
 
-                                          <div className="flex w-full justify-between font-Roboto absolute px-6 bottom-2 bg-white  py-1 rounded-m ">
+                                          <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
                                             <p className="text-[1.1rem]">
                                               ₹{item.price}
                                             </p>
