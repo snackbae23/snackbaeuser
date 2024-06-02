@@ -17,7 +17,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const Menu = () => {
 
-  const [loader,setloader]=useState(false);
+  const [loader, setloader] = useState(false);
 
 
   // toggle data for more than 4
@@ -31,9 +31,9 @@ const Menu = () => {
   };
 
   var userID = localStorage.getItem('user');
-    console.log("user id" ,userID)
-    const resId = userID
-    const id = userID;
+  console.log("user id", userID)
+  const resId = userID
+  const id = userID;
   const [resData, setResData] = useState();
   const [category, setCategory] = useState([]);
   const [createCategory, setCreateCategory] = useState('');
@@ -61,19 +61,19 @@ const Menu = () => {
         console.log("category", category);
         // setmenus(resData?.restaurant?.menu);
         console.log(resData);
-        
+
       })
       .catch((error) => {
         console.log(error);
       });
-      setTimeout(() => {
-        setloader(false);
-      }, 2000);
+    setTimeout(() => {
+      setloader(false);
+    }, 2000);
   }
 
   useEffect(() => {
     getRestaurantData();
-   
+
   }, [resId]);
 
   function categoryCreationHandler(e) {
@@ -100,7 +100,7 @@ const Menu = () => {
         console.log(JSON.stringify(response.data));
         console.log("category added");
         getRestaurantData();
-        
+
       })
       .catch((error) => {
         console.log(error);
@@ -111,7 +111,7 @@ const Menu = () => {
   const addMenuSubmit = async (req, res) => {
 
     formData.image = pic;
-    
+
     console.log(formData);
 
     //let data = JSON.stringify(fdata);
@@ -137,9 +137,9 @@ const Menu = () => {
         console.log(error);
       });
   }
-// updateMenu;
+  // updateMenu;
   const deleteCategory = async (id) => {
-   window.alert("Category will be deleted.");
+    window.alert("Category will be deleted.");
     let data = JSON.stringify({
       "categoryId": id
     });
@@ -165,14 +165,14 @@ const Menu = () => {
       });
 
   }
-    const [formData, setFormData] = useState({
-      name: "",
-      price: "",
-      veg: "",
-      category: "",
-      description: "",
-      image: "", // Added image state
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    veg: "",
+    category: "",
+    description: "",
+    image: "", // Added image state
+  });
 
   const handleImageChange = async (pics) => {
     console.log(pics);
@@ -192,14 +192,14 @@ const Menu = () => {
         console.log(JSON.stringify(response.data));
         console.log(response.data.data.url);
         setPic(response.data.data.url);
-        formData.image =pic;
+        formData.image = pic;
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
- 
+
   // let filteredMenu = menu.slice(0, 6);
   // const [menudata, setmenudata] = useState(filteredMenu);
 
@@ -226,15 +226,15 @@ const Menu = () => {
 
   }
 
-    function resetFormData1() {
-      formData1.name = "";
-      formData1.price = "";
-      formData1.veg = "";
-      formData1.category = "";
-      formData1.description = "";
-      formData1.image = "";
-      setPic("");
-    }
+  function resetFormData1() {
+    formData1.name = "";
+    formData1.price = "";
+    formData1.veg = "";
+    formData1.category = "";
+    formData1.description = "";
+    formData1.image = "";
+    setPic("");
+  }
 
   const [formData1, setFormData1] = useState({
     name: '',
@@ -242,8 +242,8 @@ const Menu = () => {
     veg: '',
     category: '',
     description: '',
-    image:'', 
-  
+    image: '',
+
   });
 
   const handleInputChange = (e) => {
@@ -290,10 +290,10 @@ const Menu = () => {
     document.getElementById('popup1').style.display = "none";
     document.getElementById("restaurant").style.display = "none";
   }
-  const [MenuId , setMenuId] = useState();
-  function deleteMenu(item){
+  const [MenuId, setMenuId] = useState();
+  function deleteMenu(item) {
     // console.log("delete")
-       window.alert("Menu will be deleted.");
+    window.alert("Menu will be deleted.");
     let config = {
       method: "delete",
       maxBodyLength: Infinity,
@@ -320,8 +320,8 @@ const Menu = () => {
     // formData1.description1 = item.description;
     // formData1.isVeg1 = item.isVeg;
     // formData1.category1 = item.category;
-  // }
-  setFormData1(item)
+    // }
+    setFormData1(item)
     setMenuId(item._id)
   }
   function closePopup2() {
@@ -333,7 +333,7 @@ const Menu = () => {
 
 
   //search bar
-  
+
   const [search, setSearch] = useState('');
   const [searchMenuItems, setSearchMenuItems] = useState();
 
@@ -368,75 +368,75 @@ const Menu = () => {
         console.log(error);
       });
   }
-  const updateMenu = async (e) =>{
-    
+  const updateMenu = async (e) => {
+
     e.preventDefault();
-      formData1.image = pic;
+    formData1.image = pic;
 
-      console.log(formData1);
+    console.log(formData1);
 
-      //let data = JSON.stringify(fdata);
+    //let data = JSON.stringify(fdata);
 
-      let config = {
-        method: "post",
-        maxBodyLength: Infinity,
-        url: `https://seashell-app-lgwmg.ondigitalocean.app/api/updateMenu/${MenuId}`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: formData1,
-      };
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/updateMenu/${MenuId}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: formData1,
+    };
 
-      axios
-        .request(config)
-        .then((response) => {
-          console.log(JSON.stringify(response.data));
-          console.log("menu added");
-          closePopup2();
-          getRestaurantData();
-          
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        console.log("menu added");
+        closePopup2();
+        getRestaurantData();
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-   const [categories, setCategories] = useState(resData?.restaurant?.category);
-   const handleDragEnd = (result) => {
-     if (!result.destination) return;
-     console.log(result)
-    let updatedCategories= [];
-    
-      updatedCategories = Array.from(category);
-     const [reorderedCategory] = updatedCategories.splice(
-       result.source.index,
-       1
-     );
-     updatedCategories.splice(result.destination.index, 0, reorderedCategory);
-      console.log(updatedCategories)
-      console.log(id)
-     setCategory(updatedCategories);
-         let config = {
-           method: "put",
-           maxBodyLength: Infinity,
-           url: `https://seashell-app-lgwmg.ondigitalocean.app/api/updateorder/${id}`,
-           headers: {
-             "Content-Type": "application/json",
-           },
-           data: updatedCategories,
-         };
+  const [categories, setCategories] = useState(resData?.restaurant?.category);
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
+    console.log(result)
+    let updatedCategories = [];
 
-         axios
-           .request(config)
-           .then((response) => {
-             console.log(JSON.stringify(response.data));
-             
-          
-             getRestaurantData();
-           })
-           .catch((error) => {
-             console.log(error);
-           });
-   };
+    updatedCategories = Array.from(category);
+    const [reorderedCategory] = updatedCategories.splice(
+      result.source.index,
+      1
+    );
+    updatedCategories.splice(result.destination.index, 0, reorderedCategory);
+    console.log(updatedCategories)
+    console.log(id)
+    setCategory(updatedCategories);
+    let config = {
+      method: "put",
+      maxBodyLength: Infinity,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/updateorder/${id}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: updatedCategories,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+
+
+        getRestaurantData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div id="menu" className="w-full h-fit relative sm:mb-0 mb-10">
@@ -781,10 +781,10 @@ const Menu = () => {
         </div>
       </div>
       <div className="w-full h-fit  mt-[10px] sm:px-8 px-4  ">
-        <div className="bg-white sm:px-3 flex flex-col gap-6 sm:py-5 py-2 px-1 ">
+        <div className="bg-white   sm:px-3 flex flex-col gap-6 sm:py-5  px-1 ">
           {/* Search result */}
 
-          <div className="w-full h-fit flex sm:flex-row flex-col gap-4 sm:my-1 my-4  items-centen  justify-between   ">
+          <div className="w-full h-fit flex sm:flex-row flex-col gap-4  sm:my-1 mt-4  items-centen   justify-between   ">
             <div className="relative sm:w-[35%] w-full flex items-center rounded-md border border-[#407fd1]  ">
               <input
                 className="w-full sm:py-2 py-4 px-8 rounded-lg"
@@ -871,7 +871,7 @@ const Menu = () => {
               ))}
           </div>
 
-          <div className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 border-t-2">
+          <div className="w-full h-fit font-Roboto  text-[1.3rem] sm:px-6 border-t-2">
             {/* Rest Restaurantmenu */}
             {loader ? (
               // Show a loader when resData is empty
@@ -924,11 +924,10 @@ const Menu = () => {
                                   </div>
 
                                   <div
-                                    className={`w-full ${
-                                      showAllCategories[category.name]
+                                    className={`w-full ${showAllCategories[category.name]
                                         ? "h-auto transition-height duration-300 ease-in-out"
                                         : "h-0 hidden"
-                                    }`}
+                                      }`}
                                   >
                                     <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap  ">
                                       {category?.menuItems.map((item) => (
