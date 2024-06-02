@@ -842,7 +842,7 @@ useEffect(() => {
                               {menu.notLikedCount}
                             </p>
                           </div>
-                          <p className="sm:text-[.85rem] text-[.7rem]">
+                          <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
                             Not Liked
                           </p>
                         </div>
@@ -855,7 +855,7 @@ useEffect(() => {
                             />
                             <p className=" text-[1.1rem]">{menu.likedCount}</p>
                           </div>
-                          <p className="sm:text-[.85rem] text-[.7rem]">Good</p>
+                          <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">Good</p>
                         </div>
                         <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
                           <div className="flex gap-2">
@@ -868,7 +868,7 @@ useEffect(() => {
                               {menu.mustTryCount}
                             </p>
                           </div>
-                          <p className="sm:text-[.85rem] text-[.7rem]">
+                          <p className="sm:text-[.85rem] text-[.7rem] text-nowrap">
                             Must Try
                           </p>
                         </div>
