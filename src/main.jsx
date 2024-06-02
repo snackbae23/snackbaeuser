@@ -6,10 +6,11 @@ import { SnackBaeProvider } from './context/SnackBae.jsx';
 import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <SnackBaeProvider>
       <App />
+      <Toaster />
     </SnackBaeProvider>
-    <Toaster />
-  </React.StrictMode>
+    
+
 )

@@ -79,7 +79,7 @@ const Customers = () => {
 
           <div className='flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-3 text-[#000000] '>
             <p className='text-[1.8rem] font-semibold sm:px-5'>Customer Insights</p>
-            <div className='flex gap-4    items-center sm:mr-7'>
+            <div className='flex sm:gap-4 gap-2    items-center sm:mr-7'>
                <button onClick={today} className={` border  px-4 py-2 rounded-lg font-semibold ${ Today ? "text-white bg-[#004AAD]":"text-[#0F172ACC] bg-white border-[#00000080]"} `}>Today</button>
                <button onClick={weekly} className={` border  px-4 py-2 rounded-lg font-semibold ${ Week ? "text-white bg-[#004AAD]":"text-[#0F172ACC] bg-white border-[#00000080]"} `}>Weekly</button>
                <button onClick={Monthly} className={` border  px-4 py-2 rounded-lg font-semibold ${ Month ? "text-white bg-[#004AAD]":"text-[#0F172ACC] bg-white border-[#00000080]"} `}>Monthly</button>

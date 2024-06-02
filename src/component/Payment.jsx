@@ -174,7 +174,7 @@ const Payment = () => {
                   ₹ 21403.80
                 </p>
                 <div className="flex justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2">
-                  <p className="sm:w-full w-[60%] ">Total Payout Balance </p>
+                  <p className="sm:w-full w-[60%] text-[#777980] ">Total Payout Balance </p>
                 </div>
               </div>
               <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-center">
@@ -183,7 +183,7 @@ const Payment = () => {
                 <p className="text-[#000000] sm:text-[2.2rem] text-[1.5rem] font-semibold text-nowrap ">
                   ₹ 16003.78
                 </p>
-                <div className="flex  justify-between sm:text-[1rem] text-[.8rem] gap-1 absolute bottom-2  items-center ">
+                <div className="flex  justify-between sm:text-[1rem] text-[.8rem] text-[#777980] gap-1 absolute bottom-2  items-center ">
                   <p className="sm:w-full w-[60%] ">Monthly Collection </p>
 
                   <p>May</p>
@@ -198,7 +198,7 @@ const Payment = () => {
                 ₹ 1043.78
               </p>
               <div className="flex justify-between sm:text-[1rem] text-[1.3rem] gap-1 absolute bottom-2">
-                <p className="">Today's Sale </p>
+                <p className="text-[#777980]">Today's Sale </p>
 
                 <p></p>
               </div>

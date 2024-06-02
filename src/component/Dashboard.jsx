@@ -853,7 +853,7 @@ useEffect(() => {
                               src="/Group 1171277598.png"
                               alt=""
                             />
-                            <p className=" text-[1.1rem]">{menu.likedCount}</p>
+                            <p className=" sm:text-[1.1rem] text-[.8rem]">{menu.likedCount}</p>
                           </div>
                           <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">Good</p>
                         </div>
@@ -882,7 +882,7 @@ useEffect(() => {
 
             <div className="sm:w-[50%] bg-white h-[560px] rounded-lg  flex flex-col items-center  ">
               <p className='w-full h-fit py-6 px-4 text-[1.5rem] font-semibold'>Customer Testimonials</p>
-              <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-2 ">
+              <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
                 {comments?.map((item, index) => (
                   <div
                     key={index}
@@ -952,48 +952,6 @@ useEffect(() => {
 
         </div>
 
-        {/* Relationship */}
-        <div className="sm:hidden  w-full h-fit bg-white rounded-md py-4 sm:px-12 px-6  flex-col gap-2 sm:my-6 my-3">
-          <p className="text-[#0F172A] text-[1.5rem] font-semibold border-b border-[#F1F5F9] pb-3">
-            Relationship Manager
-          </p>
-          <p className="text-[#64748B] text-[.9rem] w-[70%]  border-b pb-2">
-            Need help? contact your Relationship manager{" "}
-          </p>
-
-          <div className="flex flex-col  gap-3 my-5">
-            <div className="flex gap-2 items-center">
-              <CiLocationOn className="text-[#94A3B8] font-bold text-[1.9rem]" />
-              <p className="text-[1.3rem] font-Roboto text-[#0F172A]">
-                Nitish Kumar
-              </p>
-            </div>
-            <div className="flex gap-2 items-center">
-              <LuPhoneCall className="text-[#94A3B8] font-bold text-[1.9rem]" />
-              <p className="text-[1.3rem] font-Roboto text-[#0F172A]">
-                +91 91234567889
-              </p>
-            </div>
-            <div className="flex gap-2 items-center">
-              <TbProgressHelp className="text-[#94A3B8] font-bold text-[1.9rem]" />
-              <p className="text-[1.3rem] font-Roboto text-[#0F172A]">
-                Help@snackbae.in
-              </p>
-            </div>
-            <div className="flex gap-2 items-center">
-              <CiCalendarDate className="text-[#94A3B8] font-bold text-[1.9rem]" />
-              <p className="text-[1.3rem] font-Roboto text-[#0F172A]">
-                10 AM - 7 PM
-              </p>
-            </div>
-          </div>
-
-          <div className="w-full h-[60px]  bg-[#67CE67] text-[1.5rem] font-semibold rounded-lg flex items-center justify-center gap-3 text-white">
-            <IoLogoWhatsapp />
-            <p className="">+91 9660066978</p>
-          </div>
-        </div>
-
         {/* footer */}
         <div className="p-4">
           <div className="flex sm:flex-row flex-col w-full h-fit sm:items-center border border-[#00000099]  rounded-md my-4 font-inter  sm:p-0 p-4">
@@ -1007,7 +965,7 @@ useEffect(() => {
                 Help Us to make Snackbae better ! Share your feedbacks and
                 request features that fits best for your Business
               </p>
-              <Link className="text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold">
+              <Link to='https://forms.gle/GpTK9nF19Uggv6WBA' className="text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold">
                 Give Feedback
               </Link>
             </div>
