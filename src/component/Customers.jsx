@@ -135,7 +135,7 @@ const Customers = () => {
             </div>
           </div>
 
-          <div className='flex gap-4 w-full  sm:justify-start sm:px-[1.5rem] px-[.7rem]'>
+          <div className='flex gap-4 w-full  sm:justify-start sm:px-[1.5rem] px-[.4rem]'>
             <button id='w' className='border sm:px-5 px-2.5 py-2 border-[#0F172A] rounded-lg bg-[#004AAD] text-white text-nowrap' onClick={Records}>Customer Record</button>
             <button id='z' className='border sm:px-5 px-2.5 py-2 border-[#0F172A] rounded-lg text-nowrap' onClick={Analytics} >Customer Analytics</button>
           </div>

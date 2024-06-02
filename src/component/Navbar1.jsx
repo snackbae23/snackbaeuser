@@ -50,11 +50,14 @@ const Navbar1 = ({ isToggled, setIsToggled }) => {
 
     const frames1 = () => {
         setframe(!fram);
+        document.getElementById('Notification').style.display = "none";
         document.getElementById('frame').style.display = "none";
         document.getElementById("restaurant").style.display = "none";
+        
     };
     const frames2 = () => {
         setframe(!fram);
+        document.getElementById('Notification').style.display = "none";
         document.getElementById('frame').style.display = "block";
         document.getElementById("restaurant").style.display = "block";
     };
@@ -71,11 +74,14 @@ const Navbar1 = ({ isToggled, setIsToggled }) => {
     const notifications = () => {
         setNotification(!notification);
         if(notification==false){
+            document.getElementById('frame').style.display = "none";
             document.getElementById('Notification').style.display = "none";
             document.getElementById("restaurant").style.display = "none";
         }else{
+            document.getElementById('frame').style.display = "none";
             document.getElementById('Notification').style.display = "block";
             document.getElementById("restaurant").style.display = "block";
+            
         }
         
     };
@@ -109,14 +115,15 @@ const Navbar1 = ({ isToggled, setIsToggled }) => {
 
 
             <div className='flex items-center gap-6 h-full   '>
+
                 {/* Notification */}
 
-                <div onClick={notifications} className=' sm:flex hidden  relative bg-[#EFF4FB] border border-[#E2E8F0]  items-center justify-center size-[55px] rounded-full'>
-                    <div className=' absolute -right-1 -top-1 bg-[#004AAD] size-[20px] flex items-center justify-center rounded-full'>
-                        <p className='text-white font-semibold '>4</p>
+                <div onClick={notifications} className=' sm:flex hidden  relative bg-[#EFF4FB] border border-[#E2E8F0]  items-center justify-center size-[45px] rounded-full'>
+                    <div className=' absolute -right-1 -top-1 bg-[#004AAD] size-[17px] flex items-center justify-center rounded-full'>
+                        <p className='text-white font-semibold text-[.8rem]'>4</p>
                     </div>
 
-                    <IoNotificationsOutline className='size-10' />
+                    <IoNotificationsOutline className='size-8' />
                 </div>
 
 
@@ -124,8 +131,8 @@ const Navbar1 = ({ isToggled, setIsToggled }) => {
                     <div className=' size-14  block rounded-full border  items-center justify-center  relative  '>
                         {
                             fram ?
-                                (<img src="/image 148 (1).png" alt='' className='size-full ' onClick={frames1} />) :
-                                (<img src="/image 148 (1).png" alt='' className='size-full ' onClick={frames2} />)
+                                (<img src="/image 148 (4).png" alt='' className='size-full ' onClick={frames1} />) :
+                                (<img src="/image 148 (4).png" alt='' className='size-full ' onClick={frames2} />)
                         }
                         
                     </div>

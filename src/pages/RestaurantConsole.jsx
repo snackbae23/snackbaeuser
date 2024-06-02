@@ -192,35 +192,35 @@ const RestaurantConsole = () => {
 
   const removeall = () => {
     // Adjust the threshold as needed
-   
-      
-      setIsToggled(false);
-      document.getElementById("restaurant").style.display = "none";
-      document.getElementById('frame').style.display = "none";
-      document.getElementById("popup").style.display = "none";
-      document.getElementById("Notification").style.display = "none";
-    
-    
+
+
+    setIsToggled(false);
+    document.getElementById("restaurant").style.display = "none";
+    document.getElementById('frame').style.display = "none";
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("Notification").style.display = "none";
+
+
 
   }
 
   // Notification array temp
 
   const notification = [{
-    p:"Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    date:"12 May, 2025",
-  },{
-    p:"Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    date:"12 May, 2025",
-  },{
-    p:"Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    date:"12 May, 2025",
-  },{
-    p:"Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    date:"12 May, 2025",
-  },{
-    p:"Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    date:"12 May, 2025",
+    p: "Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    date: "12 May, 2025",
+  }, {
+    p: "Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    date: "12 May, 2025",
+  }, {
+    p: "Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    date: "12 May, 2025",
+  }, {
+    p: "Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    date: "12 May, 2025",
+  }, {
+    p: "Edit your information in a swipe Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    date: "12 May, 2025",
   }]
 
 
@@ -245,15 +245,15 @@ const RestaurantConsole = () => {
               </div>
 
               <button className='w-full sm:py-2 py-1 text-white bg-[#004AAD] rounded-md'>Add account</button>
-              <button className='w-full sm:py-2 py-1 text-[1.1rem]  border border-[#C62828B2] text-[#C62828]  rounded-md font-bold'>Logout</button>
+              <button onClick={g} className='w-full sm:py-2 py-1 text-[1.1rem]  border border-[#C62828B2] text-[#C62828]  rounded-md font-bold'>Logout</button>
             </div>
             <div className='flex flex-col text-[#64748B] text-[]'>
               <button className='px-2 py-2  text-[1.3rem] border-t border-[#999da2] sm:hidden block    '>Notification</button>
-              <button  onClick={f}
- className='px-2 py-2  text-[1.3rem] border-t border-[#999da2] sm:hidden block   '>Setting</button>
+              <button onClick={f}
+                className='px-2 py-2  text-[1.3rem] border-t border-[#999da2] sm:hidden block   '>Setting</button>
               <button className='px-2 py-2  text-[1.3rem] border-t border-[#999da2]   '>Pricing</button>
-              <button className='px-2 py-2  text-[1.3rem] border-t border-[#999da2]   '>Terms & condition</button>
-              <button className='px-2 py-2  text-[1.3rem] border-t mb-4 border-[#999da2]   '>Privacy Policy</button>
+              <Link to='https://www.snackbae.in/termsCondition' className='px-2 py-2  text-[1.3rem] border-t border-[#999da2] flex items-center justify-center  '>Terms & condition</Link>
+              <Link to='https://www.snackbae.in/privacyPolicy' className='px-2 py-2  text-[1.3rem] border-t mb-4 border-[#999da2] flex items-center justify-center  '>Privacy Policy</Link>
 
             </div>
 
@@ -263,21 +263,21 @@ const RestaurantConsole = () => {
         </div>
 
         {/* Notification */}
-        <div id='Notification' className='hidden fixed right-6 z-[900] sm:w-[30%]  w-[70%] h-[550px] bg-white   mt-[70px] rounded-b  pt-5 border border-[#0000001A] '>
+        <div id='Notification' className='hidden fixed right-6 z-[900] sm:w-[30%]  w-[70%] h-[450px] bg-white   mt-[70px] rounded-b  pt-5 border border-[#0000001A] '>
           <div className='flex w-full text-[#8A99AF] font-semibold text-[1.4rem]  justify-start px-4 border-b pb-4 '>
-          <p className=''>Notification</p>
+            <p className=''>Notification</p>
           </div>
-            
-            
-            <div className='w-full h-[450px] flex flex-col items-center justify-center overflow-y-scroll hideScroller'>
-            { notification.map((item, index) => (
+
+
+          <div className='w-full h-[350px] flex flex-col items-center justify-center overflow-y-scroll hideScroller'>
+            {notification.map((item, index) => (
               <div className='flex flex-col gap-2  justify-evenly p-5 border-b'>
                 <p className='text-[1.1rem] text-[#64748B] font-Roboto  '>{item.p}</p>
                 <p className='text-[.9rem]'>{item.date}</p>
-              </div>  
-          
+              </div>
+
             ))}
-            </div>
+          </div>
         </div>
 
 
@@ -295,9 +295,7 @@ const RestaurantConsole = () => {
 
         {/* left side */}
 
-        <div id='left' className={` ${screenWidth >= 768 ?
-          'sm:w-[20%] bg-white fixed left-1  z-40    h-full   mt-[70px] px-6 text-[.95rem]  gap-32 ' :
-          ' fixed hidden left-0 z-[900] h-fit rounded-b-lg   mt-[70px] px-6 text-[.95rem]  gap-32 bg-white '}`}>
+        <div id='left' className='sm:w-[20%] sm:block hidden bg-white fixed left-1  z-40    h-full   mt-[70px] px-6 text-[.95rem]  gap-32 '>
           <div className='mt-2'>
             <div id=''
               onClick={a}
@@ -361,7 +359,7 @@ const RestaurantConsole = () => {
         {/* Right side */}
 
 
-        <div id='right'  className='sm:w-[80%] sm:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col '>
+        <div id='right' className='sm:w-[80%] sm:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col '>
 
           {das && <Dashboard />}
           {men && <Menu />}
