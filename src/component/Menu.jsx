@@ -568,7 +568,7 @@ const Menu = () => {
             </div>
           </div>
           {/* Varianta */}
-          <div className="flex sm:flex-row flex-col w-full gap-2 ">
+          <div className="flex   w-full gap-2 ">
             <div className='w-[70%]'>
               <label >Variants</label>
              
@@ -857,7 +857,7 @@ const Menu = () => {
           </div>
 
            {/* Varianta */}
-           <div className="flex sm:flex-row flex-col w-full gap-2 ">
+           <div className="flex  w-full gap-2 ">
             <div className='w-[70%]'>
               <label >Variants</label>
              
