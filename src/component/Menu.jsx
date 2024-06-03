@@ -267,6 +267,7 @@ const Menu = () => {
     variants2Price: "",
     variants3: "",
     variants3Price: "",
+    itemCategory:""
 
   });
 
@@ -335,7 +336,10 @@ const Menu = () => {
         console.log(error);
       });
   }
+   const[itemCategoryy , setItemCategoryy]= useState();
   function openPopup2(item) {
+    setItemCategoryy(item.category);
+    console.log(formData1.itemCategory)
     document.getElementById('popup2').style.display = "block";
     document.getElementById("restaurant").style.display = "block";
     // formData1.productImage1 = item.image;
@@ -397,7 +401,8 @@ const Menu = () => {
     e.preventDefault();
     formData1.image = pic;
 
-    console.log(formData1);
+    formData1.itemCategory=itemCategoryy;
+    console.log(formData1.itemCategory)
 
     //let data = JSON.stringify(fdata);
 
