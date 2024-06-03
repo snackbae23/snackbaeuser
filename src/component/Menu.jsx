@@ -550,7 +550,7 @@ const Menu = () => {
                 onChange={handleInputChange}
               >
                 <option value="">Select an option</option>
-                <option value=" Yes">Veg</option>
+                <option value="Yes">Veg</option>
                 <option value="No">Non-Veg</option>
               </select>
             </div>
