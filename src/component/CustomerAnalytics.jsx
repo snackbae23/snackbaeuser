@@ -1,15 +1,114 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FiPhone } from "react-icons/fi";
 import { MdForwardToInbox } from "react-icons/md";
 import Chart from 'react-google-charts';
 import Charts from './Charts';
+import axios from 'axios';
 
 const CustomerAnalytics = () => {
     var userID = localStorage.getItem('user');
-    console.log("user id" ,userID)
+    console.log("user id", userID)
     const id = userID
     const resId = userID
+    const [resData, setResData] = useState();
+    const [totalCustomers, setTotalCustomers] = useState(0);
+    const [repeatingCustomer, setRepeatingCustomer] = useState(0);
+    const [todaysCustomer, setTodaysCustomer] = useState(0);
+    const [last15Days, setLast15Days] = useState(0);
+    const [last30Days, setLast30Days] = useState(0);
+    const [birthdayCount, setBirthdayCount] = useState(0);
+    const [maleCount, setMaleCount] = useState(0);
+    const [femaleCount, setFemaleCount] = useState(0);
+
+
+    const getRestaurantData = async (req, res) => {
+        let config = {
+            method: "get",
+            maxBodyLength: Infinity,
+            url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+            // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
+            headers: {},
+        };
+
+        axios
+            .request(config)
+            .then((response) => {
+                console.log(response.data);
+                console.log(response.data);
+                setResData(response?.data);
+                const resData = response.data;
+                console.log(resData);
+                setRepeatingCustomer(resData.restaurant.returningCustomer);
+                setTotalCustomers(resData.restaurant.totalCustomers);
+                console.log(resData.restaurant.totalCustomersData);
+                const today = new Date().toISOString().slice(0, 10);
+                console.log(today);
+                const todayCust = resData?.restaurant?.totalCustomersData.filter(
+                    (item) => item.createdAt && item.createdAt.slice(0, 10) === today
+                );
+                console.log(todayCust);
+                setTodaysCustomer(todayCust.length);
+
+                console.log(resData);
+
+                //last 15 days
+                const now = new Date();
+                const fifteenDaysAgo = new Date();
+                fifteenDaysAgo.setDate(now.getDate() - 15);
+
+                const recentVisitors = resData?.restaurant?.totalCustomersData.filter(customer => {
+                    const visitDate = new Date(customer.createdAt);
+                    return visitDate >= fifteenDaysAgo;
+                });
+                setLast15Days(recentVisitors.length);
+
+                //last 30 days
+                const thirtyDaysAgo = new Date();
+                thirtyDaysAgo.setDate(now.getDate() - 30);
+                console.log("30 days ago", thirtyDaysAgo)
+
+                const recentVisitors1 = resData?.restaurant?.totalCustomersData.filter(customer => {
+                    const visitDate = new Date(customer.createdAt);
+                    return visitDate >= thirtyDaysAgo;
+                });
+                setLast30Days(recentVisitors1.length);
+
+                //birthday in this month
+                const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
+
+                const birthdayVisitors = resData?.restaurant?.totalCustomersData.filter(customer => {
+                    const dob = new Date(customer?.userId?.dob);
+                    return dob.getMonth() + 1 === currentMonth;
+                });
+
+                setBirthdayCount(birthdayVisitors.length);
+
+                //male and female count
+                let male = 0;
+                let female = 0;
+
+                resData?.restaurant?.totalCustomersData.forEach(customer => {
+                    if (customer?.userId?.gender === 'male') {
+                        male += 1;
+                    } else if (customer?.userId?.gender === 'female') {
+                        female += 1;
+                    }
+                });
+                // console.log(male,"  ",female)
+                setMaleCount(male);
+                setFemaleCount(female);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    useEffect(() => {
+        getRestaurantData();
+    }, [resId]);
+
     return (
         <div className='w-full bg-[#F6F8FF] sm:px-6 h-fit  '>
 
@@ -23,7 +122,7 @@ const CustomerAnalytics = () => {
                                 <p>Total Customers Visited in</p>
                                 <p>Last 15 Days</p>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>190</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>{last15Days}</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
@@ -45,7 +144,7 @@ const CustomerAnalytics = () => {
                                 <p>Total Customers Visited in</p>
                                 <p>Last 30 Days</p>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>390</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>{last30Days}</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
@@ -67,7 +166,7 @@ const CustomerAnalytics = () => {
                                 <p>Customer Birthday this</p>
                                 <p>month</p>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>12</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>{birthdayCount}</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
@@ -103,7 +202,7 @@ const CustomerAnalytics = () => {
                                 </div>
 
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>12</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>{totalCustomers - last30Days}</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem] '>
 
@@ -148,7 +247,7 @@ const CustomerAnalytics = () => {
                         <div className='flex  flex-col  w-full h-[100%] p-[1rem]  border-[#00000080] relative '>
                             <p className='text-[#0F172A] font-bold'>Customer Gender segment</p>
                             <div className='absolute -ml-9 mt-6  border-t  '>
-                                <Charts />
+                                <Charts male={maleCount} female={femaleCount} />
                             </div>
 
 

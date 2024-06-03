@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useState } from 'react'
 
@@ -6,389 +6,430 @@ import { MdNavigateNext } from "react-icons/md";
 
 import { GrFormPrevious } from "react-icons/gr";
 import { CiSearch } from "react-icons/ci";
+import axios from 'axios';
+import { format, formatDistanceToNow, isBefore, subWeeks } from 'date-fns';
 
 
 const CustomerRecords = () => {
 
-    const udata = [{
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      }, {
-        "Username": "Nitish Kumar",
-        "Mobile": "+91 92*******44",
-        "Gender": "Male",
-        "TotalVisit": "89",
-        "TotalSpend": "₹3199.00",
-        "LastVisited": "Today"
-      },]
+  var userID = localStorage.getItem('user');
+  console.log("user id", userID)
+  const id = userID
+  const resId = userID
+  const [resData, setResData] = useState();
+
+    const [udata,setUdata] = useState([]);
+    // const udata = [{
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   }, {
+    //     "Username": "Nitish Kumar",
+    //     "Mobile": "+91 92*******44",
+    //     "Gender": "Male",
+    //     "TotalVisit": "89",
+    //     "TotalSpend": "₹3199.00",
+    //     "LastVisited": "Today"
+    //   },]
+
+    const getRestaurantData = async (req, res) => {
+      let config = {
+          method: "get",
+          maxBodyLength: Infinity,
+          url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+          // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
+          headers: {},
+      };
+
+      axios
+          .request(config)
+          .then((response) => {
+              console.log(response.data);
+              console.log(response.data);
+              setResData(response?.data);
+              const resData = response.data;
+              console.log(resData);
+              
+              setUdata(resData?.restaurant?.customerData);
+              console.log(udata);
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  };
+
+  useEffect(()=>{
+    getRestaurantData();
+  },[resId]);
+
+
     
      const Pagination = ({ data }) => {
         const [currentPage, setCurrentPage] = useState(1);
@@ -444,7 +485,10 @@ const CustomerRecords = () => {
             )
           );
         };
-    
+        
+
+        
+      
         return (
           <div>
     
@@ -453,12 +497,12 @@ const CustomerRecords = () => {
             {currentPageData().map((item, index) => (
               <div key={index} className=" flex justify-between items-center px-12 my-2 py-2 font-semibold">
                 {/* Render your data here */}
-                <p>{item.Username}</p>
-                <p>{item.Mobile}</p>
-                <p className=''>{item.Gender}</p>
-                <p>{item.TotalVisit}</p>
-                <p>{item.TotalSpend}</p>
-                <p>{item.LastVisited}</p>
+                <p>{item.userId.name}</p>
+                <p>{item.userId.contact}</p>
+                <p className=''>{item.userId.gender}</p>
+                <p>{item.count}</p>
+                <p>-</p>
+                <p>{formattedDate(item.createdAt)}</p>
               </div>
             ))}
             <div className='flex justify-between px-8  mt-7'>
@@ -495,6 +539,17 @@ const CustomerRecords = () => {
           </div>
         );
       };
+
+      const formattedDate = (createdAt) => {
+        const date = new Date(createdAt);
+        const oneWeekAgo = subWeeks(new Date(), 1);
+        if (isBefore(date, oneWeekAgo)) {
+          return format(date, 'dd/MM/yyyy');
+        } else {
+          return `${formatDistanceToNow(date, { addSuffix: true })}`;
+        }
+      };
+
   return (
 
    
