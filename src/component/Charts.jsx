@@ -17,7 +17,14 @@ export const options = {
     
   };
 
-export default function Charts() {
+export default function Charts({male,female}) {
+   const data = [
+    ["Task", "Hours per Day"],
+    ["Female", female],
+    ["Male", male],
+    
+    // CSS-style declaration
+  ];
   return (
     <Chart className="flex "
       chartType="PieChart"
