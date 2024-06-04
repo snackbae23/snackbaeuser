@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 
 const Dashboard = () => {
-  
+
   var userID = localStorage.getItem('user');
   console.log("user id", userID);
   const id = userID;
@@ -288,50 +288,50 @@ const Dashboard = () => {
   // comment array
 
   const [comments, setcomments] = useState([]);
-   console.log("nitish");
-   console.log(top3menus);
-   console.log(top3menus[0]?.comments);
+  console.log("nitish");
+  console.log(top3menus);
+  console.log(top3menus[0]?.comments);
   //  useEffect(() => {
   //   // Initialize comments only if top3menus has data and comments are empty
   //   if (top3menus && comments.length === 0) {
   //     setcomments(top3menus[0]?.comments);
   //   }
   // }, [top3menus]);
-   
 
-if (top3menus && comments.length <= 0) {
-  setcomments(top3menus[0]?.comments); 
-}
 
-useEffect(() => {
   if (top3menus && comments.length <= 0) {
     setcomments(top3menus[0]?.comments);
   }
-}, []);
+
+  useEffect(() => {
+    if (top3menus && comments.length <= 0) {
+      setcomments(top3menus[0]?.comments);
+    }
+  }, []);
 
   const [clicked, setclicked] = useState('665cbaafb9ba6f61a95b54de');
-  
-  function pinComment(com)  {
+
+  function pinComment(com) {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
       url: `https://seashell-app-lgwmg.ondigitalocean.app/api/pinComment/${com}/${clicked}`,
-      headers: { }
+      headers: {}
     };
-    
-    axios.request(config)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-      window.location.reload();
 
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        window.location.reload();
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
   };
 
-  
+
 
 
   return (
@@ -389,7 +389,7 @@ useEffect(() => {
         </div>
 
         <div className="flex gap-5 ">
-          <Link to={`https://www.snackbae.in/profile/merchant/${id}`}  target='_blank' className="hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]">
+          <Link to={`https://www.snackbae.in/profile/merchant/${id}`} target='_blank' className="hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]">
             View Profile
           </Link>
           <button
@@ -405,8 +405,50 @@ useEffect(() => {
         {/* total report */}
         <div className=" w-full sm:flex sm:px-2 gap-3 overflow-hidden">
           <div className="sm:w-[70%] w-full flex flex-col gap-2">
+          <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
+              Today's Report
+            </p>
+            <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2  rounded-md bg-white p-4">
+
+              <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
+                <p className="text-[#777980] text-[.9rem] font-semibold">
+                  Today's Sales
+                </p>
+                <img
+                  className="size-8 absolute right-2"
+                  src="/Badge (1).png"
+                  alt=""
+                />
+
+                <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
+                  ₹0
+                </p>
+                <div className="flex text-[.9rem] gap-1 font-bold">
+                  <p className="text-[#018DF0] ">View Payments</p>
+                </div>
+              </div>
+              <div className="sm:w-[50%] w-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
+                <p className="text-[#777980] text-[.9rem] font-semibold">
+                  Today's Customer
+                </p>
+                <img
+                  className="size-8 absolute right-2"
+                  src="/Badge (1).png"
+                  alt=""
+                />
+
+                <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
+                  {todaysCustomer}
+                </p>
+                <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
+                  <p className="font-bold ">30% </p>
+                  <img src="/fi-rr-caret-up.png" alt="" />
+                  <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
+                </div>
+              </div>
+            </div>
             <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
-              <Link to={`https://www.snackbae.in/profile/merchant/${id}`}  target='_blank' className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold">
+              <Link to={`https://www.snackbae.in/profile/merchant/${id}`} target='_blank' className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold">
                 <p>View Profile</p>
                 <GoFileSymlinkFile />
               </Link>
@@ -471,51 +513,10 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-            <p className="text-[#000000] text-[1.6rem] font-semibold px-4 ">
-              Today's Report
-            </p>
-            <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2  rounded-md bg-white p-4">
-
-              <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                <p className="text-[#777980] text-[.9rem] font-semibold">
-                  Today's Sales
-                </p>
-                <img
-                  className="size-8 absolute right-2"
-                  src="/Badge (1).png"
-                  alt=""
-                />
-
-                <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
-                  ₹0
-                </p>
-                <div className="flex text-[.9rem] gap-1 font-bold">
-                  <p className="text-[#018DF0] ">View Payments</p>
-                </div>
-              </div>
-              <div className="sm:w-[50%] w-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                <p className="text-[#777980] text-[.9rem] font-semibold">
-                  Today's Customer
-                </p>
-                <img
-                  className="size-8 absolute right-2"
-                  src="/Badge (1).png"
-                  alt=""
-                />
-
-                <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
-                  {todaysCustomer}
-                </p>
-                <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
-                  <p className="font-bold ">30% </p>
-                  <img src="/fi-rr-caret-up.png" alt="" />
-                  <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
           {/* Relationship */}
-          <div className="hidden  w-[28%] h-[370px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4">
+          <div className="hidden  w-[28%] h-[370px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4 sm:mt-4">
             <p className="text-[#0F172A] text-[1.2rem] font-semibold border-b border-[#F1F5F9] pb-3">
               Relationship Manager
             </p>
@@ -527,38 +528,38 @@ useEffect(() => {
               <div className="flex gap-2 items-center">
                 <CiLocationOn className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  Nitish Kumar
+                  Souvik Das
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <LuPhoneCall className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  +91 91234567889
+                  +91 7044292143
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <TbProgressHelp className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  Help@snackbae.in
+                  Connect.snackbae@gmail.com
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <CiCalendarDate className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  10 AM - 7 PM
+                  24/7
                 </p>
               </div>
             </div>
 
             <div className="w-full h-[40px] bg-[#FDE030] text-[1.3rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]">
               <IoLogoWhatsapp />
-              <p>+91 7603037718</p>
+              <p>+91 7044292143</p>
             </div>
           </div>
         </div>
 
         {/* Latest Transaction */}
-        <div className="w-full h-fit flex flex-col ">
+        <div className="w-full hidden h-fit  flex-col ">
           <div className="w-full h-[80px] flex justify-between items-center px-6 ">
             <div>
               <p className="sm:text-[1.6rem] text-[1.2rem] font-semibold">
@@ -740,9 +741,9 @@ useEffect(() => {
                 ? searchMenuItems &&
                 searchMenuItems?.map((menu, index) => (
                   <div key={index}>
-                   <div onClick={() => {setcomments(menu?.comments); setclicked(menu._id)}
-                         
-                   } className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2">
+                    <div onClick={() => { setcomments(menu?.comments); setclicked(menu._id) }
+
+                    } className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2">
                       <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
 
                         <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
@@ -801,22 +802,21 @@ useEffect(() => {
                             Must Try
                           </p>
                         </div>
-                        
+
                       </div>
                     </div>
-                    
+
                   </div>
                 ))
                 : menus &&
                 top3menus?.map((menu, index) => (
                   <>
 
-                    <div onClick={() => { 
-                      if(menu?.comments.length>0)
-                        {setcomments(menu?.comments)}
-                      else
-                      {setcomments([])}
-                      ; setclicked(menu._id)}} className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2">
+                    <div onClick={() => {
+                      if (menu?.comments.length > 0) { setcomments(menu?.comments) }
+                      else { setcomments([]) }
+                      ; setclicked(menu._id)
+                    }} className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2">
                       <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
 
                         <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
@@ -875,10 +875,10 @@ useEffect(() => {
                             Must Try
                           </p>
                         </div>
-                        
+
                       </div>
                     </div>
-                    
+
                   </>
                 ))}
             </div>
@@ -886,77 +886,77 @@ useEffect(() => {
             <div className="sm:w-[50%] bg-white h-[560px] rounded-lg  flex flex-col items-center  ">
               <p className='w-full h-fit py-6 px-4 text-[1.5rem] font-semibold'>Customer Testimonials</p>
               <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
-              {comments
-  .map((item, index) => ({
-    ...item,
-    isActive: item.Active === "true" ? 1 : 0 // Assigning a value of 1 for active comments and 0 for inactive comments
-  }))
-  .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
-  .map((item, index) => (
-                  <div
-                    key={index}
-                    className="h-[200px]  w-full  flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2 my-4"
-                  >
-                    <div className="flex justify-between items-center sm:px-4 gap-4 w-full h-[20%]">
-                      <div className="flex items-center  sm:gap-5 gap-2">
-                        <IoPersonCircleOutline className="size-8" />
-                        <div className="flex flex-col items-center">
-                          <p className=" text-nowrap ">{item.userId?.name}</p>
-                          <p>{calculateTimeDifference(item?.createdAt)}</p>
+                {comments
+                  .map((item, index) => ({
+                    ...item,
+                    isActive: item.Active === "true" ? 1 : 0 // Assigning a value of 1 for active comments and 0 for inactive comments
+                  }))
+                  .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
+                  .map((item, index) => (
+                    <div
+                      key={index}
+                      className="h-[200px]  w-full  flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2 my-4"
+                    >
+                      <div className="flex justify-between items-center sm:px-4 gap-4 w-full h-[20%]">
+                        <div className="flex items-center  sm:gap-5 gap-2">
+                          <IoPersonCircleOutline className="size-8" />
+                          <div className="flex flex-col items-center">
+                            <p className=" text-nowrap ">{item.userId?.name}</p>
+                            <p>{calculateTimeDifference(item?.createdAt)}</p>
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="flex gap-4">
-                        {item?.Active == "true" ? (
-                          <button onClick={()=>{
-                            pinComment(item._id)
+                        <div className="flex gap-4">
+                          {item?.Active == "true" ? (
+                            <button onClick={() => {
+                              pinComment(item._id)
                             }} className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">UnPin</button>
-                        ):<button onClick={()=>{
-                          pinComment(item._id)
+                          ) : <button onClick={() => {
+                            pinComment(item._id)
                           }} className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Pin</button>
-                        }
+                          }
 
-                       
-                        <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Report</button>
+
+                          <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Report</button>
+                        </div>
+
+
                       </div>
-
-
+                      <p className="w-full h-[70%] mt-5 text-[#67727E] ">
+                        {item?.description}
+                      </p>
+                      {item?.rated === "liked" && (
+                        <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                          <img
+                            className="size-7"
+                            src="/Group 1171277598.png"
+                            alt=""
+                          />
+                          <p className="text-[.7rem]">Liked</p>
+                        </div>
+                      )}
+                      {item?.rated === "mustTry" && (
+                        <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                          <img
+                            className="size-7"
+                            src="/Group 1171277601.png"
+                            alt=""
+                          />
+                          <p className="text-[.7rem]">Must Try</p>
+                        </div>
+                      )}
+                      {item?.rated === "notLike" && (
+                        <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                          <img
+                            className="size-7"
+                            src="/🦆 emoji _disappointed but relieved face_.png"
+                            alt=""
+                          />
+                          <p className="text-[.7rem]">Must Try</p>
+                        </div>
+                      )}
                     </div>
-                    <p className="w-full h-[70%] mt-5 text-[#67727E] ">
-                      {item?.description}
-                    </p>
-                    {item?.rated === "liked" && (
-                      <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                        <img
-                          className="size-7"
-                          src="/Group 1171277598.png"
-                          alt=""
-                        />
-                        <p className="text-[.7rem]">Liked</p>
-                      </div>
-                    )}
-                    {item?.rated === "mustTry" && (
-                      <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                        <img
-                          className="size-7"
-                          src="/Group 1171277601.png"
-                          alt=""
-                        />
-                        <p className="text-[.7rem]">Must Try</p>
-                      </div>
-                    )}
-                    {item?.rated === "notLike" && (
-                      <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                        <img
-                          className="size-7"
-                          src="/🦆 emoji _disappointed but relieved face_.png"
-                          alt=""
-                        />
-                        <p className="text-[.7rem]">Must Try</p>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  ))}
               </div>
 
 
