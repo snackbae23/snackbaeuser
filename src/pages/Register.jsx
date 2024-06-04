@@ -11,17 +11,39 @@ import { PiEyeLight } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import "../component/RegStepper.css";
+import { TiTick } from "react-icons/ti";
+import { BsFileEarmarkMedicalFill } from "react-icons/bs";
+import tick from "../assets/tick.png"
 
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     brandName: "",
+    otp: "",
     contactNumber: "",
     email: "",
     businessType: "",
+    payoutMethod: "",
     password: "",
     confirmPassword: "",
+    fssai: "",
+    gst: "",
+    accountNumber: "",
+    reAccountNumber: "",
+    ifsc: "",
+    bankingName: "",
+    upiId: "",
   });
+
+  const steps = [
+    "Basic Details",
+    "Business Info",
+    "Payout Method",
+    "Start your journey",
+  ];
+  const [currentStep, setCurrentStep] = useState(1);
+  const [complete, setComplete] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showCPassword, setShowCPassword] = useState(false);
@@ -35,21 +57,30 @@ const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(formData);
     if (formData.password !== formData.confirmPassword) {
       toast.error("Please fill same password");
     } else {
       setFormData({
         brandName: "",
-        contactNumber: "",
-        email: "",
-        businessType: "",
-        password: "",
-        confirmPassword: "",
+    otp: "",
+    contactNumber: "",
+    email: "",
+    businessType: "",
+    payoutMethod: "",
+    password: "",
+    confirmPassword: "",
+    fssai: "",
+    gst: "",
+    accountNumber: "",
+    reAccountNumber: "",
+    ifsc: "",
+    bankingName: "",
+    upiId: "",
       });
       setPrivacyPolicy(false);
       setTermCondition(false);
       // Add your form submission logic here
-      console.log(formData);
 
       let config = {
         method: "post",
@@ -77,14 +108,13 @@ const Register = () => {
   };
 
   return (
-    <div className="flex w-full ">
+    <div className="flex w-full h-fit">
       <div className="md:w-[60%] w-full flex flex-col relative md:gap-4 gap-2 justify-center items-center mb-10">
         <Navbar2 />
-        <form
-          onSubmit={submitHandler}
-          className="flex flex-col md:w-[85%] w-[80%] gap-y-4 mt-[100px]  sm:mx-auto"
-        >
-          <div className="flex flex-col gap-2 md:w-[75%] w-full">
+
+        <div className="flex flex-col md:w-[75%] w-[80%] gap-14 sm:mx-auto">
+          {/* heading div */}
+          <div className="flex flex-col gap-2 mt-[70px] ml-6 w-full">
             <h2 className="font-bold text-left text-2xl">
               Register with snackbae
             </h2>
@@ -94,48 +124,37 @@ const Register = () => {
             </p>
           </div>
 
-          <p className="bg-[#64748B] border border-dashed md:my-2 my-1"></p>
-          <div className="flex items-center gap-3">
-            <img src="Ellipse 20.png" width={20} height={20} />
-            <p>Business Details</p>
+          {/* stepper div */}
+          <div className="flex justify-between">
+            {steps?.map((step, i) => (
+              <div
+                key={i}
+                className={`step-item ${currentStep === i + 1 && "active"} ${
+                  (i + 1 < currentStep || complete) && "complete"
+                }`}
+              >
+                <div className="step">
+                  {i + 1 < currentStep || complete ? (
+                    <TiTick className="text-white" size={24} />
+                  ) : (
+                    i + 1
+                  )}
+                </div>
+                <p className="text-grey-500">{step}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="w-full flex flex-col gap-4">
-            <div className="w-full flex md:flex-row flex-col gap-6">
-              <label className="md:w-[50%] w-full font-semibold text-left text-m flex flex-col gap-3">
-                Brand Name:
-                <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
-                  <IoPersonOutline className="size-[25px]" />
-                  <input
-                    type="text"
-                    name="brandName"
-                    placeholder="Foodie"
-                    value={formData.brandName}
-                    onChange={handleChange}
-                    className="w-full h-full text-richblack-5 outline-none"
-                  />
-                </div>
-              </label>
-
-              <label className="md:w-[50%] w-full font-semibold text-left text-m flex flex-col gap-3">
-                Contact Number:
-                <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
-                  <BsTelephone className="size-[25px]" />
-                  <input
-                    type="text"
-                    name="contactNumber"
-                    placeholder="Contact Number"
-                    value={formData.contactNumber}
-                    onChange={handleChange}
-                    className="w-full h-full text-richblack-5 outline-none"
-                  />
-                </div>
-              </label>
-            </div>
-
-            <div className="w-full flex md:flex-row flex-col gap-6">
-              <label className="md:w-[50%] w-full font-semibold text-left text-m flex flex-col gap-3">
-                Email:
+          {/* form 1 */}
+          <form
+            className={`flex flex-col w-[75%] gap-4 mx-auto ${
+              currentStep === 1 ? "block" : " hidden"
+            }`}
+          >
+            {/* Email verification */}
+            <div className="flex gap-1 flex-col">
+              <label className="w-full text-left text-m flex flex-col gap-3">
+                <p className="font-semibold">Email Id</p>
                 <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
                   <CiMail className="size-[25px]" />
                   <input
@@ -150,29 +169,45 @@ const Register = () => {
                 </div>
               </label>
 
-              <label className="md:w-[50%] w-full font-semibold text-left text-m flex flex-col gap-3">
-                Business Type:
-                <div className="flex w-full h-[3rem] border rounded-[0.5rem] px-[12px] items-center gap-3">
-                  <select
-                    name="businessType"
-                    value={formData.businessType}
+              <label className="w-full text-left text-m flex flex-col gap-3">
+                <p className="text-[#004AAD] font-semibold">Request OTP</p>
+                <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3 relative">
+                  <RiLockPasswordLine className="size-[25px]" />
+                  <input
+                    required
+                    type="text"
+                    placeholder="One Time Password"
+                    name="otp"
+                    value={formData.otp}
                     onChange={handleChange}
-                    className="w-full h-full outline-none"
-                  >
-                    <option value="">Select Business Type</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Hospitality">Hospitality</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Healthcare">Healthcare</option>
-                    {/* Add more options as needed */}
-                  </select>
+                    className="w-full h-full text-richblack-5 outline-none"
+                  />
                 </div>
               </label>
+
+              <button className="bg-[#004AAD] rounded-[8px] text-white font-medium text-richblack-900 px-[12px] py-[8px] mt-6">
+                Verify
+              </button>
             </div>
 
-            <div className="w-full flex md:flex-row flex-col gap-6">
-              <label className="md:w-[50%] w-full font-semibold text-left text-m flex flex-col gap-3">
-                Set Password:
+            {/* password */}
+            <div className="flex gap-2 flex-col">
+              <label className=" w-full text-left text-m flex flex-col gap-3">
+                <p className="font-semibold">Contact Number:</p>
+                <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                  <BsTelephone className="size-[25px]" />
+                  <input
+                    type="text"
+                    name="contactNumber"
+                    placeholder="Contact Number"
+                    value={formData.contactNumber}
+                    onChange={handleChange}
+                    className="w-full h-full text-richblack-5 outline-none"
+                  />
+                </div>
+              </label>
+              <label className=" w-full text-left text-m flex flex-col gap-3">
+                <p className="font-semibold ">Set Password:</p>
                 <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3 relative">
                   <RiLockPasswordLine className="size-[25px]" />
                   <input
@@ -197,8 +232,8 @@ const Register = () => {
                 </div>
               </label>
 
-              <label className="md:w-[50%] w-full font-semibold text-left text-m flex flex-col gap-3">
-                Confirm Password:
+              <label className="w-full  text-left text-m flex flex-col gap-3">
+                <p className="font-semibold">Confirm Password:</p>
                 <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3 relative">
                   <RiLockPasswordLine className="size-[25px]" />
                   <input
@@ -223,49 +258,257 @@ const Register = () => {
                 </div>
               </label>
             </div>
+          </form>
 
-            <div className="w-full flex gap-6 md:flex-row flex-col mt-3">
-              <label className="text-xs text-center flex items-center  font-semibold">
-                <input
-                  required
-                  type="checkbox"
-                  checked={privacyPolicy}
-                  onChange={() => setPrivacyPolicy(!privacyPolicy)}
-                  className="size-[18px] mr-2"
-                />
-                Agree to our
-                <Link to="https://www.snackbae.in/privacyPolicy">
-                  <span className="text-[#2563EB] ml-1">Privacy & Policy</span>
-                </Link>
+          {/* form 2 */}
+          <form
+            className={`flex flex-col md:w-[75%] w-[80%] gap-4 mx-auto ${
+              currentStep === 2 ? "block" : " hidden"
+            }`}
+          >
+            <div className="flex flex-col gap-4">
+              <label className=" w-full text-left text-m flex flex-col gap-3">
+                <p className="font-semibold">Brand Name</p>
+                <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                  <IoPersonOutline className="size-[25px]" />
+                  <input
+                    type="text"
+                    name="brandName"
+                    placeholder="Foodie"
+                    value={formData.brandName}
+                    onChange={handleChange}
+                    className="w-full h-full text-richblack-5 outline-none"
+                  />
+                </div>
               </label>
 
-              <label className="text-xs text-center font-semibold flex">
-                <input
-                  required
-                  type="checkbox"
-                  checked={termCondition}
-                  onChange={() => setTermCondition(!termCondition)}
-                  className="size-[18px] mr-2"
-                />
-                Agree to other
-                <Link to="https://www.snackbae.in/termsCondition">
-                  <span className="text-[#2563EB] ml-1">term & condition</span>
-                </Link>
+              <label className="w-full text-left text-m flex flex-col gap-3">
+                <p className="font-semibold ">Business Type</p>
+                <div className="flex w-full h-[3rem] border rounded-[0.5rem] px-[12px] items-center gap-3">
+                  <select
+                    name="businessType"
+                    value={formData.businessType}
+                    onChange={handleChange}
+                    className="w-full h-full outline-none"
+                  >
+                    <option value="">Select Business Type</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Hospitality">Hospitality</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Healthcare">Healthcare</option>
+                  </select>
+                </div>
+              </label>
+
+              <label className=" w-full text-left text-m flex flex-col gap-3">
+                <p className=" font-semibold">FSSAI License Number</p>
+                <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                  <BsFileEarmarkMedicalFill className="size-[25px]" />
+                  <input
+                    type="number"
+                    name="fssai"
+                    placeholder="License Number"
+                    value={formData.fssai}
+                    onChange={handleChange}
+                    className="w-full h-full text-richblack-5 outline-none"
+                  />
+                </div>
+              </label>
+
+              <label className="w-full text-left text-m flex flex-col gap-3">
+                <p className="font-semibold ">GST Number(Optional)</p>
+                <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                  <BsFileEarmarkMedicalFill className="size-[25px]" />
+                  <input
+                    type="number"
+                    name="gst"
+                    placeholder="GST Numbet"
+                    value={formData.gst}
+                    onChange={handleChange}
+                    className="w-full h-full text-richblack-5 outline-none"
+                  />
+                </div>
               </label>
             </div>
+          </form>
 
-            <div className="flex flex-col items-center gap-4 mb-2">
-              <button className="md:w-[50%] w-full mx-auto md:mt-10 mt-4 bg-[#004AAD] rounded-[8px] text-white font-medium text-richblack-900 px-[12px] py-[8px]">
-                Create profile
-              </button>
+          {/* form 3 */}
+          <form
+            className={`flex flex-col md:w-[75%] w-[80%] gap-4 mx-auto ${
+              currentStep === 3 ? "block" : " hidden"
+            }`}
+          >
+            <div>
+              <label className=" w-full text-left text-m flex flex-col gap-3">
+                <p className="font-semibold">Payout Method</p>
+                <div className="flex w-full h-[3rem] border rounded-[0.5rem] px-[12px] items-center gap-3">
+                  <select
+                    name="payoutMethod"
+                    value={formData.payoutMethod}
+                    onChange={handleChange}
+                    className="w-full h-full outline-none"
+                  >
+                    <option value="">Select Method</option>
+                    <option value="BankTransfer">Bank Transfer</option>
+                    <option value="upi">UPI</option>
+                  </select>
+                </div>
+              </label>
+
+              {formData.payoutMethod === "BankTransfer" ? (
+                <div className="flex flex-col gap-4 mt-4">
+                  <label className=" w-full text-left text-m flex flex-col gap-3">
+                    <p className=" font-semibold">Account Number</p>
+                    <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                      <BsFileEarmarkMedicalFill className="size-[25px]" />
+                      <input
+                        type="number"
+                        name="accountNumber"
+                        placeholder="91234567899123456789"
+                        value={formData.accountNumber}
+                        onChange={handleChange}
+                        className="w-full h-full text-richblack-5 outline-none"
+                      />
+                    </div>
+                  </label>
+
+                  <label className=" w-full text-left text-m flex flex-col gap-3">
+                    <p className=" font-semibold">Re-enter Account Number</p>
+                    <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                      <BsFileEarmarkMedicalFill className="size-[25px]" />
+                      <input
+                        type="number"
+                        name="reAccountNumber"
+                        placeholder="91234567899123456789"
+                        value={formData.reAccountNumber}
+                        onChange={handleChange}
+                        className="w-full h-full text-richblack-5 outline-none"
+                      />
+                    </div>
+                  </label>
+
+                  <label className=" w-full text-left text-m flex flex-col gap-3">
+                    <p className=" font-semibold">IFSC Code</p>
+                    <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                      <BsFileEarmarkMedicalFill className="size-[25px]" />
+                      <input
+                        type="number"
+                        name="ifsc"
+                        placeholder="91234567899123456789"
+                        value={formData.ifsc}
+                        onChange={handleChange}
+                        className="w-full h-full text-richblack-5 outline-none"
+                      />
+                    </div>
+                  </label>
+
+                  <label className=" w-full text-left text-m flex flex-col gap-3">
+                    <p className=" font-semibold">Banking Name</p>
+                    <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                    <IoPersonOutline className="size-[25px]" />
+                      <input
+                        type="text"
+                        name="bankingName"
+                        placeholder="Intekhabul Haque"
+                        value={formData.bankingName}
+                        onChange={handleChange}
+                        className="w-full h-full text-richblack-5 outline-none"
+                      />
+                    </div>
+                  </label>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-4">
+                  <label className=" w-full text-left text-m flex flex-col gap-3">
+                    <p className=" font-semibold">UPI Id</p>
+                    <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                      <BsFileEarmarkMedicalFill className="size-[25px]" />
+                      <input
+                        type="number"
+                        name="ifsc"
+                        placeholder="abscfdgd@ybl"
+                        value={formData.ifsc}
+                        onChange={handleChange}
+                        className="w-full h-full text-richblack-5 outline-none"
+                      />
+                    </div>
+                  </label>
+                  <label className=" w-full text-left text-m flex flex-col gap-3">
+                    <p className=" font-semibold">Banking Name</p>
+                    <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
+                    <IoPersonOutline className="size-[25px]" />
+                      <input
+                        type="text"
+                        name=" bankingName"
+                        placeholder="License Number"
+                        value={formData.bankingName}
+                        onChange={handleChange}
+                        className="w-full h-full text-richblack-5 outline-none"
+                      />
+                    </div>
+                  </label>
+                </div>
+              )}
+            </div>
+          </form>
+
+          {/* form 4 */}
+          <form className={`flex flex-col w-[75%] gap-4 mx-auto ${
+              currentStep === steps.length ? "block" : " hidden"
+            }`}>
+            <div className="flex flex-col justify-center items-center gap-4">
+              <img className="size-[150px]" src={tick}/>
+              <p className="text-[#26203B] sm:text-[24px] text-[16px] font-semibold">Account created successfully!</p>
+              <p className="text-[#9C9AA5] sm:text-[16px] text-[12px]">Welcome aboard! Start your success journey with Snackbae!</p>
+            </div>
+          </form>
+
+          {/* button div */}
+          <div
+            className={`sm:w-[90%] w-full sm:ml-6 mt-2 items-center flex ${
+              currentStep === steps.length
+                ? "justify-center"
+                : "justify-between"
+            }`}
+          >
+            {currentStep === 1 ? (
               <Link to="/">
-                <span className="text-[#004AAD] font-semibold">
+                <p className="text-[#004AAD] font-semibold px-[12px] py-[8px]">
                   Back to Sign In
-                </span>
+                </p>
               </Link>
-            </div>
+            ) : (
+              <button
+                onClick={() => {
+                  setCurrentStep((prev) => prev - 1);
+                }}
+                className={`sm:w-[20%] w-[40%] bg-white rounded-[8px] text-[#004AAD] border border-[#004AAD] font-medium text-richblack-900 px-[12px] py-[8px] ${
+                  currentStep === steps.length ? "hidden" : "block"
+                }`}
+              >
+                Previous
+              </button>
+            )}
+
+            {currentStep === steps.length ? (
+              <button
+                onClick={submitHandler}
+                className="w-[40%] bg-[#004AAD] rounded-[8px] text-white font-medium text-richblack-900 px-[12px] py-[8px]"
+              >
+                Lets Start!
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setCurrentStep((prev) => prev + 1);
+                }}
+                className="sm:w-[20%] w-[40%] bg-[#004AAD] rounded-[8px] text-white font-medium text-richblack-900 px-[12px] py-[8px]"
+              >
+                {currentStep === steps.length ? "Lets Start!" : "Next"}
+              </button>
+            )}
           </div>
-        </form>
+        </div>
       </div>
 
       <div className="md:w-[40%] md:block hidden bg-[#004AAD] rounded-l-2xl">
