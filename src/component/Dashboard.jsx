@@ -299,9 +299,9 @@ const Dashboard = () => {
   // }, [top3menus]);
 
 
-  if (top3menus && comments.length <= 0) {
-    setcomments(top3menus[0]?.comments);
-  }
+  // if (top3menus && comments.length <= 0) {
+  //   setcomments(top3menus[0]?.comments);
+  // }
 
   useEffect(() => {
     if (top3menus && comments.length <= 0) {

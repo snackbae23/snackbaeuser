@@ -70,7 +70,7 @@ const Navbar1 = ({ isToggled, setIsToggled,data }) => {
 
     
 
-    const [notification, setNotification] = useState(false);
+    const [notification, setNotification] = useState(true);
     const notifications = () => {
         setNotification(!notification);
         if(notification==false){
