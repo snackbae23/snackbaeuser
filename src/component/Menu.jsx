@@ -316,25 +316,52 @@ const Menu = () => {
     document.getElementById("restaurant").style.display = "none";
   }
   const [MenuId, setMenuId] = useState();
-  function deleteMenu(item) {
+    function deleteMenu(item) {
     // console.log("delete")
-    window.alert("Menu will be deleted.");
-    let config = {
-      method: "delete",
-      maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/deleteMenu/${item._id}`,
-      headers: {},
-    };
+    if (window.confirm("Are you sure you want to delete the menu?")) {
+      // If user confirms, proceed with deletion
+      let config = {
+        method: "delete",
+        maxBodyLength: Infinity,
+        url: `https://seashell-app-lgwmg.ondigitalocean.app/api/deleteMenu/${item._id}`,
+        headers: {},
+      };
 
-    axios
-      .request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-        getRestaurantData();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      axios
+        .request(config)
+        .then((response) => {
+          // Log the response data and refresh the restaurant data
+          console.log(JSON.stringify(response.data));
+          getRestaurantData();
+          // Alert user of successful deletion
+          window.alert("Menu has been successfully deleted.");
+        })
+        .catch((error) => {
+          // Log any errors that occur during the request
+          console.log(error);
+          // Alert user of failure
+          window.alert("Failed to delete the menu.");
+        });
+    } else {
+      // If user cancels, do not proceed with deletion
+      window.alert("Menu deletion canceled.");
+    }
+    // let config = {
+    //   method: "delete",
+    //   maxBodyLength: Infinity,
+    //   url: `https://seashell-app-lgwmg.ondigitalocean.app/api/deleteMenu/${item._id}`,
+    //   headers: {},
+    // };
+
+    // axios
+    //   .request(config)
+    //   .then((response) => {
+    //     console.log(JSON.stringify(response.data));
+    //     getRestaurantData();
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
    const[itemCategoryy , setItemCategoryy]= useState();
   function openPopup2(item) {
