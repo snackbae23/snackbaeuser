@@ -704,7 +704,7 @@ const Dashboard = () => {
                 </p>
 
                 <p className="text-[#1D1F2C] text-[2rem] font-semibold  ">
-                  450
+                  {totalCustomers}
                 </p>
               </div>
             </div>
