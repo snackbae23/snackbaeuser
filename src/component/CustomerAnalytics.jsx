@@ -20,6 +20,7 @@ const CustomerAnalytics = () => {
     const [birthdayCount, setBirthdayCount] = useState(0);
     const [maleCount, setMaleCount] = useState(0);
     const [femaleCount, setFemaleCount] = useState(0);
+    const [lowRecommendation,setLowRecommendation] = useState(0);
 
 
     const getRestaurantData = async (req, res) => {
@@ -95,9 +96,18 @@ const CustomerAnalytics = () => {
                         female += 1;
                     }
                 });
-                // console.log(male,"  ",female)
                 setMaleCount(male);
                 setFemaleCount(female);
+
+                //low recommendation
+                const lowRec = new Date();
+                lowRec.setDate(now.getDate() - 30);
+
+                const recentVisitors2 = resData?.restaurant?.recommendationRecord.filter(customer => {
+                    const visitDate = new Date(customer.createdAt);
+                    return visitDate >= thirtyDaysAgo && customer.low == true;
+                });
+                setLowRecommendation(recentVisitors2.length);
 
             })
             .catch((error) => {
@@ -226,7 +236,7 @@ const CustomerAnalytics = () => {
                                     <p className='text-[#F44336]'> 30 Days</p>
                                 </div>
                             </div>
-                            <p className='text-[1.8rem] text-[#1D1F2C]'>5</p>
+                            <p className='text-[1.8rem] text-[#1D1F2C]'>{lowRecommendation}</p>
                         </div>
                         <div className='w-full flex items-center justify-evenly text-[1.6rem] h-[25%] py-[.5rem]'>
 
