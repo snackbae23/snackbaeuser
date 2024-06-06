@@ -118,14 +118,15 @@ const CustomerRecords = () => {
 
         {/* Render the current page's data */}
         {currentPageData().map((item, index) => (
-          <div key={index} className=" flex justify-between items-center px-12 my-2 py-2 font-semibold">
+          <div key={index} className='grid grid-cols-6 text-[1.1rem]  px-6 border-b-2 pb-4 bg-[#F6F8FF] py-4 rounded-md'>
             {/* Render your data here */}
-            <p>{item.userId.name}</p>
-            <p>{maskPhoneNumber(item.userId.contact)}</p>
-            <p className=''>{item.userId.gender}</p>
-            <p>{item.count}</p>
-            <p>-</p>
-            <p>{formattedDate(item.createdAt)}</p>
+            <p>{item.userId.name || 'Name'}</p>
+
+            <p className='flex items-center justify-center ml-8 '>{maskPhoneNumber(item.userId.contact)}</p>
+            <p className=' flex items-center justify-end mr-6'>{item.userId.gender}</p>
+            <p className='flex items-center justify-center ml-8'>{item.count}</p>
+            <p className='flex items-center justify-center ml-8'>-</p>
+            <p className='flex items-center justify-end text-nowrap'>{formattedDate(item.createdAt)}</p>
           </div>
         ))}
         <div className='flex justify-between px-8  mt-7'>
@@ -243,13 +244,13 @@ const CustomerRecords = () => {
 
 
         <div className='bg-white w-full h-fit p-4  mb-9 rounded-lg sm:block hidden'>
-          <div className='flex justify-between text-[1.1rem] text-[#718096] px-8 border-b-2 pb-4 bg-[#F6F8FF] py-4 rounded-md'>
+          <div className=' grid grid-cols-6 text-[1.1rem] text-[#718096] px-6 border-b-2 pb-4 bg-[#F6F8FF] py-4 rounded-md'>
             <p>Customer Name</p>
-            <p className='ml-11'>Phone Number</p>
-            <p className='ml-9'>Gender</p>
-            <p className='ml-6'>Total Visit</p>
-            <p className='ml-5'>Total Spend</p>
-            <p className='ml-5'>Last Visited</p>
+            <p className='flex items-center justify-center ml-8 '>Phone Number</p>
+            <p className=' flex items-center justify-end mr-6'>Gender</p>
+            <p className='flex items-center justify-center ml-8 text-nowrap'>Total Visit</p>
+            <p className='flex items-center justify-center ml-8 text-nowrap'>Total Spend</p>
+            <p className='flex items-center justify-end'>Last Visited</p>
           </div>
           <div className='w-full h-fit '>
 
