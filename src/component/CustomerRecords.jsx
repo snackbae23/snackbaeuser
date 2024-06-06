@@ -272,29 +272,29 @@ const CustomerRecords = () => {
           <div id='index' className='flex w-full bg-[#FFFFFF] my-3 rounded-md border p-4 border-[#373535] items-center  '>
           <div className='flex w-[50%] flex-col gap-3'>
             <div className='flex flex-col gap-1'>
-              <p className='text-[1.2rem] text-[#808080]'>Customer Name</p>
+              <p className='text-[1.1rem] text-[#808080] text-nowrap'>Customer Name</p>
               <p className='font-bold text-[#0F172A]'>{item.userId.name || 'Name'}</p>
             </div>
             <div>
-              <p className='text-[1.2rem] text-[#808080]'>Total Visit</p>
+              <p className='text-[1.1rem] text-[#808080] text-nowrap'>Total Visit</p>
               <p className='font-bold text-[#0F172A] text-[]'>{item.count}</p>
             </div>
             <div>
-              <p className='text-[1.2rem] text-[#808080]'>Last Visited</p>
+              <p className='text-[1.1rem] text-[#808080]'>Last Visited</p>
               <p className='font-bold text-[#0F172A]'>{formattedDate(item.createdAt)}</p>
             </div>
           </div>
           <div className='flex w-[50%] flex-col gap-3'>
             <div className='flex flex-col gap-1'>
-              <p className='text-[1.2rem] text-[#808080]'>Customer Gender</p>
+              <p className='text-[1.1rem] text-[#808080] text-nowrap'>Customer Gender</p>
               <p className='font-bold text-[#0F172A]'>{item.userId.gender}</p>
             </div>
             <div>
-              <p className='text-[1.2rem] text-[#808080]'>Total spend</p>
+              <p className='text-[1.1rem] text-[#808080] text-nowrap'>Total spend</p>
               <p className='font-bold text-[#0F172A]'>69</p>
             </div>
             <div>
-              <p className='text-[1.2rem] text-[#808080]'>Contect</p>
+              <p className='text-[1.1rem] text-[#808080]'>Contect</p>
               <p className='font-bold text-[#0F172A]'>{maskPhoneNumber(item.userId.contact)}</p>
             </div>
           </div>
