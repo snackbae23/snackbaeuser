@@ -63,7 +63,7 @@ const Register = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:4000/api/verify-otp",
+      url: "https://seashell-app-lgwmg.ondigitalocean.app/api/verify-otp",
       headers: {
         "Content-Type": "application/json",
       },
@@ -156,7 +156,7 @@ const requestOtp = async (e) => {
   let config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: "http://localhost:4000/api/check-email-existence",
+    url: "https://seashell-app-lgwmg.ondigitalocean.app/api/check-email-existence",
     headers: {
       "Content-Type": "application/json",
     },
@@ -170,7 +170,7 @@ const requestOtp = async (e) => {
       let sendOtpConfig = {
         method: "post",
         maxBodyLength: Infinity,
-        url: "http://localhost:4000/api/send-otp",
+        url: "https://seashell-app-lgwmg.ondigitalocean.app/api/send-otp",
         headers: {
           "Content-Type": "application/json",
         },
