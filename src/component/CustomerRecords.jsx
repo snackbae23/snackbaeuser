@@ -268,7 +268,7 @@ const CustomerRecords = () => {
         <div className='w-full sm:hidden block'>
 
 
-        {data.slice(0, 3).map((item, index) => (
+        {udata.slice(0, 3).map((item, index) => (
           <div id='index' className='flex w-full bg-[#FFFFFF] my-3 rounded-md border p-4 border-[#373535] items-center  '>
           <div className='flex w-[50%] flex-col gap-3'>
             <div className='flex flex-col gap-1'>
