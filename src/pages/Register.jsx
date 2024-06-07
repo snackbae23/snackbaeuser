@@ -58,8 +58,37 @@ const Register = () => {
 
   const verifyEmail = (e) => {
     e.preventDefault();
-    setIsVerify(true);
+
     console.log(isVerify);
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:4000/api/verify-otp",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data:{email: formData.email , otp:formData.otp},
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        if (response.data.otpexpired === "true") 
+        {
+          toast.error("OTP Expired Please Regenerate");
+        }
+        else{
+          console.log("verified")
+            toast.success("OTP Verified");
+            setIsVerify(true);
+        }
+      
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Invalid OTP");
+      });
   };
 
   const handleSubmit = (e) => {
@@ -119,6 +148,52 @@ const Register = () => {
     }
   };
 
+const requestOtp = async (e) => {
+  e.preventDefault();
+  const EMAIL = formData.email;
+  console.log("hello");
+
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: "http://localhost:4000/api/check-email-existence",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: { email: formData.email },
+  };
+
+  try {
+    const response = await axios.request(config);
+    console.log(JSON.stringify(response.data));
+    if (response.data.exists ===false) {
+      let sendOtpConfig = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: "http://localhost:4000/api/send-otp",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: { email: formData.email },
+      };
+
+      try {
+        const otpResponse = await axios.request(sendOtpConfig);
+        console.log(JSON.stringify(otpResponse.data));
+        toast.success("OTP sent successfully");
+      } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong! Please try again.");
+      }
+    } else {
+      toast.error("Email already exists. Please sign in.");
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error("Something went wrong! Please try again.");
+  }
+};
+
   return (
     <div className="flex w-full h-fit">
       <div className="md:w-[60%] w-full flex flex-col relative md:gap-4 gap-2 justify-center items-center mb-10">
@@ -167,7 +242,7 @@ const Register = () => {
             {/* Email verification */}
             <div className="flex gap-1 flex-col">
               <label className="w-full text-left text-m flex flex-col gap-3">
-                <p className="font-semibold">Email Id</p>
+                <p className="font-semibold ">Email Id</p>
                 <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3">
                   <CiMail className="size-[25px]" />
                   <input
@@ -183,7 +258,7 @@ const Register = () => {
               </label>
 
               <label className="w-full text-left text-m flex flex-col gap-3">
-                <p className="text-[#004AAD] font-semibold">Request OTP</p>
+                <p onClick={requestOtp} className="text-[#004AAD] font-semibold cursor-pointer">Request OTP</p>
                 <div className="flex w-full h-[3rem] border rounded-[0.5rem] pl-[12px] items-center gap-3 relative">
                   <RiLockPasswordLine className="size-[25px]" />
                   <input
