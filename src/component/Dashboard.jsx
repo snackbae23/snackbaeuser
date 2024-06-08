@@ -32,7 +32,7 @@ const Dashboard = () => {
   const [] = useState(0);
   const [menus, setmenus] = useState("");
   const top3menus = menus.slice(0, 4);
-
+  const  [data , setData ] = useState();
   const [showAllCategories, setShowAllCategories] = useState({});
   const toggleCategory = (categoryId) => {
     setGood(false);
@@ -66,6 +66,7 @@ const Dashboard = () => {
         console.log(resData);
         console.log(resData.restaurant.menu);
         setmenus(resData?.restaurant?.menu);
+        setData(response?.data?.restaurant);
         setRepeatingCustomer(resData.restaurant.returningCustomer);
         setTotalCustomers(resData.restaurant.totalCustomers);
         console.log(resData.restaurant.totalCustomersData);
@@ -360,9 +361,9 @@ const Dashboard = () => {
               />
             </div>
             <p className="sm:text-[1.1rem] font-semibold text-[1.5rem]">
-              FOODOOS
+              {data?.name}
             </p>
-            <p>AMP Baisakhi Mall,Salt Lake</p>
+            <p>{data?.outletAddress}</p>
             <div className="flex gap-4 font-semibold sm:text-[1.1rem] text-[1.15rem] ">
               <button className="text-nowrap sm:px-6 px-7 rounded-md sm:py-2 py-4 bg-[#FFD628] text-black ">
                 Share{" "}
@@ -379,7 +380,6 @@ const Dashboard = () => {
         </div>
       </motion.div>
 
-
       <div className="sm:w-[80%] w-full  sm:h-[90px] h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-7 sm:px-10 fixed ">
         <div>
           <p className="sm:text-[1.6rem] text-[2rem] font-semibold">
@@ -389,7 +389,11 @@ const Dashboard = () => {
         </div>
 
         <div className="flex gap-5 ">
-          <Link to={`https://www.snackbae.in/profile/merchant/${id}`} target='_blank' className="hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]">
+          <Link
+            to={`https://www.snackbae.in/profile/merchant/${id}`}
+            target="_blank"
+            className="hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]"
+          >
             View Profile
           </Link>
           <button
@@ -405,11 +409,10 @@ const Dashboard = () => {
         {/* total report */}
         <div className=" w-full sm:flex sm:px-2 gap-3 overflow-hidden">
           <div className="sm:w-[70%] w-full flex flex-col gap-2">
-          <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
+            <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
               Today's Report
             </p>
             <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2  rounded-md bg-white p-4">
-
               <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
                 <p className="text-[#777980] text-[.9rem] font-semibold">
                   Today's Sales
@@ -448,7 +451,11 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
-              <Link to={`https://www.snackbae.in/profile/merchant/${id}`} target='_blank' className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold">
+              <Link
+                to={`https://www.snackbae.in/profile/merchant/${id}`}
+                target="_blank"
+                className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold"
+              >
                 <p>View Profile</p>
                 <GoFileSymlinkFile />
               </Link>
@@ -513,7 +520,6 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            
           </div>
           {/* Relationship */}
           <div className="hidden  w-[28%] h-[370px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4 sm:mt-4">
@@ -528,32 +534,30 @@ const Dashboard = () => {
               <div className="flex gap-2 items-center">
                 <CiLocationOn className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  Souvik Das
+                  {data?.contactPerson}
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <LuPhoneCall className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  +91 7044292143
+                  +91{data?.contact}
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <TbProgressHelp className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  Connect.snackbae@gmail.com
+                  {data?.email}
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <CiCalendarDate className="text-[#94A3B8] font-bold text-[1.3rem]" />
-                <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  24/7
-                </p>
+                <p className="text-[.9rem] font-Roboto text-[#0F172A]">24/7</p>
               </div>
             </div>
 
             <div className="w-full h-[40px] bg-[#FDE030] text-[1.3rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]">
               <IoLogoWhatsapp />
-              <p>+91 7044292143</p>
+              <p> +91{data?.contact}</p>
             </div>
           </div>
         </div>
@@ -649,14 +653,15 @@ const Dashboard = () => {
                       </p>
                       <p
                         className={`rounded-3xl    text-center p-1 flex mt-2 h-[70%] items-center justify-center 
-                ${item.mode === "upi"
-                            ? "bg-[#E1EFFE] text-[#1E429F]"
-                            : item.mode === "wallet"
-                              ? "bg-[#fbd9de] text-[#FD4A65]"
-                              : item.mode === "netbanking"
-                                ? "bg-[#E1EFFE] text-[#7157f1]"
-                                : ""
-                          }`}
+                ${
+                  item.mode === "upi"
+                    ? "bg-[#E1EFFE] text-[#1E429F]"
+                    : item.mode === "wallet"
+                    ? "bg-[#fbd9de] text-[#FD4A65]"
+                    : item.mode === "netbanking"
+                    ? "bg-[#E1EFFE] text-[#7157f1]"
+                    : ""
+                }`}
                       >
                         {item.mode}
                       </p>
@@ -722,174 +727,184 @@ const Dashboard = () => {
           </div>
 
           <div className="sm:p-5 flex sm:flex-row sm:h-[600px] flex-col w-full gap-3 ">
-
             <div className="sm:w-[50%] bg-white sm:h-[560px] h-fit rounded-lg sm:p-2">
-              {
-                searchMenuItems && <div className='w-full h-fit p-6 text-[1.5rem] font-semibold'>
+              {searchMenuItems && (
+                <div className="w-full h-fit p-6 text-[1.5rem] font-semibold">
                   <p>Search result</p>
                 </div>
-              }
-              {
-                !searchMenuItems && <div className='w-full h-fit py-5 px-4 text-[1.5rem] font-semibold'>
+              )}
+              {!searchMenuItems && (
+                <div className="w-full h-fit py-5 px-4 text-[1.5rem] font-semibold">
                   <p>Menu Recomendation</p>
                 </div>
-              }
-
-
+              )}
 
               {search
                 ? searchMenuItems &&
-                searchMenuItems?.map((menu, index) => (
-                  <div key={index}>
-                    <div onClick={() => { setcomments(menu?.comments); setclicked(menu._id) }
-
-                    } className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2">
-                      <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
-
-                        <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
-                          <p className="sm:text-[1.2rem] w-[70%] text-[.8rem]">
-                            {menu.name}
-                          </p>
-                          <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
-                            Total Recomendation
-                          </p>
-                          <p className="sm:text-[1.1rem] text-[.6rem]">
-                            {menu.notLikedCount +
-                              menu.likedCount +
-                              menu.mustTryCount}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
-                        <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                          <div className="flex gap-2">
-                            <img
-                              className="size-6"
-                              src="/🦆 emoji _disappointed but relieved face_.png"
-                              alt=""
-                            />
-                            <p className=" sm:text-[1.1rem] text-[.85rem]">
-                              {menu.notLikedCount}
+                  searchMenuItems?.map((menu, index) => (
+                    <div key={index}>
+                      <div
+                        onClick={() => {
+                          setcomments(menu?.comments);
+                          setclicked(menu._id);
+                        }}
+                        className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2"
+                      >
+                        <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
+                          <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
+                            <p className="sm:text-[1.2rem] w-[70%] text-[.8rem]">
+                              {menu.name}
+                            </p>
+                            <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
+                              Total Recomendation
+                            </p>
+                            <p className="sm:text-[1.1rem] text-[.6rem]">
+                              {menu.notLikedCount +
+                                menu.likedCount +
+                                menu.mustTryCount}
                             </p>
                           </div>
-                          <p className="sm:text-[.85rem] text-[.7rem]">
-                            Not Liked
-                          </p>
                         </div>
-                        <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                          <div className="flex gap-2">
-                            <img
-                              className="size-6"
-                              src="/Group 1171277598.png"
-                              alt=""
-                            />
-                            <p className=" text-[1.1rem]">{menu.likedCount}</p>
-                          </div>
-                          <p className="sm:text-[.85rem] text-[.7rem]">Good</p>
-                        </div>
-                        <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                          <div className="flex gap-2">
-                            <img
-                              className="size-6"
-                              src="/Group 1171277601.png"
-                              alt=""
-                            />
-                            <p className=" sm:text-[1.1rem] text-[.8rem]">
-                              {menu.mustTryCount}
+                        <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
+                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                            <div className="flex gap-2">
+                              <img
+                                className="size-6"
+                                src="/🦆 emoji _disappointed but relieved face_.png"
+                                alt=""
+                              />
+                              <p className=" sm:text-[1.1rem] text-[.85rem]">
+                                {menu.notLikedCount}
+                              </p>
+                            </div>
+                            <p className="sm:text-[.85rem] text-[.7rem]">
+                              Not Liked
                             </p>
                           </div>
-                          <p className="sm:text-[.85rem] text-[.7rem]">
-                            Must Try
-                          </p>
+                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                            <div className="flex gap-2">
+                              <img
+                                className="size-6"
+                                src="/Group 1171277598.png"
+                                alt=""
+                              />
+                              <p className=" text-[1.1rem]">
+                                {menu.likedCount}
+                              </p>
+                            </div>
+                            <p className="sm:text-[.85rem] text-[.7rem]">
+                              Good
+                            </p>
+                          </div>
+                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                            <div className="flex gap-2">
+                              <img
+                                className="size-6"
+                                src="/Group 1171277601.png"
+                                alt=""
+                              />
+                              <p className=" sm:text-[1.1rem] text-[.8rem]">
+                                {menu.mustTryCount}
+                              </p>
+                            </div>
+                            <p className="sm:text-[.85rem] text-[.7rem]">
+                              Must Try
+                            </p>
+                          </div>
                         </div>
-
                       </div>
                     </div>
-
-                  </div>
-                ))
+                  ))
                 : menus &&
-                top3menus?.map((menu, index) => (
-                  <>
-
-                    <div onClick={() => {
-                      if (menu?.comments.length > 0) { setcomments(menu?.comments) }
-                      else { setcomments([]) }
-                      ; setclicked(menu._id)
-                    }} className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2">
-                      <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
-
-                        <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
-                          <p className="sm:text-[1.2rem] w-[70%] text-[.8rem] text-nowrap">
-                            {menu.name}
-                          </p>
-                          <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
-                            Total Recomendation
-                          </p>
-                          <p className="sm:text-[1.1rem] text-[.6rem]">
-                            {menu.notLikedCount +
-                              menu.likedCount +
-                              menu.mustTryCount}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
-                        <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                          <div className="flex gap-2">
-                            <img
-                              className="size-6"
-                              src="/🦆 emoji _disappointed but relieved face_.png"
-                              alt=""
-                            />
-                            <p className=" sm:text-[1.1rem] text-[.85rem]">
-                              {menu.notLikedCount}
+                  top3menus?.map((menu, index) => (
+                    <>
+                      <div
+                        onClick={() => {
+                          if (menu?.comments.length > 0) {
+                            setcomments(menu?.comments);
+                          } else {
+                            setcomments([]);
+                          }
+                          setclicked(menu._id);
+                        }}
+                        className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2"
+                      >
+                        <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
+                          <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
+                            <p className="sm:text-[1.2rem] w-[70%] text-[.8rem] text-nowrap">
+                              {menu.name}
+                            </p>
+                            <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
+                              Total Recomendation
+                            </p>
+                            <p className="sm:text-[1.1rem] text-[.6rem]">
+                              {menu.notLikedCount +
+                                menu.likedCount +
+                                menu.mustTryCount}
                             </p>
                           </div>
-                          <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
-                            Not Liked
-                          </p>
                         </div>
-                        <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                          <div className="flex gap-2">
-                            <img
-                              className="size-6"
-                              src="/Group 1171277598.png"
-                              alt=""
-                            />
-                            <p className=" sm:text-[1.1rem] text-[.8rem]">{menu.likedCount}</p>
-                          </div>
-                          <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">Good</p>
-                        </div>
-                        <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                          <div className="flex gap-2">
-                            <img
-                              className="size-6"
-                              src="/Group 1171277601.png"
-                              alt=""
-                            />
-                            <p className=" sm:text-[1.1rem] text-[.8rem]">
-                              {menu.mustTryCount}
+                        <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
+                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                            <div className="flex gap-2">
+                              <img
+                                className="size-6"
+                                src="/🦆 emoji _disappointed but relieved face_.png"
+                                alt=""
+                              />
+                              <p className=" sm:text-[1.1rem] text-[.85rem]">
+                                {menu.notLikedCount}
+                              </p>
+                            </div>
+                            <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
+                              Not Liked
                             </p>
                           </div>
-                          <p className="sm:text-[.85rem] text-[.7rem] text-nowrap">
-                            Must Try
-                          </p>
+                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                            <div className="flex gap-2">
+                              <img
+                                className="size-6"
+                                src="/Group 1171277598.png"
+                                alt=""
+                              />
+                              <p className=" sm:text-[1.1rem] text-[.8rem]">
+                                {menu.likedCount}
+                              </p>
+                            </div>
+                            <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
+                              Good
+                            </p>
+                          </div>
+                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                            <div className="flex gap-2">
+                              <img
+                                className="size-6"
+                                src="/Group 1171277601.png"
+                                alt=""
+                              />
+                              <p className=" sm:text-[1.1rem] text-[.8rem]">
+                                {menu.mustTryCount}
+                              </p>
+                            </div>
+                            <p className="sm:text-[.85rem] text-[.7rem] text-nowrap">
+                              Must Try
+                            </p>
+                          </div>
                         </div>
-
                       </div>
-                    </div>
-
-                  </>
-                ))}
+                    </>
+                  ))}
             </div>
 
             <div className="sm:w-[50%] bg-white h-[560px] rounded-lg  flex flex-col items-center  ">
-              <p className='w-full h-fit py-6 px-4 text-[1.5rem] font-semibold'>Customer Testimonials</p>
+              <p className="w-full h-fit py-6 px-4 text-[1.5rem] font-semibold">
+                Customer Testimonials
+              </p>
               <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
                 {comments
                   .map((item, index) => ({
                     ...item,
-                    isActive: item.Active === "true" ? 1 : 0 // Assigning a value of 1 for active comments and 0 for inactive comments
+                    isActive: item.Active === "true" ? 1 : 0, // Assigning a value of 1 for active comments and 0 for inactive comments
                   }))
                   .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
                   .map((item, index) => (
@@ -908,19 +923,29 @@ const Dashboard = () => {
 
                         <div className="flex gap-4">
                           {item?.Active == "true" ? (
-                            <button onClick={() => {
-                              pinComment(item._id)
-                            }} className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">UnPin</button>
-                          ) : <button onClick={() => {
-                            pinComment(item._id)
-                          }} className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Pin</button>
-                          }
+                            <button
+                              onClick={() => {
+                                pinComment(item._id);
+                              }}
+                              className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
+                            >
+                              UnPin
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => {
+                                pinComment(item._id);
+                              }}
+                              className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
+                            >
+                              Pin
+                            </button>
+                          )}
 
-
-                          <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">Report</button>
+                          <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">
+                            Report
+                          </button>
                         </div>
-
-
                       </div>
                       <p className="w-full h-[70%] mt-5 text-[#67727E] ">
                         {item?.description}
@@ -958,14 +983,8 @@ const Dashboard = () => {
                     </div>
                   ))}
               </div>
-
-
-
             </div>
-
           </div>
-
-
         </div>
 
         {/* footer */}
@@ -981,7 +1000,10 @@ const Dashboard = () => {
                 Help Us to make Snackbae better ! Share your feedbacks and
                 request features that fits best for your Business
               </p>
-              <Link to='https://forms.gle/GpTK9nF19Uggv6WBA' className="text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold">
+              <Link
+                to="https://forms.gle/GpTK9nF19Uggv6WBA"
+                className="text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold"
+              >
                 Give Feedback
               </Link>
             </div>
