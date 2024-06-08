@@ -83,7 +83,7 @@ const BusinessInfoForm = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: `http://localhost:4000/api/restaurants/${id}`,
+      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/restaurants/${id}`,
       headers: {
         "Content-Type": "application/json",
       },
