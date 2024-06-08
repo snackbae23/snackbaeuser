@@ -138,7 +138,7 @@ const Navbar1 = ({ isToggled, setIsToggled,data }) => {
                     </div>
                     <div className='sm:block hidden'>
                         <p className='text-[#2D2E2E] text-[19px] font-bold'>{data?.name}</p>
-                        <p className='text-[#747677] text-[15px] font-semibold'>{data?.email}  connect1.foodoos@gmail.com</p>
+                        <p className='text-[#747677] text-[15px] font-semibold'>{data?.email} </p>
                     </div>
                 </div>
 

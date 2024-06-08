@@ -7,13 +7,13 @@ import { RxCross2 } from "react-icons/rx";
 const BusinessInfoForm = () => {
   const [formData, setFormData] = useState({
     brandName: "",
-    // emailAddress: "",
+    emailAddress: "",
     contactNumber: "",
     contactPerson: "",
     outletAddress: "",
     businessType: "",
     cuisinesServed: [],
-    instagramLink: "",
+    instaLink: "",
     fssaiLicenceNumber: "",
     image: null,
   });
@@ -30,7 +30,10 @@ const BusinessInfoForm = () => {
   ];
 
  
-  const id ="6639330d13fde08a6850c2ea"
+  var userID = localStorage.getItem("user");
+  console.log("user id", userID);
+  const resId = userID;
+  const id = userID;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -78,13 +81,13 @@ const BusinessInfoForm = () => {
     formData.image = pic;
     console.log(formData);
     let config = {
-      method: 'post',
+      method: "post",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/resProfile/${id}`,
-      headers: { 
-        'Content-Type': 'application/json'
+      url: `http://localhost:4000/api/restaurants/${id}`,
+      headers: {
+        "Content-Type": "application/json",
       },
-      data :formData
+      data: formData,
     };
     
     axios.request(config)
@@ -103,7 +106,7 @@ const BusinessInfoForm = () => {
       outletAddress: "",
       businessType: "",
       cuisinesServed: [],
-      instagramLink: "",
+      instaLink: "",
       fssaiLicenceNumber: "",
       image: null,
     });
@@ -126,16 +129,16 @@ const BusinessInfoForm = () => {
       // console.log(JSON.stringify(response.data));
       console.log((response.data.restaurant));
       setFormData({
-        brandName: response.data.restaurant.profile.name,
-        emailAddress: response.data.restaurant.profile.email,
-        contactNumber: response.data.restaurant.profile.contactNo,
-        contactPerson: response.data.restaurant.profile.contactPerson,
-        outletAddress: response.data.restaurant.profile.outletAddress,
-        businessType: response.data.restaurant.profile.businessType,
-        cuisinesServed: [response.data.restaurant.profile.cuisineServed],
-        instagramLink: response.data.restaurant.profile.instaLink        ,
-        fssaiLicenceNumber: response.data.restaurant.profile.fssaiLicenseNo,
-        image: response.data.restaurant.profile.image,
+        brandName: response?.data?.restaurant?.name,
+        emailAddress: response?.data?.restaurant?.email,
+        contactNumber: response?.data?.restaurant?.contact,
+        contactPerson: response?.data?.restaurant?.contactPerson,
+        outletAddress: response?.data?.restaurant?.outletAddress,
+        businessType: response?.data?.restaurant?.businessType,
+        cuisinesServed: [response?.data?.restaurant?.cuisineServed],
+        instaLink: response?.data?.restaurant?.instaLink,
+        fssaiLicenceNumber: response?.data?.restaurant?.fssaiLicenseNo,
+        image: response?.data?.restaurant?.image,
       });
       console.log(formData)
       console.log(response.data.restaurant.profile.image)
@@ -159,15 +162,14 @@ const BusinessInfoForm = () => {
               onChange={(e) => {
                 // e.target.files[0] && setFileName(e.target.files[0].name);
                 if (e.target.files)
-                   setImage(URL.createObjectURL(e.target.files[0]));
-                  handleImageChange(e.target.files[0]);
-                  if(e.target.files){
-                    console.log("inside onchange")
-                    console.log(e.target.files)
-                    console.log(URL.createObjectURL(e.target.files[0]))
-                        // setImage(URL.createObjectURL(e.target.files[0]))
-              
-                       }
+                  setImage(URL.createObjectURL(e.target.files[0]));
+                handleImageChange(e.target.files[0]);
+                if (e.target.files) {
+                  console.log("inside onchange");
+                  console.log(e.target.files);
+                  console.log(URL.createObjectURL(e.target.files[0]));
+                  // setImage(URL.createObjectURL(e.target.files[0]))
+                }
               }}
               // onChange={({target : {files}}) => {
               //   files[0] && setFileName(files[0].name)
@@ -176,22 +178,39 @@ const BusinessInfoForm = () => {
               //   }
               // }}
             />
-          
-            {formData.image ?
-            <div className="flex gap-3">
-              <img src="upload.png" alt="upload-logo" width={80} height={80} className="cursor-pointer"/>
-              <img src={formData.image} alt={fileName} width={80} height={80} className="border rounded-lg relative hover:opacity-50"/>
-              <RxCross2 className="absolute w-6 left-[195px] md:top-[293px] top-[305px] cursor-pointer"
-              // onClick={() => {
-              //   setFileName("No selected file")
-              //   setImage(null)
-              // }} 
+            {formData.image ? (
+              <div className="flex gap-3">
+                <img
+                  src="upload.png"
+                  alt="upload-logo"
+                  width={80}
+                  height={80}
+                  className="cursor-pointer"
+                />
+                <img
+                  src={formData.image}
+                  alt={fileName}
+                  width={80}
+                  height={80}
+                  className="border rounded-lg relative hover:opacity-50"
+                />
+                <RxCross2
+                  className="absolute w-6 left-[195px] md:top-[293px] top-[305px] cursor-pointer"
+                  // onClick={() => {
+                  //   setFileName("No selected file")
+                  //   setImage(null)
+                  // }}
+                />
+              </div>
+            ) : (
+              <img
+                src="upload.png"
+                alt="upload-logo"
+                width={80}
+                height={80}
+                className="cursor-pointer"
               />
-              
-            </div> :
-            <img src="upload.png" alt="upload-logo" width={80} height={80} className="cursor-pointer"/> }
-
-            
+            )}
           </label>
         </div>
 
@@ -215,7 +234,7 @@ const BusinessInfoForm = () => {
                 type="email"
                 name="emailAddress"
                 placeholder="Enter Email Id"
-                // value={formData.emailAddress}
+                value={formData.emailAddress}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />
@@ -290,11 +309,9 @@ const BusinessInfoForm = () => {
                 <option value="Chinese">Chinese</option>
               </select>
             </label> */}
-            <label
-                className="md:w-[31%] w-full font-semibold text-left text-m flex flex-col gap-2"
-              >
-                Cuisines Served:
-                <Select
+            <label className="md:w-[31%] w-full font-semibold text-left text-m flex flex-col gap-2">
+              Cuisines Served:
+              <Select
                 name="cuisinesServed"
                 options={options}
                 labelField="id"
@@ -309,15 +326,15 @@ const BusinessInfoForm = () => {
                 color="#004AAD"
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />
-              </label>
+            </label>
 
             <label className="md:w-[31%] w-full text-left text-m flex flex-col gap-2">
               <p className="font-semibold">Instagram Link:</p>
               <input
                 type="text"
-                name="instagramLink"
+                name="instaLink"
                 placeholder="instagram.com/chowman12"
-                value={formData.instagramLink}
+                value={formData.instaLink}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />
