@@ -11,7 +11,7 @@ import logo from '../assets/logo.png';
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 
-const Navbar1 = ({ isToggled, setIsToggled,data }) => {
+const Navbar1 = ({ isToggled, setIsToggled, data }) => {
 
 
     const navigate = useNavigate();
@@ -53,7 +53,7 @@ const Navbar1 = ({ isToggled, setIsToggled,data }) => {
         document.getElementById('Notification').style.display = "none";
         document.getElementById('frame').style.display = "none";
         document.getElementById("restaurant").style.display = "none";
-        
+
     };
     const frames2 = () => {
         setframe(!fram);
@@ -68,22 +68,22 @@ const Navbar1 = ({ isToggled, setIsToggled,data }) => {
         }
     };
 
-    
+
 
     const [notification, setNotification] = useState(true);
     const notifications = () => {
         setNotification(!notification);
-        if(notification==false){
+        if (notification == false) {
             document.getElementById('frame').style.display = "none";
             document.getElementById('Notification').style.display = "none";
             document.getElementById("restaurant").style.display = "none";
-        }else{
+        } else {
             document.getElementById('frame').style.display = "none";
             document.getElementById('Notification').style.display = "block";
             document.getElementById("restaurant").style.display = "block";
-            
+
         }
-        
+
     };
 
 
@@ -96,8 +96,16 @@ const Navbar1 = ({ isToggled, setIsToggled,data }) => {
                     () => {
                         navigate('/');
                     }
-                } src={logo} alt='logo'
-                className='sm:h-full h-[90%] aspect-auto  cursor-pointer  ' />
+                } src='/IMG-20231226-WA0003 3 (1).png' alt='logo'
+                className='sm:h-[70%] sm:block hidden aspect-auto  cursor-pointer  ' />
+
+            <img
+                onClick={
+                    () => {
+                        navigate('/');
+                    }
+                } src='/IMG-20231226-WA0003 4.png' alt='logo'
+                className=' w-[70px] h-[70px] sm:hidden block  aspect-auto  cursor-pointer  ' />
 
 
 
@@ -134,11 +142,11 @@ const Navbar1 = ({ isToggled, setIsToggled,data }) => {
                                 (<img src="/image 148 (4).png" alt='' className='size-full ' onClick={frames1} />) :
                                 (<img src="/image 148 (4).png" alt='' className='size-full ' onClick={frames2} />)
                         }
-                        
+
                     </div>
                     <div className='sm:block hidden'>
-                        <p className='text-[#2D2E2E] text-[19px] font-bold'>{data?.name}</p>
-                        <p className='text-[#747677] text-[15px] font-semibold'>{data?.email} </p>
+                        <p className='text-[#2D2E2E] text-[19px] font-bold'>{data?.name || 'Upload Name'} </p>
+                        <p className='text-[#747677] text-[15px] font-semibold'>{data?.email || 'Upload email'}  </p>
                     </div>
                 </div>
 

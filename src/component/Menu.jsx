@@ -1202,9 +1202,9 @@ const Menu = () => {
                                                 />
                                               )}
                                               {
-                                                !item.veg == "Yes" && (
-                                                  <img
-                                                    src="Group 1171277690.png"
+                                                item.veg != "Yes" && (
+                                                  <img className=' size-6 '
+                                                    src="/Group 1171277821.png"
                                                     alt=""
                                                   />
                                                 ) // non-veg

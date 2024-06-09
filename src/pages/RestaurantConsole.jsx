@@ -371,7 +371,7 @@ useEffect(()=>{
             <div id=''
               onClick={g}
 
-              className={`w-full h-[50px] cursor-pointer  flex items-center rounded-lg font-semibold p-4 gap-3 sm:mb-1 mb-8 ${log ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#64748B]')} `}
+              className={`w-full h-[50px] cursor-pointer  flex items-center rounded-lg font-semibold p-4 gap-3 sm:mb-1 mb-8 ${log ? ('bg-[#F8FAFC] text-[#004AAD]') : ('text-[#C62828]')} `}
             >
               <IoLogOutOutline className='text-[1.2rem]' /><p className=''>Log Out</p>
             </div>

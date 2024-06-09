@@ -15,6 +15,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 
 import { motion } from "framer-motion";
 import axios from "axios";
+import MenuClicks from "./MenuClicks";
 
 const Dashboard = () => {
 
@@ -398,7 +399,7 @@ const Dashboard = () => {
           </Link>
           <button
             onClick={openPopup}
-            className="bg-white px-5 sm:py-1 py-2 sm:rounded-md rounded-xl border text-[.9rem] font-Roboto  border-[#000000B2]"
+            className="bg-white hidden px-5 sm:py-1 py-2 sm:rounded-md rounded-xl border text-[.9rem] font-Roboto  border-[#000000B2]"
           >
             Get QR Code
           </button>
@@ -407,11 +408,11 @@ const Dashboard = () => {
 
       <div className="w-full h-fit  mt-[160px]  ">
         {/* total report */}
-        <div className=" w-full sm:flex sm:px-2 gap-3 overflow-hidden">
+        <div className=" w-full sm:flex sm:px-4 sm:pt-6 gap-3 ">
           <div className="sm:w-[70%] w-full flex flex-col gap-2">
-            <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
+            {/* <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
               Today's Report
-            </p>
+            </p> */}
             <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2  rounded-md bg-white p-4">
               <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
                 <p className="text-[#777980] text-[.9rem] font-semibold">
@@ -419,7 +420,7 @@ const Dashboard = () => {
                 </p>
                 <img
                   className="size-8 absolute right-2"
-                  src="/Badge (1).png"
+                  src="/Badge (2).png"
                   alt=""
                 />
 
@@ -436,7 +437,7 @@ const Dashboard = () => {
                 </p>
                 <img
                   className="size-8 absolute right-2"
-                  src="/Badge (1).png"
+                  src="/Badge (3).png"
                   alt=""
                 />
 
@@ -445,7 +446,7 @@ const Dashboard = () => {
                 </p>
                 <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                   <p className="font-bold ">30% </p>
-                  <img src="/fi-rr-caret-up.png" alt="" />
+                  <img className="size-4" src="/fi-rr-caret-up (1).png" alt="" />
                   <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
                 </div>
               </div>
@@ -466,7 +467,7 @@ const Dashboard = () => {
                   </p>
                   <img
                     className="size-8 absolute right-2"
-                    src="/Badge.png"
+                    src="/Badge (5).png"
                     alt=""
                   />
 
@@ -475,7 +476,7 @@ const Dashboard = () => {
                   </p>
                   <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                     <p className="font-bold ">30% </p>
-                    <img src="/fi-rr-caret-up.png" alt="" />
+                    <img className="size-4"  src="/fi-rr-caret-up (1).png" alt="" />
                     <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                   </div>
                 </div>
@@ -485,7 +486,7 @@ const Dashboard = () => {
                   </p>
                   <img
                     className="size-8 absolute right-2"
-                    src="/Badge.png"
+                    src="/Badge (5).png"
                     alt=""
                   />
 
@@ -494,7 +495,7 @@ const Dashboard = () => {
                   </p>
                   <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                     <p className="font-bold ">30% </p>
-                    <img src="/fi-rr-caret-up.png" alt="" />
+                    <img className="size-4"  src="/fi-rr-caret-up (1).png" alt="" />
                     <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                   </div>
                 </div>
@@ -506,7 +507,7 @@ const Dashboard = () => {
                 </p>
                 <img
                   className="size-8 absolute right-2"
-                  src="/Badge.png"
+                  src="/Badge (5).png"
                   alt=""
                 />
 
@@ -515,14 +516,14 @@ const Dashboard = () => {
                 </p>
                 <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                   <p className="font-bold ">30% </p>
-                  <img src="/fi-rr-caret-up.png" alt="" />
+                  <img className="size-4"  src="/fi-rr-caret-up (1).png" alt="" />
                   <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                 </div>
               </div>
             </div>
           </div>
           {/* Relationship */}
-          <div className="hidden  w-[28%] h-[370px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4 sm:mt-4">
+          <div className="hidden  w-[28%] h-[320px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4 ">
             <p className="text-[#0F172A] text-[1.2rem] font-semibold border-b border-[#F1F5F9] pb-3">
               Relationship Manager
             </p>
@@ -534,19 +535,19 @@ const Dashboard = () => {
               <div className="flex gap-2 items-center">
                 <CiLocationOn className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  {data?.contactPerson}
+                  {data?.contactPerson || 'upload it'}
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <LuPhoneCall className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  +91{data?.contact}
+                  +91{data?.contact || 'upload contact'}
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <TbProgressHelp className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  {data?.email}
+                  {data?.email || 'upload email'}
                 </p>
               </div>
               <div className="flex gap-2 items-center">
@@ -986,6 +987,10 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+
+
+        {/* Menu Clicks */}
+        <MenuClicks/>
 
         {/* footer */}
         <div className="p-4">
