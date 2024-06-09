@@ -122,9 +122,9 @@ const MenuClicks = () => {
 
                         <div className='flex gap-2'>
                             {
-                                item.itemtype=='veg' ? ( <img src='/Group 1171277690.png' alt='dfghj'/>) :( <img src='/Group 1171277690.png' alt='dfghj'/>)
+                                item.itemtype == 'veg' ? (<img src='/Group 1171277690.png' alt='dfghj' />) : (<img src='/Group 1171277690.png' alt='dfghj' />)
                             }
-                           
+
                             <p >{item.itemname}</p>
                         </div>
 
@@ -177,23 +177,23 @@ const MenuClicks = () => {
             </div>
 
             {/* search menu */}
-            <div className='flex gap-6 sm:justify-start '>
-            <div className="relative w-fit shadow rounded-md border-2 ">
-                <input
-                    className=" w-[220px] sm:w-[400px] focus:outline-none h-[2.4rem] sm:h-[3rem] px-[1rem]"
-                    type="text"
-                    placeholder="Search for dish"
-                    value={search}
-                //   onChange={handleSearch}
-                />
-                <CiSearch className=" absolute right-[1rem] top-[50%] translate-y-[-50%] text-[1.3rem]" />
+            <div className='flex sm:gap-6 gap-2 sm:justify-start '>
+                <div className="relative w-fit shadow rounded-md border-2 ">
+                    <input
+                        className=" w-[220px] sm:w-[400px] focus:outline-none h-[2.4rem] sm:h-[3rem] px-[1rem]"
+                        type="text"
+                        placeholder="Search for dish"
+                        value={search}
+                    //   onChange={handleSearch}
+                    />
+                    <CiSearch className=" absolute right-[1rem] top-[50%] translate-y-[-50%] text-[1.3rem]" />
+                </div>
+                <div className='flex gap-2 items-center justify-between w-fit px-4 bg-white shadow-md'>
+                    <p className='text-nowrap font-semibold'>SORT BY</p>
+                    <IoIosArrowDown className=' cursor-pointer' />
+                </div>
             </div>
-            <div className='flex gap-2 items-center justify-between w-fit px-4 bg-white shadow-md'>
-                <p className='text-nowrap font-semibold'>SORT BY</p>
-                <IoIosArrowDown className=' cursor-pointer' />
-            </div>
-            </div>
-            
+
 
 
             <div className='bg-white w-full h-fit p-4  mb-9 rounded-lg '>
