@@ -15,7 +15,7 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
 
 
     const navigate = useNavigate();
-
+      
 
 
 
@@ -67,6 +67,8 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
             setIsToggled(false);
         }
     };
+   
+
 
 
 
@@ -85,32 +87,56 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
         }
 
     };
+    // const [resdata , setResData] = useState();
+    //   const getRestaurantData = async (req, res) => {
+    //     let config = {
+    //       method: "get",
+    //       maxBodyLength: Infinity,
+    //       url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+    //       // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
+    //       headers: {},
+    //     };
 
+    //     axios
+    //       .request(config)
+    //       .then((response) => {
+    //         console.log(response.data);
+
+    //         console.log(response.data);
+    //         setResData(response?.data?.restaurant);
+        
+
+    //         console.log(data);
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   };
 
 
     return (
-        <div className='fixed bg-white  z-[900] w-full h-[70px] flex justify-between items-center px-[1.5rem]'>
-            {/* logo */}
-            <img
-                onClick={
-                    () => {
-                        navigate('/');
-                    }
-                } src='/IMG-20231226-WA0003 3 (1).png' alt='logo'
-                className='sm:h-[70%] sm:block hidden aspect-auto  cursor-pointer  ' />
+      <div className="fixed bg-white  z-[900] w-full h-[70px] flex justify-between items-center px-[1.5rem]">
+        {/* logo */}
+        <img
+          onClick={() => {
+            navigate("/");
+          }}
+          src="/IMG-20231226-WA0003 3 (1).png"
+          alt="logo"
+          className="sm:h-[70%] sm:block hidden aspect-auto  cursor-pointer  "
+        />
 
-            <img
-                onClick={
-                    () => {
-                        navigate('/');
-                    }
-                } src='/IMG-20231226-WA0003 4.png' alt='logo'
-                className=' w-[70px] h-[70px] sm:hidden block  aspect-auto  cursor-pointer  ' />
+        <img
+          onClick={() => {
+            navigate("/");
+          }}
+          src="/IMG-20231226-WA0003 4.png"
+          alt="logo"
+          className=" w-[70px] h-[70px] sm:hidden block  aspect-auto  cursor-pointer  "
+        />
 
-
-
-            {/* menu-icons */}
-            {/* {
+        {/* menu-icons */}
+        {/* {
                 isToggled ?
                     (<IoMdClose
                         className='sm:hidden block text-[1.7rem] size-7 '
@@ -120,42 +146,50 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
                         onClick={handleToggle1} />)
             } */}
 
+        <div className="flex items-center gap-6 h-full   ">
+          {/* Notification */}
 
-
-            <div className='flex items-center gap-6 h-full   '>
-
-                {/* Notification */}
-
-                <div onClick={notifications} className=' cursor-pointer sm:flex hidden  relative bg-[#EFF4FB] border border-[#E2E8F0]  items-center justify-center size-[45px] rounded-full'>
-                    <div className=' absolute -right-1 -top-1 bg-[#004AAD] size-[17px] flex items-center justify-center rounded-full'>
-                        <p className='text-white font-semibold text-[.8rem]'>4</p>
-                    </div>
-
-                    <IoNotificationsOutline className='size-8' />
-                </div>
-
-
-                <div className='flex items-center gap-3 cursor-pointer '>
-                    <div className=' size-14  block rounded-full border  items-center justify-center  relative  '>
-                        {
-                            fram ?
-                                (<img src="/image 148 (4).png" alt='' className='size-full ' onClick={frames1} />) :
-                                (<img src="/image 148 (4).png" alt='' className='size-full ' onClick={frames2} />)
-                        }
-
-                    </div>
-                    <div className='sm:block hidden'>
-                        <p className='text-[#2D2E2E] text-[19px] font-bold'>{data?.name || 'Upload Name'} </p>
-                        <p className='text-[#747677] text-[15px] font-semibold'>{data?.email || 'Upload email'}  </p>
-                    </div>
-                </div>
-
-
+          <div
+            onClick={notifications}
+            className=" cursor-pointer sm:flex hidden  relative bg-[#EFF4FB] border border-[#E2E8F0]  items-center justify-center size-[45px] rounded-full"
+          >
+            <div className=" absolute -right-1 -top-1 bg-[#004AAD] size-[17px] flex items-center justify-center rounded-full">
+              <p className="text-white font-semibold text-[.8rem]">4</p>
             </div>
 
+            <IoNotificationsOutline className="size-8" />
+          </div>
 
+          <div className="flex items-center gap-3 cursor-pointer ">
+            <div className=" size-14  block rounded-full border  items-center justify-center  relative  ">
+              {fram ? (
+                <img
+                  src={data?.image}
+                  alt=""
+                  className="size-full "
+                  onClick={frames1}
+                />
+              ) : (
+                <img
+                  src={data?.image}
+                  alt=""
+                  className="size-full "
+                  onClick={frames2}
+                />
+              )}
+            </div>
+            <div className="sm:block hidden">
+              <p className="text-[#2D2E2E] text-[19px] font-bold">
+                {data?.name || "Upload Name"}{" "}
+              </p>
+              <p className="text-[#747677] text-[15px] font-semibold">
+                {data?.email || "Upload email"}{" "}
+              </p>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    );
 }
 
 export default Navbar1

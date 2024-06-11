@@ -446,7 +446,11 @@ const Dashboard = () => {
                 </p>
                 <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                   <p className="font-bold ">30% </p>
-                  <img className="size-4" src="/fi-rr-caret-up (1).png" alt="" />
+                  <img
+                    className="size-4"
+                    src="/fi-rr-caret-up (1).png"
+                    alt=""
+                  />
                   <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
                 </div>
               </div>
@@ -476,7 +480,11 @@ const Dashboard = () => {
                   </p>
                   <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                     <p className="font-bold ">30% </p>
-                    <img className="size-4"  src="/fi-rr-caret-up (1).png" alt="" />
+                    <img
+                      className="size-4"
+                      src="/fi-rr-caret-up (1).png"
+                      alt=""
+                    />
                     <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                   </div>
                 </div>
@@ -495,7 +503,11 @@ const Dashboard = () => {
                   </p>
                   <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                     <p className="font-bold ">30% </p>
-                    <img className="size-4"  src="/fi-rr-caret-up (1).png" alt="" />
+                    <img
+                      className="size-4"
+                      src="/fi-rr-caret-up (1).png"
+                      alt=""
+                    />
                     <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                   </div>
                 </div>
@@ -516,7 +528,11 @@ const Dashboard = () => {
                 </p>
                 <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                   <p className="font-bold ">30% </p>
-                  <img className="size-4"  src="/fi-rr-caret-up (1).png" alt="" />
+                  <img
+                    className="size-4"
+                    src="/fi-rr-caret-up (1).png"
+                    alt=""
+                  />
                   <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                 </div>
               </div>
@@ -535,19 +551,19 @@ const Dashboard = () => {
               <div className="flex gap-2 items-center">
                 <CiLocationOn className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  {data?.contactPerson || 'upload it'}
+                  Souvik Das
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <LuPhoneCall className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  +91{data?.contact || 'upload contact'}
+                  +91 7003876815
                 </p>
               </div>
               <div className="flex gap-2 items-center">
                 <TbProgressHelp className="text-[#94A3B8] font-bold text-[1.3rem]" />
                 <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  {data?.email || 'upload email'}
+                  souvik.das@snackbae.in
                 </p>
               </div>
               <div className="flex gap-2 items-center">
@@ -558,7 +574,7 @@ const Dashboard = () => {
 
             <div className="w-full h-[40px] bg-[#FDE030] text-[1.3rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]">
               <IoLogoWhatsapp />
-              <p> +91{data?.contact}</p>
+              <p> +91 7003876815</p>
             </div>
           </div>
         </div>
@@ -699,7 +715,7 @@ const Dashboard = () => {
                     Lowest Performing Item
                   </p>
                   <p className="text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight ">
-                    Veg Maggi
+                    {leastRatedMenu}
                   </p>
                 </div>
               </div>
@@ -988,9 +1004,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-
         {/* Menu Clicks */}
-        <MenuClicks/>
+        {/* <MenuClicks/> */}
 
         {/* footer */}
         <div className="p-4">
