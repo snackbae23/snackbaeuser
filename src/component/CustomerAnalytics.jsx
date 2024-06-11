@@ -207,8 +207,8 @@ const CustomerAnalytics = () => {
 
                 <div className='flex gap-3 w-full  h-fit my-2 sm:flex-row flex-col   '>
 
-                    <div className='sm:w-[66%] w-full flex h-fit gap-3 flex-wrap justify-between'>
-                        <div className='sm:w-[49%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
+                    <div className='sm:w-[66%] w-full flex h-fit gap-3 flex-wrap justify-evenly'>
+                        <div className='sm:w-[48%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
                             <div className='flex gap-4 flex-col  w-full  p-[1rem] '>
                                 <div className='text-[1.1rem] text-[#004AAD]'>
                                     <p>Customer participated in </p>
@@ -223,7 +223,7 @@ const CustomerAnalytics = () => {
                            
 
                         </div>
-                        <div className='sm:w-[49%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
+                        <div className='sm:w-[48%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
                             <div className='flex gap-4 flex-col  w-full  p-[1rem] '>
                                 <div className='text-[1.1rem] text-[#004AAD]'>
                                     <p>Customer won games in </p>
@@ -238,7 +238,7 @@ const CustomerAnalytics = () => {
                            
 
                         </div>
-                        <div className='sm:w-[49%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
+                        <div className='sm:w-[48%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
                             <div className='flex gap-4 flex-col  w-full  p-[1rem] '>
                                 <div className='text-[1.1rem] text-[#004AAD]'>
                                     <p>Total Customers with positive  </p>
@@ -253,7 +253,7 @@ const CustomerAnalytics = () => {
                            
 
                         </div>
-                        <div className='sm:w-[49%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
+                        <div className='sm:w-[48%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
                             <div className='flex gap-4 flex-col  w-full  p-[1rem] '>
                                 <div className='text-[1.1rem] text-[#004AAD]'>
                                     <p>Total Customers with positive </p>
@@ -273,10 +273,10 @@ const CustomerAnalytics = () => {
 
 
                     {/* charts */}
-                    <div className='sm:w-[33%] w-full h-[290px]  border border-[#00000080] rounded-lg bg-white overflow-hidden     '>
+                    <div className='sm:w-[32%] w-full h-[290px]  border border-[#00000080] rounded-lg bg-white overflow-hidden     '>
                         <div className='flex  flex-col  w-full h-[100%] p-[1rem]  border-[#00000080] relative '>
                             <p className='text-[#0F172A] font-bold absolute border-b border-[#2019ec80] pb-1.5 z-30'>Customer Gender segment</p>
-                            <div className='absolute -ml-[85px] -mt-9  border-t  '>
+                            <div className='absolute -ml-[60px] -mt-5  border-t  '>
                                 <Charts male={maleCount} female={femaleCount} />
                             </div>
 
