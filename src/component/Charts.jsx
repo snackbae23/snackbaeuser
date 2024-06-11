@@ -28,8 +28,8 @@ export default function Charts({male,female}) {
   return (
     <Chart className="flex "
       chartType="PieChart"
-      width="400px"
-      height="300px"
+      width="450px"
+      height="350px"
       data={data}
       options={options}
     />
