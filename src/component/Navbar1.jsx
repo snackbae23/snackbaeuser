@@ -161,29 +161,29 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
           </div>
 
           <div className="flex items-center gap-3 cursor-pointer ">
-            <div className=" size-14  block rounded-full border  items-center justify-center  relative  ">
+            <div className=" size-12  block rounded-full border  items-center justify-center  relative  ">
               {fram ? (
                 <img
-                  src={data?.image}
+                src={data?.image || '/Group 1171278064.png'}
                   alt=""
                   className="size-full "
                   onClick={frames1}
                 />
               ) : (
                 <img
-                  src={data?.image}
+                src={data?.image || '/Group 1171278064.png'}
                   alt=""
                   className="size-full "
-                  onClick={frames2}
+                  onClick={frames2 }
                 />
               )}
             </div>
             <div className="sm:block hidden">
               <p className="text-[#2D2E2E] text-[19px] font-bold">
-                {data?.name || "Upload Name"}{" "}
+                {data?.name || "Upload Name"}
               </p>
               <p className="text-[#747677] text-[15px] font-semibold">
-                {data?.email || "Upload email"}{" "}
+                {data?.email || "Upload email"}
               </p>
             </div>
           </div>
