@@ -166,14 +166,14 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
                 <img
                 src={data?.image || '/Group 1171278064.png'}
                   alt=""
-                  className="size-full "
+                  className="size-full rounded-full "
                   onClick={frames1}
                 />
               ) : (
                 <img
                 src={data?.image || '/Group 1171278064.png'}
                   alt=""
-                  className="size-full "
+                  className="size-full rounded-full "
                   onClick={frames2 }
                 />
               )}

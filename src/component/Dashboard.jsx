@@ -918,8 +918,11 @@ const Dashboard = () => {
                 Customer Testimonials
               </p>
               <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
-                {comments
-                  .map((item, index) => ({
+                
+                {
+                  comments.length > 0 ? (
+                   <div>
+{comments.map((item, index) => ({
                     ...item,
                     isActive: item.Active === "true" ? 1 : 0, // Assigning a value of 1 for active comments and 0 for inactive comments
                   }))
@@ -999,6 +1002,15 @@ const Dashboard = () => {
                       )}
                     </div>
                   ))}
+                   </div>
+                  ):(
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-4 ">
+                      <img className="size-[200px]" src="/9796299 2.png" alt="" />
+                      <p className="text-[#004AAD] font-serif text-[1.7rem]">Opps ! no recomendation found</p>
+                  </div>)
+                }
+
+                
               </div>
             </div>
           </div>
