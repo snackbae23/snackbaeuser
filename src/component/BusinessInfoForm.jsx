@@ -23,10 +23,10 @@ const BusinessInfoForm = () => {
   const [image , setImage]= useState();
 
   const options = [
-    { id: "India", name: 1 },
-    { id: "USA", name: 2 },
-    { id: "Nepal", name: 3 },
-    { id: "Chaina", name: 4 },
+    { id: "Indian", name: 1 },
+    { id: "Chinese", name: 2 },
+    { id: "Italian", name: 3 },
+  
   ];
 
  
