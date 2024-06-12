@@ -508,7 +508,7 @@ const Menu = () => {
   }
 
   return (
-    <div id="menu" className="w-full h-fit relativ sm:mb-0 mb-10 ">
+    <div id="menu" className="w-full h-fit relativ sm:mb-0 mb-36 ">
       {/* Add menu popup */}
       <motion.div
         id="popup"
@@ -1016,9 +1016,9 @@ const Menu = () => {
         </form>
       </motion.div> 
 
-      <div className='fixed bg-blac sm:hidden block bottom-[100px] z-50 right-4'>
-        <button onClick={openPopup1} className='px-6 py-2 bg-white text-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold'><FaPlus /> Category</button>
-        <button onClick={openPopup} className='px-6 py-2 mt-3 text-white bg-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold'><FaPlus /> Add Menu</button>
+      <div className='fixed bg-blac sm:hidden block bottom-[65px] z-50 right-3'>
+        <button onClick={openPopup1} className='px-6 py-2 shadow-md  bg-white text-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]'><FaPlus /> Category</button>
+        <button onClick={openPopup} className=' pl-[20px] pr-[18px] shadow-md  py-2 mt-1.5 text-white bg-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]'><FaPlus />Add Menu</button>
       </div>
 
       <div className="  w-full  h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-5 sm:px-12   ">
@@ -1045,7 +1045,7 @@ const Menu = () => {
           <div className="w-full h-fit flex sm:flex-row flex-col gap-4  sm:my-1 mt-4  items-centen   justify-between    ">
             <div className="relative sm:w-[35%] w-full flex items-center rounded-md border border-[#407fd1]  ">
               <input
-                className="w-full sm:py-2 py-4 px-8 rounded-lg"
+                className="w-full sm:py-2 py-3 px-8 rounded-lg"
                 type="text"
                 value={search}
                 onChange={handleSearch}
@@ -1124,7 +1124,7 @@ const Menu = () => {
             {search &&
               searchMenuItems &&
               searchMenuItems.map((item, index) => (
-                <div className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
+                <div className=" sm:w-[32%] w-full sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
 
                   <div className="flex w-full items-center h-[20%] justify-between ">
                     <p className="font-inter">
