@@ -122,13 +122,13 @@ const CustomerRecords = () => {
         {currentPageData().map((item, index) => (
           <div key={index} className='grid grid-cols-6 text-[1.1rem]  px-6 border-b-2 pb-4 bg-[#F6F8FF] py-4 rounded-md'>
             {/* Render your data here */}
-            <p>{item.userId.name || 'Name'}</p>
+            <p>{item?.userId?.name || 'Name'}</p>
 
-            <p className='flex items-center justify-center ml-8 '>{maskPhoneNumber(item.userId.contact)}</p>
-            <p className=' flex items-center justify-end mr-6'>{item.userId.gender}</p>
-            <p className='flex items-center justify-center ml-8'>{item.count}</p>
+            <p className='flex items-center justify-center ml-8 '>{maskPhoneNumber(item?.userId?.contact)}</p>
+            <p className=' flex items-center justify-end mr-6'>{item?.userId?.gender}</p>
+            <p className='flex items-center justify-center ml-8'>{item?.count}</p>
             <p className='flex items-center justify-center ml-8'>-</p>
-            <p className='flex items-center justify-end text-nowrap'>{formattedDate(item.createdAt)}</p>
+            <p className='flex items-center justify-end text-nowrap'>{formattedDate(item?.createdAt)}</p>
           </div>
         ))}
         <div className='flex justify-between px-8  mt-7'>
@@ -178,9 +178,9 @@ const CustomerRecords = () => {
 
   const maskPhoneNumber = (phoneNumber) => {
 
-    const firstTwo = phoneNumber.slice(0, 2);
-    const lastTwo = phoneNumber.slice(-2);
-    const maskedSection = '*'.repeat(phoneNumber.length - 4);
+    const firstTwo = phoneNumber?.slice(0, 2);
+    const lastTwo = phoneNumber?.slice(-2);
+    const maskedSection = '*'.repeat(phoneNumber?.length - 4);
     return `+91${firstTwo}${maskedSection}${lastTwo}`;
   };
 
@@ -273,11 +273,11 @@ const CustomerRecords = () => {
           <div className='flex w-[50%] flex-col gap-3'>
             <div className='flex flex-col gap-1'>
               <p className='text-[1.1rem] text-[#808080] text-nowrap'>Customer Name</p>
-              <p className='font-bold text-[#0F172A]'>{item.userId.name || 'Name'}</p>
+              <p className='font-bold text-[#0F172A]'>{item?.userId?.name || 'Name'}</p>
             </div>
             <div>
               <p className='text-[1.1rem] text-[#808080] text-nowrap'>Total Visit</p>
-              <p className='font-bold text-[#0F172A] text-[]'>{item.count}</p>
+              <p className='font-bold text-[#0F172A] text-[]'>{item?.count}</p>
             </div>
             <div>
               <p className='text-[1.1rem] text-[#808080]'>Last Visited</p>
@@ -287,15 +287,15 @@ const CustomerRecords = () => {
           <div className='flex w-[50%] flex-col gap-3'>
             <div className='flex flex-col gap-1'>
               <p className='text-[1.1rem] text-[#808080] text-nowrap'>Customer Gender</p>
-              <p className='font-bold text-[#0F172A]'>{item.userId.gender}</p>
+              <p className='font-bold text-[#0F172A]'>{item?.userId?.gender}</p>
             </div>
             <div>
               <p className='text-[1.1rem] text-[#808080] text-nowrap'>Total spend</p>
               <p className='font-bold text-[#0F172A]'>69</p>
             </div>
             <div>
-              <p className='text-[1.1rem] text-[#808080]'>Contect</p>
-              <p className='font-bold text-[#0F172A]'>{maskPhoneNumber(item.userId.contact)}</p>
+              <p className='text-[1.1rem] text-[#808080]'>Contact</p>
+              <p className='font-bold text-[#0F172A]'>{maskPhoneNumber(item?.userId?.contact)}</p>
             </div>
           </div>
 
