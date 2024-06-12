@@ -1016,7 +1016,7 @@ const Menu = () => {
         </form>
       </motion.div> 
 
-      <div className='fixed bg-blac sm:hidden block bottom-[100px] z-50 right-4'>
+      <div className='fixed bg-blac sm:hidden block bottom-[80px] z-50 right-4'>
         <button onClick={openPopup1} className='px-6 py-2 bg-white text-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold'><FaPlus /> Category</button>
         <button onClick={openPopup} className='px-6 py-2 mt-3 text-white bg-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold'><FaPlus /> Add Menu</button>
       </div>
