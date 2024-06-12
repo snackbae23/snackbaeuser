@@ -135,7 +135,7 @@ const BusinessInfoForm = () => {
         contactPerson: response?.data?.restaurant?.contactPerson,
         outletAddress: response?.data?.restaurant?.outletAddress,
         businessType: response?.data?.restaurant?.businessType,
-        cuisinesServed: [response?.data?.restaurant?.cuisineServed],
+        cuisinesServed: response?.data?.restaurant?.cuisineServed,
         instaLink: response?.data?.restaurant?.instaLink,
         fssaiLicenceNumber: response?.data?.restaurant?.fssaiLicenseNo,
         image: response?.data?.restaurant?.image,
