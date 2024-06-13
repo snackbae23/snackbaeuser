@@ -17,8 +17,8 @@ const BusinessInfoForm = () => {
     fssaiLicenceNumber: "",
     image: null,
     gstNumber:"",
-    facebooklink:"",
-    youtubelink:"",
+    facebookLink:"",
+    youtubeLink:"",
   });
 
   
@@ -114,7 +114,7 @@ const BusinessInfoForm = () => {
       image: null,
       gstNumber:"",
       facebooklink:"",
-      youtubelink:"",
+      youtubeLink:"",
     });
   };
 
@@ -143,6 +143,8 @@ const BusinessInfoForm = () => {
         businessType: response?.data?.restaurant?.businessType,
         cuisinesServed: [response?.data?.restaurant?.cuisineServed],
         instaLink: response?.data?.restaurant?.instaLink,
+        facebookLink:response?.data?.restaurant?.facebookLink,
+        youtubeLink:response?.data?.restaurant?.youtubeLink,
         fssaiLicenceNumber: response?.data?.restaurant?.fssaiLicenseNo,
         image: response?.data?.restaurant?.image,
       });
@@ -377,7 +379,7 @@ const BusinessInfoForm = () => {
               <p className="font-semibold">Facebook Link (Optional)</p>
               <input
                 type="text"
-                name="facebooklink"
+                name="facebookLink"
                 placeholder="facebook.com/chowman12"
                 value={formData.facebooklink}
                 onChange={handleChange}
@@ -389,9 +391,9 @@ const BusinessInfoForm = () => {
               <p className="font-semibold">YouTube Link (Optional)</p>
               <input
                 type="text"
-                name="youtubelink"
+                name="youtubeLink"
                 placeholder="youtube.com/chowman12"
-                value={formData.youtubelink}
+                value={formData.youtubeLink}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />
