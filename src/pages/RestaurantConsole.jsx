@@ -345,7 +345,7 @@ useEffect(()=>{
 
         {/* left side for small */}
         <div className="md:hidden block   fixed bottom-2 px-3  w-[100%] h-fit z-[900]  ">
-          <div className="flex items-center justify-between text-[#64748B] bg-white p-2 border rounded-md   ">
+          <div className="flex items-center justify-evenly gap-3 text-[#64748B] bg-white py-2 border rounded-md   ">
             <BiSolidDashboard
               onClick={a}
               className={`size-[32px] ${
@@ -358,12 +358,12 @@ useEffect(()=>{
                 men ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
               }`}
             />
-            <HiOutlineCurrencyRupee
+            {/* <HiOutlineCurrencyRupee
               // onClick={c}
               className={`size-[32px] ${
                 pay ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
               }`}
-            />
+            /> */}
             <HiOutlineSpeakerphone
               // onClick={d}
               className={`size-[32px] ${
@@ -406,25 +406,25 @@ useEffect(()=>{
               <FaConciergeBell className="text-[1.1rem]" />{" "}
               <p className="">Menu</p>
             </div>
-            <div
+            {/* <div
               id=""
-              // onClick={c}
+               onClick={c}
               className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${
                 pay ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
               } `}
             >
               <HiOutlineCurrencyRupee className="text-[1.1rem]" />{" "}
               <p className="">Payments</p>
-            </div>
+            </div> */}
             <div
               id=""
-              // onClick={d}
+               onClick={d}
               className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${
                 off ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
               } `}
             >
-              <BiSolidOffer className="text-[1.1rem] " />{" "}
-              <p className="">Offers & Campaigns</p>
+              <HiOutlineSpeakerphone className="text-[1.1rem] " />{" "}
+              <p className="">Marketing</p>
             </div>
             <div
               id=""
