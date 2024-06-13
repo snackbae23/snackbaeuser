@@ -113,7 +113,7 @@ const BusinessInfoForm = () => {
       fssaiLicenceNumber: "",
       image: null,
       gstNumber:"",
-      facebooklink:"",
+      facebookLink:"",
       youtubeLink:"",
     });
   };
@@ -141,7 +141,7 @@ const BusinessInfoForm = () => {
         contactPerson: response?.data?.restaurant?.contactPerson,
         outletAddress: response?.data?.restaurant?.outletAddress,
         businessType: response?.data?.restaurant?.businessType,
-        cuisinesServed: [response?.data?.restaurant?.cuisineServed],
+        cuisinesServed: response?.data?.restaurant?.cuisineServed,
         instaLink: response?.data?.restaurant?.instaLink,
         facebookLink:response?.data?.restaurant?.facebookLink,
         youtubeLink:response?.data?.restaurant?.youtubeLink,
@@ -381,7 +381,7 @@ const BusinessInfoForm = () => {
                 type="text"
                 name="facebookLink"
                 placeholder="facebook.com/chowman12"
-                value={formData.facebooklink}
+                value={formData.facebookLink}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />
