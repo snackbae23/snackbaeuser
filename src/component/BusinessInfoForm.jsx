@@ -17,7 +17,7 @@ const BusinessInfoForm = () => {
     instaLink: "",
     fssaiLicenceNumber: "",
     image: null,
-    gstNumber:"",
+    gst:"",
     facebookLink:"",
     youtubeLink:"",
   });
@@ -26,12 +26,15 @@ const BusinessInfoForm = () => {
   const[fileName,setFileName] = useState("No selected file")
   const [image , setImage]= useState();
 
-  const options = [
-    { id: "India", name: 1 },
-    { id: "USA", name: 2 },
-    { id: "Nepal", name: 3 },
-    { id: "Chaina", name: 4 },
-  ];
+const cuisines = [
+  { id: "Chinese", name: 1 },
+  { id: "Italian", name: 2 },
+  { id: "Bengali", name: 3 },
+  { id: "North Indian", name: 4 },
+  { id: "South Indian", name: 5 },
+  { id: "American", name: 6 },
+  { id: "European", name: 7 }
+];
 
  
   var userID = localStorage.getItem("user");
@@ -108,9 +111,10 @@ const BusinessInfoForm = () => {
       instaLink: "",
       fssaiLicenceNumber: "",
       image: null,
-      gstNumber:"",
+      gst:"",
       facebookLink:"",
       youtubeLink:"",
+      
     });
 toast.success("details updated");  
     getdata();
@@ -156,6 +160,7 @@ const getdata = async() =>{
         youtubeLink:response?.data?.restaurant?.youtubeLink,
         fssaiLicenceNumber: response?.data?.restaurant?.fssaiLicenseNo,
         image: response?.data?.restaurant?.image,
+        gst: response?.data?.restaurant?.gst,
       });
       console.log(formData)
       console.log(response.data.restaurant.profile.image)
@@ -308,9 +313,11 @@ const getdata = async() =>{
                 className="w-full text-richblack-5 border rounded-[0.5rem] px-[12px] h-[3rem] outline-none"
               >
                 <option value="">Select Business Type</option>
-                <option value="Restaurant">Restaurant</option>
-                <option value="Cafe">Cafe</option>
-                <option value="Food Truck">Food Truck</option>
+                 <option value="Cafe">Cafe</option>
+                <option value="Fine Dining">Fine Dining</option>
+                <option value="QSR">QSR</option>
+                <option value="Buffet">Buffet</option>
+                <option value="Hotel">Hotel</option>
                 {/* Add more business types here */}
               </select>
             </label>
@@ -354,9 +361,9 @@ const getdata = async() =>{
               <p className="font-semibold">GST Number(Optional)</p>
               <input
                 type="text"
-                name="gstNumber"
+                name="gst "
                 placeholder="19654323456543"
-                value={formData.gstNumber}
+                value={formData.gst}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />
