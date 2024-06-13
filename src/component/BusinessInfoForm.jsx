@@ -146,6 +146,7 @@ const getdata = async() =>{
  const cuisi = response?.data?.restaurant?.cuisineServed?.map(cuisine => ({
         id: cuisine,
       }));
+      console.log(cuisi);
       setFormData({
         brandName: response?.data?.restaurant?.name,
         emailAddress: response?.data?.restaurant?.email,
