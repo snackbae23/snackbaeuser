@@ -26,7 +26,7 @@ const BusinessInfoForm = () => {
   const[fileName,setFileName] = useState("No selected file")
   const [image , setImage]= useState();
 
-const cuisines = [
+const options = [
   { id: "Chinese", name: 1 },
   { id: "Italian", name: 2 },
   { id: "Bengali", name: 3 },
