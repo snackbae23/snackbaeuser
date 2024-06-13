@@ -207,6 +207,8 @@ const CustomerRecords = () => {
       method: 'get',
       maxBodyLength: Infinity,
       url: `https://seashell-app-lgwmg.ondigitalocean.app/api/searchRecord/${resId}/${search}`,
+      // url: `http://localhost:4000/api/searchRecord/${resId}/${search}`,
+
       headers: {}
     };
 
