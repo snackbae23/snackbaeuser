@@ -3,6 +3,7 @@ import { useState } from "react";
 import Select from "react-dropdown-select";
 import axios from "axios"
 import { RxCross2 } from "react-icons/rx";
+import toast from 'react-hot-toast';
 
 const BusinessInfoForm = () => {
   const [formData, setFormData] = useState({
@@ -96,12 +97,7 @@ const BusinessInfoForm = () => {
     axios.request(config)
     .then((response) => {
       console.log(JSON.stringify(response.data));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    
-    setFormData({
+      setFormData({
       brandName: "",
       emailAddress: "",
       contactNumber: "",
@@ -116,12 +112,21 @@ const BusinessInfoForm = () => {
       facebookLink:"",
       youtubeLink:"",
     });
+toast.success("details updated");  
+    getdata();
+    })
+      
+    .catch((error) => {
+      console.log(error);
+      toast.error("error updateing data");  
+    });
+    
+    
   };
 
 
-
-  useEffect(() => {
-    let config = {
+const getdata = async() =>{
+ let config = {
       method: 'get',
       maxBodyLength: Infinity,
       url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${id}`,
@@ -134,6 +139,10 @@ const BusinessInfoForm = () => {
     .then((response) => {
       // console.log(JSON.stringify(response.data));
       console.log((response.data.restaurant));
+  const cuisi= response?.data?.restaurant?.cuisineServed.map(cuisine => ({
+  label: cuisine,
+  value: cuisine.toLowerCase().replace(/\s+/g, '-')
+}));
       setFormData({
         brandName: response?.data?.restaurant?.name,
         emailAddress: response?.data?.restaurant?.email,
@@ -141,7 +150,7 @@ const BusinessInfoForm = () => {
         contactPerson: response?.data?.restaurant?.contactPerson,
         outletAddress: response?.data?.restaurant?.outletAddress,
         businessType: response?.data?.restaurant?.businessType,
-        cuisinesServed: response?.data?.restaurant?.cuisineServed,
+        cuisinesServed: cuisi,
         instaLink: response?.data?.restaurant?.instaLink,
         facebookLink:response?.data?.restaurant?.facebookLink,
         youtubeLink:response?.data?.restaurant?.youtubeLink,
@@ -154,6 +163,10 @@ const BusinessInfoForm = () => {
     .catch((error) => {
       console.log(error);
     });
+  
+}
+  useEffect(() => {
+   getdata();
   },[id])
 
   return (
