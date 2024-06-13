@@ -9,18 +9,22 @@ import axios from 'axios';
 const CustomerAnalytics = () => {
     var userID = localStorage.getItem('user');
     console.log("user id", userID)
-    const id = userID
+    // const id = userID
     const resId = userID
     const [resData, setResData] = useState();
     const [totalCustomers, setTotalCustomers] = useState(0);
     const [repeatingCustomer, setRepeatingCustomer] = useState(0);
-    const [todaysCustomer, setTodaysCustomer] = useState(0);
+    // const [todaysCustomer, setTodaysCustomer] = useState(0);
     const [last15Days, setLast15Days] = useState(0);
     const [last30Days, setLast30Days] = useState(0);
+    const [last60Days,setLast60Days] = useState(0);
+    const [returningCustomer60,setReturningCustomer60] = useState(0);
     const [birthdayCount, setBirthdayCount] = useState(0);
+    const [anniversaryCount,setAnniversaryCount] = useState(0);
     const [maleCount, setMaleCount] = useState(0);
     const [femaleCount, setFemaleCount] = useState(0);
     const [lowRecommendation, setLowRecommendation] = useState(0);
+    const [highRecommendation,setHighRecommendation] = useState(0);
 
 
     const getRestaurantData = async (req, res) => {
@@ -45,11 +49,6 @@ const CustomerAnalytics = () => {
                 console.log(resData.restaurant.totalCustomersData);
                 const today = new Date().toISOString().slice(0, 10);
                 console.log(today);
-                const todayCust = resData?.restaurant?.totalCustomersData.filter(
-                    (item) => item.createdAt && item.createdAt.slice(0, 10) === today
-                );
-                console.log(todayCust);
-                setTodaysCustomer(todayCust.length);
 
                 console.log(resData);
 
@@ -75,21 +74,46 @@ const CustomerAnalytics = () => {
                 });
                 setLast30Days(recentVisitors1.length);
 
-                //birthday in this month
-                const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
+                //returning in last 60 days
+                const sixtyDaysAgo = new Date();
+                sixtyDaysAgo.setDate(now.getDate() - 60);
+                console.log(sixtyDaysAgo)
+                const repeatingVisitors1 = resData?.restaurant?.customerData.filter(customer => {
+                    const visitDate = new Date(customer.createdAt);
+                    return visitDate >= sixtyDaysAgo && customer.count > 1;
+                  });
+                
+                setReturningCustomer60(repeatingVisitors1.length);
 
-                const birthdayVisitors = resData?.restaurant?.totalCustomersData.filter(customer => {
+                //last 60 days
+                const recentVisitors2 = resData?.restaurant?.totalCustomersData.filter(customer => {
+                    const visitDate = new Date(customer.createdAt);
+                    return visitDate >= sixtyDaysAgo;
+                });
+                setLast60Days(recentVisitors2.length);
+
+                //birthday in this month
+                const currentMonth = new Date().getMonth() + 1; 
+
+                const birthdayVisitors = resData?.restaurant?.customerData.filter(customer => {
                     const dob = new Date(customer?.userId?.dob);
                     return dob.getMonth() + 1 === currentMonth;
                 });
 
                 setBirthdayCount(birthdayVisitors.length);
 
+                //anniversary in this month
+                const anniversaryVisitors = resData?.restaurant?.customerData.filter(customer => {
+                    const ann = new Date(customer?.userId?.anniversary);
+                    return ann.getMonth() + 1 === currentMonth;
+                });
+                setAnniversaryCount(anniversaryVisitors.length);
+
                 //male and female count
                 let male = 0;
                 let female = 0;
 
-                resData?.restaurant?.totalCustomersData.forEach(customer => {
+                resData?.restaurant?.customerData.forEach(customer => {
                     if (customer?.userId?.gender === 'male') {
                         male += 1;
                     } else if (customer?.userId?.gender === 'female') {
@@ -100,14 +124,17 @@ const CustomerAnalytics = () => {
                 setFemaleCount(female);
 
                 //low recommendation
-                const lowRec = new Date();
-                lowRec.setDate(now.getDate() - 30);
 
-                const recentVisitors2 = resData?.restaurant?.recommendationRecord.filter(customer => {
-                    const visitDate = new Date(customer.createdAt);
-                    return visitDate >= thirtyDaysAgo && customer.low == true;
+                const recentVisitors3 = resData?.restaurant?.recommendationRecord.filter(customer => {
+                    return customer.low == true;
                 });
-                setLowRecommendation(recentVisitors2.length);
+                setLowRecommendation(recentVisitors3.length);
+
+                //high recommendation
+                const recentVisitors4 = resData?.restaurant?.recommendationRecord.filter(customer => {
+                    return customer.low == false;
+                });
+                setHighRecommendation(recentVisitors4.length);
 
             })
             .catch((error) => {
@@ -156,7 +183,7 @@ const CustomerAnalytics = () => {
                                 </div>
 
                             </div>
-                            <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{totalCustomers - last30Days}</p>
+                            <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{totalCustomers - last60Days}</p>
                         </div>
 
                     </div>
@@ -170,7 +197,7 @@ const CustomerAnalytics = () => {
                                 <p>Returning customer in last </p>
                                 <p className='text-[#10B981]'> 60 Days</p>
                             </div>
-                            <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{last15Days}</p>
+                            <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{returningCustomer60}</p>
                         </div>
                         
 
@@ -196,7 +223,7 @@ const CustomerAnalytics = () => {
                                 <p>Customer Anniversary this</p>
                                 <p>month</p>
                             </div>
-                            <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{birthdayCount}</p>
+                            <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{anniversaryCount}</p>
                         </div>
                       
 
@@ -248,7 +275,7 @@ const CustomerAnalytics = () => {
                                     </div>
 
                                 </div>
-                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>6,999</p>
+                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{highRecommendation}</p>
                             </div>
                            
 
@@ -256,14 +283,14 @@ const CustomerAnalytics = () => {
                         <div className='sm:w-[48%] w-full h-[140px]  border border-[#00000080] rounded-lg bg-white '>
                             <div className='flex gap-4 flex-col  w-full  p-[1rem] '>
                                 <div className='text-[1.1rem] text-[#004AAD]'>
-                                    <p>Total Customers with positive </p>
+                                    <p>Total Customers with negative </p>
                                     <div className='flex gap-2'>
                                         <p>recommendation</p>
                                         <p className='text-[#F44336]'></p>
                                     </div>
 
                                 </div>
-                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>1,684</p>
+                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>{lowRecommendation}</p>
                             </div>
                            
 
