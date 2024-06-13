@@ -207,6 +207,8 @@ const CustomerRecords = () => {
       method: 'get',
       maxBodyLength: Infinity,
       url: `https://seashell-app-lgwmg.ondigitalocean.app/api/searchRecord/${resId}/${search}`,
+      // url: `http://localhost:4000/api/searchRecord/${resId}/${search}`,
+
       headers: {}
     };
 
@@ -268,7 +270,7 @@ const CustomerRecords = () => {
         <div className='w-full sm:hidden block'>
 
 
-        {udata.slice(0, 3).map((item, index) => (
+        {udata.slice(0, 5).map((item, index) => (
           <div id='index' className='flex w-full bg-[#FFFFFF] my-3 rounded-md border p-4 border-[#373535] items-center  '>
           <div className='flex w-[50%] flex-col gap-3'>
             <div className='flex flex-col gap-1'>
@@ -281,13 +283,13 @@ const CustomerRecords = () => {
             </div>
             <div>
               <p className='text-[1.1rem] text-[#808080]'>Last Visited</p>
-              <p className='font-bold text-[#0F172A]'>{formattedDate(item.createdAt)}</p>
+              <p className=' text-nowrap overflow-x-scroll hideScroller font-bold text-[#0F172A]'>{formattedDate(item.createdAt)}</p>
             </div>
           </div>
           <div className='flex w-[50%] flex-col gap-3'>
             <div className='flex flex-col gap-1'>
               <p className='text-[1.1rem] text-[#808080] text-nowrap'>Customer Gender</p>
-              <p className='font-bold text-[#0F172A]'>{item?.userId?.gender}</p>
+              <p className='font-bold text-[#0F172A]'>{item?.userId?.gender || 'Gender'}</p>
             </div>
             <div>
               <p className='text-[1.1rem] text-[#808080] text-nowrap'>Total spend</p>
@@ -295,7 +297,7 @@ const CustomerRecords = () => {
             </div>
             <div>
               <p className='text-[1.1rem] text-[#808080]'>Contact</p>
-              <p className='font-bold text-[#0F172A]'>{maskPhoneNumber(item?.userId?.contact)}</p>
+              <p className='font-bold text-nowrap overflow-x-scroll hideScroller text-[#0F172A]'>{maskPhoneNumber(item?.userId?.contact)}</p>
             </div>
           </div>
 

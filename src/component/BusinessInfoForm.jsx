@@ -16,6 +16,9 @@ const BusinessInfoForm = () => {
     instaLink: "",
     fssaiLicenceNumber: "",
     image: null,
+    gstNumber:"",
+    facebooklink:"",
+    youtubelink:"",
   });
 
   
@@ -109,6 +112,9 @@ const BusinessInfoForm = () => {
       instaLink: "",
       fssaiLicenceNumber: "",
       image: null,
+      gstNumber:"",
+      facebooklink:"",
+      youtubelink:"",
     });
   };
 
@@ -328,13 +334,14 @@ const BusinessInfoForm = () => {
               />
             </label>
 
+            
             <label className="md:w-[31%] w-full text-left text-m flex flex-col gap-2">
-              <p className="font-semibold">Instagram Link:</p>
+              <p className="font-semibold">GST Number(Optional)</p>
               <input
                 type="text"
-                name="instaLink"
-                placeholder="instagram.com/chowman12"
-                value={formData.instaLink}
+                name="gstNumber"
+                placeholder="19654323456543"
+                value={formData.gstNumber}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />
@@ -347,6 +354,44 @@ const BusinessInfoForm = () => {
                 name="fssaiLicenceNumber"
                 placeholder="Enter FSSAI"
                 value={formData.fssaiLicenceNumber}
+                onChange={handleChange}
+                className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
+              />
+            </label>
+          </div>
+
+          <div className="flex md:flex-row flex-col md:gap-0 gap-5 justify-between">
+          <label className="md:w-[31%] w-full text-left text-m flex flex-col gap-2">
+              <p className="font-semibold">Instagram Link:</p>
+              <input
+                type="text"
+                name="instaLink"
+                placeholder="instagram.com/chowman12"
+                value={formData.instaLink}
+                onChange={handleChange}
+                className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
+              />
+            </label>
+
+            <label className="md:w-[31%] w-full text-left text-m flex flex-col gap-2">
+              <p className="font-semibold">Facebook Link (Optional)</p>
+              <input
+                type="text"
+                name="facebooklink"
+                placeholder="facebook.com/chowman12"
+                value={formData.facebooklink}
+                onChange={handleChange}
+                className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
+              />
+            </label>
+
+            <label className="md:w-[31%] w-full text-left text-m flex flex-col gap-2">
+              <p className="font-semibold">YouTube Link (Optional)</p>
+              <input
+                type="text"
+                name="youtubelink"
+                placeholder="youtube.com/chowman12"
+                value={formData.youtubelink}
                 onChange={handleChange}
                 className="w-full text-richblack-5 border rounded-[0.5rem] pl-[12px] h-[3rem] outline-none"
               />

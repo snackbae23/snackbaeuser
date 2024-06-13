@@ -73,11 +73,11 @@ const Dashboard = () => {
         console.log(resData.restaurant.totalCustomersData);
         const today = new Date().toISOString().slice(0, 10);
         console.log(today);
-        const todayCust = resData?.restaurant?.totalCustomersData.filter(
-          (item) => item.createdAt && item.createdAt.slice(0, 10) === today
-        );
-        console.log(todayCust);
-        setTodaysCustomer(todayCust.length);
+        const customersVisitedToday = resData?.restaurant?.customerData.filter(customer => {
+          const customerDate = new Date(customer.createdAt).toISOString().slice(0, 10);
+          return customerDate === today;
+        });
+        setTodaysCustomer(customersVisitedToday.length);
 
         const highestRatedItem = resData?.restaurant?.menu.reduce(
           (prev, current) => (prev.rated > current.rated ? prev : current)
