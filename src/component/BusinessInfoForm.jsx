@@ -143,10 +143,9 @@ const getdata = async() =>{
     .then((response) => {
       // console.log(JSON.stringify(response.data));
       console.log((response.data.restaurant));
-  const cuisi= response?.data?.restaurant?.cuisineServed.map(cuisine => ({
-  label: cuisine,
-  value: cuisine.toLowerCase().replace(/\s+/g, '-')
-}));
+ const cuisi = response?.data?.restaurant?.cuisineServed?.map(cuisine => ({
+        id: cuisine,
+      }));
       setFormData({
         brandName: response?.data?.restaurant?.name,
         emailAddress: response?.data?.restaurant?.email,
