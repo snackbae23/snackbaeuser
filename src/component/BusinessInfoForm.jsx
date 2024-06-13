@@ -361,7 +361,7 @@ const getdata = async() =>{
               <p className="font-semibold">GST Number(Optional)</p>
               <input
                 type="text"
-                name="gst "
+                name="gst"
                 placeholder="19654323456543"
                 value={formData.gst}
                 onChange={handleChange}
