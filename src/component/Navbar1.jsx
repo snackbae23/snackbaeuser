@@ -52,14 +52,14 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
         setframe(!fram);
         document.getElementById('Notification').style.display = "none";
         document.getElementById('frame').style.display = "none";
-        document.getElementById("restaurant").style.display = "none";
+        
 
     };
     const frames2 = () => {
         setframe(!fram);
         document.getElementById('Notification').style.display = "none";
         document.getElementById('frame').style.display = "block";
-        document.getElementById("restaurant").style.display = "block";
+        
     };
     // Function to handle link click
     const handleLinkClick = () => {

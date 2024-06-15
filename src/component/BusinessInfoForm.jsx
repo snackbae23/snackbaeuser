@@ -5,6 +5,7 @@ import axios from "axios"
 import { RxCross2 } from "react-icons/rx";
 import toast from 'react-hot-toast';
 
+
 const BusinessInfoForm = () => {
   const [formData, setFormData] = useState({
     brandName: "",
@@ -54,8 +55,10 @@ const options = [
     console.log(pics);
     const formData = new FormData();
     formData.append("file", pics);
+    
 
     let config = {
+      
       method: "post",
       maxBodyLength: Infinity,
       url: "https://seashell-app-lgwmg.ondigitalocean.app/api/fileUpload",
@@ -73,6 +76,8 @@ const options = [
         setPic(response.data.data.url);
         // formData.image = response?.data?.data?.url;
         // console.log(formData.image);
+
+        
       })
       .catch((error) => {
         console.log(error);
@@ -173,6 +178,8 @@ const getdata = async() =>{
   useEffect(() => {
    getdata();
   },[id])
+
+  const [loader, setloader] = useState(false);
 
   return (
     <div>

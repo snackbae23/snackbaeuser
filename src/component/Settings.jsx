@@ -4,6 +4,7 @@ import BusinessInfoForm from "./BusinessInfoForm";
 import PayoutDetailsForm from "./PayoutDetailsForm";
 import { Link } from "react-router-dom";
 import axios from "axios"
+import { HashLoader } from 'react-spinners';
 
 const Settings = () => {
 
@@ -11,7 +12,10 @@ const Settings = () => {
 
   // console.log(id)
     const [formType, setFormType] = useState("businessInfo");
-
+    const [loader, setloader] = useState(true);
+    setTimeout(() => {
+      setloader(false);
+    }, 2000);
 
   return (
     <div id="setting" className="w-full h-fit relative sm:mb-1 mb-10">
@@ -20,10 +24,21 @@ const Settings = () => {
           <p className="text-[1.6rem] font-semibold">Settings</p>
           <p className="text-[.9rem]">Manage your account settings</p>
         </div>
+      
       </div>
 
+
+
       <div className="w-full h-fit sm:px-6 px-2 ">
-        <div className="bg-white flex flex-col gap-4 sm:py-5 py-2">
+
+      {loader ? (
+              // Show a loader when resData is empty
+              <div className="flex justify-center items-center w-full h-[500px]  z-50 ">
+                <HashLoader color="#004AAD" />
+              </div>
+            ) : (
+             <div>
+<div className="bg-white flex flex-col gap-4 sm:py-5 py-2">
           {/* <div className="w-full h-fit flex flex-row gap-3 sm:my-1 my-4  items-center  ">
             <button
               className={`${
@@ -63,7 +78,12 @@ const Settings = () => {
                         </div>
 
                     </div>
-                </div>
+        </div>
+             </div>
+            )
+      }
+
+        
       </div>
     </div>
   );

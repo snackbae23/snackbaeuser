@@ -271,7 +271,7 @@ useEffect(()=>{
         {/* frame */}
         <div
           id="frame"
-          className="hidden fixed right-6 z-[900] sm:w-[23%]   w-[60%] bg-white  h-fit mt-[70px] rounded-lg sm:px-[30px] px-[15px] py-2 border-b border-[#D1C8C899]"
+          className="hidden fixed right-6 z-[900] sm:w-[23%]   w-[60%] bg-white  h-fit mt-[70px] rounded-lg sm:px-[30px] px-[15px] py-2 border-b shadow-lg border-[#D1C8C899]"
         >
           
             <div className="flex  flex-col  items-cente  p-1 border-b border-[#00000080]">

@@ -100,7 +100,7 @@ const Dashboard = () => {
         
         setTimeout(() => {
           setloader(false);
-        }, 2000);
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
@@ -389,22 +389,23 @@ const Dashboard = () => {
         </div>
       </motion.div>
 
-      <div className="  w-full  h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-5 sm:px-12   ">
+      <div className="  w-full  h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-4 sm:px-8   ">
         <div>
-          <p className="sm:text-[1.6rem] text-[2rem] font-semibold">
+          <p className="sm:text-[1.6rem] text-[1.6rem] font-semibold">
             Dashboard
           </p>
-          <p className="text-[.9rem]">Welcome to your Dashboard</p>
+          <p className="sm:text-[.9rem] text-[.8rem] text-nowrap">Welcome to your Dashboard</p>
         </div>
 
         <div className="flex gap-5 ">
-          <Link
-            to={`https://www.snackbae.in/profile/merchant/${id}`}
-            target="_blank"
-            className="hidden sm:block bg-white px-5 py-[.5rem] rounded-md border text-[.9rem] font-Roboto border-[#000000B2]"
-          >
-            View Profile
-          </Link>
+            <Link
+                      to={`https://www.snackbae.in/profile/merchant/${id}`}
+                      target="_blank"
+                      className=" flex items-center justify-between w-full h-[40px] gap-2 border bg-white border-[#000000B2] rounded-lg sm:px-4 px-2  text-[1.1rem] font-semibold"
+                    >
+                      <p className=' text-nowrap'>View Profile</p>
+                      <GoFileSymlinkFile />
+                    </Link>
           <button
             onClick={openPopup}
             className="bg-white hidden px-5 sm:py-1 py-2 sm:rounded-md rounded-xl border text-[.9rem] font-Roboto  border-[#000000B2]"
@@ -470,14 +471,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
-                    <Link
-                      to={`https://www.snackbae.in/profile/merchant/${id}`}
-                      target="_blank"
-                      className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold"
-                    >
-                      <p>View Profile</p>
-                      <GoFileSymlinkFile />
-                    </Link>
+                    
                     <div className="sm:w-[66%] w-full flex gap-2">
                       <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
                         <p className="text-[#777980] text-[.9rem] font-semibold">
