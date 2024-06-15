@@ -67,7 +67,7 @@ const Menu = () => {
       .catch((error) => {
         console.log(error);
       });
-      
+
     setTimeout(() => {
       setloader(false);
     }, 4000);
@@ -510,6 +510,7 @@ const Menu = () => {
 
   return (
     <div id="menu" className="w-full h-fit relativ sm:mb-0 mb-36 ">
+
       {/* Add menu popup */}
       <motion.div
         id="popup"
@@ -1015,13 +1016,15 @@ const Menu = () => {
             </button>
           </div>
         </form>
-      </motion.div> 
+      </motion.div>
 
+      {/* categories and add menu buttons */}
       <div className='fixed bg-blac sm:hidden block bottom-[65px] z-50 right-3'>
         <button onClick={openPopup1} className='px-6 py-2 shadow-md  bg-white text-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]'><FaPlus /> Category</button>
         <button onClick={openPopup} className=' pl-[20px] pr-[18px] shadow-md  py-2 mt-1.5 text-white bg-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]'><FaPlus />Add Menu</button>
       </div>
 
+      {/* header */}
       <div className="  w-full  h-[80px] z-10 bg-[#FDE030] mt-[70px] flex justify-between items-center px-5 sm:px-12   ">
         <div>
           <p className="text-[1.6rem] font-semibold">Menu</p>
@@ -1041,9 +1044,9 @@ const Menu = () => {
       <div className="w-full h-fit  mt-[10px] sm:px-8 px-4  ">
         <div className="bg-white   sm:px-3 flex flex-col gap-3 sm:py-4  px-1   ">
 
-          {/* Search result */}
 
           <div className="w-full h-fit flex sm:flex-row flex-col gap-4  sm:my-1 mt-4  items-centen   justify-between    ">
+            {/* Search result */}
             <div className="relative sm:w-[35%] w-full flex items-center rounded-md border border-[#407fd1]  ">
               <input
                 className="w-full sm:py-2 py-3 px-8 rounded-lg"
@@ -1085,15 +1088,8 @@ const Menu = () => {
               {/* switch for Active Items */}
 
               <div className='flex items-center gap-4 '>
-                {
-                  !Activeswitch ?
 
-                    <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Active Items</p>
-                    :
-
-                    <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Active Items</p>
-
-                }
+                <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Active Items</p>
                 {
                   !Activeswitch ?
                     <div className='w-[40px]  h-[22px] bg-[#a8a8aa] rounded-full flex items-center cursor-pointer '>
@@ -1214,128 +1210,343 @@ const Menu = () => {
                           {(provided) => (
                             <div ref={provided.innerRef} {...provided.droppableProps}>
                               {category.map((category, index) => (
-                                <Draggable
-                                  key={category._id}
-                                  draggableId={category._id}
-                                  index={index}
-                                >
-                                  {(provided) => (
-                                    <div
-                                      ref={provided.innerRef}
-                                      {...provided.draggableProps}
-                                      {...provided.dragHandleProps}
-                                      key={category._id}
-                                      id={category._id}
-                                      className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
-                                    >
-                                      <div>
-                                        <div className="w-full h-fit">
-                                          <div className="flex justify-between items-center  w-full mt-4 px-4 ">
-                                            <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
-                                              {category.name} (
-                                              {category.menuItems.length})
-                                            </p>
-                                            {showAllCategories[category.name] ? (
-                                              <FaAngleUp
-                                                className={`text-[1.4rem] cursor-pointer`}
-                                                onClick={() =>
-                                                  toggleCategory(category.name)
-                                                }
-                                              />
-                                            ) : (
-                                              <FaAngleDown
-                                                className={`text-[1.4rem] cursor-pointer`}
-                                                onClick={() =>
-                                                  toggleCategory(category.name)
-                                                }
-                                              />
-                                            )}
-                                          </div>
-
+                                Activeswitch ? (
+                                  <div>
+                                    {
+                                      category.active &&
+                                      <Draggable
+                                        key={category._id}
+                                        draggableId={category._id}
+                                        index={index}
+                                      >
+                                        {(provided) => (
                                           <div
-                                            className={`w-full ${showAllCategories[category.name]
-                                              ? "h-auto transition-height duration-300 ease-in-out"
-                                              : "h-0 hidden"
-                                              }`}
+                                            ref={provided.innerRef}
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            key={category._id}
+                                            id={category._id}
+                                            className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
                                           >
-                                            <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap   ">
-                                              {category?.menuItems.map((item) => (
-
-                                                <div className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
-
-                                                  <div className="flex w-full items-center h-[20%] justify-between ">
-                                                    <p className="font-inter">
-                                                      {item.name}{" "}
-                                                    </p>
-                                                    <p></p>
-                                                    <Switch1
-                                                      isActive={item.active}
-                                                      id={item._id}
-                                                      type={"menu"}
-                                                    />
-                                                  </div>
-                                                  <div className="flex w-full h-[60%]  py-4  ">
-                                                    <div className="w-[70%] overflow-y-scroll hideScroller ">
-                                                      {item.veg == "Yes" && (
-                                                        <img
-                                                          src="Group 1171277690.png"
-                                                          alt=""
-                                                        />
-                                                      )}
-                                                      {
-                                                        item.veg != "Yes" && (
-                                                          <img className=' size-6 '
-                                                            src="/Group 1171277821.png"
-                                                            alt=""
-                                                          />
-                                                        ) // non-veg
+                                            <div>
+                                              <div className="w-full h-fit">
+                                                <div className="flex justify-between items-center  w-full mt-4 px-4 ">
+                                                  <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
+                                                    {category.name} (
+                                                    {category.menuItems.length})
+                                                  </p>
+                                                  {showAllCategories[category.name] ? (
+                                                    <FaAngleUp
+                                                      className={`text-[1.4rem] cursor-pointer`}
+                                                      onClick={() =>
+                                                        toggleCategory(category.name)
                                                       }
-                                                      <p className="text-[#0F172A] font-inter text-[.75rem]">
-                                                        {item.description}
-                                                      </p>
-                                                    </div>
-                                                    <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                                      <img
-                                                        className="size-20 size-fit-content"
-                                                        src={item.image}
-                                                        alt=""
-                                                      />
-                                                    </div>
-                                                  </div>
-
-                                                  <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
-                                                    <p className="text-[1.1rem]">
-                                                      ₹{item.price}
-                                                    </p>
-                                                    <div className="flex gap-2">
-                                                      <button
-                                                        className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
-                                                        onClick={() => {
-                                                          openPopup2(item);
-                                                        }}
-                                                      >
-                                                        Edit
-                                                      </button>
-                                                      <button
-                                                        onClick={() => {
-                                                          deleteMenu(item);
-                                                        }}
-                                                        className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
-                                                      >
-                                                        Delete
-                                                      </button>
-                                                    </div>
-                                                  </div>
-
+                                                    />
+                                                  ) : (
+                                                    <FaAngleDown
+                                                      className={`text-[1.4rem] cursor-pointer`}
+                                                      onClick={() =>
+                                                        toggleCategory(category.name)
+                                                      }
+                                                    />
+                                                  )}
                                                 </div>
-                                              ))}
+
+                                                <div
+                                                  className={`w-full ${showAllCategories[category.name]
+                                                    ? "h-auto transition-height duration-300 ease-in-out"
+                                                    : "h-0 hidden"
+                                                    }`}
+                                                >
+                                                  <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap   ">
+                                                    {category?.menuItems.map((item, index) => (
+
+                                                      <div key={index} className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
+
+                                                        <div className="flex w-full items-center h-[20%] justify-between ">
+                                                          <p className="font-inter">
+                                                            {item.name}{" "}
+                                                          </p>
+                                                          <p></p>
+                                                          <Switch1
+                                                            isActive={item.active}
+                                                            id={item._id}
+                                                            type={"menu"}
+                                                          />
+                                                        </div>
+                                                        <div className="flex w-full h-[60%]  py-4  ">
+                                                          <div className="w-[70%] overflow-y-scroll hideScroller ">
+                                                            {item.veg == "Yes" && (
+                                                              <img
+                                                                src="Group 1171277690.png"
+                                                                alt=""
+                                                              />
+                                                            )}
+                                                            {
+                                                              item.veg != "Yes" && (
+                                                                <img className=' size-6 '
+                                                                  src="/Group 1171277821.png"
+                                                                  alt=""
+                                                                />
+                                                              ) // non-veg
+                                                            }
+                                                            <p className="text-[#0F172A] font-inter text-[.75rem]">
+                                                              {item.description}
+                                                            </p>
+                                                          </div>
+                                                          <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                                            <img
+                                                              className="size-20 size-fit-content"
+                                                              src={item.image}
+                                                              alt=""
+                                                            />
+                                                          </div>
+                                                        </div>
+
+                                                        <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
+                                                          <p className="text-[1.1rem]">
+                                                            ₹{item.price}
+                                                          </p>
+                                                          <div className="flex gap-2">
+                                                            <button
+                                                              className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
+                                                              onClick={() => {
+                                                                openPopup2(item);
+                                                              }}
+                                                            >
+                                                              Edit
+                                                            </button>
+                                                            <button
+                                                              onClick={() => {
+                                                                deleteMenu(item);
+                                                              }}
+                                                              className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
+                                                            >
+                                                              Delete
+                                                            </button>
+                                                          </div>
+                                                        </div>
+
+                                                      </div>
+                                                    ))}
+                                                  </div>
+                                                </div>
+                                              </div>
                                             </div>
                                           </div>
+                                        )}
+                                      </Draggable>
+                                    }
+                                  </div>
+                                )
+                                  : (
+                                    <Draggable
+                                      key={category._id}
+                                      draggableId={category._id}
+                                      index={index}
+                                    >
+                                      {(provided) => (
+                                        <div
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                          key={category._id}
+                                          id={category._id}
+                                          className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
+                                        >
+
+                                          <div className="w-full h-fit">
+                                            <div className="flex justify-between items-center  w-full mt-4 px-4 ">
+                                              <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
+                                                {category.name} (
+                                                {category.menuItems.length})
+                                              </p>
+                                              {showAllCategories[category.name] ? (
+                                                <FaAngleUp
+                                                  className={`text-[1.4rem] cursor-pointer`}
+                                                  onClick={() =>
+                                                    toggleCategory(category.name)
+                                                  }
+                                                />
+                                              ) : (
+                                                <FaAngleDown
+                                                  className={`text-[1.4rem] cursor-pointer`}
+                                                  onClick={() =>
+                                                    toggleCategory(category.name)
+                                                  }
+                                                />
+                                              )}
+                                            </div>
+
+                                            <div
+                                              className={`w-full ${showAllCategories[category.name]
+                                                ? "h-auto transition-height duration-300 ease-in-out"
+                                                : "h-0 hidden"
+                                                }`}
+                                            >
+                                              <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap   ">
+                                                {category?.menuItems.map((item, index) => (
+
+                                                  <>
+
+                                                    {
+                                                      switchv ?
+                                                        (
+                                                          item.veg === "No" &&
+
+                                                          <div key={index} className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
+
+                                                            <div className="flex w-full items-center h-[20%] justify-between ">
+                                                              <p className="font-inter">
+                                                                {item.name}{" "}
+                                                              </p>
+                                                              <p></p>
+                                                              <Switch1
+                                                                isActive={item.active}
+                                                                id={item._id}
+                                                                type={"menu"}
+                                                              />
+                                                            </div>
+                                                            <div className="flex w-full h-[60%]  py-4  ">
+                                                              <div className="w-[70%] overflow-y-scroll hideScroller ">
+                                                                {item.veg == "Yes" && (
+                                                                  <img
+                                                                    src="Group 1171277690.png"
+                                                                    alt=""
+                                                                  />
+                                                                )}
+                                                                {
+                                                                  item.veg != "Yes" && (
+                                                                    <img className=' size-6 '
+                                                                      src="/Group 1171277821.png"
+                                                                      alt=""
+                                                                    />
+                                                                  ) // non-veg
+                                                                }
+                                                                <p className="text-[#0F172A] font-inter text-[.75rem]">
+                                                                  {item.description}
+                                                                </p>
+                                                              </div>
+                                                              <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                                                <img
+                                                                  className="size-20 size-fit-content"
+                                                                  src={item.image}
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                            </div>
+
+                                                            <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
+                                                              <p className="text-[1.1rem]">
+                                                                ₹{item.price}
+                                                              </p>
+                                                              <div className="flex gap-2">
+                                                                <button
+                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
+                                                                  onClick={() => {
+                                                                    openPopup2(item);
+                                                                  }}
+                                                                >
+                                                                  Edit
+                                                                </button>
+                                                                <button
+                                                                  onClick={() => {
+                                                                    deleteMenu(item);
+                                                                  }}
+                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
+                                                                >
+                                                                  Delete
+                                                                </button>
+                                                              </div>
+                                                            </div>
+
+                                                          </div>
+
+                                                        )
+                                                        :
+                                                        (
+                                                          item.veg === "Yes" &&
+                                                          <div key={index} className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
+
+                                                            <div className="flex w-full items-center h-[20%] justify-between ">
+                                                              <p className="font-inter">
+                                                                {item.name}{" "}
+                                                              </p>
+                                                              <p></p>
+                                                              <Switch1
+                                                                isActive={item.active}
+                                                                id={item._id}
+                                                                type={"menu"}
+                                                              />
+                                                            </div>
+                                                            <div className="flex w-full h-[60%]  py-4  ">
+                                                              <div className="w-[70%] overflow-y-scroll hideScroller ">
+                                                                {item.veg == "Yes" && (
+                                                                  <img
+                                                                    src="Group 1171277690.png"
+                                                                    alt=""
+                                                                  />
+                                                                )}
+                                                                {
+                                                                  item.veg != "Yes" && (
+                                                                    <img className=' size-6 '
+                                                                      src="/Group 1171277821.png"
+                                                                      alt=""
+                                                                    />
+                                                                  ) // non-veg
+                                                                }
+                                                                <p className="text-[#0F172A] font-inter text-[.75rem]">
+                                                                  {item.description}
+                                                                </p>
+                                                              </div>
+                                                              <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                                                <img
+                                                                  className="size-20 size-fit-content"
+                                                                  src={item.image}
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                            </div>
+
+                                                            <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
+                                                              <p className="text-[1.1rem]">
+                                                                ₹{item.price}
+                                                              </p>
+                                                              <div className="flex gap-2">
+                                                                <button
+                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
+                                                                  onClick={() => {
+                                                                    openPopup2(item);
+                                                                  }}
+                                                                >
+                                                                  Edit
+                                                                </button>
+                                                                <button
+                                                                  onClick={() => {
+                                                                    deleteMenu(item);
+                                                                  }}
+                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
+                                                                >
+                                                                  Delete
+                                                                </button>
+                                                              </div>
+                                                            </div>
+
+                                                          </div>
+
+                                                        )
+                                                    }
+                                                  </>
+
+                                                ))}
+                                              </div>
+                                            </div>
+                                          </div>
+
                                         </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                </Draggable>
+                                      )}
+                                    </Draggable>
+                                  )
                               ))}
                               {provided.placeholder}
                             </div>

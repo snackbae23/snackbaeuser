@@ -224,7 +224,7 @@ const RestaurantConsole = () => {
     date: "12 May, 2025",
   }]
 
-  
+
   const [resData, setResData] = useState();
   var userID = localStorage.getItem('user');
   const getRestaurantData = async (req, res) => {
@@ -239,7 +239,7 @@ const RestaurantConsole = () => {
     axios
       .request(config)
       .then((response) => {
-        console.log("data",response.data);
+        console.log("data", response.data);
         setResData(response?.data.restaurant);
       })
       .catch((error) => {
@@ -247,9 +247,9 @@ const RestaurantConsole = () => {
       });
   };
 
-useEffect(()=>{
-  getRestaurantData();
-},[userID])
+  useEffect(() => {
+    getRestaurantData();
+  }, [userID])
 
 
   return (
@@ -273,47 +273,47 @@ useEffect(()=>{
           id="frame"
           className="hidden fixed right-6 z-[900] sm:w-[23%]   w-[60%] bg-white  h-fit mt-[70px] rounded-lg sm:px-[30px] px-[15px] py-2 border-b shadow-lg border-[#D1C8C899]"
         >
-          
-            <div className="flex  flex-col  items-cente  p-1 border-b border-[#00000080]">
-               
-              <p className="text-[1.15rem] font-bold text-nowrap ">Foodoos - Salt Lake</p>
-              <div className='flex  items-center text-[1.1rem] justify-start   text-[#64748B]'>
-                <CiSettings className="text-[1.2rem]"/>
-                <button
+
+          <div className="flex  flex-col  items-cente  p-1 border-b border-[#00000080]">
+
+            <p className="text-[1.15rem] font-bold text-nowrap ">Foodoos - Salt Lake</p>
+            <div className='flex  items-center text-[1.1rem] justify-start   text-[#64748B]'>
+              <CiSettings className="text-[1.2rem]" />
+              <button
                 onClick={f}
                 className="px-2 py-1    border-[#999da2]    "
               >
-               Manage Setting
+                Manage Setting
               </button>
-              </div>
-              
+            </div>
 
-            </div>
-            <div className="flex flex-col text-[#64748B] ">
-               
-              <Link
-                to="https://www.snackbae.in/termsCondition"
-                className="px-2 py-4  text-[1.1rem]  flex items-center justify-start  "
-              >
-                Terms & condition
-              </Link>
-              <Link
-                to="https://www.snackbae.in/privacyPolicy"
-                className="px-2  text-[1.1rem]   flex items-center justify-start  "
-              >
-                Privacy Policy
-              </Link>
-              <button className="px-2 py-4  text-[1.1rem] flex  ">
-                Pricing
-              </button>
-              <button
-                onClick={g}
-                className="w-full sm:py-2 py-2 text-[1.1rem] flex items-center  gap-3  border-t border-[#C62828B2] text-[#C62828] font-semibold"
-              >
+
+          </div>
+          <div className="flex flex-col text-[#64748B] ">
+
+            <Link
+              to="https://www.snackbae.in/termsCondition"
+              className="px-2 py-4  text-[1.1rem]  flex items-center justify-start  "
+            >
+              Terms & condition
+            </Link>
+            <Link
+              to="https://www.snackbae.in/privacyPolicy"
+              className="px-2  text-[1.1rem]   flex items-center justify-start  "
+            >
+              Privacy Policy
+            </Link>
+            <button className="px-2 py-4  text-[1.1rem] flex  ">
+              Pricing
+            </button>
+            <button
+              onClick={g}
+              className="w-full sm:py-2 py-2 text-[1.1rem] flex items-center  gap-3  border-t border-[#C62828B2] text-[#C62828] font-semibold"
+            >
               <IoLogOutOutline className="text-[1.2rem]" />  Logout
-              </button>
-            </div>
-          
+            </button>
+          </div>
+
         </div>
 
         {/* Notification */}
@@ -327,7 +327,7 @@ useEffect(()=>{
 
           <div className="w-full h-[350px] flex flex-col items-center justify-center overflow-y-scroll hideScroller">
             {notification.map((item, index) => (
-              <div className="flex flex-col gap-2  justify-evenly p-5 border-b">
+              <div key={index} className="flex flex-col gap-2  justify-evenly p-5 border-b">
                 <p className="text-[1.1rem] text-[#64748B] font-Roboto  ">
                   {item.p}
                 </p>
@@ -342,15 +342,13 @@ useEffect(()=>{
           <div className="flex items-center justify-evenly gap-3 text-[#64748B] bg-white py-2 border rounded-md   ">
             <BiSolidDashboard
               onClick={a}
-              className={`size-[32px] ${
-                das ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              }`}
+              className={`size-[32px] ${das ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                }`}
             />
             <FaConciergeBell
               onClick={b}
-              className={`size-[32px] ${
-                men ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              }`}
+              className={`size-[32px] ${men ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                }`}
             />
             {/* <HiOutlineCurrencyRupee
               // onClick={c}
@@ -360,15 +358,13 @@ useEffect(()=>{
             /> */}
             <HiOutlineSpeakerphone
               // onClick={d}
-              className={`size-[32px] ${
-                off ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              }`}
+              className={`size-[32px] ${off ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                }`}
             />
             <FaUserAlt
               onClick={e}
-              className={`size-[32px] ${
-                cus ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              } `}
+              className={`size-[32px] ${cus ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                } `}
             />
           </div>
         </div>
@@ -383,9 +379,8 @@ useEffect(()=>{
             <div
               id=""
               onClick={a}
-              className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${
-                das ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              } `}
+              className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${das ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                } `}
             >
               <BiSolidDashboard className="text-[1.1rem]" />{" "}
               <p className="">Dashboard</p>
@@ -393,9 +388,8 @@ useEffect(()=>{
             <div
               id=""
               onClick={b}
-              className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${
-                men ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              } `}
+              className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${men ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                } `}
             >
               <FaConciergeBell className="text-[1.1rem]" />{" "}
               <p className="">Menu</p>
@@ -412,10 +406,9 @@ useEffect(()=>{
             </div> */}
             <div
               id=""
-               onClick={d}
-              className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${
-                off ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              } `}
+              onClick={d}
+              className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${off ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                } `}
             >
               <HiOutlineSpeakerphone className="text-[1.1rem] " />{" "}
               <p className="">Marketing</p>
@@ -423,9 +416,8 @@ useEffect(()=>{
             <div
               id=""
               onClick={e}
-              className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${
-                cus ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              } `}
+              className={`w-full h-[50px] cursor-pointer mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${cus ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                } `}
             >
               <IoPersonOutline className="text-[1.1rem]" />
               <p className="">Customers</p>
@@ -436,9 +428,8 @@ useEffect(()=>{
             <div
               id=""
               onClick={f}
-              className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${
-                set ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
-              } `}
+              className={`w-full h-[50px] cursor-pointer  mb-1 flex items-center rounded-lg font-semibold p-4 gap-3 ${set ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#64748B]"
+                } `}
             >
               <CiSettings className="text-[1.2rem]" />
               <p className="">Settings</p>
@@ -446,9 +437,8 @@ useEffect(()=>{
             <div
               id=""
               onClick={g}
-              className={`w-full h-[50px] cursor-pointer  flex items-center rounded-lg font-semibold p-4 gap-3 sm:mb-1 mb-8 ${
-                log ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#C62828]"
-              } `}
+              className={`w-full h-[50px] cursor-pointer  flex items-center rounded-lg font-semibold p-4 gap-3 sm:mb-1 mb-8 ${log ? "bg-[#F8FAFC] text-[#004AAD]" : "text-[#C62828]"
+                } `}
             >
               <IoLogOutOutline className="text-[1.2rem]" />
               <p className="">Log Out</p>
