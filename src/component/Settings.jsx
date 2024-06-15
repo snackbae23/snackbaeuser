@@ -15,7 +15,7 @@ const Settings = () => {
     const [loader, setloader] = useState(true);
     setTimeout(() => {
       setloader(false);
-    }, 2000);
+    }, 3000);
 
   return (
     <div id="setting" className="w-full h-fit relative sm:mb-1 mb-10">
