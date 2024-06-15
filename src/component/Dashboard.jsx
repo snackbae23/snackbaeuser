@@ -16,8 +16,11 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 import axios from "axios";
 import MenuClicks from "./MenuClicks";
+import { HashLoader } from 'react-spinners';
 
 const Dashboard = () => {
+
+  const [loader, setloader] = useState(false);
 
   var userID = localStorage.getItem('user');
   console.log("user id", userID);
@@ -49,6 +52,7 @@ const Dashboard = () => {
   };
 
   const getRestaurantData = async (req, res) => {
+    setloader(true);
     let config = {
       method: "get",
       maxBodyLength: Infinity,
@@ -93,6 +97,10 @@ const Dashboard = () => {
 
         console.log(bestRatedMenu);
         console.log(leastRatedMenu);
+        
+        setTimeout(() => {
+          setloader(false);
+        }, 2000);
       })
       .catch((error) => {
         console.log(error);
@@ -406,642 +414,651 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="w-full h-fit  ">
-        {/* total report */}
-        <div className=" w-full sm:flex sm:px-4 sm:pt-6 gap-3 ">
-          <div className="sm:w-[70%] w-full flex flex-col gap-2">
-            {/* <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
-              Today's Report
-            </p> */}
-            <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2  rounded-md bg-white p-4">
-              <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                <p className="text-[#777980] text-[.9rem] font-semibold">
-                  Today's Sales
-                </p>
-                <img
-                  className="size-8 absolute right-2"
-                  src="/Badge (2).png"
-                  alt=""
-                />
-
-                <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
-                  ₹0
-                </p>
-                <div className="flex text-[.9rem] gap-1 font-bold">
-                  <p className="text-[#018DF0] ">View Payments</p>
-                </div>
+      {loader ? (
+              // Show a loader when resData is empty
+              <div className="flex justify-center items-center w-full h-[500px]  z-50 ">
+                <HashLoader color="#004AAD" />
               </div>
-              <div className="sm:w-[50%] w-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                <p className="text-[#777980] text-[.9rem] font-semibold">
-                  Today's Customer
-                </p>
-                <img
-                  className="size-8 absolute right-2"
-                  src="/Badge (3).png"
-                  alt=""
-                />
-
-                <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
-                  {todaysCustomer}
-                </p>
-                <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
-                  <p className="font-bold ">30% </p>
-                  <img
-                    className="size-4"
-                    src="/fi-rr-caret-up (1).png"
-                    alt=""
-                  />
-                  <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
-                </div>
-              </div>
-            </div>
-            <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
-              <Link
-                to={`https://www.snackbae.in/profile/merchant/${id}`}
-                target="_blank"
-                className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold"
-              >
-                <p>View Profile</p>
-                <GoFileSymlinkFile />
-              </Link>
-              <div className="sm:w-[66%] w-full flex gap-2">
-                <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                  <p className="text-[#777980] text-[.9rem] font-semibold">
-                    Total Customer
-                  </p>
-                  <img
-                    className="size-8 absolute right-2"
-                    src="/Badge (5).png"
-                    alt=""
-                  />
-
-                  <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
-                    {totalCustomers}
-                  </p>
-                  <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
-                    <p className="font-bold ">30% </p>
-                    <img
-                      className="size-4"
-                      src="/fi-rr-caret-up (1).png"
-                      alt=""
-                    />
-                    <p className="text-[#858D9D] text-[.7rem]">In last week</p>
-                  </div>
-                </div>
-                <div className="w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                  <p className="text-[#777980] text-[.9rem] font-semibold">
-                    Returning Customer
-                  </p>
-                  <img
-                    className="size-8 absolute right-2"
-                    src="/Badge (5).png"
-                    alt=""
-                  />
-
-                  <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
-                    {repeatingCustomer}
-                  </p>
-                  <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
-                    <p className="font-bold ">30% </p>
-                    <img
-                      className="size-4"
-                      src="/fi-rr-caret-up (1).png"
-                      alt=""
-                    />
-                    <p className="text-[#858D9D] text-[.7rem]">In last week</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="sm:w-[33%] w-full h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                <p className="text-[#777980] text-[.9rem] font-semibold">
-                  Total Recommendation
-                </p>
-                <img
-                  className="size-8 absolute right-2"
-                  src="/Badge (5).png"
-                  alt=""
-                />
-
-                <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
-                  {resData?.restaurant?.recommendationCount}
-                </p>
-                <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
-                  <p className="font-bold ">30% </p>
-                  <img
-                    className="size-4"
-                    src="/fi-rr-caret-up (1).png"
-                    alt=""
-                  />
-                  <p className="text-[#858D9D] text-[.7rem]">In last week</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Relationship */}
-          <div className="hidden  w-[28%] h-[320px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4 ">
-            <p className="text-[#0F172A] text-[1.2rem] font-semibold border-b border-[#F1F5F9] pb-3">
-              Relationship Manager
-            </p>
-            <p className="text-[#64748B] text-[.8rem]  border-b pb-2">
-              Need help? contact your Relationship manager{" "}
-            </p>
-
-            <div className="flex flex-col  gap-3">
-              <div className="flex gap-2 items-center">
-                <CiLocationOn className="text-[#94A3B8] font-bold text-[1.3rem]" />
-                <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  Souvik Das
-                </p>
-              </div>
-              <div className="flex gap-2 items-center">
-                <LuPhoneCall className="text-[#94A3B8] font-bold text-[1.3rem]" />
-                <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  +91 7003876815
-                </p>
-              </div>
-              <div className="flex gap-2 items-center">
-                <TbProgressHelp className="text-[#94A3B8] font-bold text-[1.3rem]" />
-                <p className="text-[.9rem] font-Roboto text-[#0F172A]">
-                  souvik.das@snackbae.in
-                </p>
-              </div>
-              <div className="flex gap-2 items-center">
-                <CiCalendarDate className="text-[#94A3B8] font-bold text-[1.3rem]" />
-                <p className="text-[.9rem] font-Roboto text-[#0F172A]">24/7</p>
-              </div>
-            </div>
-
-            <div className="w-full h-[40px] bg-[#FDE030] text-[1.3rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]">
-              <IoLogoWhatsapp />
-              <p> +91 7003876815</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Latest Transaction */}
-        <div className="w-full hidden h-fit  flex-col ">
-          <div className="w-full h-[80px] flex justify-between items-center px-6 ">
-            <div>
-              <p className="sm:text-[1.6rem] text-[1.2rem] font-semibold">
-                Latest Transaction
-              </p>
-              <p className="text-[.9rem] text-[#000000]">
-                Recent 5 transaction
-              </p>
-            </div>
-            <div className="flex items-center gap-6">
-              <p className="text-[#004AAD] sm:text-[1.3rem] text-[.9rem] font-Roboto">
-                Notification
-              </p>
-              {switc ? (
-                <div className="w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center ">
-                  <div
-                    className="size-[18px] bg-white rounded-full ml-1"
-                    onClick={switch1}
-                  ></div>
-                </div>
-              ) : (
-                <div className="w-[40px] h-[22px] bg-green-400 rounded-full flex items-center ">
-                  <div
-                    className="size-[18px] bg-white rounded-full ml-5"
-                    onClick={switch1}
-                  ></div>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="w-full h-fit  mt-4  px-6 bg-[#F6F8FF]  rounded-md   ">
-            <div className="text-[#6B7280] flex w-full justify-between mb-4 border-b-2 font-semibold text-[.9rem] gap-2">
-              <div className="w-[40%] flex mb-3 items-center">
-                <div className="flex w-full sm:w-[50%] text-center text-[1.05rem]  items-center justify-center">
-                  Customer
-                </div>
-                <div className="sm:w-[50%] sm:block hidden text-center">
-                  DATE & TIME
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-4 grid-cols-3 sm:text-[.9rem] text-[.8rem] mt-1  w-[60%] gap-2 justify-evenly ">
-                <div className=" text-center">AMOUNT</div>
-                <div className="  text-center">DISCOUNT</div>
-                <div className="  text-center hidden sm:block ml-2">STATUS</div>
-                <div className="text-center block">MODE</div>
-              </div>
-            </div>
-
-            <div className="w-full h-fit overflow-y-hidden flex flex-col gap-1 ">
-              {paymentData
-                ?.slice(paymentData.length - 5, paymentData.length)
-                ?.reverse()
-                ?.map((item, index) => (
-                  <div
-                    key={index}
-                    className="w-full flex mb-2  items-center justify-center sm:text-[.9rem] text-[.8rem] font-semibold sm:border-none border rounded-xl border-[#00000080] p-1"
-                  >
-                    <div className="w-[40%] flex sm:flex-row flex-col mb-3 items-center sm:justify-evenly ">
-                      <p className="text-[#111827] sm:w-[50%] font-semibold text-[.9rem] flex sm:pl-14 items-center ">
-                        {item?.userId?.name || "User"}
+            ) : (
+              <div className="w-full h-fit  ">
+              {/* total report */}
+              <div className=" w-full sm:flex sm:px-4 sm:pt-6 gap-3 ">
+                <div className="sm:w-[70%] w-full flex flex-col gap-2">
+                  {/* <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
+                    Today's Report
+                  </p> */}
+                  <div className="w-full h-fit flex sm:flex-row flex-col justify-evenly gap-2  rounded-md bg-white p-4">
+                    <div className="sm:w-[50%] w-full h-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
+                      <p className="text-[#777980] text-[.9rem] font-semibold">
+                        Today's Sales
                       </p>
-                      <p className="text-[#6B7280] sm:w-[50%] flex items-center justify-center">
-                        {dateparameter(item.date)}
+                      <img
+                        className="size-8 absolute right-2"
+                        src="/Badge (2).png"
+                        alt=""
+                      />
+      
+                      <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
+                        ₹0
                       </p>
-                    </div>
-
-                    <div className="grid w-[60%] sm:grid-cols-4 grid-cols-3 gap-2 justify-evenly ">
-                      {/* <p className='text-[#6B7280] flex items-center '>{item.Date}</p> */}
-                      <p className="text-[black]   flex items-center justify-center">
-                        ₹ {item.amount}
-                      </p>
-                      <p className="text-[#004AAD]   text-center flex items-center justify-center  ">
-                        ₹ {item.discount}
-                      </p>
-                      <p
-                        className={`rounded-3xl  w-full  h-[70%] py-[.5rem]   text-center mt-2 hidden sm:flex items-center justify-center 
-                
-                     bg-[#DEF7EC] text-green-700 
-                    // : item.Status === "In Progress"
-                    // ? "bg-[#E1EFFE] text-[#7157f1]"
-                    // : item.Status === "Cancelled"
-                    // ? "bg-[#FBD5D5] text-red-800"
-                    // : ""
-                }`}
-                      >
-                        complete
-                      </p>
-                      <p
-                        className={`rounded-3xl    text-center p-1 flex mt-2 h-[70%] items-center justify-center 
-                ${
-                  item.mode === "upi"
-                    ? "bg-[#E1EFFE] text-[#1E429F]"
-                    : item.mode === "wallet"
-                    ? "bg-[#fbd9de] text-[#FD4A65]"
-                    : item.mode === "netbanking"
-                    ? "bg-[#E1EFFE] text-[#7157f1]"
-                    : ""
-                }`}
-                      >
-                        {item.mode}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Menu Performance */}
-
-        <div className="w-full h-fit flex flex-col bg-[#F6F8FF] gap-4 ">
-          <div className="w-full h-fit flex flex-col  justify-start gap-3 sm:px-6 p-4 mt-4 ">
-            <div>
-              <p className="text-[1.6rem] font-semibold">Menu Performance</p>
-              <p className="text-[.9rem] text-[#000000]">
-                Based on your customer feedback
-              </p>
-            </div>
-
-            <div className="w-full flex gap-2 sm:flex-row flex-col bg-white sm:p-4 rounded-md">
-              <div className="sm:w-[66%] w-full flex gap-2">
-                <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly ">
-                  <p className="text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold">
-                    Top Performing Item
-                  </p>
-                  <p className="text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight ">
-                    {bestRatedMenu}
-                  </p>
-                </div>
-                <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly ">
-                  <p className="text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold">
-                    Lowest Performing Item
-                  </p>
-                  <p className="text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight ">
-                    {leastRatedMenu}
-                  </p>
-                </div>
-              </div>
-
-              <div className="sm:w-[33%] w-full h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly ">
-                <p className="text-[#777980] text-[.9rem] font-semibold">
-                  Total Interactions
-                </p>
-
-                <p className="text-[#1D1F2C] text-[2rem] font-semibold  ">
-                  {totalCustomers}
-                </p>
-              </div>
-            </div>
-          </div>
-          {/* search menu */}
-          <div className="relative w-fit shadow rounded-md border-2 mx-[1rem]">
-            <input
-              className=" w-[220px] sm:w-[400px] focus:outline-none h-[2.4rem] sm:h-[3rem] px-[1rem]"
-              type="text"
-              placeholder="Search for dish"
-              value={search}
-              onChange={handleSearch}
-            />
-            <CiSearch className=" absolute right-[1rem] top-[50%] translate-y-[-50%] text-[1.3rem]" />
-          </div>
-
-          <div className="sm:p-5 flex sm:flex-row sm:h-[600px] flex-col w-full gap-3 ">
-            <div className="sm:w-[50%] bg-white sm:h-[560px] h-fit rounded-lg sm:p-2">
-              {searchMenuItems && (
-                <div className="w-full h-fit p-6 text-[1.5rem] font-semibold">
-                  <p>Search result</p>
-                </div>
-              )}
-              {!searchMenuItems && (
-                <div className="w-full h-fit py-5 px-4 text-[1.5rem] font-semibold">
-                  <p>Menu Recomendation</p>
-                </div>
-              )}
-
-              {search
-                ? searchMenuItems &&
-                  searchMenuItems?.map((menu, index) => (
-                    <div key={index}>
-                      <div
-                        onClick={() => {
-                          setcomments(menu?.comments);
-                          setclicked(menu._id);
-                        }}
-                        className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2"
-                      >
-                        <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
-                          <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
-                            <p className="sm:text-[1.2rem] w-[70%] text-[.8rem]">
-                              {menu.name}
-                            </p>
-                            <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
-                              Total Recomendation
-                            </p>
-                            <p className="sm:text-[1.1rem] text-[.6rem]">
-                              {menu.notLikedCount +
-                                menu.likedCount +
-                                menu.mustTryCount}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/🦆 emoji _disappointed but relieved face_.png"
-                                alt=""
-                              />
-                              <p className=" sm:text-[1.1rem] text-[.85rem]">
-                                {menu.notLikedCount}
-                              </p>
-                            </div>
-                            <p className="sm:text-[.85rem] text-[.7rem]">
-                              Not Liked
-                            </p>
-                          </div>
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/Group 1171277598.png"
-                                alt=""
-                              />
-                              <p className=" text-[1.1rem]">
-                                {menu.likedCount}
-                              </p>
-                            </div>
-                            <p className="sm:text-[.85rem] text-[.7rem]">
-                              Good
-                            </p>
-                          </div>
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/Group 1171277601.png"
-                                alt=""
-                              />
-                              <p className=" sm:text-[1.1rem] text-[.8rem]">
-                                {menu.mustTryCount}
-                              </p>
-                            </div>
-                            <p className="sm:text-[.85rem] text-[.7rem]">
-                              Must Try
-                            </p>
-                          </div>
-                        </div>
+                      <div className="flex text-[.9rem] gap-1 font-bold">
+                        <p className="text-[#018DF0] ">View Payments</p>
                       </div>
                     </div>
-                  ))
-                : menus &&
-                  top3menus?.map((menu, index) => (
-                    <>
-                      <div
-                        onClick={() => {
-                          if (menu?.comments.length > 0) {
-                            setcomments(menu?.comments);
-                          } else {
-                            setcomments([]);
-                          }
-                          setclicked(menu._id);
-                        }}
-                        className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2"
-                      >
-                        <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
-                          <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
-                            <p className="sm:text-[1.2rem] w-[70%] text-[.8rem] text-nowrap">
-                              {menu.name}
-                            </p>
-                            <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
-                              Total Recomendation
-                            </p>
-                            <p className="sm:text-[1.1rem] text-[.6rem]">
-                              {menu.notLikedCount +
-                                menu.likedCount +
-                                menu.mustTryCount}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/🦆 emoji _disappointed but relieved face_.png"
-                                alt=""
-                              />
-                              <p className=" sm:text-[1.1rem] text-[.85rem]">
-                                {menu.notLikedCount}
-                              </p>
-                            </div>
-                            <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
-                              Not Liked
-                            </p>
-                          </div>
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/Group 1171277598.png"
-                                alt=""
-                              />
-                              <p className=" sm:text-[1.1rem] text-[.8rem]">
-                                {menu.likedCount}
-                              </p>
-                            </div>
-                            <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
-                              Good
-                            </p>
-                          </div>
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/Group 1171277601.png"
-                                alt=""
-                              />
-                              <p className=" sm:text-[1.1rem] text-[.8rem]">
-                                {menu.mustTryCount}
-                              </p>
-                            </div>
-                            <p className="sm:text-[.85rem] text-[.7rem] text-nowrap">
-                              Must Try
-                            </p>
-                          </div>
-                        </div>
+                    <div className="sm:w-[50%] w-full relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
+                      <p className="text-[#777980] text-[.9rem] font-semibold">
+                        Today's Customer
+                      </p>
+                      <img
+                        className="size-8 absolute right-2"
+                        src="/Badge (3).png"
+                        alt=""
+                      />
+      
+                      <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
+                        {todaysCustomer}
+                      </p>
+                      <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
+                        <p className="font-bold ">30% </p>
+                        <img
+                          className="size-4"
+                          src="/fi-rr-caret-up (1).png"
+                          alt=""
+                        />
+                        <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
                       </div>
-                    </>
-                  ))}
-            </div>
-
-            <div className="sm:w-[50%] bg-white h-[560px] rounded-lg  flex flex-col items-center  ">
-              <p className="w-full h-fit py-6 px-4 text-[1.5rem] font-semibold">
-                Customer Testimonials
-              </p>
-              <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
-                
-                {
-                  comments.length > 0 ? (
-                   <div>
-{comments.map((item, index) => ({
-                    ...item,
-                    isActive: item.Active === "true" ? 1 : 0, // Assigning a value of 1 for active comments and 0 for inactive comments
-                  }))
-                  .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
-                  .map((item, index) => (
-                    <div
-                      key={index}
-                      className="h-[200px]  w-full  flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2 my-4"
+                    </div>
+                  </div>
+                  <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
+                    <Link
+                      to={`https://www.snackbae.in/profile/merchant/${id}`}
+                      target="_blank"
+                      className="sm:hidden flex items-center justify-between w-full h-[60px] border border-[#000000B2] rounded-lg p-5  text-[1.2rem] font-semibold"
                     >
-                      <div className="flex justify-between items-center sm:px-4 gap-4 w-full h-[20%]">
-                        <div className="flex items-center  sm:gap-5 gap-2">
-                          <IoPersonCircleOutline className="size-8" />
-                          <div className="flex flex-col items-center">
-                            <p className=" text-nowrap ">{item.userId?.name}</p>
-                            <p>{calculateTimeDifference(item?.createdAt)}</p>
-                          </div>
-                        </div>
-
-                        <div className="flex gap-4">
-                          {item?.Active == "true" ? (
-                            <button
-                              onClick={() => {
-                                pinComment(item._id);
-                              }}
-                              className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
-                            >
-                              UnPin
-                            </button>
-                          ) : (
-                            <button
-                              onClick={() => {
-                                pinComment(item._id);
-                              }}
-                              className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
-                            >
-                              Pin
-                            </button>
-                          )}
-
-                          <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">
-                            Report
-                          </button>
+                      <p>View Profile</p>
+                      <GoFileSymlinkFile />
+                    </Link>
+                    <div className="sm:w-[66%] w-full flex gap-2">
+                      <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
+                        <p className="text-[#777980] text-[.9rem] font-semibold">
+                          Total Customer
+                        </p>
+                        <img
+                          className="size-8 absolute right-2"
+                          src="/Badge (5).png"
+                          alt=""
+                        />
+      
+                        <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
+                          {totalCustomers}
+                        </p>
+                        <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
+                          <p className="font-bold ">30% </p>
+                          <img
+                            className="size-4"
+                            src="/fi-rr-caret-up (1).png"
+                            alt=""
+                          />
+                          <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                         </div>
                       </div>
-                      <p className="w-full h-[70%] mt-5 text-[#67727E] ">
-                        {item?.description}
-                      </p>
-                      {item?.rated === "liked" && (
-                        <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                      <div className="w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
+                        <p className="text-[#777980] text-[.9rem] font-semibold">
+                          Returning Customer
+                        </p>
+                        <img
+                          className="size-8 absolute right-2"
+                          src="/Badge (5).png"
+                          alt=""
+                        />
+      
+                        <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
+                          {repeatingCustomer}
+                        </p>
+                        <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
+                          <p className="font-bold ">30% </p>
                           <img
-                            className="size-7"
-                            src="/Group 1171277598.png"
+                            className="size-4"
+                            src="/fi-rr-caret-up (1).png"
                             alt=""
                           />
-                          <p className="text-[.7rem]">Liked</p>
+                          <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                         </div>
-                      )}
-                      {item?.rated === "mustTry" && (
-                        <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                          <img
-                            className="size-7"
-                            src="/Group 1171277601.png"
-                            alt=""
-                          />
-                          <p className="text-[.7rem]">Must Try</p>
-                        </div>
-                      )}
-                      {item?.rated === "notLike" && (
-                        <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                          <img
-                            className="size-7"
-                            src="/🦆 emoji _disappointed but relieved face_.png"
-                            alt=""
-                          />
-                          <p className="text-[.7rem]">Must Try</p>
-                        </div>
-                      )}
+                      </div>
                     </div>
-                  ))}
-                   </div>
-                  ):(
-                  <div className="w-full h-full flex flex-col items-center justify-center gap-4 ">
-                      <img className="size-[200px]" src="/9796299 2.png" alt="" />
-                      <p className="text-[#004AAD] font-serif text-[1.7rem]">Opps ! no recomendation found</p>
-                  </div>)
-                }
-
-                
+      
+                    <div className="sm:w-[33%] w-full h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
+                      <p className="text-[#777980] text-[.9rem] font-semibold">
+                        Total Recommendation
+                      </p>
+                      <img
+                        className="size-8 absolute right-2"
+                        src="/Badge (5).png"
+                        alt=""
+                      />
+      
+                      <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
+                        {resData?.restaurant?.recommendationCount}
+                      </p>
+                      <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
+                        <p className="font-bold ">30% </p>
+                        <img
+                          className="size-4"
+                          src="/fi-rr-caret-up (1).png"
+                          alt=""
+                        />
+                        <p className="text-[#858D9D] text-[.7rem]">In last week</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Relationship */}
+                <div className="hidden  w-[28%] h-[320px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4 ">
+                  <p className="text-[#0F172A] text-[1.2rem] font-semibold border-b border-[#F1F5F9] pb-3">
+                    Relationship Manager
+                  </p>
+                  <p className="text-[#64748B] text-[.8rem]  border-b pb-2">
+                    Need help? contact your Relationship manager{" "}
+                  </p>
+      
+                  <div className="flex flex-col  gap-3">
+                    <div className="flex gap-2 items-center">
+                      <CiLocationOn className="text-[#94A3B8] font-bold text-[1.3rem]" />
+                      <p className="text-[.9rem] font-Roboto text-[#0F172A]">
+                        Souvik Das
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <LuPhoneCall className="text-[#94A3B8] font-bold text-[1.3rem]" />
+                      <p className="text-[.9rem] font-Roboto text-[#0F172A]">
+                        +91 7003876815
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <TbProgressHelp className="text-[#94A3B8] font-bold text-[1.3rem]" />
+                      <p className="text-[.9rem] font-Roboto text-[#0F172A]">
+                        souvik.das@snackbae.in
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <CiCalendarDate className="text-[#94A3B8] font-bold text-[1.3rem]" />
+                      <p className="text-[.9rem] font-Roboto text-[#0F172A]">24/7</p>
+                    </div>
+                  </div>
+      
+                  <div className="w-full h-[40px] bg-[#FDE030] text-[1.3rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]">
+                    <IoLogoWhatsapp />
+                    <p> +91 7003876815</p>
+                  </div>
+                </div>
+              </div>
+      
+              {/* Latest Transaction */}
+              <div className="w-full hidden h-fit  flex-col ">
+                <div className="w-full h-[80px] flex justify-between items-center px-6 ">
+                  <div>
+                    <p className="sm:text-[1.6rem] text-[1.2rem] font-semibold">
+                      Latest Transaction
+                    </p>
+                    <p className="text-[.9rem] text-[#000000]">
+                      Recent 5 transaction
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-6">
+                    <p className="text-[#004AAD] sm:text-[1.3rem] text-[.9rem] font-Roboto">
+                      Notification
+                    </p>
+                    {switc ? (
+                      <div className="w-[40px] h-[22px] bg-slate-400 rounded-full flex items-center ">
+                        <div
+                          className="size-[18px] bg-white rounded-full ml-1"
+                          onClick={switch1}
+                        ></div>
+                      </div>
+                    ) : (
+                      <div className="w-[40px] h-[22px] bg-green-400 rounded-full flex items-center ">
+                        <div
+                          className="size-[18px] bg-white rounded-full ml-5"
+                          onClick={switch1}
+                        ></div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="w-full h-fit  mt-4  px-6 bg-[#F6F8FF]  rounded-md   ">
+                  <div className="text-[#6B7280] flex w-full justify-between mb-4 border-b-2 font-semibold text-[.9rem] gap-2">
+                    <div className="w-[40%] flex mb-3 items-center">
+                      <div className="flex w-full sm:w-[50%] text-center text-[1.05rem]  items-center justify-center">
+                        Customer
+                      </div>
+                      <div className="sm:w-[50%] sm:block hidden text-center">
+                        DATE & TIME
+                      </div>
+                    </div>
+                    <div className="grid sm:grid-cols-4 grid-cols-3 sm:text-[.9rem] text-[.8rem] mt-1  w-[60%] gap-2 justify-evenly ">
+                      <div className=" text-center">AMOUNT</div>
+                      <div className="  text-center">DISCOUNT</div>
+                      <div className="  text-center hidden sm:block ml-2">STATUS</div>
+                      <div className="text-center block">MODE</div>
+                    </div>
+                  </div>
+      
+                  <div className="w-full h-fit overflow-y-hidden flex flex-col gap-1 ">
+                    {paymentData
+                      ?.slice(paymentData.length - 5, paymentData.length)
+                      ?.reverse()
+                      ?.map((item, index) => (
+                        <div
+                          key={index}
+                          className="w-full flex mb-2  items-center justify-center sm:text-[.9rem] text-[.8rem] font-semibold sm:border-none border rounded-xl border-[#00000080] p-1"
+                        >
+                          <div className="w-[40%] flex sm:flex-row flex-col mb-3 items-center sm:justify-evenly ">
+                            <p className="text-[#111827] sm:w-[50%] font-semibold text-[.9rem] flex sm:pl-14 items-center ">
+                              {item?.userId?.name || "User"}
+                            </p>
+                            <p className="text-[#6B7280] sm:w-[50%] flex items-center justify-center">
+                              {dateparameter(item.date)}
+                            </p>
+                          </div>
+      
+                          <div className="grid w-[60%] sm:grid-cols-4 grid-cols-3 gap-2 justify-evenly ">
+                            {/* <p className='text-[#6B7280] flex items-center '>{item.Date}</p> */}
+                            <p className="text-[black]   flex items-center justify-center">
+                              ₹ {item.amount}
+                            </p>
+                            <p className="text-[#004AAD]   text-center flex items-center justify-center  ">
+                              ₹ {item.discount}
+                            </p>
+                            <p
+                              className={`rounded-3xl  w-full  h-[70%] py-[.5rem]   text-center mt-2 hidden sm:flex items-center justify-center 
+                      
+                           bg-[#DEF7EC] text-green-700 
+                          // : item.Status === "In Progress"
+                          // ? "bg-[#E1EFFE] text-[#7157f1]"
+                          // : item.Status === "Cancelled"
+                          // ? "bg-[#FBD5D5] text-red-800"
+                          // : ""
+                      }`}
+                            >
+                              complete
+                            </p>
+                            <p
+                              className={`rounded-3xl    text-center p-1 flex mt-2 h-[70%] items-center justify-center 
+                      ${
+                        item.mode === "upi"
+                          ? "bg-[#E1EFFE] text-[#1E429F]"
+                          : item.mode === "wallet"
+                          ? "bg-[#fbd9de] text-[#FD4A65]"
+                          : item.mode === "netbanking"
+                          ? "bg-[#E1EFFE] text-[#7157f1]"
+                          : ""
+                      }`}
+                            >
+                              {item.mode}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              </div>
+      
+              {/* Menu Performance */}
+      
+              <div className="w-full h-fit flex flex-col bg-[#F6F8FF] gap-4 ">
+                <div className="w-full h-fit flex flex-col  justify-start gap-3 sm:px-6 p-4 mt-4 ">
+                  <div>
+                    <p className="text-[1.6rem] font-semibold">Menu Performance</p>
+                    <p className="text-[.9rem] text-[#000000]">
+                      Based on your customer feedback
+                    </p>
+                  </div>
+      
+                  <div className="w-full flex gap-2 sm:flex-row flex-col bg-white sm:p-4 rounded-md">
+                    <div className="sm:w-[66%] w-full flex gap-2">
+                      <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly ">
+                        <p className="text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold">
+                          Top Performing Item
+                        </p>
+                        <p className="text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight ">
+                          {bestRatedMenu}
+                        </p>
+                      </div>
+                      <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly ">
+                        <p className="text-[#777980] sm:text-[.9rem] text-[.75rem] font-semibold">
+                          Lowest Performing Item
+                        </p>
+                        <p className="text-[#1D1F2C] sm:text-[1.2rem] text-[1rem] font-semibold tracking-tight ">
+                          {leastRatedMenu}
+                        </p>
+                      </div>
+                    </div>
+      
+                    <div className="sm:w-[33%] w-full h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-evenly ">
+                      <p className="text-[#777980] text-[.9rem] font-semibold">
+                        Total Interactions
+                      </p>
+      
+                      <p className="text-[#1D1F2C] text-[2rem] font-semibold  ">
+                        {totalCustomers}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* search menu */}
+                <div className="relative w-fit shadow rounded-md border-2 mx-[1rem]">
+                  <input
+                    className=" w-[220px] sm:w-[400px] focus:outline-none h-[2.4rem] sm:h-[3rem] px-[1rem]"
+                    type="text"
+                    placeholder="Search for dish"
+                    value={search}
+                    onChange={handleSearch}
+                  />
+                  <CiSearch className=" absolute right-[1rem] top-[50%] translate-y-[-50%] text-[1.3rem]" />
+                </div>
+      
+                <div className="sm:p-5 flex sm:flex-row sm:h-[600px] flex-col w-full gap-3 ">
+                  <div className="sm:w-[50%] bg-white sm:h-[560px] h-fit rounded-lg sm:p-2">
+                    {searchMenuItems && (
+                      <div className="w-full h-fit p-6 text-[1.5rem] font-semibold">
+                        <p>Search result</p>
+                      </div>
+                    )}
+                    {!searchMenuItems && (
+                      <div className="w-full h-fit py-5 px-4 text-[1.5rem] font-semibold">
+                        <p>Menu Recomendation</p>
+                      </div>
+                    )}
+      
+                    {search
+                      ? searchMenuItems &&
+                        searchMenuItems?.map((menu, index) => (
+                          <div key={index}>
+                            <div
+                              onClick={() => {
+                                setcomments(menu?.comments);
+                                setclicked(menu._id);
+                              }}
+                              className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2"
+                            >
+                              <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
+                                <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
+                                  <p className="sm:text-[1.2rem] w-[70%] text-[.8rem]">
+                                    {menu.name}
+                                  </p>
+                                  <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
+                                    Total Recomendation
+                                  </p>
+                                  <p className="sm:text-[1.1rem] text-[.6rem]">
+                                    {menu.notLikedCount +
+                                      menu.likedCount +
+                                      menu.mustTryCount}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
+                                <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                                  <div className="flex gap-2">
+                                    <img
+                                      className="size-6"
+                                      src="/🦆 emoji _disappointed but relieved face_.png"
+                                      alt=""
+                                    />
+                                    <p className=" sm:text-[1.1rem] text-[.85rem]">
+                                      {menu.notLikedCount}
+                                    </p>
+                                  </div>
+                                  <p className="sm:text-[.85rem] text-[.7rem]">
+                                    Not Liked
+                                  </p>
+                                </div>
+                                <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                                  <div className="flex gap-2">
+                                    <img
+                                      className="size-6"
+                                      src="/Group 1171277598.png"
+                                      alt=""
+                                    />
+                                    <p className=" text-[1.1rem]">
+                                      {menu.likedCount}
+                                    </p>
+                                  </div>
+                                  <p className="sm:text-[.85rem] text-[.7rem]">
+                                    Good
+                                  </p>
+                                </div>
+                                <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                                  <div className="flex gap-2">
+                                    <img
+                                      className="size-6"
+                                      src="/Group 1171277601.png"
+                                      alt=""
+                                    />
+                                    <p className=" sm:text-[1.1rem] text-[.8rem]">
+                                      {menu.mustTryCount}
+                                    </p>
+                                  </div>
+                                  <p className="sm:text-[.85rem] text-[.7rem]">
+                                    Must Try
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      : menus &&
+                        top3menus?.map((menu, index) => (
+                          <>
+                            <div
+                              onClick={() => {
+                                if (menu?.comments.length > 0) {
+                                  setcomments(menu?.comments);
+                                } else {
+                                  setcomments([]);
+                                }
+                                setclicked(menu._id);
+                              }}
+                              className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2"
+                            >
+                              <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
+                                <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
+                                  <p className="sm:text-[1.2rem] w-[70%] text-[.8rem] text-nowrap">
+                                    {menu.name}
+                                  </p>
+                                  <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
+                                    Total Recomendation
+                                  </p>
+                                  <p className="sm:text-[1.1rem] text-[.6rem]">
+                                    {menu.notLikedCount +
+                                      menu.likedCount +
+                                      menu.mustTryCount}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
+                                <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                                  <div className="flex gap-2">
+                                    <img
+                                      className="size-6"
+                                      src="/🦆 emoji _disappointed but relieved face_.png"
+                                      alt=""
+                                    />
+                                    <p className=" sm:text-[1.1rem] text-[.85rem]">
+                                      {menu.notLikedCount}
+                                    </p>
+                                  </div>
+                                  <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
+                                    Not Liked
+                                  </p>
+                                </div>
+                                <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                                  <div className="flex gap-2">
+                                    <img
+                                      className="size-6"
+                                      src="/Group 1171277598.png"
+                                      alt=""
+                                    />
+                                    <p className=" sm:text-[1.1rem] text-[.8rem]">
+                                      {menu.likedCount}
+                                    </p>
+                                  </div>
+                                  <p className="sm:text-[.85rem] text-nowrap text-[.7rem]">
+                                    Good
+                                  </p>
+                                </div>
+                                <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                                  <div className="flex gap-2">
+                                    <img
+                                      className="size-6"
+                                      src="/Group 1171277601.png"
+                                      alt=""
+                                    />
+                                    <p className=" sm:text-[1.1rem] text-[.8rem]">
+                                      {menu.mustTryCount}
+                                    </p>
+                                  </div>
+                                  <p className="sm:text-[.85rem] text-[.7rem] text-nowrap">
+                                    Must Try
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        ))}
+                  </div>
+      
+                  <div className="sm:w-[50%] bg-white h-[560px] rounded-lg  flex flex-col items-center  ">
+                    <p className="w-full h-fit py-6 px-4 text-[1.5rem] font-semibold">
+                      Customer Testimonials
+                    </p>
+                    <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
+                      
+                      {
+                        comments.length > 0 ? (
+                         <div>
+      {comments.map((item, index) => ({
+                          ...item,
+                          isActive: item.Active === "true" ? 1 : 0, // Assigning a value of 1 for active comments and 0 for inactive comments
+                        }))
+                        .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
+                        .map((item, index) => (
+                          <div
+                            key={index}
+                            className="h-[200px]  w-full  flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2 my-4"
+                          >
+                            <div className="flex justify-between items-center sm:px-4 gap-4 w-full h-[20%]">
+                              <div className="flex items-center  sm:gap-5 gap-2">
+                                <IoPersonCircleOutline className="size-8" />
+                                <div className="flex flex-col items-center">
+                                  <p className=" text-nowrap ">{item.userId?.name}</p>
+                                  <p>{calculateTimeDifference(item?.createdAt)}</p>
+                                </div>
+                              </div>
+      
+                              <div className="flex gap-4">
+                                {item?.Active == "true" ? (
+                                  <button
+                                    onClick={() => {
+                                      pinComment(item._id);
+                                    }}
+                                    className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
+                                  >
+                                    UnPin
+                                  </button>
+                                ) : (
+                                  <button
+                                    onClick={() => {
+                                      pinComment(item._id);
+                                    }}
+                                    className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
+                                  >
+                                    Pin
+                                  </button>
+                                )}
+      
+                                <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">
+                                  Report
+                                </button>
+                              </div>
+                            </div>
+                            <p className="w-full h-[70%] mt-5 text-[#67727E] ">
+                              {item?.description}
+                            </p>
+                            {item?.rated === "liked" && (
+                              <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                                <img
+                                  className="size-7"
+                                  src="/Group 1171277598.png"
+                                  alt=""
+                                />
+                                <p className="text-[.7rem]">Liked</p>
+                              </div>
+                            )}
+                            {item?.rated === "mustTry" && (
+                              <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                                <img
+                                  className="size-7"
+                                  src="/Group 1171277601.png"
+                                  alt=""
+                                />
+                                <p className="text-[.7rem]">Must Try</p>
+                              </div>
+                            )}
+                            {item?.rated === "notLike" && (
+                              <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                                <img
+                                  className="size-7"
+                                  src="/🦆 emoji _disappointed but relieved face_.png"
+                                  alt=""
+                                />
+                                <p className="text-[.7rem]">Must Try</p>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                         </div>
+                        ):(
+                        <div className="w-full h-full flex flex-col items-center justify-center gap-4 ">
+                            <img className="size-[200px]" src="/9796299 2.png" alt="" />
+                            <p className="text-[#004AAD] font-serif text-[1.7rem]">Opps ! no recomendation found</p>
+                        </div>)
+                      }
+      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              {/* Menu Clicks */}
+              {/* <MenuClicks/> */}
+      
+              {/* footer */}
+              <div className="p-4">
+                <div className="flex sm:flex-row flex-col w-full h-fit sm:items-center border border-[#00000099]  rounded-md my-4 font-inter  sm:p-0 p-4">
+                  <img
+                    className="size-[120px] "
+                    src="/Customer feedback.png"
+                    alt=""
+                  />
+                  <div>
+                    <p>
+                      Help Us to make Snackbae better ! Share your feedbacks and
+                      request features that fits best for your Business
+                    </p>
+                    <Link
+                      to="https://forms.gle/GpTK9nF19Uggv6WBA"
+                      className="text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold"
+                    >
+                      Give Feedback
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Menu Clicks */}
-        {/* <MenuClicks/> */}
-
-        {/* footer */}
-        <div className="p-4">
-          <div className="flex sm:flex-row flex-col w-full h-fit sm:items-center border border-[#00000099]  rounded-md my-4 font-inter  sm:p-0 p-4">
-            <img
-              className="size-[120px] "
-              src="/Customer feedback.png"
-              alt=""
-            />
-            <div>
-              <p>
-                Help Us to make Snackbae better ! Share your feedbacks and
-                request features that fits best for your Business
-              </p>
-              <Link
-                to="https://forms.gle/GpTK9nF19Uggv6WBA"
-                className="text-[#106CF6] border-b-2 w-fit border-[#106CF6] font-bold"
-              >
-                Give Feedback
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+            )
+      }
+      
     </div>
   );
 };

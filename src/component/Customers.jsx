@@ -8,9 +8,14 @@ import CustomerRecords from './CustomerRecords';
 import CustomerAnalytics from './CustomerAnalytics';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { RiseLoader } from 'react-spinners';
 
 
 const Customers = () => {
+
+
+  const [loader, setloader] = useState(false);
+
   var userID = localStorage.getItem('user');
   console.log("user id", userID)
   const id = userID
@@ -31,6 +36,7 @@ const Customers = () => {
   const [recommendationM, setRecommendationM] = useState(0);
 
   const getRestaurantData = async (req, res) => {
+    setloader(true);
     let config = {
       method: "get",
       maxBodyLength: Infinity,
@@ -42,6 +48,7 @@ const Customers = () => {
     axios
       .request(config)
       .then((response) => {
+        
         console.log(response.data);
         console.log(response.data);
         setResData(response?.data);
@@ -124,6 +131,11 @@ const Customers = () => {
           return visitDate >= thirtyDaysAgo;
         });
         setRecommendationM(recommended1.length);
+
+
+        setTimeout(() => {
+          setloader(false);
+        }, 2000);
       })
       .catch((error) => {
         console.log(error);
@@ -191,7 +203,13 @@ const Customers = () => {
       </div>
       <div className='w-full h-fit  mt-[10px] sm:px-6 px-3   '>
 
-        <div className='bg-white  flex flex-col gap-6 sm:py-5  rounded-lg p-2 '>
+      {loader ? (
+              // Show a loader when resData is empty
+              <div className="flex justify-center items-center w-full h-[500px]  z-50 ">
+                <RiseLoader className=' ' color="#004AAD" />
+              </div>
+            ) : (
+              <div className='bg-white  flex flex-col gap-6 sm:py-5  rounded-lg p-2 '>
 
 
           <div className='flex sm:justify-between  sm:items-center sm:flex-row flex-col gap-3 text-[#000000] '>
@@ -276,6 +294,9 @@ const Customers = () => {
 
 
         </div>
+            )}
+
+        
 
 
       </div>

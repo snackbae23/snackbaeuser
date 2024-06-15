@@ -245,7 +245,7 @@ const CustomerAnalytics = () => {
                                     </div>
 
                                 </div>
-                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>2,412</p>
+                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>0</p>
                             </div>
                            
 
@@ -260,7 +260,7 @@ const CustomerAnalytics = () => {
                                     </div>
 
                                 </div>
-                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>1412</p>
+                                <p className='text-[1.5rem] text-[#1D1F2C] font-medium'>0</p>
                             </div>
                            
 

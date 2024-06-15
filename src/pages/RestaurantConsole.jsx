@@ -271,55 +271,49 @@ useEffect(()=>{
         {/* frame */}
         <div
           id="frame"
-          className="hidden fixed right-6 z-[900] sm:w-[25%]  w-[70%] bg-white  h-fit mt-[70px] rounded-b  pt-5 border border-[#0000001A]"
+          className="hidden fixed right-6 z-[900] sm:w-[23%]   w-[60%] bg-white  h-fit mt-[70px] rounded-lg sm:px-[30px] px-[15px] py-2 border-b border-[#D1C8C899]"
         >
-          <div className="flex flex-col w-full  ">
-            <div className="flex m-3 rounded-md  flex-col gap-2 items-center justify-evenly p-4 border border-[#00000080]">
-              <div className="w-full flex justify-start gap-5 items-center ">
-                <img src={resData?.image} alt="" className="size-14 rounded-full  " />
-                <div className="text-[#000000] font-semibold">
-                  <p className="text-[1.3rem] ">Foodoos</p>
-                  <p>Id : 9881</p>
-                </div>
-              </div>
-
-              <button className="w-full sm:py-2 py-1 text-white bg-[#004AAD] rounded-md">
-                Add account
-              </button>
-              <button
-                onClick={g}
-                className="w-full sm:py-2 py-1 text-[1.1rem]  border border-[#C62828B2] text-[#C62828]  rounded-md font-bold"
-              >
-                Logout
-              </button>
-            </div>
-            <div className="flex flex-col text-[#64748B] text-[]">
-              <button className="px-2 py-2  text-[1.3rem] border-t border-[#999da2] sm:hidden block    ">
-                Notification
-              </button>
-              <button
+          
+            <div className="flex  flex-col  items-cente  p-1 border-b border-[#00000080]">
+               
+              <p className="text-[1.15rem] font-bold text-nowrap ">Foodoos - Salt Lake</p>
+              <div className='flex  items-center text-[1.1rem] justify-start   text-[#64748B]'>
+                <CiSettings className="text-[1.2rem]"/>
+                <button
                 onClick={f}
-                className="px-2 py-2  text-[1.3rem] border-t border-[#999da2] sm:hidden block   "
+                className="px-2 py-1    border-[#999da2]    "
               >
-                Setting
+               Manage Setting
               </button>
-              <button className="px-2 py-2  text-[1.3rem] border-t border-[#999da2]   ">
-                Pricing
-              </button>
+              </div>
+              
+
+            </div>
+            <div className="flex flex-col text-[#64748B] ">
+               
               <Link
                 to="https://www.snackbae.in/termsCondition"
-                className="px-2 py-2  text-[1.3rem] border-t border-[#999da2] flex items-center justify-center  "
+                className="px-2 py-4  text-[1.1rem]  flex items-center justify-start  "
               >
                 Terms & condition
               </Link>
               <Link
                 to="https://www.snackbae.in/privacyPolicy"
-                className="px-2 py-2  text-[1.3rem] border-t mb-4 border-[#999da2] flex items-center justify-center  "
+                className="px-2  text-[1.1rem]   flex items-center justify-start  "
               >
                 Privacy Policy
               </Link>
+              <button className="px-2 py-4  text-[1.1rem] flex  ">
+                Pricing
+              </button>
+              <button
+                onClick={g}
+                className="w-full sm:py-2 py-2 text-[1.1rem] flex items-center  gap-3  border-t border-[#C62828B2] text-[#C62828] font-semibold"
+              >
+              <IoLogOutOutline className="text-[1.2rem]" />  Logout
+              </button>
             </div>
-          </div>
+          
         </div>
 
         {/* Notification */}

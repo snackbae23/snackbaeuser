@@ -87,31 +87,7 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
         }
 
     };
-    // const [resdata , setResData] = useState();
-    //   const getRestaurantData = async (req, res) => {
-    //     let config = {
-    //       method: "get",
-    //       maxBodyLength: Infinity,
-    //       url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
-    //       // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
-    //       headers: {},
-    //     };
-
-    //     axios
-    //       .request(config)
-    //       .then((response) => {
-    //         console.log(response.data);
-
-    //         console.log(response.data);
-    //         setResData(response?.data?.restaurant);
-        
-
-    //         console.log(data);
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    //   };
+    
 
 
     return (
@@ -149,7 +125,7 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
         <div className="flex items-center gap-6 h-full   ">
           {/* Notification */}
 
-          <div
+          {/* <div
             onClick={notifications}
             className=" cursor-pointer sm:flex hidden  relative bg-[#EFF4FB] border border-[#E2E8F0]  items-center justify-center size-[45px] rounded-full"
           >
@@ -158,7 +134,7 @@ const Navbar1 = ({ isToggled, setIsToggled, data }) => {
             </div>
 
             <IoNotificationsOutline className="size-8" />
-          </div>
+          </div> */}
 
           <div className="flex items-center gap-3 cursor-pointer ">
             <div className=" size-12  block rounded-full border  items-center justify-center  relative  ">

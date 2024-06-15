@@ -67,9 +67,10 @@ const Menu = () => {
       .catch((error) => {
         console.log(error);
       });
+      
     setTimeout(() => {
       setloader(false);
-    }, 2000);
+    }, 4000);
   }
 
   useEffect(() => {
@@ -1195,8 +1196,6 @@ const Menu = () => {
           </div>
 
           <div className="w-full h-fit font-Roboto  text-[1.3rem] sm:px-6 border-t-2">
-
-
 
             {/* Rest Restaurantmenu */}
             {loader ? (

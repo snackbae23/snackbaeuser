@@ -22,9 +22,9 @@ const Settings = () => {
         </div>
       </div>
 
-      <div className="w-full h-fit px-6 ">
+      <div className="w-full h-fit sm:px-6 px-2 ">
         <div className="bg-white flex flex-col gap-4 sm:py-5 py-2">
-          <div className="w-full h-fit flex flex-row gap-3 sm:my-1 my-4  items-center  ">
+          {/* <div className="w-full h-fit flex flex-row gap-3 sm:my-1 my-4  items-center  ">
             <button
               className={`${
                 formType === "businessInfo"
@@ -46,8 +46,8 @@ const Settings = () => {
             >
               Payout Details
             </button>
-          </div>
-          <p className="border"></p>
+          </div> */}
+        
 
           <div className="w-full">
             { formType === "businessInfo" && <BusinessInfoForm/>}
