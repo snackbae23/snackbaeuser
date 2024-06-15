@@ -212,13 +212,13 @@ const getdata = async() =>{
               // }}
             />
             {formData.image ? (
-              <div className="flex gap-3">
+              <div className="flex w-fit gap-3 relative">
                 <img
                   src="upload.png"
                   alt="upload-logo"
                   width={80}
                   height={80}
-                  className="cursor-pointer"
+                  className="cursor-pointer "
                 />
                 <img
                   src={formData.image}
@@ -228,7 +228,7 @@ const getdata = async() =>{
                   className="border rounded-lg relative hover:opacity-50"
                 />
                 <RxCross2
-                  className="absolute w-6 left-[195px] md:top-[293px] top-[305px] cursor-pointer"
+                  className="absolute font-bold text-[1rem] w-6 right-1 top-[8px]  cursor-pointer text-[#426CFF]"
                   // onClick={() => {
                   //   setFileName("No selected file")
                   //   setImage(null)
@@ -247,7 +247,7 @@ const getdata = async() =>{
           </label>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mt-4">
           <div className="flex md:flex-row flex-col md:gap-0 gap-5 justify-between">
             <label className="md:w-[31%] w-full text-left text-m flex flex-col gap-2">
               <p className="font-semibold">Brand Name:</p>
@@ -428,7 +428,7 @@ const getdata = async() =>{
           </div>
         </div>
 
-        <div className="w-[50%] md:w-full mt-10 mx-auto">
+        <div className="w-[50%] md:w-full m-4 mx-auto">
           <button
             className="bg-[#004AAD] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
             type="submit"

@@ -403,7 +403,7 @@ const Dashboard = () => {
                       target="_blank"
                       className=" flex items-center justify-between w-full h-[40px] gap-2 border bg-white border-[#000000B2] rounded-lg sm:px-4 px-2  text-[1.1rem] font-semibold"
                     >
-                      <p className=' text-nowrap'>View Profile</p>
+                      <p className=' text-nowrap'>View Menu</p>
                       <GoFileSymlinkFile />
                     </Link>
           <button
@@ -433,11 +433,11 @@ const Dashboard = () => {
                       <p className="text-[#777980] text-[.9rem] font-semibold">
                         Today's Sales
                       </p>
-                      <img
+                      {/* <img
                         className="size-8 absolute right-2"
                         src="/Badge (2).png"
                         alt=""
-                      />
+                      /> */}
       
                       <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
                         ₹0
@@ -450,22 +450,22 @@ const Dashboard = () => {
                       <p className="text-[#777980] text-[.9rem] font-semibold">
                         Today's Customer
                       </p>
-                      <img
+                      {/* <img
                         className="size-8 absolute right-2"
                         src="/Badge (3).png"
                         alt=""
-                      />
+                      /> */}
       
                       <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
                         {todaysCustomer}
                       </p>
                       <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                         <p className="font-bold ">30% </p>
-                        <img
+                        {/* <img
                           className="size-4"
                           src="/fi-rr-caret-up (1).png"
                           alt=""
-                        />
+                        /> */}
                         <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
                       </div>
                     </div>
@@ -477,34 +477,34 @@ const Dashboard = () => {
                         <p className="text-[#777980] text-[.9rem] font-semibold">
                           Total Customer
                         </p>
-                        <img
+                        {/* <img
                           className="size-8 absolute right-2"
                           src="/Badge (5).png"
                           alt=""
-                        />
+                        /> */}
       
                         <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
                           {totalCustomers}
                         </p>
                         <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                           <p className="font-bold ">30% </p>
-                          <img
+                          {/* <img
                             className="size-4"
                             src="/fi-rr-caret-up (1).png"
                             alt=""
-                          />
+                          /> */}
                           <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                         </div>
                       </div>
                       <div className="w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
-                        <p className="text-[#777980] text-[.9rem] font-semibold">
+                        <p className="text-[#777980] text-[.9rem] text-nowrap font-semibold">
                           Returning Customer
                         </p>
-                        <img
+                        {/* <img
                           className="size-8 absolute right-2"
                           src="/Badge (5).png"
                           alt=""
-                        />
+                        /> */}
       
                         <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
                           {repeatingCustomer}
@@ -525,22 +525,22 @@ const Dashboard = () => {
                       <p className="text-[#777980] text-[.9rem] font-semibold">
                         Total Recommendation
                       </p>
-                      <img
+                      {/* <img
                         className="size-8 absolute right-2"
                         src="/Badge (5).png"
                         alt=""
-                      />
+                      /> */}
       
                       <p className="text-[#1D1F2C] text-[1.9rem] font-semibold ">
                         {resData?.restaurant?.recommendationCount}
                       </p>
                       <div className="flex text-[.9rem] gap-1 text-[#1A9882] items-center">
                         <p className="font-bold ">30% </p>
-                        <img
+                        {/* <img
                           className="size-4"
                           src="/fi-rr-caret-up (1).png"
                           alt=""
-                        />
+                        /> */}
                         <p className="text-[#858D9D] text-[.7rem]">In last week</p>
                       </div>
                     </div>

@@ -227,7 +227,7 @@ const Customers = () => {
 
                 <p className='text-[#777980] text-[.9rem] font-semibold'>Total Customer</p>
                 {/* <img className='size-8 absolute right-2' src="/Badge.png" alt="" /> */}
-                <GoInfo className='size-6 absolute right-2 z-10 bg-white' />
+                {/* <GoInfo className='size-6 absolute right-2 z-10 bg-white' /> */}
 
                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>
                 {Today ? totalCustomersT : Week ? totalCustomersW : Month ? totalCustomersM : 0}
@@ -244,7 +244,7 @@ const Customers = () => {
               <div className='w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
                 <p className='text-[#777980] text-[.9rem] font-semibold'>Returning Customer</p>
-                <GoInfo className='size-6 absolute right-2 z-10 bg-white' />
+                {/* <GoInfo className='size-6 absolute right-2 z-10 bg-white' /> */}
 
                 <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>
                 {Today ? repeatingCustomerT : Week ? repeatingCustomerW : Month ? repeatingCustomerM : 0}
@@ -263,7 +263,7 @@ const Customers = () => {
             <div className='sm:w-[33%] w-full h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between '>
 
               <p className='text-[#777980] text-[.9rem] font-semibold'>Total Recommendation</p>
-              <GoInfo className='size-6 absolute right-2 z-10 bg-white' />
+              {/* <GoInfo className='size-6 absolute right-2 z-10 bg-white' /> */}
 
               <p className='text-[#1D1F2C] text-[1.9rem] font-semibold '>
               {Today ? recommendationT : Week ? recommendationW : Month ? recommendationM : 0}
