@@ -275,8 +275,13 @@ const RestaurantConsole = () => {
         >
 
           <div className="flex  flex-col  items-cente  p-1 border-b border-[#00000080]">
+             <p className="text-[1.15rem] font-bold text-nowrap">
+  {resData?.name}
+  {resData?.outletAddress ? ` - ${resData?.outletAddress?.split(",")[1]}` : ''}
 
-            <p className="text-[1.15rem] font-bold text-nowrap ">Foodoos - Salt Lake</p>
+</p>
+
+{/*             <p className=" ">Foodoos - Salt Lake</p> */}
             <div className='flex  items-center text-[1.1rem] justify-start   text-[#64748B]'>
               <CiSettings className="text-[1.2rem]" />
               <button
