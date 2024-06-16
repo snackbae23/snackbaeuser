@@ -276,8 +276,8 @@ const RestaurantConsole = () => {
 
           <div className="flex  flex-col  items-cente  p-1 border-b border-[#00000080]">
              <p className="text-[1.15rem] font-bold text-nowrap">
-  {restaurentdata?.name}
-  {restaurentdata?.outletAddress ? ` - ${restaurentdata?.outletAddress?.split(",")[1]}` : ''}
+  {resData?.name}
+  {resData?.outletAddress ? ` - ${resData?.outletAddress?.split(",")[1]}` : ''}
 
 </p>
 
