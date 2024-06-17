@@ -45,7 +45,7 @@ const Menu = () => {
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
       headers: {}
     };
 
@@ -90,7 +90,7 @@ const Menu = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/addCategory/${resId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/addCategory/${resId}`,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -121,7 +121,7 @@ const Menu = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/addMenu/${resId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/addMenu/${resId}`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -149,7 +149,7 @@ const Menu = () => {
     let config = {
       method: 'delete',
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/deleteCategory/${resId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/deleteCategory/${resId}`,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -190,7 +190,7 @@ const Menu = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "https://seashell-app-lgwmg.ondigitalocean.app/api/fileUpload",
+      url: "https://goldfish-app-yhaxv.ondigitalocean.app/api/fileUpload",
       data: formData,
     };
 
