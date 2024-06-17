@@ -61,7 +61,7 @@ const options = [
       
       method: "post",
       maxBodyLength: Infinity,
-      url: "https://seashell-app-lgwmg.ondigitalocean.app/api/fileUpload",
+      url: "https://goldfish-app-yhaxv.ondigitalocean.app/api/fileUpload",
       // headers: {
       //   ...data.getHeaders(),
       // },
@@ -95,7 +95,7 @@ const options = [
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/restaurants/${id}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/restaurants/${id}`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -138,7 +138,7 @@ const getdata = async() =>{
  let config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${id}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/getRestaurantDetails/${id}`,
       headers: { 
         // 'Content-Type': 'application/json'
       },
