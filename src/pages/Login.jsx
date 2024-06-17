@@ -45,7 +45,7 @@ const Login = () => {
     let config = {
       method: 'POST',
       maxBodyLength: Infinity,
-      url: 'https://seashell-app-lgwmg.ondigitalocean.app/api/restaurantLogin',
+      url: 'https://goldfish-app-yhaxv.ondigitalocean.app/api/restaurantLogin',
       headers: { 
         'Content-Type': 'application/json'
       },
