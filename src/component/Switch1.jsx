@@ -24,7 +24,7 @@ const Switch1 = ({ isActive, id, type }) => {
         let config = {
             method: 'put',
             maxBodyLength: Infinity,
-            url: 'https://seashell-app-lgwmg.ondigitalocean.app/api/updateStatus',
+            url: 'https://goldfish-app-yhaxv.ondigitalocean.app/api/updateStatus',
             headers: {
                 'Content-Type': 'application/json'
             },
