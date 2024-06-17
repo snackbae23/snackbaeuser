@@ -24,7 +24,7 @@ const CustomerRecords = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
       // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
       headers: {},
     };
