@@ -411,7 +411,7 @@ const Menu = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/searchMenu/${id}/${search}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/searchMenu/${id}/${search}`,
       headers: {},
     };
 
@@ -438,7 +438,7 @@ const Menu = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/updateMenu/${MenuId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/updateMenu/${MenuId}`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -476,7 +476,7 @@ const Menu = () => {
     let config = {
       method: "put",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/updateorder/${id}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/updateorder/${id}`,
       headers: {
         "Content-Type": "application/json",
       },
