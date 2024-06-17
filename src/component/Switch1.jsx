@@ -49,7 +49,7 @@ const Switch1 = ({ isActive, id, type }) => {
         let config = {
             method: 'put',
             maxBodyLength: Infinity,
-            url: 'https://seashell-app-lgwmg.ondigitalocean.app/api/toggleMenuStatus',
+            url: 'https://goldfish-app-yhaxv.ondigitalocean.app/api/toggleMenuStatus',
             headers: {
                 'Content-Type': 'application/json'
             },
