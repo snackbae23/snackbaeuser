@@ -56,7 +56,7 @@ const Dashboard = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
       // url: `http://localhost:4000/api/getRestaurantDetails/${resId}`,
       headers: {},
     };
@@ -112,7 +112,7 @@ const Dashboard = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/payments/${resId}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/payments/${resId}`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -279,7 +279,7 @@ const Dashboard = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/searchMenu/${id}/${search}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/searchMenu/${id}/${search}`,
       headers: {},
     };
 
@@ -325,7 +325,7 @@ const Dashboard = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: `https://seashell-app-lgwmg.ondigitalocean.app/api/pinComment/${com}/${clicked}`,
+      url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/pinComment/${com}/${clicked}`,
       headers: {}
     };
 
