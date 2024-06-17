@@ -394,7 +394,9 @@ const Dashboard = () => {
           <p className="sm:text-[1.6rem] text-[1.6rem] font-semibold">
             Dashboard
           </p>
-          <p className="sm:text-[.9rem] text-[.8rem] text-nowrap">Welcome to your Dashboard</p>
+          <p className="sm:text-[.9rem] text-[.8rem] text-nowrap">
+            Welcome to your Dashboard
+          </p>
         </div>
 
         <div className="flex gap-5 ">
@@ -403,7 +405,7 @@ const Dashboard = () => {
             target="_blank"
             className=" flex items-center justify-between w-full h-[40px] gap-2 border bg-white border-[#000000B2] rounded-lg sm:px-4 px-2  text-[1.1rem] font-semibold"
           >
-            <p className=' text-nowrap'>View Menu</p>
+            <p className=" text-nowrap">View Menu</p>
             <GoFileSymlinkFile />
           </Link>
           <button
@@ -424,7 +426,7 @@ const Dashboard = () => {
         <div className="w-full h-fit  ">
           {/* total report */}
           <div className=" w-full sm:flex sm:px-4 sm:pt-6 gap-3 ">
-            <div className="sm:w-[70%] w-full flex flex-col gap-2">
+            <div className="md:w-[70%] w-full flex flex-col gap-2">
               {/* <p className="text-[#000000] text-[1.6rem] font-semibold px-4 mt-4 ">
                     Today's Report
                   </p> */}
@@ -466,12 +468,13 @@ const Dashboard = () => {
                           src="/fi-rr-caret-up (1).png"
                           alt=""
                         /> */}
-                    <p className="text-[#858D9D] text-[.7rem]">Than yesterday</p>
+                    <p className="text-[#858D9D] text-[.7rem]">
+                      Than yesterday
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="w-full h-fit bg-white flex sm:flex-row flex-col items-center justify-evenly gap-2  rounded-md p-4 ">
-
                 <div className="sm:w-[66%] w-full flex gap-2">
                   <div className=" w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
                     <p className="text-[#777980] text-[.9rem] font-semibold">
@@ -493,7 +496,9 @@ const Dashboard = () => {
                             src="/fi-rr-caret-up (1).png"
                             alt=""
                           /> */}
-                      <p className="text-[#858D9D] text-[.7rem]">In last week</p>
+                      <p className="text-[#858D9D] text-[.7rem]">
+                        In last week
+                      </p>
                     </div>
                   </div>
                   <div className="w-[50%] h-[135px] relative  rounded-md border border-[#00000080] p-3 flex flex-col justify-between ">
@@ -516,7 +521,9 @@ const Dashboard = () => {
                         src="/fi-rr-caret-up (1).png"
                         alt=""
                       />
-                      <p className="text-[#858D9D] text-[.7rem]">In last week</p>
+                      <p className="text-[#858D9D] text-[.7rem]">
+                        In last week
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -547,7 +554,7 @@ const Dashboard = () => {
               </div>
             </div>
             {/* Relationship */}
-            <div className="hidden  w-[28%] h-[320px] bg-white rounded-md py-4 px-5 sm:flex flex-col justify-evenly gap-4 ">
+            <div className="hidden  w-[28%] h-[320px] sm:overflow-y-scroll hideScroller bg-white rounded-md py-4 px-5 md:flex flex-col justify-evenly gap-4 ">
               <p className="text-[#0F172A] text-[1.2rem] font-semibold border-b border-[#F1F5F9] pb-3">
                 Relationship Manager
               </p>
@@ -576,14 +583,19 @@ const Dashboard = () => {
                 </div>
                 <div className="flex gap-2 items-center">
                   <CiCalendarDate className="text-[#94A3B8] font-bold text-[1.3rem]" />
-                  <p className="text-[.9rem] font-Roboto text-[#0F172A]">24/7</p>
+                  <p className="text-[.9rem] font-Roboto text-[#0F172A]">
+                    24/7
+                  </p>
                 </div>
               </div>
 
-              <div className="w-full h-[40px] bg-[#FDE030] text-[1.3rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]">
+              <Link
+                to="https://wa.me/917003876815?text=Hi%20"
+                className="w-full h-[40px] bg-[#FDE030] text-[0.8rem] md:text-[1rem] lg:text-[1.2rem] font-bold rounded-lg flex items-center justify-center gap-3 text-[#004AAD]"
+              >
                 <IoLogoWhatsapp />
                 <p> +91 7003876815</p>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -632,7 +644,9 @@ const Dashboard = () => {
                 <div className="grid sm:grid-cols-4 grid-cols-3 sm:text-[.9rem] text-[.8rem] mt-1  w-[60%] gap-2 justify-evenly ">
                   <div className=" text-center">AMOUNT</div>
                   <div className="  text-center">DISCOUNT</div>
-                  <div className="  text-center hidden sm:block ml-2">STATUS</div>
+                  <div className="  text-center hidden sm:block ml-2">
+                    STATUS
+                  </div>
                   <div className="text-center block">MODE</div>
                 </div>
               </div>
@@ -678,14 +692,15 @@ const Dashboard = () => {
                         </p>
                         <p
                           className={`rounded-3xl    text-center p-1 flex mt-2 h-[70%] items-center justify-center 
-                      ${item.mode === "upi"
-                              ? "bg-[#E1EFFE] text-[#1E429F]"
-                              : item.mode === "wallet"
-                                ? "bg-[#fbd9de] text-[#FD4A65]"
-                                : item.mode === "netbanking"
-                                  ? "bg-[#E1EFFE] text-[#7157f1]"
-                                  : ""
-                            }`}
+                      ${
+                        item.mode === "upi"
+                          ? "bg-[#E1EFFE] text-[#1E429F]"
+                          : item.mode === "wallet"
+                          ? "bg-[#fbd9de] text-[#FD4A65]"
+                          : item.mode === "netbanking"
+                          ? "bg-[#E1EFFE] text-[#7157f1]"
+                          : ""
+                      }`}
                         >
                           {item.mode}
                         </p>
@@ -751,7 +766,7 @@ const Dashboard = () => {
             </div>
 
             <div className="sm:p-5 flex sm:flex-row sm:h-[600px] flex-col w-full gap-3 ">
-              <div className="sm:w-[50%] bg-white sm:h-[560px] h-fit rounded-lg sm:p-2">
+              <div className="sm:w-[50%] bg-white sm:h-[560px] overflow-y-scroll hideScroller h-fit rounded-lg sm:p-2">
                 {searchMenuItems && (
                   <div className="w-full h-fit p-6 text-[1.5rem] font-semibold">
                     <p>Search result</p>
@@ -765,84 +780,84 @@ const Dashboard = () => {
 
                 {search
                   ? searchMenuItems &&
-                  searchMenuItems?.map((menu, index) => (
-                    <div key={index}>
-                      <div
-                        onClick={() => {
-                          setcomments(menu?.comments);
-                          setclicked(menu._id);
-                        }}
-                        className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2"
-                      >
-                        <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
-                          <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
-                            <p className="sm:text-[1.2rem] w-[70%] text-[.8rem]">
-                              {menu.name}
-                            </p>
-                            <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
-                              Total Recomendation
-                            </p>
-                            <p className="sm:text-[1.1rem] text-[.6rem]">
-                              {menu.notLikedCount +
-                                menu.likedCount +
-                                menu.mustTryCount}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/🦆 emoji _disappointed but relieved face_.png"
-                                alt=""
-                              />
-                              <p className=" sm:text-[1.1rem] text-[.85rem]">
-                                {menu.notLikedCount}
+                    searchMenuItems?.map((menu, index) => (
+                      <div key={index}>
+                        <div
+                          onClick={() => {
+                            setcomments(menu?.comments);
+                            setclicked(menu._id);
+                          }}
+                          className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-4 mx-4 border border-[#00000080] rounded-lg p-2"
+                        >
+                          <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
+                            <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
+                              <p className="sm:text-[1.2rem] w-[70%] text-[.8rem]">
+                                {menu.name}
+                              </p>
+                              <p className="text-[#000000B2] sm:text-[.8rem] text-[.6rem]">
+                                Total Recomendation
+                              </p>
+                              <p className="sm:text-[1.1rem] text-[.6rem]">
+                                {menu.notLikedCount +
+                                  menu.likedCount +
+                                  menu.mustTryCount}
                               </p>
                             </div>
-                            <p className="sm:text-[.85rem] text-[.7rem]">
-                              Not Liked
-                            </p>
                           </div>
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/Group 1171277598.png"
-                                alt=""
-                              />
-                              <p className=" text-[1.1rem]">
-                                {menu.likedCount}
+                          <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
+                            <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                              <div className="flex gap-2">
+                                <img
+                                  className="size-6"
+                                  src="/🦆 emoji _disappointed but relieved face_.png"
+                                  alt=""
+                                />
+                                <p className=" sm:text-[1.1rem] text-[.85rem]">
+                                  {menu.notLikedCount}
+                                </p>
+                              </div>
+                              <p className="sm:text-[.85rem] text-[.7rem]">
+                                Not Liked
                               </p>
                             </div>
-                            <p className="sm:text-[.85rem] text-[.7rem]">
-                              Good
-                            </p>
-                          </div>
-                          <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
-                            <div className="flex gap-2">
-                              <img
-                                className="size-6"
-                                src="/Group 1171277601.png"
-                                alt=""
-                              />
-                              <p className=" sm:text-[1.1rem] text-[.8rem]">
-                                {menu.mustTryCount}
+                            <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                              <div className="flex gap-2">
+                                <img
+                                  className="size-6"
+                                  src="/Group 1171277598.png"
+                                  alt=""
+                                />
+                                <p className=" text-[1.1rem]">
+                                  {menu.likedCount}
+                                </p>
+                              </div>
+                              <p className="sm:text-[.85rem] text-[.7rem]">
+                                Good
                               </p>
                             </div>
-                            <p className="sm:text-[.85rem] text-[.7rem]">
-                              Must Try
-                            </p>
+                            <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
+                              <div className="flex gap-2">
+                                <img
+                                  className="size-6"
+                                  src="/Group 1171277601.png"
+                                  alt=""
+                                />
+                                <p className=" sm:text-[1.1rem] text-[.8rem]">
+                                  {menu.mustTryCount}
+                                </p>
+                              </div>
+                              <p className="sm:text-[.85rem] text-[.7rem]">
+                                Must Try
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))
+                    ))
                   : menus &&
-                  top3menus?.map((menu, index) => (
-                    
-                      <div key={index}
+                    top3menus?.map((menu, index) => (
+                      <div
+                        key={index}
                         onClick={() => {
                           if (menu?.comments.length > 0) {
                             setcomments(menu?.comments);
@@ -851,9 +866,9 @@ const Dashboard = () => {
                           }
                           setclicked(menu._id);
                         }}
-                        className=" h-fit   bg-white  flex items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2"
+                        className=" h-fit bg-white flex sm:flex-col lg:flex-row items-center justify-evenly gap-2 my-3 mx-4 border border-[#00000080] rounded-lg p-2"
                       >
-                        <div className="sm:w-[50%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
+                        <div className="lg:w-[50%] sm:w-[100%] w-[50%] h-full  flex-col sm:items-center justify-evenly font-semibold">
                           <div className="flex flex-col sm:block sm:items-center justify-center sm:ml-2   font-inter">
                             <p className="sm:text-[1.2rem] w-[70%] text-[.8rem] text-nowrap">
                               {menu.name}
@@ -868,7 +883,7 @@ const Dashboard = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="sm:w-[50%] w-[50%] h-full flex justify-evenly gap-2 ">
+                        <div className="lg:w-[50%] sm:w-[100%] w-[50%] h-full flex justify-evenly gap-2 ">
                           <div className="flex flex-col text-[#000000] items-center justify-center font-inter">
                             <div className="flex gap-2">
                               <img
@@ -916,8 +931,7 @@ const Dashboard = () => {
                           </div>
                         </div>
                       </div>
-                    
-                  ))}
+                    ))}
               </div>
 
               <div className="sm:w-[50%] bg-white h-[560px] rounded-lg  flex flex-col items-center  ">
@@ -925,99 +939,106 @@ const Dashboard = () => {
                   Customer Testimonials
                 </p>
                 <div className="w-full h-[80%]  overflow-y-scroll hideScroller sm:px-4 p-3 ">
-
-                  {
-                    comments.length > 0 ? (
-                      <div>
-                        {comments.map((item, index) => ({
+                  {comments.length > 0 ? (
+                    <div>
+                      {comments
+                        .map((item, index) => ({
                           ...item,
                           isActive: item.Active === "true" ? 1 : 0, // Assigning a value of 1 for active comments and 0 for inactive comments
                         }))
-                          .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
-                          .map((item, index) => (
-                            <div
-                              key={index}
-                              className="h-[200px]  w-full  flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2 my-4"
-                            >
-                              <div className="flex justify-between items-center sm:px-4 gap-4 w-full h-[20%]">
-                                <div className="flex items-center  sm:gap-5 gap-2">
-                                  <IoPersonCircleOutline className="size-8" />
-                                  <div className="flex flex-col items-center">
-                                    <p className=" text-nowrap ">{item.userId?.name}</p>
-                                    <p>{calculateTimeDifference(item?.createdAt)}</p>
-                                  </div>
-                                </div>
-
-                                <div className="flex gap-4">
-                                  {item?.Active == "true" ? (
-                                    <button
-                                      onClick={() => {
-                                        pinComment(item._id);
-                                      }}
-                                      className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
-                                    >
-                                      UnPin
-                                    </button>
-                                  ) : (
-                                    <button
-                                      onClick={() => {
-                                        pinComment(item._id);
-                                      }}
-                                      className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
-                                    >
-                                      Pin
-                                    </button>
-                                  )}
-
-                                  <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">
-                                    Report
-                                  </button>
+                        .sort((a, b) => b.isActive - a.isActive) // Sorting the comments based on the isActive value
+                        .map((item, index) => (
+                          <div
+                            key={index}
+                            className="h-[200px]  w-full  flex-col relative rounded-lg border font-inter border-[#00000099] p-4 gap-2 my-4"
+                          >
+                            <div className="flex sm:flex-col lg:flex-row justify-between items-center sm:px-4 gap-4 w-full h-[50%]">
+                              <div className="flex items-center  sm:gap-5 gap-2">
+                                <IoPersonCircleOutline className="size-8" />
+                                <div className="flex flex-col items-center">
+                                  <p className=" text-nowrap ">
+                                    {item.userId?.name}
+                                  </p>
+                                  <p>
+                                    {calculateTimeDifference(item?.createdAt)}
+                                  </p>
                                 </div>
                               </div>
-                              <p className="w-full h-[70%] mt-5 text-[#67727E] ">
-                                {item?.description}
-                              </p>
-                              {item?.rated === "liked" && (
-                                <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                                  <img
-                                    className="size-7"
-                                    src="/Group 1171277598.png"
-                                    alt=""
-                                  />
-                                  <p className="text-[.7rem]">Liked</p>
-                                </div>
-                              )}
-                              {item?.rated === "mustTry" && (
-                                <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                                  <img
-                                    className="size-7"
-                                    src="/Group 1171277601.png"
-                                    alt=""
-                                  />
-                                  <p className="text-[.7rem]">Must Try</p>
-                                </div>
-                              )}
-                              {item?.rated === "notLike" && (
-                                <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
-                                  <img
-                                    className="size-7"
-                                    src="/🦆 emoji _disappointed but relieved face_.png"
-                                    alt=""
-                                  />
-                                  <p className="text-[.7rem]">Must Try</p>
-                                </div>
-                              )}
+
+                              <div className="flex gap-4">
+                                {item?.Active == "true" ? (
+                                  <button
+                                    onClick={() => {
+                                      pinComment(item._id);
+                                    }}
+                                    className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
+                                  >
+                                    UnPin
+                                  </button>
+                                ) : (
+                                  <button
+                                    onClick={() => {
+                                      pinComment(item._id);
+                                    }}
+                                    className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg"
+                                  >
+                                    Pin
+                                  </button>
+                                )}
+
+                                <button className="px-4 py-1 border border-[#004AAD99] text-[#0F172A] rounded-lg">
+                                  Report
+                                </button>
+                              </div>
                             </div>
-                          ))}
-                      </div>
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center gap-4 ">
-                        <img className="size-[200px]" src="/9796299 2.png" alt="" />
-                        <p className="text-[#004AAD] font-serif text-[1.7rem]">Opps ! no recomendation found</p>
-                      </div>)
-                  }
-
-
+                            <p className="w-full h-[70%] sm:h-[50%] mt-5 text-[#67727E] ">
+                              {item?.description}
+                            </p>
+                            {item?.rated === "liked" && (
+                              <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                                <img
+                                  className="size-7"
+                                  src="/Group 1171277598.png"
+                                  alt=""
+                                />
+                                <p className="text-[.7rem]">Liked</p>
+                              </div>
+                            )}
+                            {item?.rated === "mustTry" && (
+                              <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                                <img
+                                  className="size-7"
+                                  src="/Group 1171277601.png"
+                                  alt=""
+                                />
+                                <p className="text-[.7rem]">Must Try</p>
+                              </div>
+                            )}
+                            {item?.rated === "notLike" && (
+                              <div className="absolute right-4 bottom-3 bg-[#F5F6FA] flex flex-col items-center justify-center size-14 rounded-md">
+                                <img
+                                  className="size-7"
+                                  src="/🦆 emoji _disappointed but relieved face_.png"
+                                  alt=""
+                                />
+                                <p className="text-[.7rem]">Must Try</p>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                    </div>
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-4 ">
+                      <img
+                        className="size-[200px]"
+                        src="/9796299 2.png"
+                        alt=""
+                      />
+                      <p className="text-[#004AAD] font-serif text-[1.7rem]">
+                        Opps ! no recomendation found
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -1049,9 +1070,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      )
-      }
-
+      )}
     </div>
   );
 };
