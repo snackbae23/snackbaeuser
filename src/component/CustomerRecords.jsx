@@ -20,6 +20,10 @@ const CustomerRecords = () => {
 
   const [udata, setUdata] = useState([]);
   const [data, setData] = useState([]);
+  function sortVisitorsByDate(visitors) {
+    return visitors.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
+
   const getRestaurantData = async (req, res) => {
     let config = {
       method: "get",
@@ -38,10 +42,10 @@ const CustomerRecords = () => {
         setResData(response?.data);
         const resData = response.data;
         console.log(resData);
-
-        setUdata(resData?.restaurant?.customerData);
+        
+        setUdata(sortVisitorsByDate(resData?.restaurant?.visitorsRecord));
         console.log(udata);
-        setData(resData?.restaurant?.customerData);
+        setData(sortVisitorsByDate(resData?.restaurant?.visitorsRecord));
         
         console.log(data);
       })
@@ -215,7 +219,7 @@ const CustomerRecords = () => {
     axios.request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
-        setUdata(response.data);
+        setUdata(sortVisitorsByDate(response.data));
       })
       .catch((error) => {
         console.log(error);
