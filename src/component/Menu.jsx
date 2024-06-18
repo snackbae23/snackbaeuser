@@ -510,13 +510,12 @@ const Menu = () => {
 
   return (
     <div id="menu" className="w-full h-fit relativ sm:mb-0 mb-36 ">
-
       {/* Add menu popup */}
       <motion.div
         id="popup"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-[100%] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4  "
+        className="sm:w-[65%] sm:left-[17.5%] md:w-[60%] md:left-[20%] lg:w-[40%] lg:left-[30%] w-full h-[650px] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4  "
       >
         <div className="flex items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Add Menu item</p>
@@ -536,18 +535,26 @@ const Menu = () => {
             </p>
             <div className="size-[130px] mt-2 bg-[#F8FAFC] rounded-md flex items-center justify-center relative ">
               {pic == "" ? (
-                <div className="size-[130px] mt-2 bg-[#F8FAFC] rounded-md flex items-center justify-center relative ">
-                  <input
-                    className="text-[#F8FAFC] absolute left-[10%] mt-[75%]"
-                    type="file"
-                    id="image"
-                    name="image"
-                    accept="image/*"
-                    onChange={(e) => {
-                      if (e.target.files) handleImageChange(e.target.files[0]);
-                    }}
-                  />
-                  <img src="/icon.png" alt="" />
+                <div className="size-[130px] flex items-center justify-center w-full">
+                  <label
+                    for="dropzone-file"
+                    className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 hover:bg-gray-100 "
+                  >
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <img src="/icon.png" alt="" />
+                    </div>
+                    <input
+                      id="dropzone-file"
+                      name="image"
+                      type="file"
+                      className="hidden"
+                      accept="image/*"
+                      onChange={(e) => {
+                        if (e.target.files)
+                          handleImageChange(e.target.files[0]);
+                      }}
+                    />
+                  </label>
                 </div>
               ) : (
                 <div>
@@ -616,22 +623,20 @@ const Menu = () => {
           </div>
           {/* Varianta */}
           <div className="flex   w-full gap-2 ">
-            <div className='w-[70%]'>
-              <label >Variants</label>
-
+            <div className="w-[70%]">
+              <label>Variants</label>
             </div>
-            <div className='w-[30%]'>
-              <label >Price</label>
-
+            <div className="w-[30%]">
+              <label>Price</label>
             </div>
           </div>
 
           <div>
             <div className="flex  w-full gap-2  ">
-              <div className='w-[70%]'>
+              <div className="w-[70%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='variant 1'
+                  placeholder="variant 1"
                   type="text"
                   id="variants1"
                   name="variants1"
@@ -639,11 +644,10 @@ const Menu = () => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div className='w-[30%]'>
-
+              <div className="w-[30%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='₹100'
+                  placeholder="₹100"
                   type="number"
                   id="variants1Price"
                   name="variants1Price"
@@ -654,10 +658,10 @@ const Menu = () => {
             </div>
 
             <div className="flex  w-full gap-2  ">
-              <div className='w-[70%]'>
+              <div className="w-[70%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='variant2'
+                  placeholder="variant2"
                   type="text"
                   id="variants2"
                   name="variants2"
@@ -665,11 +669,10 @@ const Menu = () => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div className='w-[30%]'>
-
+              <div className="w-[30%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='₹200'
+                  placeholder="₹200"
                   type="number"
                   id="variants2Price"
                   name="variants2Price"
@@ -679,10 +682,10 @@ const Menu = () => {
               </div>
             </div>
             <div className="flex  w-full gap-2  ">
-              <div className='w-[70%]'>
+              <div className="w-[70%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='variant3'
+                  placeholder="variant3"
                   type="text"
                   id="variants3"
                   name="variants3"
@@ -690,11 +693,10 @@ const Menu = () => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div className='w-[30%]'>
-
+              <div className="w-[30%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='₹300'
+                  placeholder="₹300"
                   type="number"
                   id="variants3Price"
                   name="variants3Price"
@@ -704,8 +706,6 @@ const Menu = () => {
               </div>
             </div>
           </div>
-
-
 
           <div className="flex flex-col">
             <label htmlFor="description">Description:</label>
@@ -742,7 +742,7 @@ const Menu = () => {
         id="popup1"
         whileInView={{ y: [400, 0] }}
         transition={{ duration: 0.5, type: "tween" }}
-        className="sm:w-[500px]  w-[100%] h-[650px]    sm:left-[30%] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4 "
+        className="sm:w-[65%] sm:left-[17.5%] md:w-[60%] md:left-[20%] lg:w-[40%] lg:left-[30%] w-full h-[650px] fixed bg-[#FFFFFF] hidden  z-[1000] mt-[80px] rounded-2xl sm:p-4 p-4 "
       >
         <div className="flex  items-center justify-between font-Roboto sm:text-[1.2rem] text-[1.5rem] text-[#0F172A] px-4 mt-2 border-b-2 mb-4 pb-2">
           <p>Add Category</p>
@@ -821,18 +821,26 @@ const Menu = () => {
           <div className="flex gap-2">
             <div className="size-[130px]  mt-2 bg-[#F8FAFC] rounded-md flex items-center justify-center relative ">
               {pic == "" ? (
-                <div className="size-[130px] mt-2 bg-[#F8FAFC] rounded-md flex items-center justify-center relative ">
-                  <img src="/icon.png" alt="" />
-                  <input
-                    className="text-[#F8FAFC] absolute left-[10%] mt-[75%]"
-                    type="file"
-                    id="image"
-                    name="image"
-                    accept="image/*"
-                    onChange={(e) => {
-                      if (e.target.files) handleImageChange(e.target.files[0]);
-                    }}
-                  />
+                <div className="size-[130px] flex items-center justify-center w-full">
+                  <label
+                    for="dropzone-file"
+                    className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 hover:bg-gray-100 "
+                  >
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <img src="/icon.png" alt="" />
+                    </div>
+                    <input
+                      id="dropzone-file"
+                      name="image"
+                      type="file"
+                      className="hidden"
+                      accept="image/*"
+                      onChange={(e) => {
+                        if (e.target.files)
+                          handleImageChange(e.target.files[0]);
+                      }}
+                    />
+                  </label>
                 </div>
               ) : (
                 <div>
@@ -905,22 +913,20 @@ const Menu = () => {
 
           {/* Varianta */}
           <div className="flex  w-full gap-2 ">
-            <div className='w-[70%]'>
-              <label >Variants</label>
-
+            <div className="w-[70%]">
+              <label>Variants</label>
             </div>
-            <div className='w-[30%]'>
-              <label >Price</label>
-
+            <div className="w-[30%]">
+              <label>Price</label>
             </div>
           </div>
 
           <div>
             <div className="flex  w-full gap-2  ">
-              <div className='w-[70%]'>
+              <div className="w-[70%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='variant 1'
+                  placeholder="variant 1"
                   type="text"
                   id="variants1"
                   name="variants1"
@@ -928,11 +934,10 @@ const Menu = () => {
                   onChange={handleInputChange1}
                 />
               </div>
-              <div className='w-[30%]'>
-
+              <div className="w-[30%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='₹100'
+                  placeholder="₹100"
                   type="number"
                   id="variants1Price"
                   name="variants1Price"
@@ -943,10 +948,10 @@ const Menu = () => {
             </div>
 
             <div className="flex  w-full gap-2  ">
-              <div className='w-[70%]'>
+              <div className="w-[70%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='variant2'
+                  placeholder="variant2"
                   type="text"
                   id="variants2"
                   name="variants2"
@@ -954,11 +959,10 @@ const Menu = () => {
                   onChange={handleInputChange1}
                 />
               </div>
-              <div className='w-[30%]'>
-
+              <div className="w-[30%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='₹200'
+                  placeholder="₹200"
                   type="number"
                   id="variants2Price"
                   name="variants2Price"
@@ -968,10 +972,10 @@ const Menu = () => {
               </div>
             </div>
             <div className="flex  w-full gap-2  ">
-              <div className='w-[70%]'>
+              <div className="w-[70%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='variant3'
+                  placeholder="variant3"
                   type="text"
                   id="variants3"
                   name="variants3"
@@ -979,11 +983,10 @@ const Menu = () => {
                   onChange={handleInputChange1}
                 />
               </div>
-              <div className='w-[30%]'>
-
+              <div className="w-[30%]">
                 <input
                   className="border border-[#E2E8F0] rounded-md px-4 my-2 p-2 w-full"
-                  placeholder='₹300'
+                  placeholder="₹300"
                   type="number"
                   id="variants3Price"
                   name="variants3Price"
@@ -1019,9 +1022,20 @@ const Menu = () => {
       </motion.div>
 
       {/* categories and add menu buttons */}
-      <div className='fixed bg-blac sm:hidden block bottom-[65px] z-50 right-3'>
-        <button onClick={openPopup1} className='px-6 py-2 shadow-md  bg-white text-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]'><FaPlus /> Category</button>
-        <button onClick={openPopup} className=' pl-[20px] pr-[18px] shadow-md  py-2 mt-1.5 text-white bg-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]'><FaPlus />Add Menu</button>
+      <div className="fixed bg-blac md:hidden block bottom-[65px] z-50 right-3">
+        <button
+          onClick={openPopup1}
+          className="px-6 py-2 shadow-md  bg-white text-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]"
+        >
+          <FaPlus /> Category
+        </button>
+        <button
+          onClick={openPopup}
+          className=" pl-[20px] pr-[18px] shadow-md  py-2 mt-1.5 text-white bg-[#004AAD] rounded-lg border flex items-center gap-2  border-[#E2E8F0] font-semibold text-[.98rem]"
+        >
+          <FaPlus />
+          Add Menu
+        </button>
       </div>
 
       {/* header */}
@@ -1043,8 +1057,6 @@ const Menu = () => {
 
       <div className="w-full h-fit  mt-[10px] sm:px-8 px-4  ">
         <div className="bg-white   sm:px-3 flex flex-col gap-3 sm:py-4  px-1   ">
-
-
           <div className="w-full h-fit flex sm:flex-row flex-col gap-4  sm:my-1 mt-4  items-centen   justify-between    ">
             {/* Search result */}
             <div className="relative sm:w-[35%] w-full flex items-center rounded-md border border-[#407fd1]  ">
@@ -1058,53 +1070,72 @@ const Menu = () => {
               <CiSearch className="absolute text-[1.3rem] font-semibold ml-2 " />
             </div>
 
-
             {/* //switch for veg and active items */}
-            <div className='flex sm:gap-8 gap-4 justify-between px-[1px] sm:mt-0 mt-3'>
+            <div className="flex sm:gap-8 gap-4 justify-start px-[1px] sm:mt-0 mt-3">
               {/* switch for veg and non-veg */}
-              <div className='flex items-center gap-2  '>
-                {
-                  !switchv ?
-                    <div className='flex gap-2 items-center'>
-                      <img className=' size-6' src="/Group 1171277739.png" alt="" />
-                      <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Veg</p>
-                    </div> :
-                    <div className='flex gap-2 items-center'>
-                      <img className=' size-6' src="/Group 1171277821.png" alt="" />
-                      <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Non-Veg</p>
-                    </div>
-                }
-                {
-                  !switchv ?
-                    <div className='w-[40px]  h-[22px] bg-green-400 rounded-full flex items-center cursor-pointer '>
-                      <div className='size-[18px] bg-white rounded-full ml-[.2rem]' onClick={setswitch}></div>
-                    </div> :
-                    <div className='w-[40px] h-[22px] bg-red-400 rounded-full flex items-center cursor-pointer '>
-                      <div className='size-[18px] bg-white rounded-full ml-5' onClick={setswitch}></div>
-                    </div>
-                }
+              <div className="flex items-center gap-2  ">
+                {!switchv ? (
+                  <div className="flex gap-2 items-center">
+                    <img
+                      className=" size-6"
+                      src="/Group 1171277739.png"
+                      alt=""
+                    />
+                    {/* <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Veg</p> */}
+                  </div>
+                ) : (
+                  <div className="flex gap-2 items-center">
+                    <img
+                      className=" size-6"
+                      src="/Group 1171277821.png"
+                      alt=""
+                    />
+                    {/* <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Non-Veg</p> */}
+                  </div>
+                )}
+                {!switchv ? (
+                  <div className="w-[40px]  h-[22px] bg-green-400 rounded-full flex items-center cursor-pointer ">
+                    <div
+                      className="size-[18px] bg-white rounded-full ml-[.2rem]"
+                      onClick={setswitch}
+                    ></div>
+                  </div>
+                ) : (
+                  <div className="w-[40px] h-[22px] bg-red-400 rounded-full flex items-center cursor-pointer ">
+                    <div
+                      className="size-[18px] bg-white rounded-full ml-5"
+                      onClick={setswitch}
+                    ></div>
+                  </div>
+                )}
               </div>
 
               {/* switch for Active Items */}
 
-              <div className='flex items-center gap-4 '>
-
-                <p className='sm:text-[1.2rem] text-[.95rem] font-semibold'>Active Items</p>
-                {
-                  !Activeswitch ?
-                    <div className='w-[40px]  h-[22px] bg-[#a8a8aa] rounded-full flex items-center cursor-pointer '>
-                      <div className='size-[18px] bg-white rounded-full ml-[.2rem]' onClick={switchActive} ></div>
-                    </div> :
-                    <div className='w-[40px] h-[22px] bg-green-400 rounded-full flex items-center cursor-pointer '>
-                      <div className='size-[18px] bg-white rounded-full ml-5' onClick={switchActive} ></div>
-                    </div>
-                }
+              <div className="flex items-center gap-4 ">
+                <p className="sm:text-[1.2rem] text-[.95rem] font-semibold">
+                  Active Items
+                </p>
+                {!Activeswitch ? (
+                  <div className="w-[40px]  h-[22px] bg-[#a8a8aa] rounded-full flex items-center cursor-pointer ">
+                    <div
+                      className="size-[18px] bg-white rounded-full ml-[.2rem]"
+                      onClick={switchActive}
+                    ></div>
+                  </div>
+                ) : (
+                  <div className="w-[40px] h-[22px] bg-green-400 rounded-full flex items-center cursor-pointer ">
+                    <div
+                      className="size-[18px] bg-white rounded-full ml-5"
+                      onClick={switchActive}
+                    ></div>
+                  </div>
+                )}
               </div>
             </div>
 
-
             <button
-              className=" sm:block hidden sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap"
+              className=" md:block hidden sm:px-5 px-3 sm:py-2 py-3 rounded-md border border-[#407fd1] text-nowrap"
               onClick={openPopup1}
             >
               + Add Category
@@ -1113,7 +1144,7 @@ const Menu = () => {
 
           {searchMenuItems && (
             <div className="w-full h-fit ml-2 text-[1.5rem] font-semibold">
-              <p className='border-b pb-3 border-black mb-3'>Search result</p>
+              <p className="border-b pb-3 border-black mb-3">Search result</p>
             </div>
           )}
 
@@ -1122,11 +1153,8 @@ const Menu = () => {
               searchMenuItems &&
               searchMenuItems.map((item, index) => (
                 <div className=" sm:w-[32%] w-full sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
-
                   <div className="flex w-full items-center h-[20%] justify-between ">
-                    <p className="font-inter">
-                      {item.name}{" "}
-                    </p>
+                    <p className="font-inter">{item.name} </p>
                     <p></p>
                     <Switch1
                       isActive={item.active}
@@ -1137,14 +1165,12 @@ const Menu = () => {
                   <div className="flex w-full h-[60%]  py-4  ">
                     <div className="w-[70%] overflow-y-scroll hideScroller ">
                       {item.veg == "Yes" && (
-                        <img
-                          src="Group 1171277690.png"
-                          alt=""
-                        />
+                        <img src="Group 1171277690.png" alt="" />
                       )}
                       {
                         item.veg != "Yes" && (
-                          <img className=' size-6 '
+                          <img
+                            className=" size-6 "
                             src="/Group 1171277821.png"
                             alt=""
                           />
@@ -1164,9 +1190,7 @@ const Menu = () => {
                   </div>
 
                   <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
-                    <p className="text-[1.1rem]">
-                      ₹{item.price}
-                    </p>
+                    <p className="text-[1.1rem]">₹{item.price}</p>
                     <div className="flex gap-2">
                       <button
                         className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
@@ -1186,13 +1210,11 @@ const Menu = () => {
                       </button>
                     </div>
                   </div>
-
                 </div>
               ))}
           </div>
 
           <div className="w-full h-fit font-Roboto  text-[1.3rem] sm:px-6 border-t-2">
-
             {/* Rest Restaurantmenu */}
             {loader ? (
               // Show a loader when resData is empty
@@ -1201,90 +1223,106 @@ const Menu = () => {
               </div>
             ) : (
               <div>
-                {
-                  category.length > 0 ? (
-                    <div>
+                {category.length > 0 ? (
+                  <div>
+                    <DragDropContext onDragEnd={handleDragEnd}>
+                      <Droppable droppableId="category">
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                          >
+                            {category.map((category, index) =>
+                              Activeswitch ? (
+                                <div>
+                                  {category.active && (
+                                    <Draggable
+                                      key={category._id}
+                                      draggableId={category._id}
+                                      index={index}
+                                    >
+                                      {(provided) => (
+                                        <div
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                          key={category._id}
+                                          id={category._id}
+                                          className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
+                                        >
+                                          <div>
+                                            <div className="w-full h-fit">
+                                              <div className="flex justify-between items-center  w-full mt-4 px-4 ">
+                                                <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
+                                                  {category.name} (
+                                                  {category.menuItems.length})
+                                                </p>
+                                                {showAllCategories[
+                                                  category.name
+                                                ] ? (
+                                                  <FaAngleUp
+                                                    className={`text-[1.4rem] cursor-pointer`}
+                                                    onClick={() =>
+                                                      toggleCategory(
+                                                        category.name
+                                                      )
+                                                    }
+                                                  />
+                                                ) : (
+                                                  <FaAngleDown
+                                                    className={`text-[1.4rem] cursor-pointer`}
+                                                    onClick={() =>
+                                                      toggleCategory(
+                                                        category.name
+                                                      )
+                                                    }
+                                                  />
+                                                )}
+                                              </div>
 
-                      <DragDropContext onDragEnd={handleDragEnd}>
-                        <Droppable droppableId="category">
-                          {(provided) => (
-                            <div ref={provided.innerRef} {...provided.droppableProps}>
-                              {category.map((category, index) => (
-                                Activeswitch ? (
-                                  <div>
-                                    {
-                                      category.active &&
-                                      <Draggable
-                                        key={category._id}
-                                        draggableId={category._id}
-                                        index={index}
-                                      >
-                                        {(provided) => (
-                                          <div
-                                            ref={provided.innerRef}
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            key={category._id}
-                                            id={category._id}
-                                            className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
-                                          >
-                                            <div>
-                                              <div className="w-full h-fit">
-                                                <div className="flex justify-between items-center  w-full mt-4 px-4 ">
-                                                  <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
-                                                    {category.name} (
-                                                    {category.menuItems.length})
-                                                  </p>
-                                                  {showAllCategories[category.name] ? (
-                                                    <FaAngleUp
-                                                      className={`text-[1.4rem] cursor-pointer`}
-                                                      onClick={() =>
-                                                        toggleCategory(category.name)
-                                                      }
-                                                    />
-                                                  ) : (
-                                                    <FaAngleDown
-                                                      className={`text-[1.4rem] cursor-pointer`}
-                                                      onClick={() =>
-                                                        toggleCategory(category.name)
-                                                      }
-                                                    />
-                                                  )}
-                                                </div>
-
-                                                <div
-                                                  className={`w-full ${showAllCategories[category.name]
+                                              <div
+                                                className={`w-full ${
+                                                  showAllCategories[
+                                                    category.name
+                                                  ]
                                                     ? "h-auto transition-height duration-300 ease-in-out"
                                                     : "h-0 hidden"
-                                                    }`}
-                                                >
-                                                  <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap   ">
-                                                    {category?.menuItems.map((item, index) => (
-
-                                                      <div key={index} className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
-
+                                                }`}
+                                              >
+                                                <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap   ">
+                                                  {category?.menuItems.map(
+                                                    (item, index) => (
+                                                      <div
+                                                        key={index}
+                                                        className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden"
+                                                      >
                                                         <div className="flex w-full items-center h-[20%] justify-between ">
                                                           <p className="font-inter">
                                                             {item.name}{" "}
                                                           </p>
                                                           <p></p>
                                                           <Switch1
-                                                            isActive={item.active}
+                                                            isActive={
+                                                              item.active
+                                                            }
                                                             id={item._id}
                                                             type={"menu"}
                                                           />
                                                         </div>
                                                         <div className="flex w-full h-[60%]  py-4  ">
                                                           <div className="w-[70%] overflow-y-scroll hideScroller ">
-                                                            {item.veg == "Yes" && (
+                                                            {item.veg ==
+                                                              "Yes" && (
                                                               <img
                                                                 src="Group 1171277690.png"
                                                                 alt=""
                                                               />
                                                             )}
                                                             {
-                                                              item.veg != "Yes" && (
-                                                                <img className=' size-6 '
+                                                              item.veg !=
+                                                                "Yes" && (
+                                                                <img
+                                                                  className=" size-6 "
                                                                   src="/Group 1171277821.png"
                                                                   alt=""
                                                                 />
@@ -1311,14 +1349,18 @@ const Menu = () => {
                                                             <button
                                                               className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
                                                               onClick={() => {
-                                                                openPopup2(item);
+                                                                openPopup2(
+                                                                  item
+                                                                );
                                                               }}
                                                             >
                                                               Edit
                                                             </button>
                                                             <button
                                                               onClick={() => {
-                                                                deleteMenu(item);
+                                                                deleteMenu(
+                                                                  item
+                                                                );
                                                               }}
                                                               className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                                                             >
@@ -1326,265 +1368,287 @@ const Menu = () => {
                                                             </button>
                                                           </div>
                                                         </div>
-
                                                       </div>
-                                                    ))}
-                                                  </div>
+                                                    )
+                                                  )}
                                                 </div>
                                               </div>
                                             </div>
                                           </div>
-                                        )}
-                                      </Draggable>
-                                    }
-                                  </div>
-                                )
-                                  : (
-                                    <Draggable
-                                      key={category._id}
-                                      draggableId={category._id}
-                                      index={index}
-                                    >
-                                      {(provided) => (
-                                        <div
-                                          ref={provided.innerRef}
-                                          {...provided.draggableProps}
-                                          {...provided.dragHandleProps}
-                                          key={category._id}
-                                          id={category._id}
-                                          className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
-                                        >
-
-                                          <div className="w-full h-fit">
-                                            <div className="flex justify-between items-center  w-full mt-4 px-4 ">
-                                              <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
-                                                {category.name} (
-                                                {category.menuItems.length})
-                                              </p>
-                                              {showAllCategories[category.name] ? (
-                                                <FaAngleUp
-                                                  className={`text-[1.4rem] cursor-pointer`}
-                                                  onClick={() =>
-                                                    toggleCategory(category.name)
-                                                  }
-                                                />
-                                              ) : (
-                                                <FaAngleDown
-                                                  className={`text-[1.4rem] cursor-pointer`}
-                                                  onClick={() =>
-                                                    toggleCategory(category.name)
-                                                  }
-                                                />
-                                              )}
-                                            </div>
-
-                                            <div
-                                              className={`w-full ${showAllCategories[category.name]
-                                                ? "h-auto transition-height duration-300 ease-in-out"
-                                                : "h-0 hidden"
-                                                }`}
-                                            >
-                                              <div className=" w-full flex sm:flex-row flex-col gap-[1rem] p-[.5rem] flex-wrap   ">
-                                                {category?.menuItems.map((item, index) => (
-
-                                                  <>
-
-                                                    {
-                                                      switchv ?
-                                                        (
-                                                          item.veg === "No" &&
-
-                                                          <div key={index} className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
-
-                                                            <div className="flex w-full items-center h-[20%] justify-between ">
-                                                              <p className="font-inter">
-                                                                {item.name}{" "}
-                                                              </p>
-                                                              <p></p>
-                                                              <Switch1
-                                                                isActive={item.active}
-                                                                id={item._id}
-                                                                type={"menu"}
-                                                              />
-                                                            </div>
-                                                            <div className="flex w-full h-[60%]  py-4  ">
-                                                              <div className="w-[70%] overflow-y-scroll hideScroller ">
-                                                                {item.veg == "Yes" && (
-                                                                  <img
-                                                                    src="Group 1171277690.png"
-                                                                    alt=""
-                                                                  />
-                                                                )}
-                                                                {
-                                                                  item.veg != "Yes" && (
-                                                                    <img className=' size-6 '
-                                                                      src="/Group 1171277821.png"
-                                                                      alt=""
-                                                                    />
-                                                                  ) // non-veg
-                                                                }
-                                                                <p className="text-[#0F172A] font-inter text-[.75rem]">
-                                                                  {item.description}
-                                                                </p>
-                                                              </div>
-                                                              <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                                                <img
-                                                                  className="size-20 size-fit-content"
-                                                                  src={item.image}
-                                                                  alt=""
-                                                                />
-                                                              </div>
-                                                            </div>
-
-                                                            <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
-                                                              <p className="text-[1.1rem]">
-                                                                ₹{item.price}
-                                                              </p>
-                                                              <div className="flex gap-2">
-                                                                <button
-                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
-                                                                  onClick={() => {
-                                                                    openPopup2(item);
-                                                                  }}
-                                                                >
-                                                                  Edit
-                                                                </button>
-                                                                <button
-                                                                  onClick={() => {
-                                                                    deleteMenu(item);
-                                                                  }}
-                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
-                                                                >
-                                                                  Delete
-                                                                </button>
-                                                              </div>
-                                                            </div>
-
-                                                          </div>
-
-                                                        )
-                                                        :
-                                                        (
-                                                          item.veg === "Yes" &&
-                                                          <div key={index} className=" sm:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden">
-
-                                                            <div className="flex w-full items-center h-[20%] justify-between ">
-                                                              <p className="font-inter">
-                                                                {item.name}{" "}
-                                                              </p>
-                                                              <p></p>
-                                                              <Switch1
-                                                                isActive={item.active}
-                                                                id={item._id}
-                                                                type={"menu"}
-                                                              />
-                                                            </div>
-                                                            <div className="flex w-full h-[60%]  py-4  ">
-                                                              <div className="w-[70%] overflow-y-scroll hideScroller ">
-                                                                {item.veg == "Yes" && (
-                                                                  <img
-                                                                    src="Group 1171277690.png"
-                                                                    alt=""
-                                                                  />
-                                                                )}
-                                                                {
-                                                                  item.veg != "Yes" && (
-                                                                    <img className=' size-6 '
-                                                                      src="/Group 1171277821.png"
-                                                                      alt=""
-                                                                    />
-                                                                  ) // non-veg
-                                                                }
-                                                                <p className="text-[#0F172A] font-inter text-[.75rem]">
-                                                                  {item.description}
-                                                                </p>
-                                                              </div>
-                                                              <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                                                <img
-                                                                  className="size-20 size-fit-content"
-                                                                  src={item.image}
-                                                                  alt=""
-                                                                />
-                                                              </div>
-                                                            </div>
-
-                                                            <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
-                                                              <p className="text-[1.1rem]">
-                                                                ₹{item.price}
-                                                              </p>
-                                                              <div className="flex gap-2">
-                                                                <button
-                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
-                                                                  onClick={() => {
-                                                                    openPopup2(item);
-                                                                  }}
-                                                                >
-                                                                  Edit
-                                                                </button>
-                                                                <button
-                                                                  onClick={() => {
-                                                                    deleteMenu(item);
-                                                                  }}
-                                                                  className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
-                                                                >
-                                                                  Delete
-                                                                </button>
-                                                              </div>
-                                                            </div>
-
-                                                          </div>
-
-                                                        )
-                                                    }
-                                                  </>
-
-                                                ))}
-                                              </div>
-                                            </div>
-                                          </div>
-
                                         </div>
                                       )}
                                     </Draggable>
-                                  )
-                              ))}
-                              {provided.placeholder}
-                            </div>
-                          )}
-                        </Droppable>
-                      </DragDropContext>
+                                  )}
+                                </div>
+                              ) : (
+                                <Draggable
+                                  key={category._id}
+                                  draggableId={category._id}
+                                  index={index}
+                                >
+                                  {(provided) => (
+                                    <div
+                                      ref={provided.innerRef}
+                                      {...provided.draggableProps}
+                                      {...provided.dragHandleProps}
+                                      key={category._id}
+                                      id={category._id}
+                                      className="w-full h-fit font-Roboto text-[1.3rem] sm:px-6 my-7 border-b"
+                                    >
+                                      <div className="w-full h-fit">
+                                        <div className="flex justify-between items-center  w-full mt-4 px-4 ">
+                                          <p className="font-Roboto font-[500] text-[1.4rem] leading-[3rem]">
+                                            {category.name} (
+                                            {category.menuItems.length})
+                                          </p>
+                                          {showAllCategories[category.name] ? (
+                                            <FaAngleUp
+                                              className={`text-[1.4rem] cursor-pointer`}
+                                              onClick={() =>
+                                                toggleCategory(category.name)
+                                              }
+                                            />
+                                          ) : (
+                                            <FaAngleDown
+                                              className={`text-[1.4rem] cursor-pointer`}
+                                              onClick={() =>
+                                                toggleCategory(category.name)
+                                              }
+                                            />
+                                          )}
+                                        </div>
+
+                                        <div
+                                          className={`w-full ${
+                                            showAllCategories[category.name]
+                                              ? "h-auto transition-height duration-300 ease-in-out"
+                                              : "h-0 hidden"
+                                          }`}
+                                        >
+                                          <div className=" w-full flex sm:flex-row flex-col gap-[1rem] sm:gap-[2%] sm:gap-y-[1rem]  p-[.5rem] flex-wrap   ">
+                                            {category?.menuItems.map(
+                                              (item, index) => (
+                                                <>
+                                                  {switchv
+                                                    ? item.veg === "No" && (
+                                                        <div
+                                                          key={index}
+                                                          className=" sm:w-[48%] lg:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden"
+                                                        >
+                                                          <div className="flex w-full items-center h-[20%] justify-between ">
+                                                            <p className="font-inter">
+                                                              {item.name}{" "}
+                                                            </p>
+                                                            <p></p>
+                                                            <Switch1
+                                                              isActive={
+                                                                item.active
+                                                              }
+                                                              id={item._id}
+                                                              type={"menu"}
+                                                            />
+                                                          </div>
+                                                          <div className="flex w-full h-[60%]  py-4  ">
+                                                            <div className="w-[70%] overflow-y-scroll hideScroller ">
+                                                              {item.veg ==
+                                                                "Yes" && (
+                                                                <img
+                                                                  src="Group 1171277690.png"
+                                                                  alt=""
+                                                                />
+                                                              )}
+                                                              {
+                                                                item.veg !=
+                                                                  "Yes" && (
+                                                                  <img
+                                                                    className=" size-6 "
+                                                                    src="/Group 1171277821.png"
+                                                                    alt=""
+                                                                  />
+                                                                ) // non-veg
+                                                              }
+                                                              <p className="text-[#0F172A] font-inter text-[.75rem]">
+                                                                {
+                                                                  item.description
+                                                                }
+                                                              </p>
+                                                            </div>
+                                                            <div className="w-[32%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                                              <img
+                                                                className="size-20 size-fit-content"
+                                                                src={item.image}
+                                                                alt=""
+                                                              />
+                                                            </div>
+                                                          </div>
+
+                                                          <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
+                                                            <p className="text-[1.1rem]">
+                                                              ₹{item.price}
+                                                            </p>
+                                                            <div className="flex gap-2">
+                                                              <button
+                                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
+                                                                onClick={() => {
+                                                                  openPopup2(
+                                                                    item
+                                                                  );
+                                                                }}
+                                                              >
+                                                                Edit
+                                                              </button>
+                                                              <button
+                                                                onClick={() => {
+                                                                  deleteMenu(
+                                                                    item
+                                                                  );
+                                                                }}
+                                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
+                                                              >
+                                                                Delete
+                                                              </button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      )
+                                                    : item.veg === "Yes" && (
+                                                        <div
+                                                          key={index}
+                                                          className=" sm:w-[48%] lg:w-[32%] sm:h-[230px] h-[200px] border  border-[#0000007D] p-4 rounded-md flex flex-col justify-start gap-1 relative overflow-hidden"
+                                                        >
+                                                          <div className="flex w-full items-center h-[20%] justify-between ">
+                                                            <p className="font-inter">
+                                                              {item.name}{" "}
+                                                            </p>
+                                                            <p></p>
+                                                            <Switch1
+                                                              isActive={
+                                                                item.active
+                                                              }
+                                                              id={item._id}
+                                                              type={"menu"}
+                                                            />
+                                                          </div>
+                                                          <div className="flex w-full h-[60%]  py-4  ">
+                                                            <div className="w-[70%] overflow-y-scroll hideScroller ">
+                                                              {item.veg ==
+                                                                "Yes" && (
+                                                                <img
+                                                                  src="Group 1171277690.png"
+                                                                  alt=""
+                                                                />
+                                                              )}
+                                                              {
+                                                                item.veg !=
+                                                                  "Yes" && (
+                                                                  <img
+                                                                    className=" size-6 "
+                                                                    src="/Group 1171277821.png"
+                                                                    alt=""
+                                                                  />
+                                                                ) // non-veg
+                                                              }
+                                                              <p className="text-[#0F172A] font-inter text-[.75rem]">
+                                                                {
+                                                                  item.description
+                                                                }
+                                                              </p>
+                                                            </div>
+                                                            <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
+                                                              <img
+                                                                className="size-20 size-fit-content"
+                                                                src={item.image}
+                                                                alt=""
+                                                              />
+                                                            </div>
+                                                          </div>
+
+                                                          <div className="flex w-full justify-between font-Roboto absolute px-6 right-0 bottom-2 bg-white  py-1 rounded-m ">
+                                                            <p className="text-[1.1rem]">
+                                                              ₹{item.price}
+                                                            </p>
+                                                            <div className="flex gap-2">
+                                                              <button
+                                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-[#004AAD] text-white"
+                                                                onClick={() => {
+                                                                  openPopup2(
+                                                                    item
+                                                                  );
+                                                                }}
+                                                              >
+                                                                Edit
+                                                              </button>
+                                                              <button
+                                                                onClick={() => {
+                                                                  deleteMenu(
+                                                                    item
+                                                                  );
+                                                                }}
+                                                                className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
+                                                              >
+                                                                Delete
+                                                              </button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      )}
+                                                </>
+                                              )
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
+                                </Draggable>
+                              )
+                            )}
+                            {provided.placeholder}
+                          </div>
+                        )}
+                      </Droppable>
+                    </DragDropContext>
+                  </div>
+                ) : (
+                  //if no menu found
+                  <div className="w-full h-fit sm:p-9 px-1 py-4 flex flex-col sm:gap-10 gap-7 sm:mb-0 mb-5 ">
+                    <div className="flex items-center gap-6 ">
+                      <img className=" size-20" src="/Food Menu.png" alt="" />
+                      <p className="sm:text-[1.8rem] text-[1.6rem] font-serif">
+                        Create Menu in 2 easy steps
+                      </p>
                     </div>
-
-                  ) : ( //if no menu found
-                    <div className='w-full h-fit sm:p-9 px-1 py-4 flex flex-col sm:gap-10 gap-7 sm:mb-0 mb-5 '>
-                      <div className='flex items-center gap-6 '>
-                        <img className=' size-20' src="/Food Menu.png" alt="" />
-                        <p className='sm:text-[1.8rem] text-[1.6rem] font-serif'>Create Menu in 2 easy steps</p>
+                    <div className="flex items-center gap-10 sm:ml-3 ml-4 ">
+                      <img className="size-12" src="/category.png" alt="" />
+                      <div>
+                        <p className="sm:text-[1.4rem] text-[1.3rem] font-Roboto">
+                          Add Category
+                        </p>
+                        <p className="text-[.9rem]">
+                          Helps to structure your menu for customers
+                        </p>
                       </div>
-                      <div className='flex items-center gap-10 sm:ml-3 ml-4 '>
-                        <img className='size-12' src="/category.png" alt="" />
-                        <div>
-                          <p className='sm:text-[1.4rem] text-[1.3rem] font-Roboto'>Add Category</p>
-                          <p className='text-[.9rem]'>Helps to structure your menu for customers</p>
-                        </div>
-
+                    </div>
+                    <div className="flex items-center gap-10 sm:ml-3 ml-4 ">
+                      <img className="size-12" src="/Burger.png" alt="" />
+                      <div>
+                        <p className="sm:text-[1.4rem] text-[1.3rem] font-Roboto">
+                          Add items and their details
+                        </p>
+                        <p className="text-[.9rem]">
+                          The right price and description helps in increasing
+                          orders
+                        </p>
                       </div>
-                      <div className='flex items-center gap-10 sm:ml-3 ml-4 '>
-                        <img className='size-12' src="/Burger.png" alt="" />
-                        <div>
-                          <p className='sm:text-[1.4rem] text-[1.3rem] font-Roboto'>Add items and their details</p>
-                          <p className='text-[.9rem]'>The right price and description helps in increasing orders</p>
-                        </div>
-
-                      </div>
-                      <button
-                        onClick={openPopup}
-                        className="bg-[#004AAD] sm:w-[35%] px-5 py-3 rounded-md border text-[1.1rem] font-semibold  border-[#000000B2] text-white"
-                      >
-                        Start Creating !
-                      </button>
-                    </div>)
-                }
+                    </div>
+                    <button
+                      onClick={openPopup}
+                      className="bg-[#004AAD] sm:w-[35%] px-5 py-3 rounded-md border text-[1.1rem] font-semibold  border-[#000000B2] text-white"
+                    >
+                      Start Creating !
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>

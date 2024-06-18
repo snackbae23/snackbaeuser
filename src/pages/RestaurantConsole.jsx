@@ -343,7 +343,7 @@ const RestaurantConsole = () => {
         </div>
 
         {/* left side for small */}
-        <div className="md:hidden block   fixed bottom-2 px-3  w-[100%] h-fit z-[900]  ">
+        <div className="lg:hidden block   fixed bottom-2 px-3  w-[100%] h-fit z-[900]  ">
           <div className="flex items-center justify-evenly gap-3 text-[#64748B] bg-white py-2 border rounded-md   ">
             <BiSolidDashboard
               onClick={a}
@@ -378,7 +378,7 @@ const RestaurantConsole = () => {
 
         <div
           id="left"
-          className="sm:w-[20%] sm:block hidden bg-white fixed left-1  z-40    h-full   mt-[70px] px-6 text-[.95rem]  gap-32 "
+          className="lg:w-[20%] lg:block hidden bg-white fixed left-1  z-40    h-full   mt-[70px] px-6 text-[.95rem]  gap-32 "
         >
           <div className="mt-2">
             <div
@@ -455,7 +455,7 @@ const RestaurantConsole = () => {
 
         <div
           id="right"
-          className="sm:w-[80%] sm:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col "
+          className="lg:w-[80%] lg:ml-[20%] w-full h-fit bg-[#F6F8FF] flex flex-col "
         >
           {das && <Dashboard />}
           {men && <Menu />}
