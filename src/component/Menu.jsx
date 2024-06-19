@@ -319,7 +319,7 @@ const Menu = () => {
       let config = {
         method: "delete",
         maxBodyLength: Infinity,
-        url: `https://seashell-app-lgwmg.ondigitalocean.app/api/deleteMenu/${item._id}`,
+        url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/deleteMenu/${item._id}`,
         headers: {},
       };
 
@@ -1698,4 +1698,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Menu
