@@ -15,6 +15,7 @@ import { PacmanLoader } from "react-spinners";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { FaPlus } from "react-icons/fa6";
 import { IoCloseCircle } from "react-icons/io5";
+import { MdOutlineImageNotSupported } from "react-icons/md";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,20 @@ const Menu = () => {
     setIsOpen(!isOpen);
   };
 
+  const openDelete = () => {
+    document.body.style.setProperty("overflow", "hidden");
+  }
+
+  const closeDelete = () => {
+    document.body.style.setProperty("overflow", "auto");
+  }
+
   const [loader, setloader] = useState(false);
+
+  const removeImage = () => {
+    setPic("");
+    // console.log("Image removed");
+  };
 
   // toggle data for more than 4
   const [showAllCategories, setShowAllCategories] = useState({});
@@ -267,6 +281,10 @@ const Menu = () => {
     itemCategory: "",
   });
 
+  const removeImage1 = () => {
+    setFormData1.image("");
+  };
+
   const handleInputChange = (e) => {
     const { name, value, type, checked, files } = e.target;
     setFormData((prevData) => ({
@@ -296,20 +314,24 @@ const Menu = () => {
   function openPopup() {
     document.getElementById("popup").style.display = "block";
     document.getElementById("restaurant").style.display = "block";
+    document.body.style.setProperty("overflow", "hidden", "important");
   }
   function closePopup() {
     document.getElementById("popup").style.display = "none";
     document.getElementById("restaurant").style.display = "none";
+    document.body.style.setProperty("overflow", "auto", "important");
     resetFormData();
   }
 
   function openPopup1() {
     document.getElementById("popup1").style.display = "block";
     document.getElementById("restaurant").style.display = "block";
+    document.body.style.setProperty("overflow", "hidden", "important");
   }
   function closePopup1() {
     document.getElementById("popup1").style.display = "none";
     document.getElementById("restaurant").style.display = "none";
+    document.body.style.setProperty("overflow", "auto", "important");
   }
   const [MenuId, setMenuId] = useState();
   function deleteMenu(item) {
@@ -365,6 +387,7 @@ const Menu = () => {
     console.log(formData1.itemCategory);
     document.getElementById("popup2").style.display = "block";
     document.getElementById("restaurant").style.display = "block";
+    document.body.style.setProperty("overflow", "hidden", "important");
     // formData1.productImage1 = item.image;
     // formData1.productName1 = item.name;
     // formData1.productPrice1 = item.price;
@@ -378,6 +401,7 @@ const Menu = () => {
   function closePopup2() {
     document.getElementById("popup2").style.display = "none";
     document.getElementById("restaurant").style.display = "none";
+    document.body.style.setProperty("overflow", "auto", "important");
     resetFormData1();
     getRestaurantData();
   }
@@ -550,6 +574,12 @@ const Menu = () => {
               ) : (
                 <div>
                   <img src={pic} alt="uploaded"></img>
+                  <button
+                    onClick={removeImage}
+                    className="absolute -top-2 -right-2 text-red-600"
+                  >
+                    <IoCloseCircle size={24} />
+                  </button>
                 </div>
               )}
             </div>
@@ -836,13 +866,19 @@ const Menu = () => {
               ) : (
                 <div>
                   <img src={pic} alt="uploaded"></img>
+                  <button
+                    onClick={removeImage}
+                    className="absolute -top-2 -right-2 text-red-600"
+                  >
+                    <IoCloseCircle size={24} />
+                  </button>
                 </div>
               )}
             </div>
             <div className="relative h-[130px] flex items-center justify-center w-[130px] bg-[#F8FAFC]">
               <img className="" src={formData1.image} alt="" />
               <button
-                // onClick={onDelete}
+                onClick={removeImage1}
                 className="absolute -top-2 -right-2 text-red-600"
               >
                 <IoCloseCircle size={24} />
@@ -1068,7 +1104,7 @@ const Menu = () => {
             </div>
 
             {/* //switch for veg and active items */}
-            <div className="flex sm:gap-8 gap-4 justify-start px-[1px] sm:mt-0 mt-3">
+            <div className="flex sm:gap-8 gap-4 justify-between px-[1px] sm:mt-0 mt-3">
               {/* switch for veg and non-veg */}
               <div className="flex items-center gap-2  ">
                 {!switchv ? (
@@ -1178,11 +1214,15 @@ const Menu = () => {
                       </p>
                     </div>
                     <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                      <img
-                        className="size-20 size-fit-content"
-                        src={item.image}
-                        alt=""
-                      />
+                      {item.image ? (
+                        <img
+                          className="size-20 size-fit-content"
+                          src={item.image}
+                          alt=""
+                        />
+                      ) : (
+                        <MdOutlineImageNotSupported className="size-10" />
+                      )}
                     </div>
                   </div>
 
@@ -1201,6 +1241,7 @@ const Menu = () => {
                         onClick={() => {
                           // deleteMenu(item);
                           toggleModal();
+                          openDelete();
                         }}
                         type="button"
                         className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
@@ -1220,8 +1261,8 @@ const Menu = () => {
               aria-hidden="true"
               className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto overflow-x-hidden bg-gray-900 bg-opacity-50"
             >
-              <div className="relative p-4 w-[320px] sm:w-[350px] max-h-full">
-                <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <div className="relative p-4 w-[320px] sm:w-[350px] h-[320px] sm:h-[350px]">
+                <div className="relative bg-white rounded-lg shadow">
                   <div className="flex flex-col items-center justify-center p-4">
                     <IoCloseCircle className="text-8xl text-[#FF5733]" />
                     <h1 className="text-2xl font-bold text-center">
@@ -1239,7 +1280,10 @@ const Menu = () => {
                       Yes
                     </button>
                     <button
-                      onClick={toggleModal}
+                      onClick={() => {
+                        toggleModal();
+                        closeDelete();
+                      }}
                       type="button"
                       className="w-[150px] py-2 px-5 ms-3 text-[18px] font-medium text-[#004AAD] focus:outline-none bg-white rounded-lg border border-[#004AAD] hover:bg-gray-100 hover:text-[#004AAD] focus:z-10 focus:ring-4 focus:ring-gray-100"
                     >
@@ -1370,11 +1414,15 @@ const Menu = () => {
                                                             </p>
                                                           </div>
                                                           <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                                            <img
-                                                              className="size-20 size-fit-content"
-                                                              src={item.image}
-                                                              alt=""
-                                                            />
+                                                            {item.image ? (
+                                                              <img
+                                                                className="size-20 size-fit-content"
+                                                                src={item.image}
+                                                                alt=""
+                                                              />
+                                                            ) : (
+                                                              <MdOutlineImageNotSupported className="size-10" />
+                                                            )}
                                                           </div>
                                                         </div>
 
@@ -1399,6 +1447,7 @@ const Menu = () => {
                                                                 //   item
                                                                 // );
                                                                 toggleModal();
+                                                                openDelete();
                                                               }}
                                                               className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                                                             >
@@ -1541,6 +1590,7 @@ const Menu = () => {
                                                                   //   item
                                                                   // );
                                                                   toggleModal();
+                                                                  openDelete();
                                                                 }}
                                                                 className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                                                               >
@@ -1594,11 +1644,17 @@ const Menu = () => {
                                                               </p>
                                                             </div>
                                                             <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                                              <img
-                                                                className="size-20 size-fit-content"
-                                                                src={item.image}
-                                                                alt=""
-                                                              />
+                                                              {item.image ? (
+                                                                <img
+                                                                  className="size-20 size-fit-content"
+                                                                  src={
+                                                                    item.image
+                                                                  }
+                                                                  alt=""
+                                                                />
+                                                              ) : (
+                                                                <MdOutlineImageNotSupported className="size-10" />
+                                                              )}
                                                             </div>
                                                           </div>
 
@@ -1623,6 +1679,7 @@ const Menu = () => {
                                                                   //   item
                                                                   // );
                                                                   toggleModal();
+                                                                  openDelete();
                                                                 }}
                                                                 className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                                                               >
