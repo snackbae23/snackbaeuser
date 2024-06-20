@@ -251,7 +251,7 @@ const CustomerRecords = () => {
         </div>
 
 
-        <div className='bg-white w-full h-fit p-4  mb-9 rounded-lg sm:block hidden'>
+        <div className='bg-white w-full h-fit p-4  mb-9 rounded-lg md:block hidden'>
           <div className=' grid grid-cols-6 text-[1.1rem] text-[#718096] px-6 border-b-2 pb-4 bg-[#F6F8FF] py-4 rounded-md'>
             <p>Customer Name</p>
             <p className='flex items-center justify-center ml-8 '>Phone Number</p>
@@ -271,7 +271,7 @@ const CustomerRecords = () => {
 
         </div>
 
-        <div className='w-full sm:hidden block'>
+        <div className='w-full md:hidden block'>
 
 
         {udata.slice(0, 5).map((item, index) => (
