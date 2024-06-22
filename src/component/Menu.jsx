@@ -16,8 +16,6 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { FaPlus } from "react-icons/fa6";
 import { IoCloseCircle } from "react-icons/io5";
 import { MdOutlineImageNotSupported } from "react-icons/md";
-import { BiFoodTag } from "react-icons/bi";
-import { GrPrevious, GrNext } from "react-icons/gr";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -524,71 +522,6 @@ const Menu = () => {
   function switchActive() {
     setActiveswitch(!Activeswitch);
   }
-
-  const products = [
-    {
-      id: 1,
-      Category: "veg",
-      Product: "burger",
-      clicks: 500,
-    },
-    {
-      id: 2,
-      Category: "non-veg",
-      Product: "chicken",
-      clicks: 100,
-    }
-  ];
-  
-const [productList] = useState(products);
-const [rowsLimit, setRowsLimit] = useState(5);
-const [rowsToShow, setRowsToShow] = useState(productList.slice(0, rowsLimit));
-const [customPagination, setCustomPagination] = useState([]);
-const [totalPage, setTotalPage] = useState(
-  Math.ceil(productList?.length / rowsLimit)
-);
-const [currentPage, setCurrentPage] = useState(0);
-
-const nextPage = () => {
-  const startIndex = rowsLimit * (currentPage + 1);
-  const endIndex = startIndex + rowsLimit;
-  const newArray = products.slice(startIndex, endIndex);
-  setRowsToShow(newArray);
-  setCurrentPage(currentPage + 1);
-};
-
-const changePage = (value) => {
-  const startIndex = value * rowsLimit;
-  const endIndex = startIndex + rowsLimit;
-  const newArray = products.slice(startIndex, endIndex);
-  setRowsToShow(newArray);
-  setCurrentPage(value);
-};
-
-const previousPage = () => {
-  const startIndex = (currentPage - 1) * rowsLimit;
-  const endIndex = startIndex + rowsLimit;
-  const newArray = products.slice(startIndex, endIndex);
-  setRowsToShow(newArray);
-  setCurrentPage(currentPage > 1 ? currentPage - 1 : 0);
-};
-
-const handleRowsLimitChange = (e) => {
-  const newRowsLimit = parseInt(e.target.value);
-  setRowsLimit(newRowsLimit);
-  setRowsToShow(productList.slice(0, newRowsLimit));
-  setTotalPage(Math.ceil(productList.length / newRowsLimit));
-  setCustomPagination(
-    Array(Math.ceil(productList.length / newRowsLimit)).fill(null)
-  );
-  setCurrentPage(0);
-};
-
-useMemo(() => {
-  setCustomPagination(
-    Array(Math.ceil(productList?.length / rowsLimit)).fill(null)
-  );
-}, [rowsLimit]);
   
   return (
     <div id="menu" className="w-full h-fit relativ sm:mb-0 mb-36 ">
@@ -1811,125 +1744,6 @@ useMemo(() => {
                 )}
               </div>
             )}
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col w-full sm:px-12 px-5 mt-8">
-        <h1 className="text-3xl font-semibold">Menu Clicks</h1>
-        <h3 className="text-lg font-semibold">
-          Based on your customer activity
-        </h3>
-      </div>
-      <div className="flex flex-row items-center">
-        <div className="relative w-fit rounded-xl sm:ml-10 mt-4">
-          <input
-            className="w-[220px] sm:w-[400px] focus:outline-none h-[2.4rem] sm:h-[3rem] px-[1rem]"
-            type="text"
-            placeholder="Search Menu"
-            // value={search}
-            // onChange={handleSearch}
-          />
-          <CiSearch className="absolute right-[1rem] top-[50%] translate-y-[-50%] text-[1.5rem] text-[#808080] rotate-90" />
-        </div>
-        <select className="h-[40px] text-sm text-[#0F172ACC] font-semibold border px-4 rounded-xl border-[#E2E8F0] ml-4 mt-3">
-          <option value="SORT BY">SORT BY</option>
-        </select>
-      </div>
-      <div className="w-full h-fit flex items-center justify-center sm:px-8 px-4 pt-10 pb-14">
-        <div className="w-full px-4 bg-white py-4">
-          <div className="w-full overflow-x-scroll md:overflow-auto max-w-7xl 2xl:max-w-none mt-2">
-            <table className="table-auto overflow-scroll md:overflow-auto w-full text-left font-inter">
-              <thead className=" text-base text-white font-semibold w-full">
-                <tr className="  bg-[#F7F9FC]">
-                  <th className="w-[80%] py-5 px-8 text-[#64748B] sm:text-base font-bold whitespace-nowrap">
-                    Menu Item
-                  </th>
-                  <th className="w-[20%] py-5 px-8 text-center text-[#64748B] sm:text-base font-bold whitespace-nowrap">
-                    Total Clicks
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {rowsToShow?.map((data, index) => (
-                  <tr key={index}>
-                    <td
-                      className={`w-[80%] py-4 px-3 flex flex-row items-center gap-2 font-semibold text-base whitespace-nowrap`}
-                    >
-                      {data?.Category === "veg" ? (
-                        <BiFoodTag className="text-[#67CE67] text-2xl" />
-                      ) : (
-                        <BiFoodTag className="text-[#FF5733] text-2xl" />
-                      )}
-                      {data?.Product}
-                    </td>
-                    <td
-                      className={`w-[20%] py-4 px-8 text-center font-semibold text-base whitespace-nowrap`}
-                    >
-                      {data?.clicks}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="w-full flex justify-center sm:justify-between flex-col sm:flex-row gap-5 mt-1.5 px-1 items-center">
-            <div className="flex items-center gap-2">
-              <label htmlFor="rowsPerPage" className="text-md font-semibold">
-                Show Rows:
-              </label>
-              <select
-                id="rowsPerPage"
-                value={rowsLimit}
-                onChange={handleRowsLimitChange}
-                className="border rounded px-4 ml-4 rounded-xl py-2 border-[#E2E8F0]"
-              >
-                <option value={5}>5 items</option>
-                <option value={10}>10 items</option>
-                <option value={15}>15 items</option>
-                <option value={20}>20 items</option>
-              </select>
-            </div>
-            <div className="flex">
-              <ul
-                className="flex justify-center items-center gap-x-[10px] z-30"
-                role="navigation"
-                aria-label="Pagination"
-              >
-                <li
-                  className={`prev-btn flex items-center justify-center w-[36px] rounded-[6px] h-[36px] border-[1px] border-solid border-[#E2E8F0] ${
-                    currentPage === 0
-                      ? "bg-[#cccccc] pointer-events-none"
-                      : " cursor-pointer"
-                  }`}
-                  onClick={previousPage}
-                >
-                  <GrPrevious className="text-[#94A3B8]" />
-                </li>
-                {customPagination?.map((data, index) => (
-                  <li
-                    className={`flex items-center justify-center w-[36px] rounded-[6px] h-[34px] border-[1px] border-solid border-[2px] bg-[#FFFFFF] cursor-pointer ${
-                      currentPage === index
-                        ? "text-[#004AAD]  border-[#E2E8F0]"
-                        : "border-[#E4E4EB]"
-                    }`}
-                    onClick={() => changePage(index)}
-                    key={index}
-                  >
-                    {index + 1}
-                  </li>
-                ))}
-                <li
-                  className={`flex sm:mr-4 lg:mr-10 items-center justify-center w-[36px] rounded-[6px] h-[36px] border-[1px] border-solid border-[#E4E4EB] ${
-                    currentPage === totalPage - 1
-                      ? "bg-[#cccccc] pointer-events-none"
-                      : " cursor-pointer"
-                  }`}
-                  onClick={nextPage}
-                >
-                  <GrNext className="text-[#94A3B8]" />
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
