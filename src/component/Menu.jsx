@@ -1,68 +1,85 @@
-import React from 'react'
+import React, { useMemo } from "react";
 import { RxCrossCircled } from "react-icons/rx";
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { CiSearch } from "react-icons/ci";
 import { RiDeleteBinLine } from "react-icons/ri";
-import Switch1 from './Switch1';
+import Switch1 from "./Switch1";
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from "react";
+import axios from "axios";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
-import Loader from './Loader';
-import { PacmanLoader } from 'react-spinners';
+import Loader from "./Loader";
+import { PacmanLoader } from "react-spinners";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { FaPlus } from "react-icons/fa6";
-
+import { IoCloseCircle } from "react-icons/io5";
+import { MdOutlineImageNotSupported } from "react-icons/md";
 
 const Menu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const openDelete = () => {
+    document.body.style.setProperty("overflow", "hidden");
+  }
+
+  const closeDelete = () => {
+    document.body.style.setProperty("overflow", "auto");
+  }
 
   const [loader, setloader] = useState(false);
 
+  const removeImage = () => {
+    setPic("");
+    // console.log("Image removed");
+  };
 
   // toggle data for more than 4
   const [showAllCategories, setShowAllCategories] = useState({});
   const toggleCategory = (categoryId) => {
-    setShowAllCategories(prevState => ({
+    setShowAllCategories((prevState) => ({
       ...prevState,
-      [categoryId]: !prevState[categoryId]
+      [categoryId]: !prevState[categoryId],
     }));
-
   };
 
-  var userID = localStorage.getItem('user');
-  console.log("user id", userID)
-  const resId = userID
+  var userID = localStorage.getItem("user");
+  console.log("user id", userID);
+  const resId = userID;
   const id = userID;
   const [resData, setResData] = useState();
   const [category, setCategory] = useState([]);
-  const [createCategory, setCreateCategory] = useState('');
-  const [pic, setPic] = useState('');
+  const [createCategory, setCreateCategory] = useState("");
+  const [pic, setPic] = useState("");
 
   const getRestaurantData = async (req, res) => {
     setloader(true);
     let config = {
-      method: 'get',
+      method: "get",
       maxBodyLength: Infinity,
       url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/getRestaurantDetails/${resId}`,
-      headers: {}
+      headers: {},
     };
 
-    axios.request(config)
+    axios
+      .request(config)
       .then((response) => {
         console.log(response.data);
-        console.log((response.data));
+        console.log(response.data);
         setResData(response?.data);
         const resData = response.data;
-        console.log(resData)
+        console.log(resData);
         console.log(resData.restaurant.menu);
         setCategory(resData?.restaurant?.category);
         const category = resData.restaurant.category;
         console.log("category", category);
         // setmenus(resData?.restaurant?.menu);
         console.log(resData);
-
       })
       .catch((error) => {
         console.log(error);
@@ -71,11 +88,10 @@ const Menu = () => {
     setTimeout(() => {
       setloader(false);
     }, 4000);
-  }
+  };
 
   useEffect(() => {
     getRestaurantData();
-
   }, [resId]);
 
   function categoryCreationHandler(e) {
@@ -83,35 +99,33 @@ const Menu = () => {
   }
 
   function categoryCreationSubmit() {
-    const formData = { "name": createCategory };
+    const formData = { name: createCategory };
 
     let data = JSON.stringify(formData);
 
     let config = {
-      method: 'post',
+      method: "post",
       maxBodyLength: Infinity,
       url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/addCategory/${resId}`,
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      data: data
+      data: data,
     };
 
-    axios.request(config)
+    axios
+      .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
         console.log("category added");
         getRestaurantData();
-
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-
   const addMenuSubmit = async (req, res) => {
-
     formData.image = pic;
 
     console.log(formData);
@@ -128,7 +142,8 @@ const Menu = () => {
       data: formData,
     };
 
-    axios.request(config)
+    axios
+      .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
         console.log("menu added");
@@ -138,25 +153,26 @@ const Menu = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
   // updateMenu;
   const deleteCategory = async (id) => {
     window.alert("Category will be deleted.");
     let data = JSON.stringify({
-      "categoryId": id
+      categoryId: id,
     });
 
     let config = {
-      method: 'delete',
+      method: "delete",
       maxBodyLength: Infinity,
       url: `https://goldfish-app-yhaxv.ondigitalocean.app/api/deleteCategory/${resId}`,
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      data: data
+      data: data,
     };
 
-    axios.request(config)
+    axios
+      .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
         console.log("category deleted");
@@ -165,8 +181,7 @@ const Menu = () => {
       .catch((error) => {
         console.log(error);
       });
-
-  }
+  };
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -207,7 +222,6 @@ const Menu = () => {
       });
   };
 
-
   // let filteredMenu = menu.slice(0, 6);
   // const [menudata, setmenudata] = useState(filteredMenu);
 
@@ -219,25 +233,20 @@ const Menu = () => {
 
   const [up, setup] = useState(false);
 
-
-
-
-
   function resetFormData() {
-    formData.name = '';
-    formData.price = '';
-    formData.veg = '';
-    formData.category = '';
-    formData.description = '';
-    formData.image = '';
-    formData.variants1 = '';
-    formData.variants1Price = '';
-    formData.variants2 = '';
-    formData.variants2Price = '';
-    formData.variants3 = '';
-    formData.variants3Price = '';
-    setPic('');
-
+    formData.name = "";
+    formData.price = "";
+    formData.veg = "";
+    formData.category = "";
+    formData.description = "";
+    formData.image = "";
+    formData.variants1 = "";
+    formData.variants1Price = "";
+    formData.variants2 = "";
+    formData.variants2Price = "";
+    formData.variants3 = "";
+    formData.variants3Price = "";
+    setPic("");
   }
 
   function resetFormData1() {
@@ -248,36 +257,39 @@ const Menu = () => {
     formData1.description = "";
     formData1.image = "";
     setPic("");
-    formData1.variants1 = '';
-    formData1.variants1Price = '';
-    formData1.variants2 = '';
-    formData1.variants2Price = '';
-    formData1.variants3 = '';
-    formData1.variants3Price = '';
+    formData1.variants1 = "";
+    formData1.variants1Price = "";
+    formData1.variants2 = "";
+    formData1.variants2Price = "";
+    formData1.variants3 = "";
+    formData1.variants3Price = "";
   }
 
   const [formData1, setFormData1] = useState({
-    name: '',
-    price: '',
-    veg: '',
-    category: '',
-    description: '',
-    image: '',
+    name: "",
+    price: "",
+    veg: "",
+    category: "",
+    description: "",
+    image: "",
     variants1: "",
     variants1Price: "",
     variants2: "",
     variants2Price: "",
     variants3: "",
     variants3Price: "",
-    itemCategory: ""
-
+    itemCategory: "",
   });
+
+  const removeImage1 = () => {
+    setFormData1.image("");
+  };
 
   const handleInputChange = (e) => {
     const { name, value, type, checked, files } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -285,37 +297,41 @@ const Menu = () => {
     const { name, value, type, checked, files } = e.target;
     setFormData1((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-      productImage: type === 'file' ? files[0] : prevData.productImage,
+      [name]: type === "checkbox" ? checked : value,
+      productImage: type === "file" ? files[0] : prevData.productImage,
     }));
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
   const handleFormSubmit1 = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData1);
+    console.log("Form submitted:", formData1);
   };
 
   function openPopup() {
-    document.getElementById('popup').style.display = "block";
+    document.getElementById("popup").style.display = "block";
     document.getElementById("restaurant").style.display = "block";
+    document.body.style.setProperty("overflow", "hidden", "important");
   }
   function closePopup() {
-    document.getElementById('popup').style.display = "none";
+    document.getElementById("popup").style.display = "none";
     document.getElementById("restaurant").style.display = "none";
+    document.body.style.setProperty("overflow", "auto", "important");
     resetFormData();
   }
 
   function openPopup1() {
-    document.getElementById('popup1').style.display = "block";
+    document.getElementById("popup1").style.display = "block";
     document.getElementById("restaurant").style.display = "block";
+    document.body.style.setProperty("overflow", "hidden", "important");
   }
   function closePopup1() {
-    document.getElementById('popup1').style.display = "none";
+    document.getElementById("popup1").style.display = "none";
     document.getElementById("restaurant").style.display = "none";
+    document.body.style.setProperty("overflow", "auto", "important");
   }
   const [MenuId, setMenuId] = useState();
   function deleteMenu(item) {
@@ -368,9 +384,10 @@ const Menu = () => {
   const [itemCategoryy, setItemCategoryy] = useState();
   function openPopup2(item) {
     setItemCategoryy(item.category);
-    console.log(formData1.itemCategory)
-    document.getElementById('popup2').style.display = "block";
+    console.log(formData1.itemCategory);
+    document.getElementById("popup2").style.display = "block";
     document.getElementById("restaurant").style.display = "block";
+    document.body.style.setProperty("overflow", "hidden", "important");
     // formData1.productImage1 = item.image;
     // formData1.productName1 = item.name;
     // formData1.productPrice1 = item.price;
@@ -378,24 +395,24 @@ const Menu = () => {
     // formData1.isVeg1 = item.isVeg;
     // formData1.category1 = item.category;
     // }
-    setFormData1(item)
-    setMenuId(item._id)
+    setFormData1(item);
+    setMenuId(item._id);
   }
   function closePopup2() {
-    document.getElementById('popup2').style.display = "none";
+    document.getElementById("popup2").style.display = "none";
     document.getElementById("restaurant").style.display = "none";
+    document.body.style.setProperty("overflow", "auto", "important");
     resetFormData1();
     getRestaurantData();
   }
 
-
   //search bar
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [searchMenuItems, setSearchMenuItems] = useState();
 
   const handleSearch = (e) => {
-    console.log(search)
+    console.log(search);
     const inputValue = e.target.value;
     setSearch(inputValue);
     if (!inputValue) {
@@ -415,23 +432,23 @@ const Menu = () => {
       headers: {},
     };
 
-    axios.request(config)
+    axios
+      .request(config)
       .then((response) => {
         // console.log(JSON.stringify(response.data));
-        console.log((response.data.menuItems));
+        console.log(response.data.menuItems);
         setSearchMenuItems(response.data.menuItems);
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
   const updateMenu = async (e) => {
-
     e.preventDefault();
     formData1.image = pic;
 
     formData1.itemCategory = itemCategoryy;
-    console.log(formData1.itemCategory)
+    console.log(formData1.itemCategory);
 
     //let data = JSON.stringify(fdata);
 
@@ -452,16 +469,15 @@ const Menu = () => {
         console.log("menu added");
         closePopup2();
         getRestaurantData();
-
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
   const [categories, setCategories] = useState(resData?.restaurant?.category);
   const handleDragEnd = (result) => {
     if (!result.destination) return;
-    console.log(result)
+    console.log(result);
     let updatedCategories = [];
 
     updatedCategories = Array.from(category);
@@ -470,8 +486,8 @@ const Menu = () => {
       1
     );
     updatedCategories.splice(result.destination.index, 0, reorderedCategory);
-    console.log(updatedCategories)
-    console.log(id)
+    console.log(updatedCategories);
+    console.log(id);
     setCategory(updatedCategories);
     let config = {
       method: "put",
@@ -487,7 +503,6 @@ const Menu = () => {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
-
 
         getRestaurantData();
       })
@@ -507,7 +522,7 @@ const Menu = () => {
   function switchActive() {
     setActiveswitch(!Activeswitch);
   }
-
+  
   return (
     <div id="menu" className="w-full h-fit relativ sm:mb-0 mb-36 ">
       {/* Add menu popup */}
@@ -538,7 +553,7 @@ const Menu = () => {
                 <div className="size-[130px] flex items-center justify-center w-full">
                   <label
                     for="dropzone-file"
-                    className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 hover:bg-gray-100 "
+                    className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
                   >
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       <img src="/icon.png" alt="" />
@@ -559,6 +574,12 @@ const Menu = () => {
               ) : (
                 <div>
                   <img src={pic} alt="uploaded"></img>
+                  <button
+                    onClick={removeImage}
+                    className="absolute -top-2 -right-2 text-red-600"
+                  >
+                    <IoCloseCircle size={24} />
+                  </button>
                 </div>
               )}
             </div>
@@ -824,7 +845,7 @@ const Menu = () => {
                 <div className="size-[130px] flex items-center justify-center w-full">
                   <label
                     for="dropzone-file"
-                    className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 hover:bg-gray-100 "
+                    className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
                   >
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       <img src="/icon.png" alt="" />
@@ -845,11 +866,23 @@ const Menu = () => {
               ) : (
                 <div>
                   <img src={pic} alt="uploaded"></img>
+                  <button
+                    onClick={removeImage}
+                    className="absolute -top-2 -right-2 text-red-600"
+                  >
+                    <IoCloseCircle size={24} />
+                  </button>
                 </div>
               )}
             </div>
-            <div className="h-[130px] flex items-center justify-center w-[130px] bg-[#F8FAFC]">
+            <div className="relative h-[130px] flex items-center justify-center w-[130px] bg-[#F8FAFC]">
               <img className="" src={formData1.image} alt="" />
+              <button
+                onClick={removeImage1}
+                className="absolute -top-2 -right-2 text-red-600"
+              >
+                <IoCloseCircle size={24} />
+              </button>
             </div>
           </div>
 
@@ -1071,7 +1104,7 @@ const Menu = () => {
             </div>
 
             {/* //switch for veg and active items */}
-            <div className="flex sm:gap-8 gap-4 justify-start px-[1px] sm:mt-0 mt-3">
+            <div className="flex sm:gap-8 gap-4 justify-between px-[1px] sm:mt-0 mt-3">
               {/* switch for veg and non-veg */}
               <div className="flex items-center gap-2  ">
                 {!switchv ? (
@@ -1141,13 +1174,11 @@ const Menu = () => {
               + Add Category
             </button>
           </div>
-
           {searchMenuItems && (
             <div className="w-full h-fit ml-2 text-[1.5rem] font-semibold">
               <p className="border-b pb-3 border-black mb-3">Search result</p>
             </div>
           )}
-
           <div className="flex flex-wrap gap-2 sm:gap-4">
             {search &&
               searchMenuItems &&
@@ -1181,11 +1212,15 @@ const Menu = () => {
                       </p>
                     </div>
                     <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                      <img
-                        className="size-20 size-fit-content"
-                        src={item.image}
-                        alt=""
-                      />
+                      {item.image ? (
+                        <img
+                          className="size-20 size-fit-content"
+                          src={item.image}
+                          alt=""
+                        />
+                      ) : (
+                        <MdOutlineImageNotSupported className="size-10" />
+                      )}
                     </div>
                   </div>
 
@@ -1202,8 +1237,11 @@ const Menu = () => {
                       </button>
                       <button
                         onClick={() => {
-                          deleteMenu(item);
+                          // deleteMenu(item);
+                          toggleModal();
+                          openDelete();
                         }}
+                        type="button"
                         className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                       >
                         Delete
@@ -1213,7 +1251,46 @@ const Menu = () => {
                 </div>
               ))}
           </div>
-
+          {isOpen && (
+            <div
+              id="default-modal"
+              tabIndex="-1"
+              aria-hidden="true"
+              className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto overflow-x-hidden bg-gray-900 bg-opacity-50"
+            >
+              <div className="relative p-4 w-[320px] sm:w-[350px] h-[320px] sm:h-[350px]">
+                <div className="relative bg-white rounded-lg shadow">
+                  <div className="flex flex-col items-center justify-center p-4">
+                    <IoCloseCircle className="text-8xl text-[#FF5733]" />
+                    <h1 className="text-2xl font-bold text-center">
+                      Are you sure you want to Delete?
+                    </h1>
+                  </div>
+                  <div className="flex flex-row items-center justify-center p-4 md:p-5 rounded-b">
+                    <button
+                      onClick={() => {
+                        deleteMenu(item);
+                      }}
+                      type="button"
+                      className="w-[150px] text-white bg-[#004AAD] text-[18px] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2 text-center"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      onClick={() => {
+                        toggleModal();
+                        closeDelete();
+                      }}
+                      type="button"
+                      className="w-[150px] py-2 px-5 ms-3 text-[18px] font-medium text-[#004AAD] focus:outline-none bg-white rounded-lg border border-[#004AAD] hover:bg-gray-100 hover:text-[#004AAD] focus:z-10 focus:ring-4 focus:ring-gray-100"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <div className="w-full h-fit font-Roboto  text-[1.3rem] sm:px-6 border-t-2">
             {/* Rest Restaurantmenu */}
             {loader ? (
@@ -1333,11 +1410,15 @@ const Menu = () => {
                                                             </p>
                                                           </div>
                                                           <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                                            <img
-                                                              className="size-20 size-fit-content"
-                                                              src={item.image}
-                                                              alt=""
-                                                            />
+                                                            {item.image ? (
+                                                              <img
+                                                                className="size-20 size-fit-content"
+                                                                src={item.image}
+                                                                alt=""
+                                                              />
+                                                            ) : (
+                                                              <MdOutlineImageNotSupported className="size-10" />
+                                                            )}
                                                           </div>
                                                         </div>
 
@@ -1358,9 +1439,11 @@ const Menu = () => {
                                                             </button>
                                                             <button
                                                               onClick={() => {
-                                                                deleteMenu(
-                                                                  item
-                                                                );
+                                                                // deleteMenu(
+                                                                //   item
+                                                                // );
+                                                                toggleModal();
+                                                                openDelete();
                                                               }}
                                                               className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                                                             >
@@ -1499,9 +1582,11 @@ const Menu = () => {
                                                               </button>
                                                               <button
                                                                 onClick={() => {
-                                                                  deleteMenu(
-                                                                    item
-                                                                  );
+                                                                  // deleteMenu(
+                                                                  //   item
+                                                                  // );
+                                                                  toggleModal();
+                                                                  openDelete();
                                                                 }}
                                                                 className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                                                               >
@@ -1555,11 +1640,17 @@ const Menu = () => {
                                                               </p>
                                                             </div>
                                                             <div className="w-[40%] flex items-center justify-center bg-[#F8FAFC] rounded-md">
-                                                              <img
-                                                                className="size-20 size-fit-content"
-                                                                src={item.image}
-                                                                alt=""
-                                                              />
+                                                              {item.image ? (
+                                                                <img
+                                                                  className="size-20 size-fit-content"
+                                                                  src={
+                                                                    item.image
+                                                                  }
+                                                                  alt=""
+                                                                />
+                                                              ) : (
+                                                                <MdOutlineImageNotSupported className="size-10" />
+                                                              )}
                                                             </div>
                                                           </div>
 
@@ -1580,9 +1671,11 @@ const Menu = () => {
                                                               </button>
                                                               <button
                                                                 onClick={() => {
-                                                                  deleteMenu(
-                                                                    item
-                                                                  );
+                                                                  // deleteMenu(
+                                                                  //   item
+                                                                  // );
+                                                                  toggleModal();
+                                                                  openDelete();
                                                                 }}
                                                                 className="border border-[#0000007D] px-2 rounded-md text-[.9rem] bg-red-700 text-white"
                                                               >
@@ -1656,6 +1749,6 @@ const Menu = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Menu
